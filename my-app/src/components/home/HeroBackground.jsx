@@ -1,9 +1,11 @@
 import React, { useEffect, useRef } from 'react';
+import heroBgImage from '../../assets/images/hero-bg.png';
 
 /**
  * HeroBackground Component
  * 
  * Next-Gen Cybernetic & Neural Matrix Background for NeverQuit.ai Hero Section:
+ * - High-Impact Cyberpunk Developer & AI Visual Artwork Backdrop
  * - Interactive Neural Constellation Mesh with animated data pulses
  * - Concentric Rotating HUD Rings & Holographic Crosshairs
  * - 3D Perspective Cyber Grid with Sweeping Scanline
@@ -15,6 +17,7 @@ const HeroBackground = () => {
   const containerRef = useRef(null);
   const hudRef = useRef(null);
   const glowRef = useRef(null);
+  const artRef = useRef(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -37,7 +40,7 @@ const HeroBackground = () => {
     };
 
     // Node count optimized for performance & beauty
-    const NODE_COUNT = isMobile ? 24 : 48;
+    const NODE_COUNT = isMobile ? 24 : 46;
     const CONNECT_DISTANCE = isMobile ? 90 : 130;
     const nodes = [];
 
@@ -102,10 +105,16 @@ const HeroBackground = () => {
       mouse.x += (mouse.targetX - mouse.x) * 0.05;
       mouse.y += (mouse.targetY - mouse.y) * 0.05;
 
-      // Parallax updates for HUD and Glow
+      // Parallax updates for artwork, HUD, and Glow
+      if (artRef.current && !prefersReducedMotion) {
+        const normX = (mouse.x / width - 0.5) * 12;
+        const normY = (mouse.y / height - 0.5) * 12;
+        artRef.current.style.transform = `translate3d(${normX}px, ${normY}px, 0)`;
+      }
+
       if (hudRef.current && !prefersReducedMotion) {
-        const normX = (mouse.x / width - 0.5) * 18;
-        const normY = (mouse.y / height - 0.5) * 18;
+        const normX = (mouse.x / width - 0.5) * 20;
+        const normY = (mouse.y / height - 0.5) * 20;
         hudRef.current.style.transform = `translate3d(${normX}px, ${normY}px, 0)`;
       }
 
@@ -230,7 +239,7 @@ const HeroBackground = () => {
   return (
     <div
       ref={containerRef}
-      className="absolute inset-0 overflow-hidden pointer-events-none select-none z-0"
+      className="absolute inset-0 overflow-hidden pointer-events-none select-none z-0 bg-[#030303]"
       aria-hidden="true"
     >
       {/* 1. LAYER: Ambient Deep Crimson & Laser Red Glows */}
@@ -240,33 +249,57 @@ const HeroBackground = () => {
       >
         {/* Massive Center High-Energy Radial Bloom */}
         <div
-          className="absolute top-[8%] left-1/2 -translate-x-1/2 w-[900px] sm:w-[1200px] lg:w-[1500px] h-[550px] sm:h-[650px] rounded-full blur-[140px] opacity-70 pointer-events-none"
+          className="absolute top-[5%] left-1/2 -translate-x-1/2 w-[900px] sm:w-[1200px] lg:w-[1600px] h-[600px] sm:h-[750px] rounded-full blur-[140px] opacity-75 pointer-events-none"
           style={{
             background:
-              'radial-gradient(ellipse at center, rgba(255, 31, 38, 0.16) 0%, rgba(139, 0, 0, 0.10) 45%, rgba(61, 5, 5, 0.04) 70%, transparent 85%)',
+              'radial-gradient(ellipse at center, rgba(255, 31, 38, 0.22) 0%, rgba(139, 0, 0, 0.14) 45%, rgba(61, 5, 5, 0.04) 70%, transparent 85%)',
           }}
         />
 
         {/* Left Peripheral Glow */}
         <div
-          className="absolute top-[20%] left-[-10%] w-[550px] sm:w-[700px] h-[550px] sm:h-[700px] rounded-full blur-[160px] opacity-40 pointer-events-none"
+          className="absolute top-[20%] left-[-10%] w-[550px] sm:w-[700px] h-[550px] sm:h-[700px] rounded-full blur-[160px] opacity-45 pointer-events-none"
           style={{
             background:
-              'radial-gradient(circle at center, rgba(255, 42, 0, 0.12) 0%, rgba(139, 0, 0, 0.05) 50%, transparent 75%)',
+              'radial-gradient(circle at center, rgba(255, 42, 0, 0.14) 0%, rgba(139, 0, 0, 0.06) 50%, transparent 75%)',
           }}
         />
 
         {/* Right Peripheral Glow */}
         <div
-          className="absolute top-[25%] right-[-10%] w-[550px] sm:w-[700px] h-[550px] sm:h-[700px] rounded-full blur-[160px] opacity-40 pointer-events-none"
+          className="absolute top-[25%] right-[-10%] w-[550px] sm:w-[700px] h-[550px] sm:h-[700px] rounded-full blur-[160px] opacity-45 pointer-events-none"
           style={{
             background:
-              'radial-gradient(circle at center, rgba(255, 31, 38, 0.14) 0%, rgba(61, 5, 5, 0.05) 50%, transparent 75%)',
+              'radial-gradient(circle at center, rgba(255, 31, 38, 0.16) 0%, rgba(61, 5, 5, 0.06) 50%, transparent 75%)',
           }}
         />
       </div>
 
-      {/* 2. LAYER: Concentric Cybernetic HUD Rings & Orbitals */}
+      {/* 2. LAYER: High-Impact Cyberpunk Developer & AI Background Artwork */}
+      <div
+        ref={artRef}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] sm:w-[850px] md:w-[1000px] lg:w-[1200px] aspect-square pointer-events-none transition-transform duration-100 ease-out will-change-transform flex items-center justify-center"
+      >
+        <div className="relative w-full h-full">
+          {/* Backlight Halo for Artwork */}
+          <div className="absolute inset-[15%] rounded-full bg-[#FF1F26]/20 blur-[90px] pointer-events-none" />
+
+          {/* The Hero Image with Smooth Radial Vignette Mask */}
+          <img
+            src={heroBgImage}
+            alt="NeverQuit.ai Hero Atmosphere"
+            className="w-full h-full object-contain object-center opacity-30 sm:opacity-35 lg:opacity-45 mix-blend-screen scale-105 sm:scale-100 filter contrast-125 saturate-125 transition-opacity duration-700"
+            style={{
+              maskImage:
+                'radial-gradient(ellipse at center, rgba(0,0,0,1) 30%, rgba(0,0,0,0.8) 55%, rgba(0,0,0,0.2) 75%, transparent 85%)',
+              WebkitMaskImage:
+                'radial-gradient(ellipse at center, rgba(0,0,0,1) 30%, rgba(0,0,0,0.8) 55%, rgba(0,0,0,0.2) 75%, transparent 85%)',
+            }}
+          />
+        </div>
+      </div>
+
+      {/* 3. LAYER: Concentric Cybernetic HUD Rings & Orbitals */}
       <div
         ref={hudRef}
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] sm:w-[950px] lg:w-[1150px] h-[700px] sm:h-[950px] lg:h-[1150px] pointer-events-none transition-transform duration-100 ease-out will-change-transform"
@@ -289,9 +322,9 @@ const HeroBackground = () => {
         <div className="absolute inset-[44%] rounded-full border border-dashed border-[#FF3030]/25 animate-pulse" />
       </div>
 
-      {/* 3. LAYER: Perspective Cyber Grid (Horizon View) */}
+      {/* 4. LAYER: Perspective Cyber Grid (Horizon View) */}
       <div
-        className="absolute bottom-0 inset-x-0 h-[320px] pointer-events-none opacity-25"
+        className="absolute bottom-0 inset-x-0 h-[340px] pointer-events-none opacity-20"
         style={{
           backgroundImage:
             'linear-gradient(to right, rgba(255, 31, 38, 0.12) 1px, transparent 1px), linear-gradient(to bottom, rgba(255, 31, 38, 0.12) 1px, transparent 1px)',
@@ -303,16 +336,16 @@ const HeroBackground = () => {
         }}
       />
 
-      {/* 4. LAYER: Interactive Constellation & Traveling Packets Canvas */}
+      {/* 5. LAYER: Interactive Constellation & Traveling Packets Canvas */}
       <canvas
         ref={canvasRef}
         className="absolute inset-0 w-full h-full pointer-events-none"
       />
 
-      {/* 5. LAYER: Animated Cyber Scanline */}
+      {/* 6. LAYER: Animated Cyber Scanline */}
       <div className="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-[#FF1F26]/70 to-transparent shadow-[0_0_15px_#FF1F26] animate-[pulse_4s_ease-in-out_infinite]" />
 
-      {/* 6. LAYER: Floating Tech Corner HUD Markers */}
+      {/* 7. LAYER: Floating Tech Corner HUD Markers */}
       <div className="absolute top-24 left-8 sm:left-14 text-[10px] font-mono text-[#737373]/60 hidden sm:flex items-center gap-2">
         <span className="w-1.5 h-1.5 rounded-full bg-[#FF1F26] animate-ping" />
         <span>SYS.AI_CORE // LATENCY: 0.08ms</span>
@@ -330,7 +363,7 @@ const HeroBackground = () => {
       <div className="absolute bottom-24 right-16 text-[#FF1F26]/20 font-mono text-sm hidden lg:block">+</div>
 
       {/* Bottom Subtle Gradient Fade to Section Base */}
-      <div className="absolute bottom-0 inset-x-0 h-28 bg-gradient-to-t from-[#030303] via-[#030303]/80 to-transparent pointer-events-none" />
+      <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-[#030303] via-[#030303]/85 to-transparent pointer-events-none" />
     </div>
   );
 };
