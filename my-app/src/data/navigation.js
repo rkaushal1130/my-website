@@ -23,8 +23,8 @@ export const footerLinks = {
   contact: {
     email: 'kaushalrahul1130@gmail.com',
     phone: '+91 9015323903',
-    location: 'Chandigarh, India',
-    address: 'Chandigarh, India',
+    location: 'Sundernagar, Distt. Mandi, Himachal Pradesh 175002',
+    address: 'Sundernagar, Distt. Mandi, Himachal Pradesh 175002',
   },
   legal: [
     { name: 'Privacy Policy', path: '/contact' },

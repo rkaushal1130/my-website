@@ -23,7 +23,7 @@ const LocationMap = () => {
           </h2>
 
           <p className="text-base text-[#A7A7A7] font-normal leading-relaxed">
-            Headquartered in Chandigarh, India — engineering intelligent artificial intelligence systems for global enterprise scale.
+            Headquartered in Sundernagar, Distt. Mandi, Himachal Pradesh 175002 — engineering intelligent artificial intelligence systems for global enterprise scale.
           </p>
         </div>
 
@@ -53,8 +53,8 @@ const LocationMap = () => {
                   </div>
                   <div>
                     <div className="text-xs text-[#737373] uppercase font-bold tracking-wider">Official Address</div>
-                    <div className="text-base font-semibold text-white mt-0.5">Chandigarh, India</div>
-                    <div className="text-xs text-[#8A8A8A] mt-0.5">UT, Sector Hub, India</div>
+                    <div className="text-base font-semibold text-white mt-0.5">Sundernagar, Distt. Mandi</div>
+                    <div className="text-xs text-[#8A8A8A] mt-0.5">Himachal Pradesh 175002, India</div>
                   </div>
                 </div>
 
@@ -86,7 +86,7 @@ const LocationMap = () => {
 
             <div className="pt-6 border-t border-[#1C1C22] space-y-3">
               <a
-                href="https://www.google.com/maps/dir/?api=1&destination=Chandigarh,+India"
+                href="https://www.google.com/maps/dir/?api=1&destination=Sundernagar,+Distt.+Mandi,+Himachal+Pradesh+175002"
                 target="_blank"
                 rel="noreferrer"
                 className="w-full py-3.5 rounded-xl bg-[#FF1F26] text-white text-sm font-bold flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(255,31,38,0.35)] hover:bg-[#FF3030] hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 group"
@@ -97,7 +97,7 @@ const LocationMap = () => {
               </a>
 
               <div className="flex items-center justify-between text-[11px] text-[#737373] px-1 font-medium">
-                <span>COORDINATES: 30.7333° N, 76.7794° E</span>
+                <span>COORDINATES: 31.5326° N, 76.8906° E</span>
                 <span className="text-white">UTC +5:30</span>
               </div>
             </div>
@@ -110,11 +110,11 @@ const LocationMap = () => {
             <div className="absolute top-4 left-4 right-4 z-20 flex items-center justify-between pointer-events-none">
               <div className="px-3.5 py-1.5 rounded-xl bg-[#050505]/90 border border-[#26262B] backdrop-blur-md text-xs font-semibold text-white flex items-center gap-2 shadow-lg">
                 <MapPin className="w-4 h-4 text-[#FF1F26]" />
-                <span>Chandigarh, India — HQ Location</span>
+                <span>Sundernagar, Himachal Pradesh — HQ Location</span>
               </div>
 
               <a
-                href="https://maps.google.com/?q=Chandigarh,+India"
+                href="https://maps.google.com/?q=Sundernagar,+Distt.+Mandi,+Himachal+Pradesh+175002"
                 target="_blank"
                 rel="noreferrer"
                 className="pointer-events-auto px-3.5 py-1.5 rounded-xl bg-[#050505]/90 hover:bg-[#FF1F26] border border-[#26262B] hover:border-[#FF1F26] backdrop-blur-md text-xs font-semibold text-[#A7A7A7] hover:text-white flex items-center gap-1.5 transition-all shadow-lg"
@@ -127,8 +127,8 @@ const LocationMap = () => {
             {/* Live Interactive Map IFrame with High-Contrast Dark Custom Styling */}
             <div className="relative w-full h-full min-h-[460px] flex-grow overflow-hidden">
               <iframe
-                title="NeverquiT.ai Headquarters Chandigarh Map"
-                src="https://maps.google.com/maps?q=Chandigarh,%20India&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                title="NeverquiT.ai Headquarters Sundernagar Map"
+                src="https://maps.google.com/maps?q=Sundernagar,%20Distt.%20Mandi,%20Himachal%20Pradesh%20175002&t=&z=13&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="100%"
                 style={{

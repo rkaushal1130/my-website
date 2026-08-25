@@ -23,8 +23,8 @@ const ContactInfo = () => {
     {
       icon: MapPin,
       title: 'Location',
-      value: 'Chandigarh, India',
-      href: 'https://maps.google.com/?q=Chandigarh,+India',
+      value: 'Sundernagar, Distt. Mandi, Himachal Pradesh 175002',
+      href: 'https://maps.google.com/?q=Sundernagar,+Distt.+Mandi,+Himachal+Pradesh+175002',
       description: 'Global AI engineering and operations headquarters.',
     },
   ];

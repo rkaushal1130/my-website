@@ -79,7 +79,8 @@ const Footer = () => {
               <div className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 text-[#FF1F26] shrink-0 mt-1" />
                 <span className="leading-relaxed">
-                  Chandigarh, India
+                  Sundernagar, Distt. Mandi,<br />
+                  Himachal Pradesh 175002
                 </span>
               </div>
 

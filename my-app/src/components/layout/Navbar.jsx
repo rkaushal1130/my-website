@@ -147,7 +147,7 @@ const Navbar = ({ onOpenLogin }) => {
 
           <div className="pt-6 border-t border-[#242424]">
             <p className="text-center text-xs text-[#737373]">
-              Chandigarh, India • kaushalrahul1130@gmail.com
+              Sundernagar, Distt. Mandi, Himachal Pradesh 175002 • kaushalrahul1130@gmail.com
             </p>
           </div>
         </div>

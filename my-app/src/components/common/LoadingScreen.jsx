@@ -191,7 +191,7 @@ const LoadingScreen = () => {
       {/* Corner Telemetry Meta */}
       <div className="absolute bottom-7 left-7 text-xs font-medium text-[#525252] hidden sm:block pointer-events-none">
         <div>CORE // AUTONOMOUS AI v4.2</div>
-        <div>CHANDIGARH // GLOBAL HQ</div>
+        <div>SUNDERNAGAR, HP // GLOBAL HQ</div>
       </div>
 
     </div>
