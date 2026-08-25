@@ -275,25 +275,25 @@ const HeroBackground = () => {
         />
       </div>
 
-      {/* 2. LAYER: High-Impact Cyberpunk Developer & AI Background Artwork */}
+      {/* 2. LAYER: High-Impact Cyberpunk Developer & AI Background Artwork (Top to Bottom at Center) */}
       <div
         ref={artRef}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] sm:w-[850px] md:w-[1000px] lg:w-[1200px] aspect-square pointer-events-none transition-transform duration-100 ease-out will-change-transform flex items-center justify-center"
+        className="absolute inset-y-0 left-1/2 -translate-x-1/2 h-full w-full max-w-4xl sm:max-w-5xl lg:max-w-6xl flex items-center justify-center pointer-events-none transition-transform duration-100 ease-out will-change-transform z-0"
       >
-        <div className="relative w-full h-full">
+        <div className="relative w-full h-full flex items-center justify-center">
           {/* Backlight Halo for Artwork */}
-          <div className="absolute inset-[15%] rounded-full bg-[#FF1F26]/20 blur-[90px] pointer-events-none" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] sm:w-[850px] h-[650px] sm:h-[850px] rounded-full bg-[#FF1F26]/20 blur-[110px] pointer-events-none" />
 
-          {/* The Hero Image with Smooth Radial Vignette Mask */}
+          {/* The Hero Image spanning Top to Bottom at Center */}
           <img
             src={heroBgImage}
             alt="NeverQuit.ai Hero Atmosphere"
-            className="w-full h-full object-contain object-center opacity-30 sm:opacity-35 lg:opacity-45 mix-blend-screen scale-105 sm:scale-100 filter contrast-125 saturate-125 transition-opacity duration-700"
+            className="h-full w-auto max-w-full object-contain object-center opacity-45 sm:opacity-55 lg:opacity-65 mix-blend-screen filter contrast-125 saturate-125 transition-opacity duration-700 select-none"
             style={{
               maskImage:
-                'radial-gradient(ellipse at center, rgba(0,0,0,1) 30%, rgba(0,0,0,0.8) 55%, rgba(0,0,0,0.2) 75%, transparent 85%)',
+                'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.85) 8%, rgba(0,0,0,1) 20%, rgba(0,0,0,1) 80%, rgba(0,0,0,0.7) 92%, transparent 100%)',
               WebkitMaskImage:
-                'radial-gradient(ellipse at center, rgba(0,0,0,1) 30%, rgba(0,0,0,0.8) 55%, rgba(0,0,0,0.2) 75%, transparent 85%)',
+                'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.85) 8%, rgba(0,0,0,1) 20%, rgba(0,0,0,1) 80%, rgba(0,0,0,0.7) 92%, transparent 100%)',
             }}
           />
         </div>
