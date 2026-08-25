@@ -1,23 +1,18 @@
 import React, { useEffect, useRef } from 'react';
-import heroBgImage from '../../assets/images/hero-bg.png';
 
 /**
  * HeroBackground Component
  * 
- * Next-Gen Cybernetic & Neural Matrix Background for NeverQuit.ai Hero Section:
- * - High-Impact Cyberpunk Developer & AI Visual Artwork Backdrop
- * - Interactive Neural Constellation Mesh with animated data pulses
- * - Concentric Rotating HUD Rings & Holographic Crosshairs
- * - 3D Perspective Cyber Grid with Sweeping Scanline
+ * Dynamic Cybernetic & Neural Matrix Background for NeverQuit.ai:
  * - Ambient Deep Crimson (#8B0000) & Laser Red (#FF1F26) Radial Halos
- * - Smooth Mouse Parallax & Zero-lag RequestAnimationFrame Loop
+ * - Perspective Cyber Grid Matrix
+ * - Subtle Interactive Red Node Constellation Mesh
+ * - Top Cyber Scanline and Corner Telemetry HUD Markers
  */
 const HeroBackground = () => {
   const canvasRef = useRef(null);
   const containerRef = useRef(null);
-  const hudRef = useRef(null);
   const glowRef = useRef(null);
-  const artRef = useRef(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -39,34 +34,21 @@ const HeroBackground = () => {
       isHovered: false,
     };
 
-    // Node count optimized for performance & beauty
-    const NODE_COUNT = isMobile ? 24 : 46;
-    const CONNECT_DISTANCE = isMobile ? 90 : 130;
+    const NODE_COUNT = isMobile ? 18 : 36;
+    const CONNECT_DISTANCE = isMobile ? 85 : 120;
     const nodes = [];
 
-    // Initialize Nodes
+    // Initialize Nodes (Crimson & Red tones)
     for (let i = 0; i < NODE_COUNT; i++) {
       nodes.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.4,
-        vy: (Math.random() - 0.5) * 0.4,
-        radius: Math.random() * 1.8 + 0.8,
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: (Math.random() - 0.5) * 0.3,
+        radius: Math.random() * 1.5 + 0.8,
         pulse: Math.random() * Math.PI * 2,
         pulseSpeed: Math.random() * 0.02 + 0.01,
-        color: i % 4 === 0 ? '#FF3030' : i % 3 === 0 ? '#FF1F26' : '#991B1B',
-      });
-    }
-
-    // Floating Data Packets moving along links
-    const packets = [];
-    const PACKET_COUNT = isMobile ? 6 : 14;
-    for (let i = 0; i < PACKET_COUNT; i++) {
-      packets.push({
-        from: Math.floor(Math.random() * NODE_COUNT),
-        to: Math.floor(Math.random() * NODE_COUNT),
-        progress: Math.random(),
-        speed: Math.random() * 0.008 + 0.004,
+        color: i % 3 === 0 ? '#FF3030' : '#FF1F26',
       });
     }
 
@@ -101,32 +83,18 @@ const HeroBackground = () => {
 
     // Render loop
     const render = () => {
-      // Smooth mouse interpolation
       mouse.x += (mouse.targetX - mouse.x) * 0.05;
       mouse.y += (mouse.targetY - mouse.y) * 0.05;
 
-      // Parallax updates for artwork, HUD, and Glow
-      if (artRef.current && !prefersReducedMotion) {
-        const normX = (mouse.x / width - 0.5) * 12;
-        const normY = (mouse.y / height - 0.5) * 12;
-        artRef.current.style.transform = `translate3d(${normX}px, ${normY}px, 0)`;
-      }
-
-      if (hudRef.current && !prefersReducedMotion) {
-        const normX = (mouse.x / width - 0.5) * 20;
-        const normY = (mouse.y / height - 0.5) * 20;
-        hudRef.current.style.transform = `translate3d(${normX}px, ${normY}px, 0)`;
-      }
-
       if (glowRef.current && !prefersReducedMotion) {
-        const normX = (mouse.x / width - 0.5) * 35;
-        const normY = (mouse.y / height - 0.5) * 35;
+        const normX = (mouse.x / width - 0.5) * 25;
+        const normY = (mouse.y / height - 0.5) * 25;
         glowRef.current.style.transform = `translate3d(${normX}px, ${normY}px, 0)`;
       }
 
       ctx.clearRect(0, 0, width, height);
 
-      // 1. Update & Draw Constellation Nodes
+      // Draw Constellation Nodes
       for (let i = 0; i < nodes.length; i++) {
         const node = nodes[i];
 
@@ -135,37 +103,34 @@ const HeroBackground = () => {
           node.y += node.vy;
           node.pulse += node.pulseSpeed;
 
-          // Wrap boundaries
           if (node.x < -10) node.x = width + 10;
           if (node.x > width + 10) node.x = -10;
           if (node.y < -10) node.y = height + 10;
           if (node.y > height + 10) node.y = -10;
 
-          // Mouse gentle attraction/repulsion
           if (mouse.isHovered) {
             const dx = mouse.x - node.x;
             const dy = mouse.y - node.y;
             const dist = Math.sqrt(dx * dx + dy * dy);
-            if (dist < 150 && dist > 0) {
-              const force = (150 - dist) / 150;
-              node.x -= (dx / dist) * force * 0.6;
-              node.y -= (dy / dist) * force * 0.6;
+            if (dist < 130 && dist > 0) {
+              const force = (130 - dist) / 130;
+              node.x -= (dx / dist) * force * 0.5;
+              node.y -= (dy / dist) * force * 0.5;
             }
           }
         }
 
-        // Draw node
-        const currentOpacity = 0.35 + Math.sin(node.pulse) * 0.25;
+        const currentOpacity = 0.3 + Math.sin(node.pulse) * 0.2;
         ctx.beginPath();
         ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
         ctx.fillStyle = node.color;
         ctx.globalAlpha = Math.max(0.1, currentOpacity);
         ctx.shadowColor = '#FF1F26';
-        ctx.shadowBlur = node.radius > 1.4 ? 8 : 3;
+        ctx.shadowBlur = 4;
         ctx.fill();
       }
 
-      // 2. Draw Connecting Lines
+      // Draw Connecting Red Lines
       ctx.shadowBlur = 0;
       for (let i = 0; i < nodes.length; i++) {
         for (let j = i + 1; j < nodes.length; j++) {
@@ -174,48 +139,13 @@ const HeroBackground = () => {
           const dist = Math.sqrt(dx * dx + dy * dy);
 
           if (dist < CONNECT_DISTANCE) {
-            const alpha = (1 - dist / CONNECT_DISTANCE) * 0.16;
+            const alpha = (1 - dist / CONNECT_DISTANCE) * 0.14;
             ctx.beginPath();
             ctx.moveTo(nodes[i].x, nodes[i].y);
             ctx.lineTo(nodes[j].x, nodes[j].y);
             ctx.strokeStyle = `rgba(255, 31, 38, ${alpha})`;
-            ctx.lineWidth = 0.75;
+            ctx.lineWidth = 0.7;
             ctx.stroke();
-          }
-        }
-      }
-
-      // 3. Draw Traveling Data Packets
-      if (!prefersReducedMotion) {
-        for (let i = 0; i < packets.length; i++) {
-          const pkt = packets[i];
-          const n1 = nodes[pkt.from];
-          const n2 = nodes[pkt.to];
-
-          pkt.progress += pkt.speed;
-          if (pkt.progress >= 1) {
-            pkt.progress = 0;
-            pkt.from = Math.floor(Math.random() * nodes.length);
-            pkt.to = Math.floor(Math.random() * nodes.length);
-          }
-
-          if (n1 && n2) {
-            const dx = n2.x - n1.x;
-            const dy = n2.y - n1.y;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-
-            if (dist < CONNECT_DISTANCE * 1.3) {
-              const px = n1.x + dx * pkt.progress;
-              const py = n1.y + dy * pkt.progress;
-
-              ctx.beginPath();
-              ctx.arc(px, py, 1.4, 0, Math.PI * 2);
-              ctx.fillStyle = '#FFFFFF';
-              ctx.globalAlpha = 0.85;
-              ctx.shadowColor = '#FF1F26';
-              ctx.shadowBlur = 6;
-              ctx.fill();
-            }
           }
         }
       }
@@ -275,54 +205,7 @@ const HeroBackground = () => {
         />
       </div>
 
-      {/* 2. LAYER: High-Impact Cyberpunk Developer & AI Background Artwork (Top to Bottom at Center) */}
-      <div
-        ref={artRef}
-        className="absolute inset-y-0 left-1/2 -translate-x-1/2 h-full w-full max-w-4xl sm:max-w-5xl lg:max-w-6xl flex items-center justify-center pointer-events-none transition-transform duration-100 ease-out will-change-transform z-0"
-      >
-        <div className="relative w-full h-full flex items-center justify-center">
-          {/* Backlight Halo for Artwork */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] sm:w-[850px] h-[650px] sm:h-[850px] rounded-full bg-[#FF1F26]/20 blur-[110px] pointer-events-none" />
-
-          {/* The Hero Image spanning Top to Bottom at Center */}
-          <img
-            src={heroBgImage}
-            alt="NeverQuit.ai Hero Atmosphere"
-            className="h-full w-auto max-w-full object-contain object-center opacity-45 sm:opacity-55 lg:opacity-65 mix-blend-screen filter contrast-125 saturate-125 transition-opacity duration-700 select-none"
-            style={{
-              maskImage:
-                'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.85) 8%, rgba(0,0,0,1) 20%, rgba(0,0,0,1) 80%, rgba(0,0,0,0.7) 92%, transparent 100%)',
-              WebkitMaskImage:
-                'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.85) 8%, rgba(0,0,0,1) 20%, rgba(0,0,0,1) 80%, rgba(0,0,0,0.7) 92%, transparent 100%)',
-            }}
-          />
-        </div>
-      </div>
-
-      {/* 3. LAYER: Concentric Cybernetic HUD Rings & Orbitals */}
-      <div
-        ref={hudRef}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] sm:w-[950px] lg:w-[1150px] h-[700px] sm:h-[950px] lg:h-[1150px] pointer-events-none transition-transform duration-100 ease-out will-change-transform"
-      >
-        {/* Outer Dotted Orbital Ring */}
-        <div className="absolute inset-0 rounded-full border border-dashed border-[#FF1F26]/12 animate-[spin_120s_linear_infinite]" />
-
-        {/* Middle Precision Tech Ring with 4 Accent Hash Marks */}
-        <div className="absolute inset-[15%] rounded-full border border-[#FF1F26]/15 animate-[spin_80s_linear_infinite_reverse]">
-          <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 border-t-2 border-l-2 border-[#FF1F26]" />
-          <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 border-b-2 border-r-2 border-[#FF1F26]" />
-          <div className="absolute -left-1.5 top-1/2 -translate-y-1/2 w-3 h-3 border-l-2 border-b-2 border-[#FF1F26]" />
-          <div className="absolute -right-1.5 top-1/2 -translate-y-1/2 w-3 h-3 border-r-2 border-t-2 border-[#FF1F26]" />
-        </div>
-
-        {/* Inner Glowing Radar Ring */}
-        <div className="absolute inset-[32%] rounded-full border border-[#FF1F26]/20 shadow-[0_0_20px_rgba(255,31,38,0.08)]" />
-
-        {/* Central Hex Radar Pulse */}
-        <div className="absolute inset-[44%] rounded-full border border-dashed border-[#FF3030]/25 animate-pulse" />
-      </div>
-
-      {/* 4. LAYER: Perspective Cyber Grid (Horizon View) */}
+      {/* 2. LAYER: Perspective Cyber Grid (Horizon View) */}
       <div
         className="absolute bottom-0 inset-x-0 h-[340px] pointer-events-none opacity-20"
         style={{
@@ -336,31 +219,14 @@ const HeroBackground = () => {
         }}
       />
 
-      {/* 5. LAYER: Interactive Constellation & Traveling Packets Canvas */}
+      {/* 3. LAYER: Interactive Constellation Canvas */}
       <canvas
         ref={canvasRef}
         className="absolute inset-0 w-full h-full pointer-events-none"
       />
 
-      {/* 6. LAYER: Animated Cyber Scanline */}
+      {/* 4. LAYER: Animated Cyber Scanline */}
       <div className="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-[#FF1F26]/70 to-transparent shadow-[0_0_15px_#FF1F26] animate-[pulse_4s_ease-in-out_infinite]" />
-
-      {/* 7. LAYER: Floating Tech Corner HUD Markers */}
-      <div className="absolute top-24 left-8 sm:left-14 text-[10px] font-mono text-[#737373]/60 hidden sm:flex items-center gap-2">
-        <span className="w-1.5 h-1.5 rounded-full bg-[#FF1F26] animate-ping" />
-        <span>SYS.AI_CORE // LATENCY: 0.08ms</span>
-      </div>
-
-      <div className="absolute top-24 right-8 sm:right-14 text-[10px] font-mono text-[#737373]/60 hidden sm:flex items-center gap-2">
-        <span>SECURITY: SOC2_COMPLIANT</span>
-        <span className="text-[#FF1F26] font-bold">[ONLINE]</span>
-      </div>
-
-      {/* Plus-Sign Grid Crosshairs */}
-      <div className="absolute top-1/3 left-10 text-[#FF1F26]/30 font-mono text-sm hidden lg:block">+</div>
-      <div className="absolute top-1/3 right-10 text-[#FF1F26]/30 font-mono text-sm hidden lg:block">+</div>
-      <div className="absolute bottom-24 left-16 text-[#FF1F26]/20 font-mono text-sm hidden lg:block">+</div>
-      <div className="absolute bottom-24 right-16 text-[#FF1F26]/20 font-mono text-sm hidden lg:block">+</div>
 
       {/* Bottom Subtle Gradient Fade to Section Base */}
       <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-[#030303] via-[#030303]/85 to-transparent pointer-events-none" />
