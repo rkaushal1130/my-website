@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
-import { X, CheckCircle2, Sparkles, Calendar, Mail, Building, User, Phone, ArrowRight } from 'lucide-react';
+import { X, CheckCircle2, Sparkles, Calendar, Mail, Building, User, Phone, ArrowRight, Loader2, AlertCircle } from 'lucide-react';
 import Button from './Button';
+import ErrorMessage from './ErrorMessage';
+import ButtonLoader from './ButtonLoader';
+import { api } from '../../services';
 
 const DemoModal = ({ isOpen, onClose }) => {
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [fieldErrors, setFieldErrors] = useState([]);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -15,13 +21,45 @@ const DemoModal = ({ isOpen, onClose }) => {
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
+    if (isSubmitting) return;
+
+    setErrorMessage('');
+    setFieldErrors([]);
+
+    if (!formData.name.trim() || !formData.email.trim() || !formData.company.trim()) {
+      setErrorMessage('Please fill in required fields (Name, Email, and Company).');
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      await api.post('/demo', {
+        fullName: formData.name.trim(),
+        workEmail: formData.email.trim(),
+        companyName: formData.company.trim(),
+        primaryInterest: formData.service,
+        notes: `Timeline: ${formData.timeline}${formData.phone ? ` | Phone: ${formData.phone}` : ''}`,
+      });
+
+      setSubmitted(true);
+    } catch (err) {
+      console.error('Demo booking error:', err);
+      setErrorMessage(err.message || 'Unable to schedule demo. Please try again.');
+      if (err.errors && Array.isArray(err.errors)) {
+        setFieldErrors(err.errors);
+      }
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleClose = () => {
     setSubmitted(false);
+    setErrorMessage('');
+    setFieldErrors([]);
     onClose();
   };
 
@@ -32,12 +70,12 @@ const DemoModal = ({ isOpen, onClose }) => {
         onClick={handleClose}
       />
 
-      <div className="relative w-full max-w-xl rounded-[24px] bg-[#0B0B0B] border border-[#252525] shadow-[0_0_50px_rgba(255,31,38,0.25)] overflow-hidden z-10 transition-all my-8">
+      <div className="relative w-full max-w-xl rounded-[24px] bg-[#0B0B0B] border border-[#252525] shadow-[0_0_50px_rgba(255,31,38,0.25)] overflow-hidden z-10 transition-all my-8 text-left">
         <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#FF1F26] to-transparent" />
         
         <button
           onClick={handleClose}
-          className="absolute top-5 right-5 w-8 h-8 rounded-full bg-[#111111] border border-[#252525] text-[#A8A8A8] hover:text-white hover:border-[#FF1F26] flex items-center justify-center transition-colors z-20"
+          className="absolute top-5 right-5 w-8 h-8 rounded-full bg-[#111111] border border-[#252525] text-[#A8A8A8] hover:text-white hover:border-[#FF1F26] flex items-center justify-center transition-colors z-20 cursor-pointer"
           aria-label="Close modal"
         >
           <X className="w-4 h-4" />
@@ -77,6 +115,13 @@ const DemoModal = ({ isOpen, onClose }) => {
               Discover how our enterprise-ready AI agents and machine learning architectures can accelerate your business operations.
             </p>
 
+            <ErrorMessage
+              message={errorMessage}
+              errors={fieldErrors}
+              variant="banner"
+              className="mb-4"
+            />
+
             <form onSubmit={handleSubmit} className="space-y-4 text-left">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
@@ -88,10 +133,11 @@ const DemoModal = ({ isOpen, onClose }) => {
                     <input
                       type="text"
                       required
+                      disabled={isSubmitting}
                       placeholder="Alex Morgan"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full bg-[#111111] border border-[#252525] focus:border-[#FF1F26] rounded-xl pl-10 pr-4 py-2.5 text-sm text-white placeholder-[#737373] focus:outline-none transition-colors"
+                      className="w-full bg-[#111111] border border-[#252525] focus:border-[#FF1F26] rounded-xl pl-10 pr-4 py-2.5 text-sm text-white placeholder-[#737373] focus:outline-none transition-colors disabled:opacity-60"
                     />
                   </div>
                 </div>
@@ -105,10 +151,11 @@ const DemoModal = ({ isOpen, onClose }) => {
                     <input
                       type="email"
                       required
-                      placeholder="alex@company.com"
+                      disabled={isSubmitting}
+                      placeholder="alex@enterprise.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full bg-[#111111] border border-[#252525] focus:border-[#FF1F26] rounded-xl pl-10 pr-4 py-2.5 text-sm text-white placeholder-[#737373] focus:outline-none transition-colors"
+                      className="w-full bg-[#111111] border border-[#252525] focus:border-[#FF1F26] rounded-xl pl-10 pr-4 py-2.5 text-sm text-white placeholder-[#737373] focus:outline-none transition-colors disabled:opacity-60"
                     />
                   </div>
                 </div>
@@ -117,16 +164,18 @@ const DemoModal = ({ isOpen, onClose }) => {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs font-medium text-[#A8A8A8] mb-1.5">
-                    Company Name
+                    Company Name *
                   </label>
                   <div className="relative">
                     <Building className="w-4 h-4 text-[#737373] absolute left-3.5 top-1/2 -translate-y-1/2" />
                     <input
                       type="text"
-                      placeholder="Enterprise Inc."
+                      required
+                      disabled={isSubmitting}
+                      placeholder="Acme Global Inc."
                       value={formData.company}
                       onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                      className="w-full bg-[#111111] border border-[#252525] focus:border-[#FF1F26] rounded-xl pl-10 pr-4 py-2.5 text-sm text-white placeholder-[#737373] focus:outline-none transition-colors"
+                      className="w-full bg-[#111111] border border-[#252525] focus:border-[#FF1F26] rounded-xl pl-10 pr-4 py-2.5 text-sm text-white placeholder-[#737373] focus:outline-none transition-colors disabled:opacity-60"
                     />
                   </div>
                 </div>
@@ -139,10 +188,11 @@ const DemoModal = ({ isOpen, onClose }) => {
                     <Phone className="w-4 h-4 text-[#737373] absolute left-3.5 top-1/2 -translate-y-1/2" />
                     <input
                       type="tel"
-                      placeholder="+91 90153 23903"
+                      disabled={isSubmitting}
+                      placeholder="+1 (555) 000-0000"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full bg-[#111111] border border-[#252525] focus:border-[#FF1F26] rounded-xl pl-10 pr-4 py-2.5 text-sm text-white placeholder-[#737373] focus:outline-none transition-colors"
+                      className="w-full bg-[#111111] border border-[#252525] focus:border-[#FF1F26] rounded-xl pl-10 pr-4 py-2.5 text-sm text-white placeholder-[#737373] focus:outline-none transition-colors disabled:opacity-60"
                     />
                   </div>
                 </div>
@@ -155,14 +205,15 @@ const DemoModal = ({ isOpen, onClose }) => {
                   </label>
                   <select
                     value={formData.service}
+                    disabled={isSubmitting}
                     onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                    className="w-full bg-[#111111] border border-[#252525] focus:border-[#FF1F26] rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none transition-colors"
+                    className="w-full bg-[#111111] border border-[#252525] focus:border-[#FF1F26] rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none transition-colors cursor-pointer disabled:opacity-60"
                   >
-                    <option value="AI Automation">AI Automation</option>
-                    <option value="Machine Learning">Machine Learning</option>
-                    <option value="Data Intelligence">Data Intelligence</option>
-                    <option value="Custom AI Solutions">Custom AI Solutions</option>
-                    <option value="Enterprise Advisory">Enterprise Advisory</option>
+                    <option value="AI Automation" className="bg-[#111111] text-white">AI Automation</option>
+                    <option value="Machine Learning" className="bg-[#111111] text-white">Machine Learning</option>
+                    <option value="Data Intelligence" className="bg-[#111111] text-white">Data Intelligence</option>
+                    <option value="Custom AI Solutions" className="bg-[#111111] text-white">Custom AI Solutions</option>
+                    <option value="Enterprise Advisory" className="bg-[#111111] text-white">Enterprise Advisory</option>
                   </select>
                 </div>
 
@@ -172,26 +223,29 @@ const DemoModal = ({ isOpen, onClose }) => {
                   </label>
                   <select
                     value={formData.timeline}
+                    disabled={isSubmitting}
                     onChange={(e) => setFormData({ ...formData, timeline: e.target.value })}
-                    className="w-full bg-[#111111] border border-[#252525] focus:border-[#FF1F26] rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none transition-colors"
+                    className="w-full bg-[#111111] border border-[#252525] focus:border-[#FF1F26] rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none transition-colors cursor-pointer disabled:opacity-60"
                   >
-                    <option value="Immediately">Immediately (Next 2 weeks)</option>
-                    <option value="Within 1 month">Within 1 month</option>
-                    <option value="1-3 months">1 - 3 months</option>
-                    <option value="Exploring options">Exploring options</option>
+                    <option value="Immediately" className="bg-[#111111] text-white">Immediately (Next 2 weeks)</option>
+                    <option value="Within 1 month" className="bg-[#111111] text-white">Within 1 month</option>
+                    <option value="1-3 months" className="bg-[#111111] text-white">1 - 3 months</option>
+                    <option value="Exploring options" className="bg-[#111111] text-white">Exploring options</option>
                   </select>
                 </div>
               </div>
 
               <div className="pt-2">
-                <Button
+                <ButtonLoader
                   type="submit"
                   size="lg"
                   variant="primary"
+                  isLoading={isSubmitting}
+                  loadingText="Scheduling Live Demo..."
                   className="w-full justify-center"
                 >
                   Confirm Demo Booking
-                </Button>
+                </ButtonLoader>
               </div>
 
               <p className="text-[11px] text-[#737373] text-center">

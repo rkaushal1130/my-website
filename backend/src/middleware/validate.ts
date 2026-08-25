@@ -24,7 +24,12 @@ export const validateRequest = (schema: AnyZodObject) => {
           message: err.message,
         }));
 
-        return sendError(res, 'Validation failed', 400, formattedErrors);
+        return sendError(
+          res,
+          'Validation failed. Please check the submitted fields.',
+          400,
+          formattedErrors
+        );
       }
 
       return next(error);

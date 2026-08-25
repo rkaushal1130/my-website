@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PageWrapper from '../components/layout/PageWrapper';
 import Hero from '../components/home/Hero';
 import FeatureStrip from '../components/home/FeatureStrip';
+import ProjectsSection from '../components/home/ProjectsSection';
 import AboutPreview from '../components/home/AboutPreview';
 import WhyNeverQuit from '../components/home/WhyNeverQuit';
 import HomeCTA from '../components/home/HomeCTA';
@@ -27,6 +28,7 @@ const Home = ({ onOpenDemo }) => {
         onWatchVideo={() => setVideoOpen(true)}
       />
       <FeatureStrip />
+      <ProjectsSection />
       <AboutPreview />
       <WhyNeverQuit />
       <HomeCTA onOpenDemo={onOpenDemo} />

@@ -1,30 +1,47 @@
 import { Response } from 'express';
-import { ApiResponse } from '../types';
 
-export const sendSuccess = <T>(
+export interface StandardSuccessResponse<T = any> {
+  success: true;
+  data: T;
+  message: string;
+}
+
+export interface StandardErrorResponse {
+  success: false;
+  message: string;
+  errors: any[];
+}
+
+/**
+ * Sends a standardized success JSON response.
+ * Structure: { success: true, data: { ... }, message: "..." }
+ */
+export const sendSuccess = <T = any>(
   res: Response,
-  data?: T,
-  message = 'Success',
+  data: T = {} as T,
+  message = 'Operation completed successfully.',
   statusCode = 200
-): Response<ApiResponse<T>> => {
+): Response<StandardSuccessResponse<T>> => {
   return res.status(statusCode).json({
     success: true,
+    data: data !== undefined && data !== null ? data : {},
     message,
-    data,
-    timestamp: new Date().toISOString(),
   });
 };
 
+/**
+ * Sends a standardized error JSON response.
+ * Structure: { success: false, message: "...", errors: [...] }
+ */
 export const sendError = (
   res: Response,
-  message = 'An error occurred',
+  message = 'Something went wrong.',
   statusCode = 500,
-  errors?: any
-): Response<ApiResponse> => {
+  errors: any[] = []
+): Response<StandardErrorResponse> => {
   return res.status(statusCode).json({
     success: false,
     message,
-    errors,
-    timestamp: new Date().toISOString(),
+    errors: Array.isArray(errors) ? errors : (errors ? [errors] : []),
   });
 };

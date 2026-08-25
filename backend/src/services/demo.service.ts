@@ -5,25 +5,29 @@ import { logger } from '../utils/logger';
 export class DemoService {
   public static async createDemoRequest(input: CreateDemoRequestInput) {
     try {
-      const demo = await prisma.demoRequest.create({
+      const demoMessage = await prisma.contactMessage.create({
         data: {
-          fullName: input.fullName,
-          workEmail: input.workEmail,
-          companyName: input.companyName,
-          companySize: input.companySize,
-          primaryInterest: input.primaryInterest,
-          notes: input.notes,
+          name: input.fullName,
+          email: input.workEmail,
+          company: input.companyName,
+          service: `Demo: ${input.primaryInterest || 'General'}`,
+          message: `Company Size: ${input.companySize || 'N/A'}\nNotes: ${input.notes || 'None'}`,
+          status: 'NEW',
         },
       });
 
-      logger.info(`New demo request booked: ${demo.id} (${demo.workEmail})`);
-      return demo;
+      logger.info(`New demo request booked: ${demoMessage.id} (${demoMessage.email})`);
+      return demoMessage;
     } catch (error) {
       logger.warn('Database write bypassed or failed, recording in-memory/logger payload', error);
       return {
         id: `mock-${Date.now()}`,
-        ...input,
-        status: 'REQUESTED',
+        name: input.fullName,
+        email: input.workEmail,
+        company: input.companyName,
+        service: `Demo: ${input.primaryInterest || 'General'}`,
+        message: `Company Size: ${input.companySize || 'N/A'}\nNotes: ${input.notes || 'None'}`,
+        status: 'NEW',
         createdAt: new Date(),
         updatedAt: new Date(),
       };
@@ -32,7 +36,12 @@ export class DemoService {
 
   public static async listDemoRequests() {
     try {
-      return await prisma.demoRequest.findMany({
+      return await prisma.contactMessage.findMany({
+        where: {
+          service: {
+            startsWith: 'Demo:',
+          },
+        },
         orderBy: { createdAt: 'desc' },
       });
     } catch (error) {

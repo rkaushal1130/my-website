@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Lock, UserCheck } from 'lucide-react';
 import { mainNavigation } from '../../data/navigation';
 import brandLogo from '../../assets/images/logo.png';
+import { authService } from '../../services';
 
-const Navbar = () => {
+const Navbar = ({ onOpenLogin }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isAuth, setIsAuth] = useState(false);
   const location = useLocation();
 
   // Lock body scroll when mobile menu is open
@@ -22,6 +24,7 @@ const Navbar = () => {
 
   useEffect(() => {
     setIsOpen(false);
+    setIsAuth(authService.isAuthenticated());
   }, [location.pathname]);
 
   return (
@@ -69,10 +72,43 @@ const Navbar = () => {
                 )}
               </NavLink>
             ))}
+
+            {/* Admin / Team Login Button */}
+            {onOpenLogin && (
+              <button
+                type="button"
+                onClick={onOpenLogin}
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 hover:bg-[#FF1F26]/20 border border-white/10 hover:border-[#FF1F26]/50 text-white/80 hover:text-white text-xs font-medium transition-all duration-200 cursor-pointer"
+                title={isAuth ? "Authenticated Portal" : "Admin / Staff Sign In"}
+              >
+                {isAuth ? (
+                  <>
+                    <UserCheck className="w-3.5 h-3.5 text-emerald-400" />
+                    <span>Portal</span>
+                  </>
+                ) : (
+                  <>
+                    <Lock className="w-3.5 h-3.5 text-[#FF1F26]" />
+                    <span>Login</span>
+                  </>
+                )}
+              </button>
+            )}
           </nav>
 
           {/* Mobile Hamburger Menu Toggle */}
-          <div className="flex md:hidden items-center">
+          <div className="flex md:hidden items-center gap-3">
+            {onOpenLogin && (
+              <button
+                type="button"
+                onClick={onOpenLogin}
+                className="p-2 rounded-lg bg-black/40 border border-white/15 text-white/80 hover:text-white text-xs"
+                aria-label="Login"
+              >
+                <Lock className="w-4 h-4 text-[#FF1F26]" />
+              </button>
+            )}
+
             <button
               type="button"
               onClick={() => setIsOpen(!isOpen)}

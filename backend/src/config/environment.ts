@@ -9,7 +9,7 @@ const envSchema = z.object({
   PORT: z.string().default('5000').transform((val) => parseInt(val, 10)),
   DATABASE_URL: z.string().optional(),
   JWT_SECRET: z.string().default('neverquit_ai_jwt_secret_dev_key_2026'),
-  FRONTEND_URL: z.string().default('http://localhost:3000'),
+  FRONTEND_URL: z.string().default('http://localhost:5173'),
 });
 
 const _env = envSchema.safeParse(process.env);

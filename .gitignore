@@ -8,13 +8,17 @@ dist/
 build/
 */build/
 
-# Environment variables & secrets
+# Environment variables & secrets (NEVER commit real .env files)
 .env
 */.env
 .env.local
 .env.*.local
 */.env.local
 */.env.*.local
+
+# Allow committing example configuration files
+!.env.example
+!*/.env.example
 
 # Logs
 logs/
