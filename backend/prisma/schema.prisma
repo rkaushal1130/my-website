@@ -1,0 +1,95 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum InquiryStatus {
+  PENDING
+  IN_REVIEW
+  CONTACTED
+  ARCHIVED
+}
+
+enum DemoStatus {
+  REQUESTED
+  CONFIRMED
+  COMPLETED
+  CANCELLED
+}
+
+enum ApplicationStatus {
+  SUBMITTED
+  UNDER_REVIEW
+  INTERVIEW_SCHEDULED
+  ACCEPTED
+  REJECTED
+}
+
+model ContactInquiry {
+  id        String        @id @default(uuid())
+  name      String
+  email     String
+  company   String?
+  service   String?
+  budget    String?
+  message   String        @db.Text
+  status    InquiryStatus @default(PENDING)
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+
+  @@index([email])
+  @@index([status])
+  @@map("contact_inquiries")
+}
+
+model DemoRequest {
+  id              String     @id @default(uuid())
+  fullName        String
+  workEmail       String
+  companyName     String
+  companySize     String?
+  primaryInterest String?
+  notes           String?    @db.Text
+  status          DemoStatus @default(REQUESTED)
+  createdAt       DateTime   @default(now())
+  updatedAt       DateTime   @updatedAt
+
+  @@index([workEmail])
+  @@index([status])
+  @@map("demo_requests")
+}
+
+model JobApplication {
+  id            String            @id @default(uuid())
+  roleId        String?
+  roleTitle     String
+  applicantName String
+  email         String
+  phone         String?
+  linkedinUrl   String?
+  portfolioUrl  String?
+  resumeUrl     String?
+  coverNote     String?           @db.Text
+  status        ApplicationStatus @default(SUBMITTED)
+  createdAt     DateTime          @default(now())
+  updatedAt     DateTime          @updatedAt
+
+  @@index([email])
+  @@index([roleTitle])
+  @@index([status])
+  @@map("job_applications")
+}
+
+model NewsletterSubscriber {
+  id           String   @id @default(uuid())
+  email        String   @unique
+  isActive     Boolean  @default(true)
+  subscribedAt DateTime @default(now())
+
+  @@index([email])
+  @@map("newsletter_subscribers")
+}
