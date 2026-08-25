@@ -193,8 +193,8 @@ async function runTestSuite() {
     const res = await request('/auth/login', {
       method: 'POST',
       body: {
-        email: 'admin@neverquit.ai',
-        password: 'password123!',
+        email: 'neverquitop@gmail.com',
+        password: 'R@hul1130',
       },
     });
     if (res.data?.data?.token) {
@@ -208,7 +208,7 @@ async function runTestSuite() {
     const res = await request('/auth/login', {
       method: 'POST',
       body: {
-        email: 'admin@neverquit.ai',
+        email: 'neverquitop@gmail.com',
         password: 'incorrectPassword999!',
       },
     });

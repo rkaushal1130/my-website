@@ -30,14 +30,23 @@ const devUsersStore: Array<SafeUser & { passwordHash: string }> = [
   {
     id: '00000000-0000-0000-0000-000000000001',
     name: 'NeverQuit Admin',
-    email: 'admin@neverquit.ai',
-    passwordHash: '$2a$12$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', // password123!
+    email: 'neverquitop@gmail.com',
+    passwordHash: '$2b$12$Ob7q6l4YJvwpgO.CcviA.Ox/2hQZ8IdVI1lLdnkzNBH3CuqaWEVkm', // R@hul1130
     role: 'ADMIN',
     createdAt: new Date(),
     updatedAt: new Date(),
   },
   {
     id: '00000000-0000-0000-0000-000000000002',
+    name: 'NeverQuit Legacy Admin',
+    email: 'admin@neverquit.ai',
+    passwordHash: '$2b$12$Ob7q6l4YJvwpgO.CcviA.Ox/2hQZ8IdVI1lLdnkzNBH3CuqaWEVkm', // R@hul1130
+    role: 'ADMIN',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  },
+  {
+    id: '00000000-0000-0000-0000-000000000003',
     name: 'Standard User',
     email: 'user@neverquit.ai',
     passwordHash: '$2a$12$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', // password123!

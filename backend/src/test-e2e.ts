@@ -181,8 +181,8 @@ async function runE2ETests() {
     const res = await apiCall('/auth/login', {
       method: 'POST',
       body: {
-        email: 'admin@neverquit.ai',
-        password: 'password123!',
+        email: 'neverquitop@gmail.com',
+        password: 'R@hul1130',
       },
     });
     adminToken = res.data?.data?.token || '';

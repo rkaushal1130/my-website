@@ -200,14 +200,14 @@ async function main() {
   console.log('\n--- 1. SEEDING USERS ---');
 
   // Resolve Admin credentials from environment variables
-  const adminEmail = (process.env.ADMIN_EMAIL?.trim() || 'admin@neverquit.ai').toLowerCase();
+  const adminEmail = (process.env.ADMIN_EMAIL?.trim() || 'neverquitop@gmail.com').toLowerCase();
   const rawAdminPassword = process.env.ADMIN_PASSWORD?.trim();
 
   if (!rawAdminPassword && process.env.NODE_ENV === 'production') {
     throw new Error('❌ FATAL: ADMIN_PASSWORD environment variable is required in production environments to run seed.');
   }
 
-  const effectiveAdminPassword = rawAdminPassword || 'password123!';
+  const effectiveAdminPassword = rawAdminPassword || 'R@hul1130';
   const adminPasswordHash = hashPassword(effectiveAdminPassword);
 
   const adminUser = await prisma.user.upsert({
