@@ -1,0 +1,38 @@
+export const solutionsData = [
+  {
+    id: 'ai-automation',
+    title: 'AI Automation',
+    shortDescription: 'Automate workflows, repetitive processes and everyday business operations.',
+    description: 'Deploy autonomous software agents to handle complex customer workflows, back-office operations, and cognitive process automation.',
+    features: ['Autonomous Task Orchestration', '24/7 Cognitive Agents', 'Workflow Integrations', 'Exception Handling'],
+    iconType: 'bot',
+    badge: 'POPULAR',
+  },
+  {
+    id: 'machine-learning',
+    title: 'Machine Learning',
+    shortDescription: 'Build intelligent systems that learn, adapt and improve over time.',
+    description: 'Custom deep neural networks, predictive models, and specialized LLM fine-tuning tailored for domain-specific accuracy.',
+    features: ['Custom Foundation Tuning', 'Predictive Modeling', 'Edge Inference Optimization', 'Continuous Retraining'],
+    iconType: 'cpu',
+    badge: 'CORE ENGINE',
+  },
+  {
+    id: 'data-intelligence',
+    title: 'Data Intelligence',
+    shortDescription: 'Transform complex data into clear insights and smarter decisions.',
+    description: 'Transform raw data into real-time competitive intelligence with high-throughput streaming pipelines and synthetic data synthesis.',
+    features: ['Real-time Streaming Telemetry', 'Automated Vectorization', 'Semantic Knowledge Graph', 'BI Analytics'],
+    iconType: 'analytics',
+    badge: 'SCALABLE',
+  },
+  {
+    id: 'custom-ai',
+    title: 'Custom AI Solutions',
+    shortDescription: 'Purpose-built AI products designed around your unique business needs.',
+    description: 'End-to-end bespoke AI engineering, from architectural design to secure on-premise or multi-cloud enterprise deployments.',
+    features: ['Bespoke Enterprise AI', 'SOC2 / HIPAA Compliance', 'Dedicated Infrastructure', 'White-Glove Support'],
+    iconType: 'code',
+    badge: 'ENTERPRISE',
+  },
+];
