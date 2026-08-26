@@ -34,7 +34,7 @@ const VideoModal = ({ isOpen, onClose }) => {
           <div className="flex items-center gap-3">
             <div className="w-3 h-3 rounded-full bg-[#FF1F26] animate-ping" />
             <span className="text-sm font-semibold text-white tracking-wide">
-              neverquit.ai Platform Walkthrough (Live Architecture Demo)
+              NeverquiT AI Platform Walkthrough (Live Architecture Demo)
             </span>
           </div>
           <button

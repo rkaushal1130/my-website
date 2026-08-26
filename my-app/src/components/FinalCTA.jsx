@@ -21,13 +21,14 @@ const FinalCTA = ({ onOpenDemo }) => {
         {/* Large Rounded CTA Banner Card */}
         <div className="relative rounded-[28px] bg-gradient-to-b from-[#101010] to-[#080808] border border-[#252525] p-8 sm:p-14 lg:p-16 overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.95)] text-center space-y-6">
           
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#050505] border border-[#252525] text-xs font-semibold tracking-wider text-[#FF1F26] uppercase shadow-sm mx-auto">
-            <Sparkles className="w-3.5 h-3.5 text-[#FF1F26]" />
-            NEXT STEPS
+          <div className="flex items-center justify-center gap-4 text-[13px] sm:text-sm font-sans font-semibold uppercase tracking-wider text-white select-none mx-auto">
+            <span className="w-12 sm:w-24 h-px bg-gradient-to-r from-transparent via-[#FF1F26]/60 to-[#FF1F26]" />
+            <span>NEXT STEPS</span>
+            <span className="w-12 sm:w-24 h-px bg-gradient-to-l from-transparent via-[#FF1F26]/60 to-[#FF1F26]" />
           </div>
 
           {/* Heading */}
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight max-w-2xl mx-auto">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-tight max-w-2xl mx-auto">
             Have An Idea? <br />
             Let's Make It{' '}
             <span className="text-[#FF1F26] drop-shadow-[0_0_25px_rgba(255,31,38,0.45)]">

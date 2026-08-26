@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { Plus, Minus, HelpCircle } from 'lucide-react';
+import { Plus, Minus } from 'lucide-react';
 
 const FAQ = () => {
-  const [openIndex, setOpenIndex] = useState(0);
+  const [openIndex, setOpenIndex] = useState(2); // Start with item 2 ("Do you work with startups?") open or 0
 
   const faqs = [
     {
-      question: 'What services does neverquit.ai provide?',
+      question: 'What services does NeverquiT AI provide?',
       answer: 'We provide AI automation, machine learning, data intelligence, custom AI development and AI consulting solutions.',
     },
     {
@@ -41,9 +41,10 @@ const FAQ = () => {
         
         {/* Section Header */}
         <div className="text-center mb-14 space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#111111] border border-[#252525] text-xs font-semibold tracking-wider text-[#FF1F26] uppercase shadow-sm">
-            <HelpCircle className="w-3.5 h-3.5 text-[#FF1F26]" />
-            FAQ
+          <div className="flex items-center justify-center gap-4 text-[13px] sm:text-sm font-sans font-semibold uppercase tracking-wider text-white select-none">
+            <span className="w-12 sm:w-24 h-px bg-gradient-to-r from-transparent via-[#FF1F26]/60 to-[#FF1F26]" />
+            <span>FAQ</span>
+            <span className="w-12 sm:w-24 h-px bg-gradient-to-l from-transparent via-[#FF1F26]/60 to-[#FF1F26]" />
           </div>
 
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-tight">
@@ -51,35 +52,51 @@ const FAQ = () => {
           </h2>
 
           <p className="text-base text-[#A8A8A8] font-normal">
-            Everything you need to know about partnering with neverquit.ai.
+            Everything you need to know about partnering with NeverquiT AI.
           </p>
         </div>
 
-        {/* Accordion List */}
+        {/* Accordion List with Smooth Height Transition */}
         <div className="space-y-4">
           {faqs.map((faq, idx) => {
             const isOpen = openIndex === idx;
             return (
               <div
                 key={idx}
-                className={`rounded-2xl bg-[#111111] border transition-all duration-300 overflow-hidden ${
+                onMouseEnter={() => setOpenIndex(idx)}
+                className={`rounded-2xl bg-[#0e0e11] border transition-all duration-300 overflow-hidden cursor-pointer ${
                   isOpen
-                    ? 'border-[#FF1F26]/70 shadow-[0_4px_25px_rgba(255,31,38,0.15)]'
-                    : 'border-[#252525] hover:border-[#333333]'
+                    ? 'border-[#FF1F26]/70 shadow-[0_4px_30px_rgba(255,31,38,0.18)]'
+                    : 'border-[#222226] hover:border-[#333338]'
                 }`}
               >
                 <button
                   type="button"
                   onClick={() => toggleFaq(idx)}
-                  className="w-full p-6 text-left flex items-center justify-between gap-4 cursor-pointer focus:outline-none"
+                  className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 cursor-pointer focus:outline-none select-none transition-colors"
                 >
-                  <span className="text-base sm:text-lg font-bold text-white leading-snug">
-                    {faq.question}
-                  </span>
+                  <div className="flex items-center gap-3.5 sm:gap-4">
+                    {/* Glowing Red Status Dot */}
+                    <span
+                      className={`w-2.5 h-2.5 rounded-full shrink-0 transition-all duration-300 ${
+                        isOpen
+                          ? 'bg-[#FF1F26] shadow-[0_0_14px_#FF1F26]'
+                          : 'bg-[#FF1F26]/30 border border-[#FF1F26]/40'
+                      }`}
+                    />
+                    <span className="text-base sm:text-lg font-bold text-white leading-snug">
+                      {faq.question}
+                    </span>
+                  </div>
 
-                  <div className={`w-8 h-8 rounded-full bg-[#050505] border flex items-center justify-center shrink-0 transition-colors ${
-                    isOpen ? 'border-[#FF1F26] text-[#FF1F26]' : 'border-[#252525] text-[#A8A8A8]'
-                  }`}>
+                  {/* Circular Plus/Minus Toggle Badge */}
+                  <div
+                    className={`w-8 h-8 rounded-full bg-[#050505] border flex items-center justify-center shrink-0 transition-all duration-300 ${
+                      isOpen
+                        ? 'border-[#FF1F26] text-[#FF1F26] rotate-180 shadow-[0_0_12px_rgba(255,31,38,0.35)]'
+                        : 'border-[#252525] text-[#FF1F26]'
+                    }`}
+                  >
                     {isOpen ? (
                       <Minus className="w-4 h-4 text-[#FF1F26]" />
                     ) : (
@@ -88,11 +105,18 @@ const FAQ = () => {
                   </div>
                 </button>
 
-                {isOpen && (
-                  <div className="px-6 pb-6 pt-1 text-sm sm:text-base text-[#A8A8A8] leading-relaxed border-t border-[#1C1C1C] animate-in fade-in duration-200">
-                    {faq.answer}
+                {/* Ultra-Smooth CSS Grid Height Expansion */}
+                <div
+                  className={`grid transition-all duration-300 ease-in-out ${
+                    isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
+                  }`}
+                >
+                  <div className="overflow-hidden">
+                    <div className="px-5 sm:px-6 pb-6 pt-3 text-sm sm:text-base text-[#A8A8A8] leading-relaxed border-t border-[#1C1C22] font-normal">
+                      {faq.answer}
+                    </div>
                   </div>
-                )}
+                </div>
               </div>
             );
           })}

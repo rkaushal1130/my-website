@@ -53,7 +53,7 @@ const AboutPreview = () => {
             </h2>
 
             <p className="text-base sm:text-lg text-[#A7A7A7] leading-relaxed font-normal">
-              At NeverquiT.ai, we combine technology and creativity to build AI-driven solutions that solve real-world problems and drive business growth.
+              At NeverquiT AI, we combine technology and creativity to build AI-driven solutions that solve real-world problems and drive business growth.
             </p>
 
             <p className="text-sm sm:text-base text-[#737373] leading-relaxed font-normal">

@@ -19,7 +19,7 @@ const ServicesHero = ({ onOpenDemo }) => {
             ENTERPRISE AI SERVICES
           </Badge>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-[62px] xl:text-[68px] font-extrabold text-white tracking-tight leading-[1.06]">
+          <h1 className="text-4xl sm:text-5xl lg:text-[62px] xl:text-[68px] font-bold text-white tracking-tight leading-[1.06]">
             Architecting The Next Generation of{' '}
             <span className="text-[#FF1F26] text-glow inline-block">
               Intelligent Systems

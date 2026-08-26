@@ -1,6 +1,6 @@
 export const faqData = [
   {
-    question: 'What services does neverquit.ai provide?',
+    question: 'What services does NeverquiT AI provide?',
     answer: 'We provide AI automation, machine learning, data intelligence, custom AI development and AI consulting solutions.',
   },
   {

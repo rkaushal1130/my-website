@@ -23,12 +23,12 @@ export interface ListProjectFilters {
 const devProjectsStore: any[] = [
   {
     id: 'proj-00000000-0000-0000-0000-000000000001',
-    title: 'Autonomous Enterprise AI Agent Platform',
-    slug: 'autonomous-enterprise-ai-agent-platform',
+    title: 'Aegis Neural Mesh — Autonomous Multi-Agent Swarm',
+    slug: 'aegis-neural-mesh',
     description:
-      'Next-generation autonomous agent orchestration system enabling continuous multi-step reasoning, automated DevOps pipelines, and enterprise workflow execution with real-time feedback loops.',
+      'A multi-agent autonomous framework coordinating thousands of concurrent transport routing decisions across 42 international trade corridors with zero human intervention.',
     image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80',
-    category: 'AI & Autonomous Systems',
+    category: 'AI & AUTOMATION',
     featured: true,
     published: true,
     createdAt: new Date(),
@@ -36,13 +36,117 @@ const devProjectsStore: any[] = [
   },
   {
     id: 'proj-00000000-0000-0000-0000-000000000002',
-    title: 'Neural Cloud Infrastructure Optimizer',
-    slug: 'neural-cloud-infrastructure-optimizer',
+    title: 'Nexus Prime — High-Performance 3D Enterprise Portal',
+    slug: 'nexus-prime-web',
     description:
-      'Self-healing Kubernetes control plane utilizing real-time anomaly detection, telemetry inference, and predictive autoscaling to reduce cloud compute expenditures by 42%.',
-    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80',
-    category: 'Cloud Engineering',
+      'Next-generation responsive web application pairing Three.js hardware-accelerated shaders with sub-300ms global SSR page loads and dynamic dark mode visual architectures.',
+    image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=80',
+    category: 'WEB DEVELOPMENT',
+    featured: false,
+    published: true,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  },
+  {
+    id: 'proj-00000000-0000-0000-0000-000000000003',
+    title: 'Aura UI/UX — Cyberpunk Generative Design System',
+    slug: 'aura-design-system',
+    description:
+      'A comprehensive, futuristic UI/UX design architecture featuring glassmorphism surfaces, neon glow utilities, mathematical typographic scales, and fluid responsive behaviors.',
+    image: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1200&q=80',
+    category: 'UI/UX',
+    featured: false,
+    published: true,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  },
+  {
+    id: 'proj-00000000-0000-0000-0000-000000000004',
+    title: 'CogniCore — Enterprise Vector Graph & Synthesis SaaS',
+    slug: 'cognicore-knowledge-graph',
+    description:
+      'Air-gapped enterprise SaaS intelligence architecture synthesizing financial disclosures, complex contracts, SEC filings, and proprietary research into instant verified analysis.',
+    image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&q=80',
+    category: 'SAAS',
     featured: true,
+    published: true,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  },
+  {
+    id: 'proj-00000000-0000-0000-0000-000000000005',
+    title: 'SpectraMed BioScan — Multi-Modal Diagnostic Solution',
+    slug: 'spectramed-bioscan',
+    description:
+      'FDA-ready multi-modal digital healthcare solution classifying MRI, CT, and histological scans to detect early-stage oncological markers.',
+    image: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=1200&q=80',
+    category: 'DIGITAL SOLUTIONS',
+    featured: false,
+    published: true,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  },
+  {
+    id: 'proj-00000000-0000-0000-0000-000000000006',
+    title: 'Vortex Vision 4K — Sub-Millimeter Edge Inspection',
+    slug: 'vortex-vision-4k',
+    description:
+      'Real-time tensor-accelerated computer vision system deployed directly onto automated cleanroom production lines, classifying nanoscale silicon wafer anomalies in 8ms.',
+    image: 'https://images.unsplash.com/photo-1507146153580-69a1fe6d8aa1?auto=format&fit=crop&w=1200&q=80',
+    category: 'AI & AUTOMATION',
+    featured: true,
+    published: true,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  },
+  {
+    id: 'proj-00000000-0000-0000-0000-000000000007',
+    title: 'Apex Trading Engine — Real-Time WebSocket Web App',
+    slug: 'apex-fintech-trading',
+    description:
+      'A low-latency financial trading web application handling high-frequency market tick feeds, dynamic depth charts, and automated algorithmic order triggers.',
+    image: 'https://images.unsplash.com/photo-1642543492481-44e81e3914a7?auto=format&fit=crop&w=1200&q=80',
+    category: 'WEB DEVELOPMENT',
+    featured: false,
+    published: true,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  },
+  {
+    id: 'proj-00000000-0000-0000-0000-000000000008',
+    title: 'HyperFlow — Autonomous Financial Decision SaaS',
+    slug: 'hyperflow-agentic-erp',
+    description:
+      'Autonomous financial agent network processing multi-currency invoices, ledger reconciliation, and predictive cash flow liquidity optimization across 80 international subsidiaries.',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80',
+    category: 'SAAS',
+    featured: false,
+    published: true,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  },
+  {
+    id: 'proj-00000000-0000-0000-0000-000000000009',
+    title: 'Quantum Spatial OS — 3D Cybernetic Analytics UI',
+    slug: 'spatial-os-interface',
+    description:
+      'Next-generation mission command UI/UX design featuring dark tactical surfaces, holographic spatial telemetry charts, and intuitive operator focal controls.',
+    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80',
+    category: 'UI/UX',
+    featured: false,
+    published: true,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  },
+  {
+    id: 'proj-00000000-0000-0000-0000-000000000010',
+    title: 'NeuroEdge Tensor Hub — Ultra-Low Power Industrial IoT',
+    slug: 'neuroedge-tensor-hub',
+    description:
+      'Extreme-efficiency micro-neural model for robotic arm safety geofencing and dynamic obstacle avoidance operating in ultra-constrained embedded environments.',
+    image: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=1200&q=80',
+    category: 'DIGITAL SOLUTIONS',
+    featured: false,
     published: true,
     createdAt: new Date(),
     updatedAt: new Date(),
@@ -121,7 +225,7 @@ export class ProjectService {
    */
   public static async listProjects(filters: ListProjectFilters = {}, isAdmin: boolean = false) {
     const page = filters.page && filters.page > 0 ? filters.page : 1;
-    const limit = filters.limit && filters.limit > 0 ? filters.limit : 12;
+    const limit = filters.limit && filters.limit > 0 ? filters.limit : 50;
     const skip = (page - 1) * limit;
 
     const where: any = {};
@@ -239,76 +343,64 @@ export class ProjectService {
   }
 
   /**
-   * Looks up a project by unique ID.
-   */
-  public static async findById(id: string) {
-    return withDbFallback(
-      async () => {
-        return await prisma.project.findUnique({ where: { id } });
-      },
-      async () => {
-        return devProjectsStore.find((p) => p.id === id) || null;
-      }
-    );
-  }
-
-  /**
-   * Updates an existing project and prevents slug collisions.
+   * Updates an existing project by ID.
    */
   public static async updateProject(id: string, input: UpdateProjectInput) {
+    const updateData: any = {};
+    if (input.title !== undefined) updateData.title = input.title.trim();
+    if (input.description !== undefined) updateData.description = input.description.trim();
+    if (input.image !== undefined) updateData.image = input.image;
+    if (input.category !== undefined) updateData.category = input.category.trim();
+    if (input.featured !== undefined) updateData.featured = input.featured;
+    if (input.published !== undefined) updateData.published = input.published;
+
+    if (input.slug !== undefined || input.title !== undefined) {
+      const rawSlug = input.slug !== undefined ? input.slug : input.title!;
+      const finalSlug = slugify(rawSlug).trim();
+
+      if (finalSlug) {
+        updateData.slug = finalSlug;
+      }
+    }
+
     return withDbFallback(
       async () => {
-        const existing = await prisma.project.findUnique({ where: { id } });
-        if (!existing) return null;
-
-        const updateData: any = {};
-        if (input.title !== undefined) updateData.title = input.title.trim();
-        if (input.description !== undefined) updateData.description = input.description.trim();
-        if (input.image !== undefined) updateData.image = input.image || null;
-        if (input.category !== undefined) updateData.category = input.category.trim();
-        if (typeof input.featured === 'boolean') updateData.featured = input.featured;
-        if (typeof input.published === 'boolean') updateData.published = input.published;
-
-        if (input.slug) {
-          const newSlug = slugify(input.slug);
-          if (newSlug !== existing.slug) {
-            const slugConflict = await prisma.project.findFirst({
-              where: { slug: newSlug, NOT: { id } },
-            });
-            if (slugConflict) {
-              throw new DuplicateSlugError(`A project with slug "${newSlug}" already exists.`);
-            }
-            updateData.slug = newSlug;
+        if (updateData.slug) {
+          const existing = await prisma.project.findUnique({
+            where: { slug: updateData.slug },
+          });
+          if (existing && existing.id !== id) {
+            throw new DuplicateSlugError(`A project with slug "${updateData.slug}" already exists.`);
           }
         }
 
-        return await prisma.project.update({
+        const updated = await prisma.project.update({
           where: { id },
           data: updateData,
         });
+        logger.info(`Project updated: ${updated.id} (${updated.slug})`);
+        return updated;
       },
       async () => {
-        const devIndex = devProjectsStore.findIndex((p) => p.id === id);
-        if (devIndex === -1) return null;
+        const index = devProjectsStore.findIndex((p) => p.id === id);
+        if (index === -1) return null;
 
-        const dev = devProjectsStore[devIndex];
-        if (input.slug) {
-          const newSlug = slugify(input.slug);
-          const conflict = devProjectsStore.find((p) => p.slug === newSlug && p.id !== id);
-          if (conflict) {
-            throw new DuplicateSlugError(`A project with slug "${newSlug}" already exists.`);
+        if (updateData.slug) {
+          const slugConflict = devProjectsStore.find(
+            (p) => p.slug === updateData.slug && p.id !== id
+          );
+          if (slugConflict) {
+            throw new DuplicateSlugError(`A project with slug "${updateData.slug}" already exists.`);
           }
-          dev.slug = newSlug;
         }
-        if (input.title !== undefined) dev.title = input.title.trim();
-        if (input.description !== undefined) dev.description = input.description.trim();
-        if (input.image !== undefined) dev.image = input.image || null;
-        if (input.category !== undefined) dev.category = input.category.trim();
-        if (typeof input.featured === 'boolean') dev.featured = input.featured;
-        if (typeof input.published === 'boolean') dev.published = input.published;
-        dev.updatedAt = new Date();
 
-        return dev;
+        const updated = {
+          ...devProjectsStore[index],
+          ...updateData,
+          updatedAt: new Date(),
+        };
+        devProjectsStore[index] = updated;
+        return updated;
       }
     );
   }
@@ -319,18 +411,15 @@ export class ProjectService {
   public static async deleteProject(id: string) {
     return withDbFallback(
       async () => {
-        const existing = await prisma.project.findUnique({ where: { id } });
-        if (!existing) return null;
-
-        await prisma.project.delete({ where: { id } });
-        logger.info(`Project ${id} deleted by administrator`);
-        return true;
+        const deleted = await prisma.project.delete({ where: { id } });
+        logger.info(`Project deleted: ${deleted.id}`);
+        return deleted;
       },
       async () => {
-        const devIndex = devProjectsStore.findIndex((p) => p.id === id);
-        if (devIndex === -1) return null;
-        devProjectsStore.splice(devIndex, 1);
-        return true;
+        const index = devProjectsStore.findIndex((p) => p.id === id);
+        if (index === -1) return null;
+        const [deleted] = devProjectsStore.splice(index, 1);
+        return deleted;
       }
     );
   }

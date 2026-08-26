@@ -39,7 +39,7 @@ const LocationMap = () => {
               </div>
 
               <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-2">
-                NeverquiT<span className="text-[#FF1F26]">.ai</span>
+                NeverquiT <span className="text-[#FF1F26]">AI</span>
               </h3>
               
               <p className="text-xs text-[#FF3030] font-medium mb-6">
@@ -127,7 +127,7 @@ const LocationMap = () => {
             {/* Live Interactive Map IFrame with High-Contrast Dark Custom Styling */}
             <div className="relative w-full h-full min-h-[460px] flex-grow overflow-hidden">
               <iframe
-                title="NeverquiT.ai Headquarters Sundernagar Map"
+                title="NeverquiT AI Headquarters Sundernagar Map"
                 src="https://maps.google.com/maps?q=Sundernagar,%20Distt.%20Mandi,%20Himachal%20Pradesh%20175002&t=&z=13&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="100%"

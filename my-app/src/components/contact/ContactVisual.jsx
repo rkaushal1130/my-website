@@ -74,7 +74,7 @@ const ContactVisual = () => {
                 <div className="p-3 rounded-xl bg-[#101010] border border-[#FF1F26]/40 shadow-[0_0_20px_rgba(255,31,38,0.15)] text-left">
                   <div className="text-xs font-bold text-white flex items-center gap-1.5">
                     <Sparkles className="w-3.5 h-3.5 text-[#FF1F26]" />
-                    <span>NEVERQUIT.AI</span>
+                    <span>NEVERQUIT AI</span>
                   </div>
                   <div className="text-[11px] text-[#A7A7A7] mt-0.5">
                     Building intelligent solutions for the future.

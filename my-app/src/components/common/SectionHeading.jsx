@@ -15,13 +15,13 @@ const SectionHeading = ({
   return (
     <div className={`flex flex-col ${isCentered ? 'items-center text-center' : 'items-start text-left'} ${className}`}>
       {eyebrow && (
-        <Badge className="mb-4">
+        <Badge align={align} className="mb-4">
           {eyebrow}
         </Badge>
       )}
 
       {title && (
-        <h2 className={`font-bold tracking-tight text-white ${
+        <h2 className={`font-semibold tracking-tight text-white ${
           size === 'lg' ? 'text-4xl sm:text-5xl lg:text-6xl' :
           size === 'sm' ? 'text-2xl sm:text-3xl' :
           'text-3xl sm:text-4xl lg:text-[44px]'

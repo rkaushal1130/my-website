@@ -1,19 +1,19 @@
 import React from 'react';
 
-const Badge = ({ children, className = '', pulse = true, icon: Icon, ...props }) => {
+const Badge = ({ children, className = '', align = 'center', icon: Icon, ...props }) => {
+  const isCentered = align === 'center';
+
   return (
     <div
-      className={`inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#101010] border border-[#242424] text-[11px] sm:text-xs font-semibold tracking-wider text-[#FF1F26] uppercase shadow-[0_0_12px_rgba(255,31,38,0.12)] select-none ${className}`}
+      className={`flex items-center ${isCentered ? 'justify-center' : 'justify-start'} gap-3 sm:gap-4 text-[13px] sm:text-sm font-sans font-semibold uppercase tracking-wider text-white select-none ${className}`}
       {...props}
     >
-      {Icon ? (
-        <Icon className="w-3.5 h-3.5 text-[#FF1F26]" />
-      ) : pulse ? (
-        <span className="w-1.5 h-1.5 rounded-full bg-[#FF1F26] animate-ping" />
-      ) : (
-        <span className="w-1.5 h-1.5 rounded-full bg-[#FF1F26]" />
-      )}
-      <span>{children}</span>
+      <span className="w-8 sm:w-16 h-px bg-gradient-to-r from-transparent via-[#FF1F26]/60 to-[#FF1F26]" />
+      <span className="tracking-wider text-white flex items-center gap-1.5">
+        {Icon && <Icon className="w-4 h-4 text-[#FF1F26]" />}
+        {children}
+      </span>
+      <span className="w-8 sm:w-16 h-px bg-gradient-to-l from-transparent via-[#FF1F26]/60 to-[#FF1F26]" />
     </div>
   );
 };

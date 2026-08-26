@@ -12,10 +12,10 @@ const LocationMap = () => {
       <div className="max-w-[1640px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 2xl:px-16">
         
         {/* Section Heading */}
-        <div className="text-center max-w-2xl mx-auto mb-14 space-y-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#101010] border border-[#242424] text-xs font-semibold tracking-wider text-[#FF1F26] uppercase shadow-sm">
-            <Compass className="w-3.5 h-3.5" />
+          <div className="flex items-center justify-center gap-4 text-[13px] sm:text-sm font-sans font-bold uppercase tracking-wider text-white select-none">
+            <span className="w-12 sm:w-24 h-px bg-gradient-to-r from-transparent via-[#FF1F26]/60 to-[#FF1F26]" />
             <span>OFFICE & OPERATIONS</span>
+            <span className="w-12 sm:w-24 h-px bg-gradient-to-l from-transparent via-[#FF1F26]/60 to-[#FF1F26]" />
           </div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-bold text-white tracking-tight leading-tight">
@@ -39,7 +39,7 @@ const LocationMap = () => {
               </div>
 
               <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-2">
-                neverquit<span className="text-[#FF1F26]">.ai</span>
+                NeverquiT <span className="text-[#FF1F26]">AI</span>
               </h3>
               
               <p className="text-xs text-[#FF3030] font-medium mb-6">
@@ -127,7 +127,7 @@ const LocationMap = () => {
             {/* Live Interactive Map IFrame with High-Contrast Dark Custom Styling */}
             <div className="relative w-full h-full min-h-[460px] flex-grow overflow-hidden">
               <iframe
-                title="neverquit.ai Headquarters Sundernagar Map"
+                title="NeverquiT AI Headquarters Sundernagar Map"
                 src="https://maps.google.com/maps?q=Sundernagar,%20Distt.%20Mandi,%20Himachal%20Pradesh%20175002&t=&z=13&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="100%"

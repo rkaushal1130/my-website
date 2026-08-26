@@ -48,17 +48,17 @@ const Footer = () => {
           <Link
             to="/"
             className="inline-flex items-center gap-3.5 group focus:outline-none"
-            aria-label="NeverquiT.ai Home"
+            aria-label="NeverquiT AI Home"
           >
             <div className="w-10 h-10 rounded-xl bg-[#0a0a0d] border border-[#242424] group-hover:border-[#FF1F26] overflow-hidden flex items-center justify-center p-1 transition-all duration-300 shadow-sm group-hover:shadow-[0_0_15px_rgba(255,31,38,0.4)]">
               <img
                 src={brandLogo}
-                alt="NeverquiT.ai Logo"
+                alt="NeverquiT AI Logo"
                 className="w-full h-full object-contain rounded-lg group-hover:scale-105 transition-transform duration-300"
               />
             </div>
             <span className="text-2xl font-bold tracking-tight text-white group-hover:text-white">
-              NeverquiT<span className="text-[#FF1F26]">.ai</span>
+              NeverquiT <span className="text-[#FF1F26]">AI</span>
             </span>
           </Link>
         </div>
@@ -116,8 +116,18 @@ const Footer = () => {
             
             <ul className="space-y-2.5 text-sm text-[#A7A7A7]">
               <li>
+                <Link to="/" className="hover:text-white transition-colors">
+                  Home
+                </Link>
+              </li>
+              <li>
                 <Link to="/about" className="hover:text-white transition-colors">
                   About Us
+                </Link>
+              </li>
+              <li>
+                <Link to="/portfolio" className="hover:text-white transition-colors">
+                  Portfolio
                 </Link>
               </li>
               <li>
@@ -127,17 +137,12 @@ const Footer = () => {
               </li>
               <li>
                 <Link to="/careers" className="hover:text-white transition-colors">
-                  Careers
+                  Career
                 </Link>
               </li>
               <li>
-                <Link to="/services" className="hover:text-white transition-colors">
-                  Autonomous Swarms
-                </Link>
-              </li>
-              <li>
-                <Link to="/about" className="hover:text-white transition-colors">
-                  Resources & Case Studies
+                <Link to="/contact" className="hover:text-white transition-colors">
+                  Contact
                 </Link>
               </li>
             </ul>
@@ -185,7 +190,7 @@ const Footer = () => {
                 href="https://facebook.com"
                 target="_blank"
                 rel="noreferrer"
-                aria-label="Follow NeverquiT.ai on Facebook"
+                aria-label="Follow NeverquiT AI on Facebook"
                 className="hover:text-white hover:scale-110 transition-all duration-200"
               >
                 <FacebookIcon className="w-5 h-5" />
@@ -194,7 +199,7 @@ const Footer = () => {
                 href="https://instagram.com"
                 target="_blank"
                 rel="noreferrer"
-                aria-label="Follow NeverquiT.ai on Instagram"
+                aria-label="Follow NeverquiT AI on Instagram"
                 className="hover:text-white hover:scale-110 transition-all duration-200"
               >
                 <InstagramIcon className="w-5 h-5" />
@@ -203,7 +208,7 @@ const Footer = () => {
                 href="https://twitter.com"
                 target="_blank"
                 rel="noreferrer"
-                aria-label="Follow NeverquiT.ai on X"
+                aria-label="Follow NeverquiT AI on X"
                 className="hover:text-white hover:scale-110 transition-all duration-200"
               >
                 <XTwitterIcon className="w-4 h-4" />
@@ -212,7 +217,7 @@ const Footer = () => {
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noreferrer"
-                aria-label="Follow NeverquiT.ai on LinkedIn"
+                aria-label="Follow NeverquiT AI on LinkedIn"
                 className="hover:text-white hover:scale-110 transition-all duration-200"
               >
                 <LinkedinIcon className="w-5 h-5" />
@@ -221,7 +226,7 @@ const Footer = () => {
                 href="https://youtube.com"
                 target="_blank"
                 rel="noreferrer"
-                aria-label="Follow NeverquiT.ai on YouTube"
+                aria-label="Follow NeverquiT AI on YouTube"
                 className="hover:text-white hover:scale-110 transition-all duration-200"
               >
                 <YoutubeIcon className="w-5 h-5" />
@@ -234,7 +239,7 @@ const Footer = () => {
         {/* Bottom Bar Divider & Copyright */}
         <div className="pt-8 border-t border-[#1C1C22] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#737373]">
           <div>
-            © 2026 NeverquiT.ai. All rights reserved.
+            © 2026 NeverquiT AI. All rights reserved.
           </div>
 
           <div className="flex items-center gap-6">

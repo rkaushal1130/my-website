@@ -23,7 +23,7 @@ const CareerCTA = ({ onOpenApplication }) => {
           <div className="relative z-10 max-w-2xl mx-auto space-y-5">
             <Badge icon={Sparkles} className="mx-auto">JOIN OUR TEAM</Badge>
 
-            <h2 className="text-3xl sm:text-4xl lg:text-[46px] font-extrabold text-white tracking-tight leading-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-[46px] font-bold text-white tracking-tight leading-tight">
               Ready To Build What Comes{' '}
               <span className="text-[#FF1F26] drop-shadow-[0_0_20px_rgba(255,31,38,0.35)]">
                 Next?
@@ -40,7 +40,7 @@ const CareerCTA = ({ onOpenApplication }) => {
                 onClick={() => onOpenApplication({ title: 'General Application', department: 'Any' })}
                 className="inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl bg-[#FF1F26] text-white text-base font-bold shadow-[0_0_25px_rgba(255,31,38,0.3)] hover:bg-[#FF3030] hover:shadow-[0_0_35px_rgba(255,31,38,0.5)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 group cursor-pointer"
               >
-                <span>Join NeverQuit</span>
+                <span>Join NeverquiT AI</span>
                 <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
               </button>
             </div>

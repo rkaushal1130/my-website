@@ -2,36 +2,46 @@ import React from 'react';
 
 const SectionHeading = ({
   badge,
+  eyebrow,
   title,
   highlight,
   titlePrefix = '',
   titleSuffix = '',
   description,
-  align = 'center', // 'center' | 'left'
+  align = 'center',
   className = '',
-  size = 'md', // 'sm' | 'md' | 'lg'
+  size = 'md',
 }) => {
   const isCentered = align === 'center';
+  const tagText = badge || eyebrow;
 
   return (
     <div className={`flex flex-col ${isCentered ? 'items-center text-center' : 'items-start text-left'} ${className}`}>
-      {badge && (
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#111111] border border-[#242424] text-xs font-semibold tracking-wider text-[#FF2B30] uppercase mb-4 shadow-[0_0_15px_rgba(255,31,38,0.15)]">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#FF1F26] animate-pulse"></span>
-          {badge}
+      {tagText && (
+        <div className={`flex items-center ${isCentered ? 'justify-center' : 'justify-start'} gap-3 sm:gap-4 text-[13px] sm:text-sm font-sans font-semibold uppercase tracking-wider text-white mb-4 select-none`}>
+          <span className="w-8 sm:w-16 h-px bg-gradient-to-r from-transparent via-[#FF1F26]/60 to-[#FF1F26]" />
+          <span className="tracking-wider text-white">{tagText}</span>
+          <span className="w-8 sm:w-16 h-px bg-gradient-to-l from-transparent via-[#FF1F26]/60 to-[#FF1F26]" />
         </div>
       )}
 
       {title ? (
-        <h2 className={`font-bold tracking-tight text-white ${
+        <h2 className={`font-semibold tracking-tight text-white ${
           size === 'lg' ? 'text-3xl sm:text-4xl md:text-5xl lg:text-6xl' :
           size === 'sm' ? 'text-2xl sm:text-3xl' :
           'text-2xl sm:text-3xl md:text-4xl lg:text-5xl'
         } leading-[1.15]`}>
-          {title}
+          {highlight ? (
+            <>
+              {title.replace(highlight, '')}{' '}
+              <span className="text-[#FF1F26] text-glow inline-block">{highlight}</span>
+            </>
+          ) : (
+            title
+          )}
         </h2>
       ) : (
-        <h2 className={`font-bold tracking-tight text-white ${
+        <h2 className={`font-semibold tracking-tight text-white ${
           size === 'lg' ? 'text-3xl sm:text-4xl md:text-5xl lg:text-6xl' :
           size === 'sm' ? 'text-2xl sm:text-3xl' :
           'text-2xl sm:text-3xl md:text-4xl lg:text-5xl'

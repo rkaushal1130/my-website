@@ -23,7 +23,7 @@ const AboutCTA = ({ onOpenDemo }) => {
           <div className="relative z-10 max-w-2xl mx-auto space-y-5">
             <Badge icon={Sparkles} className="mx-auto">GET IN TOUCH</Badge>
 
-            <h2 className="text-3xl sm:text-4xl lg:text-[46px] font-extrabold text-white tracking-tight leading-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-[46px] font-bold text-white tracking-tight leading-tight">
               Let's Build the Future{' '}
               <span className="text-[#FF1F26] drop-shadow-[0_0_20px_rgba(255,31,38,0.35)]">
                 Together
@@ -31,7 +31,7 @@ const AboutCTA = ({ onOpenDemo }) => {
             </h2>
 
             <p className="text-base sm:text-lg text-[#A7A7A7] max-w-lg mx-auto font-normal leading-relaxed">
-              Partner with NeverQuit.ai to engineer next-generation artificial intelligence workflows for your business.
+              Partner with NeverquiT AI to engineer next-generation artificial intelligence workflows for your business.
             </p>
 
             <div className="pt-3">

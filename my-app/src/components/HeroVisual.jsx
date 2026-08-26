@@ -83,7 +83,7 @@ const HeroVisual = () => {
             {/* Reference Image */}
             <img
               src={nqHeroImg}
-              alt="NeverQuit.ai NQ Logo"
+              alt="NeverquiT AI NQ Logo"
               className="relative z-10 w-full h-full object-contain drop-shadow-[0_20px_40px_rgba(255,31,38,0.25)] group-hover:scale-[1.02] transition-transform duration-500 ease-out"
               loading="eager"
             />

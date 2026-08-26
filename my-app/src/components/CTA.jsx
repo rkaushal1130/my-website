@@ -22,10 +22,10 @@ const HomeCTA = ({ onOpenDemo }) => {
 
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             
-            <div className="lg:col-span-8 space-y-5 text-left">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#141418] border border-[#26262B] text-xs font-semibold tracking-wider text-[#FF1F26] uppercase shadow-sm">
-                <Calendar className="w-3.5 h-3.5" />
+              <div className="flex items-center justify-start gap-4 text-[13px] sm:text-sm font-sans font-bold uppercase tracking-wider text-white select-none">
+                <span className="w-8 sm:w-16 h-px bg-gradient-to-r from-transparent via-[#FF1F26]/60 to-[#FF1F26]" />
                 <span>DISCOVERY CALL</span>
+                <span className="w-8 sm:w-16 h-px bg-gradient-to-r from-[#FF1F26] via-[#FF1F26]/60 to-transparent" />
               </div>
 
               <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-bold text-white tracking-tight leading-[1.1]">

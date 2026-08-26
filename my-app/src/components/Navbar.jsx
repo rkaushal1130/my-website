@@ -33,17 +33,17 @@ const Navbar = () => {
           <Link
             to="/"
             className="flex items-center gap-3 group focus:outline-none transition-transform duration-200 hover:scale-105 origin-left"
-            aria-label="NeverquiT.ai Home"
+            aria-label="NeverquiT AI Home"
           >
             <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-transparent border border-white/10 group-hover:border-[#FF1F26] overflow-hidden flex items-center justify-center p-0.5 transition-all duration-300 group-hover:shadow-[0_0_15px_rgba(255,31,38,0.4)]">
               <img
                 src={brandLogo}
-                alt="NeverquiT.ai Logo"
+                alt="NeverquiT AI Logo"
                 className="w-full h-full object-contain rounded-lg group-hover:scale-105 transition-transform duration-300"
               />
             </div>
             <span className="text-xl sm:text-2xl font-bold tracking-tight text-white group-hover:text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
-              NeverquiT<span className="text-[#FF1F26]">.ai</span>
+              NeverquiT <span className="text-[#FF1F26]">AI</span>
             </span>
           </Link>
 

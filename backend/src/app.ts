@@ -89,11 +89,11 @@ app.get('/', (req, res) => {
   res.status(200).json({
     success: true,
     data: {
-      name: 'NeverquiT.ai Enterprise API Engine',
+      name: 'NeverquiT AI Enterprise API Engine',
       status: 'ACTIVE',
       version: '1.0.0',
     },
-    message: 'Welcome to the NeverQuit.ai API.',
+    message: 'Welcome to the NeverquiT AI API.',
   });
 });
 

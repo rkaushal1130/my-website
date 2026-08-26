@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
-import { Menu, X, Lock, UserCheck } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { mainNavigation } from '../../data/navigation';
 import brandLogo from '../../assets/images/logo.png';
-import { authService } from '../../services';
 
-const Navbar = ({ onOpenLogin }) => {
+const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isAuth, setIsAuth] = useState(false);
   const location = useLocation();
 
   // Lock body scroll when mobile menu is open
@@ -24,7 +22,6 @@ const Navbar = ({ onOpenLogin }) => {
 
   useEffect(() => {
     setIsOpen(false);
-    setIsAuth(authService.isAuthenticated());
   }, [location.pathname]);
 
   return (
@@ -36,17 +33,17 @@ const Navbar = ({ onOpenLogin }) => {
           <Link
             to="/"
             className="flex items-center gap-3 group focus:outline-none transition-transform duration-200 hover:scale-105 origin-left"
-            aria-label="NeverquiT.ai Home"
+            aria-label="NeverquiT AI Home"
           >
             <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-transparent border border-white/10 group-hover:border-[#FF1F26] overflow-hidden flex items-center justify-center p-0.5 transition-all duration-300 group-hover:shadow-[0_0_15px_rgba(255,31,38,0.4)]">
               <img
                 src={brandLogo}
-                alt="NeverquiT.ai Logo"
+                alt="NeverquiT AI Logo"
                 className="w-full h-full object-contain rounded-lg group-hover:scale-105 transition-transform duration-300"
               />
             </div>
             <span className="text-xl sm:text-2xl font-bold tracking-tight text-white group-hover:text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
-              NeverquiT<span className="text-[#FF1F26]">.ai</span>
+              NeverquiT <span className="text-[#FF1F26]">AI</span>
             </span>
           </Link>
 
@@ -72,43 +69,10 @@ const Navbar = ({ onOpenLogin }) => {
                 )}
               </NavLink>
             ))}
-
-            {/* Admin / Team Login Button */}
-            {onOpenLogin && (
-              <button
-                type="button"
-                onClick={onOpenLogin}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 hover:bg-[#FF1F26]/20 border border-white/10 hover:border-[#FF1F26]/50 text-white/80 hover:text-white text-xs font-medium transition-all duration-200 cursor-pointer"
-                title={isAuth ? "Authenticated Portal" : "Admin / Staff Sign In"}
-              >
-                {isAuth ? (
-                  <>
-                    <UserCheck className="w-3.5 h-3.5 text-emerald-400" />
-                    <span>Portal</span>
-                  </>
-                ) : (
-                  <>
-                    <Lock className="w-3.5 h-3.5 text-[#FF1F26]" />
-                    <span>Login</span>
-                  </>
-                )}
-              </button>
-            )}
           </nav>
 
           {/* Mobile Hamburger Menu Toggle */}
           <div className="flex md:hidden items-center gap-3">
-            {onOpenLogin && (
-              <button
-                type="button"
-                onClick={onOpenLogin}
-                className="p-2 rounded-lg bg-black/40 border border-white/15 text-white/80 hover:text-white text-xs"
-                aria-label="Login"
-              >
-                <Lock className="w-4 h-4 text-[#FF1F26]" />
-              </button>
-            )}
-
             <button
               type="button"
               onClick={() => setIsOpen(!isOpen)}

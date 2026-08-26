@@ -48,9 +48,9 @@ const AdminLayout = () => {
       {/* Mobile Top Header */}
       <div className="md:hidden fixed top-0 left-0 right-0 h-14 bg-[#121215] border-b border-[#27272a] px-4 flex items-center justify-between z-40">
         <div className="flex items-center gap-2.5">
-          <img src={brandLogo} alt="NeverQuit" className="w-6 h-6 object-contain rounded" />
+          <img src={brandLogo} alt="NeverquiT AI" className="w-6 h-6 object-contain rounded" />
           <span className="font-semibold text-sm tracking-tight text-white">
-            NeverQuit<span className="text-[#ef4444]">.ai</span> Admin
+            NeverquiT <span className="text-[#ef4444]">AI</span> Admin
           </span>
         </div>
         <button
@@ -72,11 +72,11 @@ const AdminLayout = () => {
           {/* Top Brand Header */}
           <div className="h-14 px-5 border-b border-[#27272a] flex items-center gap-3">
             <div className="w-7 h-7 rounded bg-[#18181b] border border-[#27272a] flex items-center justify-center p-0.5">
-              <img src={brandLogo} alt="NeverQuit" className="w-full h-full object-contain rounded-sm" />
+              <img src={brandLogo} alt="NeverquiT AI" className="w-full h-full object-contain rounded-sm" />
             </div>
             <div>
               <span className="font-bold text-sm tracking-tight text-white block">
-                NeverQuit<span className="text-[#ef4444]">.ai</span>
+                NeverquiT <span className="text-[#ef4444]">AI</span>
               </span>
             </div>
             <span className="ml-auto px-1.5 py-0.5 rounded text-[10px] font-mono font-semibold bg-[#27272a] text-[#a1a1aa] border border-[#3f3f46]">

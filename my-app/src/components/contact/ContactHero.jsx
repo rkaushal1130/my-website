@@ -15,7 +15,7 @@ const ContactHero = () => {
           
           <Badge>CONTACT US</Badge>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-[62px] xl:text-[68px] font-extrabold text-white tracking-tight leading-[1.06]">
+          <h1 className="text-4xl sm:text-5xl lg:text-[62px] xl:text-[68px] font-bold text-white tracking-tight leading-[1.06]">
             Let's Build Something{' '}
             <span className="text-[#FF1F26] text-glow inline-block">
               Intelligent

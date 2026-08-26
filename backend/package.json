@@ -1,7 +1,7 @@
 {
   "name": "neverquit-ai-backend",
   "version": "1.0.0",
-  "description": "Production-ready backend API for NeverquiT.ai built with Express, TypeScript, PostgreSQL, and Prisma",
+  "description": "Production-ready backend API for NeverquiT AI built with Express, TypeScript, PostgreSQL, and Prisma",
   "main": "dist/server.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only --exit-child src/server.ts",
@@ -26,7 +26,7 @@
     "zod",
     "rest-api"
   ],
-  "author": "NeverquiT.ai Engineering Team",
+  "author": "NeverquiT AI Engineering Team",
   "license": "MIT",
   "dependencies": {
     "@prisma/client": "^6.4.1",

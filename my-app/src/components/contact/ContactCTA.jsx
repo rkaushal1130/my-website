@@ -28,7 +28,7 @@ const ContactCTA = ({ onOpenDemo }) => {
           <div className="relative z-10 max-w-2xl mx-auto space-y-5">
             <Badge icon={Sparkles} className="mx-auto">NEXT STEPS</Badge>
 
-            <h2 className="text-3xl sm:text-4xl lg:text-[46px] font-extrabold text-white tracking-tight leading-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-[46px] font-bold text-white tracking-tight leading-tight">
               Have An Idea? <br />
               Let's Make It{' '}
               <span className="text-[#FF1F26] drop-shadow-[0_0_20px_rgba(255,31,38,0.35)]">

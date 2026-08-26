@@ -21,9 +21,9 @@ const CareerHero = ({ onApplyClick }) => {
       <Container className="relative z-10 text-center max-w-4xl mx-auto">
         <div className="flex flex-col items-center space-y-7">
           
-          <Badge>CAREERS AT NEVERQUIT.AI</Badge>
+          <Badge>CAREERS AT NEVERQUIT AI</Badge>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-[62px] xl:text-[68px] font-extrabold text-white tracking-tight leading-[1.06]">
+          <h1 className="text-4xl sm:text-5xl lg:text-[62px] xl:text-[68px] font-bold text-white tracking-tight leading-[1.06]">
             Build The{' '}
             <span className="text-[#FF1F26] text-glow inline-block">
               Future

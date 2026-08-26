@@ -29,26 +29,42 @@ const ServicesFAQ = () => {
             return (
               <div
                 key={idx}
-                className="rounded-2xl bg-[#0A0A0D] border border-[#222226] overflow-hidden transition-all duration-200"
+                onMouseEnter={() => setOpenIdx(idx)}
+                className={`rounded-2xl bg-[#0A0A0D] border overflow-hidden transition-all duration-300 cursor-pointer ${
+                  isOpen
+                    ? 'border-[#FF1F26]/70 shadow-[0_4px_30px_rgba(255,31,38,0.18)]'
+                    : 'border-[#222226] hover:border-[#333338]'
+                }`}
               >
                 <button
                   type="button"
                   onClick={() => toggle(idx)}
-                  className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 focus:outline-none cursor-pointer"
+                  className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 focus:outline-none cursor-pointer select-none"
                 >
                   <span className="text-base sm:text-lg font-bold text-white">
                     {faq.question}
                   </span>
-                  <div className={`w-8 h-8 rounded-lg bg-[#141418] border border-[#26262B] flex items-center justify-center text-[#FF1F26] shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180 bg-[#FF1F26] text-white' : ''}`}>
+                  <div
+                    className={`w-8 h-8 rounded-lg bg-[#141418] border border-[#26262B] flex items-center justify-center text-[#FF1F26] shrink-0 transition-transform duration-300 ${
+                      isOpen ? 'rotate-180 bg-[#FF1F26] text-white shadow-[0_0_12px_rgba(255,31,38,0.35)]' : ''
+                    }`}
+                  >
                     <ChevronDown className="w-4 h-4" />
                   </div>
                 </button>
 
-                {isOpen && (
-                  <div className="px-5 sm:px-6 pb-6 text-sm sm:text-base text-[#A7A7A7] leading-relaxed border-t border-[#18181E] pt-4 animate-in fade-in duration-200 font-normal">
-                    {faq.answer}
+                {/* Smooth Expanding Accordion Content */}
+                <div
+                  className={`grid transition-all duration-300 ease-in-out ${
+                    isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
+                  }`}
+                >
+                  <div className="overflow-hidden">
+                    <div className="px-5 sm:px-6 pb-6 pt-3 text-sm sm:text-base text-[#A7A7A7] leading-relaxed border-t border-[#18181E] font-normal">
+                      {faq.answer}
+                    </div>
                   </div>
-                )}
+                </div>
               </div>
             );
           })}

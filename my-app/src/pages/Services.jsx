@@ -9,7 +9,7 @@ import ServicesCTA from '../components/services/ServicesCTA';
 const Services = ({ onOpenDemo }) => {
   return (
     <PageWrapper
-      title="Services — NeverquiT.ai Enterprise AI Solutions"
+      title="Services — NeverquiT AI Enterprise AI Solutions"
       description="Explore our specialized AI services: Autonomous Agents, Custom LLM Tuning, Intelligent Automation, and Secure Private AI Infrastructure."
     >
       <ServicesHero onOpenDemo={onOpenDemo} />

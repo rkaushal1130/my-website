@@ -6,7 +6,7 @@ import Button from '../common/Button';
 import HeroBackground from './HeroBackground';
 import heroIllustration from '../../assets/images/hero-bg.png';
 
-const Hero = ({ onExploreClick }) => {
+const Hero = ({ onExploreClick, onOpenDemo }) => {
   return (
     <section className="relative min-h-[680px] lg:min-h-[820px] flex items-center pt-28 pb-16 sm:pt-32 sm:pb-20 lg:pt-36 lg:pb-24 overflow-hidden bg-[#030303]">
       
@@ -29,7 +29,7 @@ const Hero = ({ onExploreClick }) => {
             </div>
 
             {/* Main Heading */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[56px] xl:text-[68px] 2xl:text-[76px] font-extrabold text-white tracking-tight leading-[1.05]">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[56px] xl:text-[68px] 2xl:text-[76px] font-bold text-white tracking-tight leading-[1.05]">
               AI That Works <br />
               <span className="text-[#FF1F26] text-glow relative inline-block">
                 As Hard
@@ -39,18 +39,18 @@ const Hero = ({ onExploreClick }) => {
 
             {/* Description */}
             <p className="text-base sm:text-lg md:text-xl text-[#A7A7A7] leading-relaxed max-w-2xl font-normal">
-              NeverquiT.ai helps businesses automate, innovate and scale with intelligent AI solutions built for the future.
+              NeverquiT AI helps businesses automate, innovate and scale with intelligent AI solutions built for the future.
             </p>
 
             {/* Hero Action Buttons */}
             <div className="flex flex-col sm:flex-row items-center lg:justify-start justify-center gap-4 pt-2 w-full sm:w-auto">
               <Button
-                to="/services"
+                href="/Pricing.pdf"
                 variant="primary"
                 size="lg"
                 className="w-full sm:w-auto"
               >
-                Explore Services
+                Explore Pricing
               </Button>
               <Button
                 to="/contact"

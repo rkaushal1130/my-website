@@ -35,7 +35,7 @@ const SocialLinks = () => {
   return (
     <div className="pt-2">
       <div className="text-xs font-mono uppercase tracking-wider text-[#737373] mb-3">
-        Follow NeverQuit
+        Follow NeverquiT AI
       </div>
       <div className="flex items-center gap-3">
         {socials.map((social) => {

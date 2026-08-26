@@ -88,7 +88,7 @@ const DemoModal = ({ isOpen, onClose }) => {
             </div>
             <h3 className="text-2xl font-bold text-white mb-2">Demo Request Received!</h3>
             <p className="text-sm sm:text-base text-[#A8A8A8] max-w-md mb-6 leading-relaxed">
-              Thank you, <span className="text-white font-medium">{formData.name || 'there'}</span>. An AI architect from neverquit.ai will contact you at <span className="text-[#FF1F26] font-medium">{formData.email || 'your email'}</span> within 2 hours with an interactive tailored demo.
+              Thank you, <span className="text-white font-medium">{formData.name || 'there'}</span>. An AI architect from NeverquiT AI will contact you at <span className="text-[#FF1F26] font-medium">{formData.email || 'your email'}</span> within 2 hours with an interactive tailored demo.
             </p>
             <div className="p-4 rounded-xl bg-[#111111] border border-[#252525] w-full text-left mb-6">
               <div className="text-xs text-[#737373] uppercase tracking-wider mb-1">Selected Focus</div>

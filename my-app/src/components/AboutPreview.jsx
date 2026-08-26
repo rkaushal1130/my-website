@@ -42,10 +42,11 @@ const AboutPreview = () => {
           {/* Left Column Content */}
           <div className="lg:col-span-5 space-y-6 text-left">
             
-            {/* Small Red Uppercase Label */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#101010] border border-[#242424] text-xs font-semibold tracking-wider text-[#FF1F26] uppercase shadow-sm">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#FF1F26]" />
-              ABOUT US
+            {/* Small Red Uppercase Label with Glowing Lines */}
+            <div className="flex items-center justify-start gap-4 text-[13px] sm:text-sm font-sans font-bold uppercase tracking-wider text-white select-none">
+              <span className="w-8 sm:w-16 h-px bg-gradient-to-r from-transparent via-[#FF1F26]/60 to-[#FF1F26]" />
+              <span>ABOUT US</span>
+              <span className="w-8 sm:w-16 h-px bg-gradient-to-r from-[#FF1F26] via-[#FF1F26]/60 to-transparent" />
             </div>
 
             {/* Heading with "Impact" in red */}
@@ -59,7 +60,7 @@ const AboutPreview = () => {
 
             {/* Description */}
             <p className="text-base sm:text-lg text-[#A8A8A8] leading-relaxed font-normal">
-              At neverquit.ai, we combine technology and creativity to build AI-driven solutions that solve real-world problems and drive business growth.
+              At NeverquiT AI, we combine technology and creativity to build AI-driven solutions that solve real-world problems and drive business growth.
             </p>
 
             <p className="text-sm sm:text-base text-[#737373] leading-relaxed font-normal">

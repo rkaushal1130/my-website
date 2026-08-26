@@ -25,8 +25,8 @@ const Careers = () => {
 
   return (
     <PageWrapper
-      title="Careers at NeverquiT.ai — Build The Future of AI"
-      description="Join NeverquiT.ai and build the next generation of enterprise AI technology. View open engineering, design, product, and business roles."
+      title="Careers at NeverquiT AI — Build The Future of AI"
+      description="Join NeverquiT AI and build the next generation of enterprise AI technology. View open engineering, design, product, and business roles."
     >
       <CareerHero onApplyClick={handleApply} />
       <CareerBenefits />

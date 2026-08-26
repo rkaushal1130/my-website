@@ -35,10 +35,10 @@ const Solutions = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#101010] border border-[#242424] text-xs font-semibold tracking-wider text-[#FF1F26] uppercase shadow-sm">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#FF1F26]" />
-            OUR SOLUTIONS
+          <div className="flex items-center justify-center gap-4 text-[13px] sm:text-sm font-sans font-bold uppercase tracking-wider text-white select-none">
+            <span className="w-12 sm:w-24 h-px bg-gradient-to-r from-transparent via-[#FF1F26]/60 to-[#FF1F26]" />
+            <span>OUR SOLUTIONS</span>
+            <span className="w-12 sm:w-24 h-px bg-gradient-to-l from-transparent via-[#FF1F26]/60 to-[#FF1F26]" />
           </div>
 
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-tight">

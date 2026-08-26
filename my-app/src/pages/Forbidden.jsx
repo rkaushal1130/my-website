@@ -36,7 +36,7 @@ const Forbidden = () => {
         </h1>
 
         <p className="text-sm text-[#A8A8A8] leading-relaxed mb-6">
-          Your account <span className="text-white font-semibold">({user?.email || 'Authenticated User'})</span> does not possess the administrative role required to access the NeverQuit.ai operations console.
+          Your account <span className="text-white font-semibold">({user?.email || 'Authenticated User'})</span> does not possess the administrative role required to access the NeverquiT AI operations console.
         </p>
 
         <div className="p-4 rounded-2xl bg-[#050505] border border-[#242424] text-xs text-[#737373] text-left mb-8 space-y-1">

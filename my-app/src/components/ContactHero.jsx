@@ -10,14 +10,15 @@ const ContactHero = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-[700px] mx-auto space-y-5">
           
-          {/* Small Red Uppercase Label */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#111111] border border-[#252525] text-xs font-semibold tracking-wider text-[#FF1F26] uppercase shadow-[0_0_15px_rgba(255,31,38,0.15)]">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#FF1F26] animate-ping" />
-            CONTACT US
+          {/* Small Red Uppercase Label with Glowing Lines */}
+          <div className="flex items-center justify-center gap-4 text-[13px] sm:text-sm font-sans font-semibold uppercase tracking-wider text-white select-none">
+            <span className="w-12 sm:w-24 h-px bg-gradient-to-r from-transparent via-[#FF1F26]/60 to-[#FF1F26]" />
+            <span>CONTACT US</span>
+            <span className="w-12 sm:w-24 h-px bg-gradient-to-l from-transparent via-[#FF1F26]/60 to-[#FF1F26]" />
           </div>
 
           {/* Main Heading with "Intelligent" in Red */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight leading-[1.15]">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight leading-[1.15]">
             Let's Build Something{' '}
             <span className="text-[#FF1F26] text-glow inline-block">
               Intelligent

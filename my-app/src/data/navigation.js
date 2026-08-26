@@ -1,22 +1,25 @@
 export const mainNavigation = [
   { name: 'Home', path: '/' },
+  { name: 'About Us', path: '/about' },
+  { name: 'Portfolio', path: '/portfolio' },
   { name: 'Services', path: '/services' },
-  { name: 'About', path: '/about' },
-  { name: 'Careers', path: '/careers' },
+  { name: 'Career', path: '/careers' },
   { name: 'Contact', path: '/contact' },
 ];
 
 export const footerLinks = {
   quickLinks: [
     { name: 'Home', path: '/' },
+    { name: 'About Us', path: '/about' },
+    { name: 'Portfolio', path: '/portfolio' },
     { name: 'Services', path: '/services' },
-    { name: 'About', path: '/about' },
-    { name: 'Careers', path: '/careers' },
+    { name: 'Career', path: '/careers' },
     { name: 'Contact', path: '/contact' },
   ],
   company: [
     { name: 'About Us', path: '/about' },
-    { name: 'Our Services', path: '/services' },
+    { name: 'Portfolio', path: '/portfolio' },
+    { name: 'Services', path: '/services' },
     { name: 'Open Positions', path: '/careers' },
     { name: 'Get in Touch', path: '/contact' },
   ],

@@ -19,14 +19,15 @@ const Hero = ({ onExploreClick }) => {
           {/* Left Column: Text & Actions (7 Cols) */}
           <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left space-y-7 sm:space-y-8">
             
-            {/* Small Red Label Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#101010]/90 border border-[#242424] text-xs font-semibold tracking-wider text-[#FF1F26] uppercase shadow-[0_0_15px_rgba(255,31,38,0.15)] backdrop-blur-md">
-              <span className="w-2 h-2 rounded-full bg-[#FF1F26] animate-ping" />
-              AI-POWERED SOLUTIONS
+            {/* Small Red Label Badge with Glowing Lines */}
+            <div className="flex items-center lg:justify-start justify-center gap-4 text-[13px] sm:text-sm font-sans font-bold uppercase tracking-wider text-white select-none">
+              <span className="w-8 sm:w-16 h-px bg-gradient-to-r from-transparent via-[#FF1F26]/60 to-[#FF1F26]" />
+              <span>AI-POWERED SOLUTIONS</span>
+              <span className="w-8 sm:w-16 h-px bg-gradient-to-l from-transparent via-[#FF1F26]/60 to-[#FF1F26]" />
             </div>
 
             {/* Main Heading */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[56px] xl:text-[68px] 2xl:text-[76px] font-extrabold text-white tracking-tight leading-[1.05]">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[56px] xl:text-[68px] 2xl:text-[76px] font-bold text-white tracking-tight leading-[1.05]">
               AI That Works <br />
               <span className="text-[#FF1F26] text-glow relative inline-block">
                 As Hard
@@ -36,18 +37,20 @@ const Hero = ({ onExploreClick }) => {
 
             {/* Description */}
             <p className="text-base sm:text-lg md:text-xl text-[#A8A8A8] leading-relaxed max-w-2xl font-normal">
-              NeverquiT.ai helps businesses automate, innovate and scale with intelligent AI solutions built for the future.
+              NeverquiT AI helps businesses automate, innovate and scale with intelligent AI solutions built for the future.
             </p>
 
             {/* Hero Action Buttons */}
             <div className="flex flex-col sm:flex-row items-center lg:justify-start justify-center gap-4 pt-2 w-full sm:w-auto">
-              <Link
-                to="/services"
+              <a
+                href="/Pricing.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-[#FF1F26] text-white text-base font-semibold shadow-[0_0_25px_rgba(255,31,38,0.35)] hover:bg-[#FF3030] hover:shadow-[0_0_35px_rgba(255,31,38,0.55)] active:scale-[0.98] transition-all duration-300 group cursor-pointer w-full sm:w-auto"
               >
-                <span>Explore Services</span>
+                <span>Explore Pricing</span>
                 <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-              </Link>
+              </a>
               <Link
                 to="/contact"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-[#101010]/90 backdrop-blur-md border border-[#26262B] text-white text-base font-semibold hover:border-[#FF1F26] hover:bg-[#18181D] active:scale-[0.98] transition-all duration-300 cursor-pointer w-full sm:w-auto"

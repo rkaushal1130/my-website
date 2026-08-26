@@ -36,7 +36,7 @@ const CareerBenefits = () => {
           <Badge>WHY JOIN US</Badge>
 
           <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-bold text-white tracking-tight leading-tight">
-            Why Join NeverQuit
+            Why Join NeverquiT AI
           </h2>
 
           <p className="text-base sm:text-lg text-[#A7A7A7] leading-relaxed font-normal">

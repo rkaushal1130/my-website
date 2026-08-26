@@ -11,8 +11,8 @@ import Container from '../components/common/Container';
 const Contact = ({ onOpenDemo }) => {
   return (
     <PageWrapper
-      title="Contact NeverquiT.ai — Let's Build Something Intelligent"
-      description="Connect with NeverquiT.ai to discover tailored enterprise AI architectures, agentic workflows, and machine learning models."
+      title="Contact NeverquiT AI — Let's Build Something Intelligent"
+      description="Connect with NeverquiT AI to discover tailored enterprise AI architectures, agentic workflows, and machine learning models."
     >
       <ContactHero />
 

@@ -6,7 +6,7 @@ import { logger } from './utils/logger';
 const PORT = env.PORT;
 
 const server = app.listen(PORT, () => {
-  logger.success(`🚀 NeverquiT.ai API server is running on http://localhost:${PORT}`);
+  logger.success(`🚀 NeverquiT AI API server is running on http://localhost:${PORT}`);
   logger.info(`🌐 Environment: ${env.NODE_ENV}`);
   logger.info(`🩺 Health Check: http://localhost:${PORT}/api/health`);
 });

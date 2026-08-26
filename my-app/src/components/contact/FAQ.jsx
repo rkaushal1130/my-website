@@ -5,7 +5,7 @@ import Container from '../common/Container';
 import Badge from '../common/Badge';
 
 const FAQ = () => {
-  const [openIndex, setOpenIndex] = useState(0);
+  const [openIndex, setOpenIndex] = useState(2); // Start with item 2 ("Do you work with startups?") open
 
   const toggleFaq = (idx) => {
     setOpenIndex(openIndex === idx ? -1 : idx);
@@ -26,27 +26,28 @@ const FAQ = () => {
           </h2>
 
           <p className="text-base text-[#A7A7A7] font-normal">
-            Everything you need to know about partnering with neverquit.ai.
+            Everything you need to know about partnering with NeverquiT AI.
           </p>
         </div>
 
-        {/* Accordion List with 3D Sphere Badges */}
+        {/* Accordion List with Hover & Click Smooth Expansion */}
         <div className="space-y-4">
           {faqData.map((faq, idx) => {
             const isOpen = openIndex === idx;
             return (
               <div
                 key={idx}
-                className={`rounded-2xl bg-[#101010] border transition-all duration-300 overflow-hidden ${
+                onMouseEnter={() => setOpenIndex(idx)}
+                className={`rounded-2xl bg-[#101010] border transition-all duration-300 overflow-hidden cursor-pointer ${
                   isOpen
-                    ? 'border-[#FF1F26]/70 shadow-[0_4px_25px_rgba(255,31,38,0.18)]'
+                    ? 'border-[#FF1F26]/70 shadow-[0_4px_30px_rgba(255,31,38,0.18)]'
                     : 'border-[#242424] hover:border-[#333333]'
                 }`}
               >
                 <button
                   type="button"
                   onClick={() => toggleFaq(idx)}
-                  className="w-full p-6 text-left flex items-center justify-between gap-4 cursor-pointer focus:outline-none"
+                  className="w-full p-6 text-left flex items-center justify-between gap-4 cursor-pointer focus:outline-none select-none"
                   aria-expanded={isOpen}
                 >
                   <div className="flex items-center gap-3.5">
@@ -55,7 +56,7 @@ const FAQ = () => {
                       <div
                         className={`w-3.5 h-3.5 rounded-full transition-all duration-300 ${
                           isOpen
-                            ? 'bg-[#FF1F26] shadow-[0_0_12px_#FF1F26] scale-110'
+                            ? 'bg-[#FF1F26] shadow-[0_0_14px_#FF1F26] scale-110'
                             : 'bg-[#FF1F26]/40 border border-[#FF1F26]/60'
                         }`}
                       />
@@ -66,8 +67,9 @@ const FAQ = () => {
                     </span>
                   </div>
 
-                  <div className={`w-8 h-8 rounded-full bg-[#050505] border flex items-center justify-center shrink-0 transition-colors ${
-                    isOpen ? 'border-[#FF1F26] text-[#FF1F26]' : 'border-[#242424] text-[#A7A7A7]'
+                  {/* Circular Plus/Minus Toggle Badge */}
+                  <div className={`w-8 h-8 rounded-full bg-[#050505] border flex items-center justify-center shrink-0 transition-all duration-300 ${
+                    isOpen ? 'border-[#FF1F26] text-[#FF1F26] rotate-180 shadow-[0_0_12px_rgba(255,31,38,0.35)]' : 'border-[#242424] text-[#A7A7A7]'
                   }`}>
                     {isOpen ? (
                       <Minus className="w-4 h-4 text-[#FF1F26]" />
@@ -77,11 +79,18 @@ const FAQ = () => {
                   </div>
                 </button>
 
-                {isOpen && (
-                  <div className="px-6 pb-6 pt-1 text-sm sm:text-base text-[#A7A7A7] leading-relaxed border-t border-[#1D1D1D] animate-in fade-in duration-200 pl-12">
-                    {faq.answer}
+                {/* Ultra-Smooth CSS Grid Height Expansion */}
+                <div
+                  className={`grid transition-all duration-300 ease-in-out ${
+                    isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
+                  }`}
+                >
+                  <div className="overflow-hidden">
+                    <div className="px-6 pb-6 pt-1 text-sm sm:text-base text-[#A7A7A7] leading-relaxed border-t border-[#1D1D1D] pl-12 font-normal">
+                      {faq.answer}
+                    </div>
                   </div>
-                )}
+                </div>
               </div>
             );
           })}

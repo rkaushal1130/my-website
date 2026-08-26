@@ -56,7 +56,7 @@ const WebGLFallback = () => (
       </div>
 
       <div className="space-y-1">
-        <div className="text-sm font-bold text-white tracking-wide">neverquit.ai</div>
+        <div className="text-sm font-bold text-white tracking-wide">NeverquiT AI</div>
         <div className="text-xs text-[#737373] font-mono">3D AI Neural Engine</div>
       </div>
     </div>
@@ -73,7 +73,7 @@ const LoadingScreen = ({ isLoaded }) => (
     <div className="relative flex flex-col items-center space-y-5">
       {/* Brand logo text */}
       <div className="text-base sm:text-lg font-extrabold text-white tracking-wider">
-        neverquit<span className="text-[#FF1F26]">.ai</span>
+        NeverquiT <span className="text-[#FF1F26]">AI</span>
       </div>
 
       {/* Red pulsating loading ring */}

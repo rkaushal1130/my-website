@@ -158,7 +158,7 @@ const ApplicationModal = ({ isOpen, onClose, position, job }) => {
             </h3>
 
             <p className="text-sm text-[#A7A7A7] max-w-md mx-auto leading-relaxed">
-              Thank you for applying to NeverQuit.ai. Our talent and engineering team will review your application for{' '}
+              Thank you for applying to NeverquiT AI. Our talent and engineering team will review your application for{' '}
               <span className="text-white font-semibold">{jobTitle}</span> and contact you shortly.
             </p>
 
@@ -264,7 +264,7 @@ const ApplicationModal = ({ isOpen, onClose, position, job }) => {
                   disabled={isSubmitting}
                   value={formData.coverLetter}
                   onChange={handleChange}
-                  placeholder="Tell us what excites you about building autonomous AI at NeverQuit.ai..."
+                  placeholder="Tell us what excites you about building autonomous AI at NeverquiT AI..."
                   className="w-full p-4 rounded-xl bg-[#050505] border border-[#242424] text-white placeholder-[#666666] text-sm focus:border-[#FF1F26] focus:ring-2 focus:ring-[#FF1F26]/20 focus:outline-none transition-all duration-200 resize-none disabled:opacity-60"
                 />
               </div>

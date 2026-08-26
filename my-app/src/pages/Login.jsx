@@ -71,7 +71,7 @@ const Login = () => {
         className="absolute top-6 left-6 sm:top-8 sm:left-8 flex items-center gap-2 text-xs font-medium text-[#A8A8A8] hover:text-white transition-colors"
       >
         <ArrowLeft className="w-4 h-4 text-[#FF1F26]" />
-        <span>Back to NeverQuit.ai</span>
+        <span>Back to NeverquiT AI</span>
       </Link>
 
       <div className="relative z-10 max-w-md w-full rounded-3xl bg-[#0D0D10] border border-[#242424] p-8 sm:p-10 shadow-[0_25px_70px_rgba(0,0,0,0.95)]">
@@ -81,7 +81,7 @@ const Login = () => {
         {/* Brand Header */}
         <div className="text-center mb-8">
           <div className="w-14 h-14 rounded-2xl bg-[#141418] border border-white/10 flex items-center justify-center mx-auto mb-4 p-1 shadow-[0_0_20px_rgba(255,31,38,0.25)]">
-            <img src={brandLogo} alt="NeverQuit.ai" className="w-full h-full object-contain rounded-xl" />
+            <img src={brandLogo} alt="NeverquiT AI" className="w-full h-full object-contain rounded-xl" />
           </div>
 
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-semibold bg-[#FF1F26]/10 text-[#FF1F26] border border-[#FF1F26]/30 mb-3 uppercase tracking-wider">
@@ -166,7 +166,7 @@ const Login = () => {
 
         <div className="mt-8 pt-6 border-t border-[#1C1C20] text-center">
           <p className="text-[11px] text-[#737373]">
-            Protected by NeverQuit.ai enterprise zero-trust authentication.
+            Protected by NeverquiT AI enterprise zero-trust authentication.
           </p>
         </div>
       </div>

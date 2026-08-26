@@ -32,7 +32,7 @@ const LoadingScreen = () => {
         const next = Math.min(100, prev + step);
 
         if (next > 80) {
-          setStatusText('WELCOME TO NeverquiT.ai');
+          setStatusText('WELCOME TO NeverquiT AI');
         } else if (next > 45) {
           setStatusText('SYNCHRONIZING INTELLIGENCE MESH...');
         } else if (next > 15) {
@@ -130,7 +130,7 @@ const LoadingScreen = () => {
           <div className="relative w-full max-w-[420px] sm:max-w-[520px] transition-transform duration-700 hover:scale-105">
             <img
               src={introLogo}
-              alt="NeverquiT.ai 3D Monogram"
+              alt="NeverquiT AI 3D Monogram"
               className="w-full h-auto object-contain drop-shadow-[0_20px_50px_rgba(255,31,38,0.55)] select-none rounded-2xl"
               style={{
                 maskImage: 'radial-gradient(circle at center, black 72%, transparent 100%)',
@@ -145,9 +145,9 @@ const LoadingScreen = () => {
           className="mt-6 text-center space-y-2"
           style={{ transform: 'translateZ(30px)' }}
         >
-          <div className="text-2xl sm:text-3xl font-extrabold tracking-[0.05em] text-white flex items-center justify-center">
+          <div className="text-2xl sm:text-3xl font-extrabold tracking-[0.05em] text-white flex items-center justify-center gap-1.5">
             <span>NeverquiT</span>
-            <span className="text-[#FF1F26] text-glow">.ai</span>
+            <span className="text-[#FF1F26] text-glow">AI</span>
           </div>
 
           <p className="text-xs tracking-[0.25em] uppercase text-[#737373] font-medium">

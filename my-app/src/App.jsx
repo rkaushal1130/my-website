@@ -5,17 +5,17 @@ import Footer from './components/layout/Footer';
 import ScrollToTop from './components/common/ScrollToTop';
 import LoadingScreen from './components/common/LoadingScreen';
 import DemoModal from './components/common/DemoModal';
-import LoginModal from './components/common/LoginModal';
 import { AuthProvider } from './context/AuthContext';
 import ProtectedRoute from './components/admin/ProtectedRoute';
 
 // Public Pages
 import Home from './pages/Home';
 import Services from './pages/Services';
+import Portfolio from './pages/Portfolio';
+import ProjectDetail from './pages/ProjectDetail';
 import About from './pages/About';
 import Careers from './pages/Careers';
 import Contact from './pages/Contact';
-import Login from './pages/Login';
 import Forbidden from './pages/Forbidden';
 
 // Admin Pages
@@ -28,7 +28,6 @@ import AdminApplications from './pages/admin/AdminApplications';
 
 function App() {
   const [demoModalOpen, setDemoModalOpen] = useState(false);
-  const [loginModalOpen, setLoginModalOpen] = useState(false);
 
   return (
     <AuthProvider>
@@ -53,8 +52,7 @@ function App() {
             <Route path="applications" element={<AdminApplications />} />
           </Route>
 
-          {/* Authentication & Security Standalone Pages */}
-          <Route path="/login" element={<Login />} />
+          {/* Security Standalone Page */}
           <Route path="/403" element={<Forbidden />} />
 
           {/* Public Website Layout */}
@@ -62,17 +60,17 @@ function App() {
             path="*"
             element={
               <div className="flex flex-col min-h-screen bg-[#050505] text-white selection:bg-[#FF1F26] selection:text-white">
-                <Navbar
-                  onOpenDemo={() => setDemoModalOpen(true)}
-                  onOpenLogin={() => setLoginModalOpen(true)}
-                />
+                <Navbar onOpenDemo={() => setDemoModalOpen(true)} />
 
                 <main className="flex-grow">
                   <Routes>
                     <Route path="/" element={<Home onOpenDemo={() => setDemoModalOpen(true)} />} />
-                    <Route path="/services" element={<Services onOpenDemo={() => setDemoModalOpen(true)} />} />
                     <Route path="/about" element={<About onOpenDemo={() => setDemoModalOpen(true)} />} />
+                    <Route path="/portfolio" element={<Portfolio onOpenDemo={() => setDemoModalOpen(true)} />} />
+                    <Route path="/portfolio/:slug" element={<ProjectDetail onOpenDemo={() => setDemoModalOpen(true)} />} />
+                    <Route path="/services" element={<Services onOpenDemo={() => setDemoModalOpen(true)} />} />
                     <Route path="/careers" element={<Careers onOpenDemo={() => setDemoModalOpen(true)} />} />
+                    <Route path="/career" element={<Navigate to="/careers" replace />} />
                     <Route path="/contact" element={<Contact onOpenDemo={() => setDemoModalOpen(true)} />} />
                     <Route path="*" element={<Navigate to="/" replace />} />
                   </Routes>
@@ -84,12 +82,6 @@ function App() {
                 <DemoModal
                   isOpen={demoModalOpen}
                   onClose={() => setDemoModalOpen(false)}
-                />
-
-                {/* Quick Portal Login Modal */}
-                <LoginModal
-                  isOpen={loginModalOpen}
-                  onClose={() => setLoginModalOpen(false)}
                 />
               </div>
             }
