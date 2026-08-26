@@ -8,8 +8,11 @@ const envSchema = z.object({
   NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
   PORT: z.string().default('5000').transform((val) => parseInt(val, 10)),
   DATABASE_URL: z.string().optional(),
+  MONGODB_URI: z.string().default('mongodb://localhost:27017/neverquit_db'),
   JWT_SECRET: z.string().default('neverquit_ai_jwt_secret_dev_key_2026'),
   FRONTEND_URL: z.string().default('http://localhost:5173'),
+  ADMIN_EMAIL: z.string().default('kaushalrahul1130@gmail.com'),
+  NOTIFICATION_EMAIL: z.string().default('kaushalrahul1130@gmail.com'),
 });
 
 const _env = envSchema.safeParse(process.env);

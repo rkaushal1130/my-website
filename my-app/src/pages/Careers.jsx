@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PageWrapper from '../components/layout/PageWrapper';
 import CareerHero from '../components/careers/CareerHero';
 import CareerBenefits from '../components/careers/CareerBenefits';
+import CareerApplyForm from '../components/careers/CareerApplyForm';
 import CareerTimeline from '../components/careers/CareerTimeline';
 import CareerStats from '../components/careers/CareerStats';
 import CareerCTA from '../components/careers/CareerCTA';
@@ -12,8 +13,15 @@ const Careers = () => {
   const [selectedJob, setSelectedJob] = useState(null);
 
   const handleApply = (job) => {
-    setSelectedJob(job);
-    setIsModalOpen(true);
+    const el = document.getElementById('apply-form');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+      const input = el.querySelector('input[name="name"]');
+      if (input) setTimeout(() => input.focus(), 400);
+    } else {
+      setSelectedJob(job);
+      setIsModalOpen(true);
+    }
   };
 
   const handleCloseModal = () => {
@@ -28,6 +36,7 @@ const Careers = () => {
     >
       <CareerHero onApplyClick={handleApply} />
       <CareerBenefits />
+      <CareerApplyForm />
       <CareerTimeline />
       <CareerStats />
       <CareerCTA onOpenApplication={handleApply} />

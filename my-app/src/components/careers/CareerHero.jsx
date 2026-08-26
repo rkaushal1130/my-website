@@ -35,7 +35,7 @@ const CareerHero = ({ onApplyClick }) => {
               size="lg"
               customIcon={<Send className="w-4 h-4 text-white" />}
             >
-              Apply Now / Send Resume
+              Apply Now
             </Button>
           </div>
 

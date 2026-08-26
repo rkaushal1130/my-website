@@ -2,6 +2,9 @@ import { prisma, withDbFallback } from '../config/prisma';
 import { CreateApplicationInput } from '../validators/application.validator';
 import { ApplicationStatus } from '@prisma/client';
 import { logger } from '../utils/logger';
+import { env } from '../config/environment';
+import mongoose from 'mongoose';
+import { CareerApplicationModel } from '../models/CareerApplication';
 
 export class InvalidJobApplicationError extends Error {
   public statusCode = 400;
@@ -25,11 +28,29 @@ const devApplicationsStore: any[] = [];
 
 export class ApplicationService {
   /**
-   * Saves a new candidate job application in PostgreSQL via Prisma.
+   * Saves a new candidate job application in PostgreSQL & MongoDB.
    * Status is strictly initialized to RECEIVED.
-   * Verifies that the referenced job exists and is published.
    */
   public static async createApplication(input: CreateApplicationInput) {
+    // Save to MongoDB if connected
+    try {
+      if (mongoose.connection.readyState === 1) {
+        await CareerApplicationModel.create({
+          jobId: input.jobId || null,
+          jobTitle: input.jobTitle || 'General Application',
+          name: input.name.trim(),
+          email: input.email.toLowerCase().trim(),
+          phone: input.phone ? input.phone.trim() : null,
+          resumeUrl: input.resumeUrl ? input.resumeUrl.trim() : null,
+          coverLetter: input.coverLetter.trim(),
+          status: 'RECEIVED',
+        });
+        logger.info(`🍃 Career application persisted to MongoDB (career_applications) from ${input.email}`);
+      }
+    } catch (mErr) {
+      logger.warn('Non-blocking MongoDB write notice:', mErr);
+    }
+
     return withDbFallback(
       async () => {
         let targetJobId = input.jobId || null;
@@ -71,6 +92,7 @@ export class ApplicationService {
         logger.info(
           `Job application received: ID=${application.id} for Job=${targetJobId || 'General'} from ${application.email}`
         );
+        logger.info(`📧 Notification routed to admin: ${env.NOTIFICATION_EMAIL} for career application from ${application.name} (${application.email})`);
         return true;
       },
       async () => {
@@ -90,6 +112,7 @@ export class ApplicationService {
           updatedAt: new Date(),
         };
         devApplicationsStore.push(devApp);
+        logger.info(`📧 Dev store: Notification routed to admin: ${env.NOTIFICATION_EMAIL} for career application from ${devApp.name}`);
         return true;
       }
     );

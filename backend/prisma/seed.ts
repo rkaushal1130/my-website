@@ -200,7 +200,7 @@ async function main() {
   console.log('\n--- 1. SEEDING USERS ---');
 
   // Resolve Admin credentials from environment variables
-  const adminEmail = (process.env.ADMIN_EMAIL?.trim() || 'neverquitop@gmail.com').toLowerCase();
+  const adminEmail = (process.env.ADMIN_EMAIL?.trim() || 'kaushalrahul1130@gmail.com').toLowerCase();
   const rawAdminPassword = process.env.ADMIN_PASSWORD?.trim();
 
   if (!rawAdminPassword && process.env.NODE_ENV === 'production') {
