@@ -5,13 +5,6 @@ import Badge from '../common/Badge';
 import Button from '../common/Button';
 
 const CareerHero = ({ onApplyClick }) => {
-  const handleScrollToPositions = () => {
-    const el = document.getElementById('open-positions');
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
     <section className="relative pt-32 pb-20 sm:pt-36 sm:pb-24 lg:pt-40 lg:pb-28 overflow-hidden bg-[#030303]">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1100px] h-[550px] bg-radial-hero opacity-80 pointer-events-none" />
@@ -36,18 +29,13 @@ const CareerHero = ({ onApplyClick }) => {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
-            <Button onClick={handleScrollToPositions} variant="primary" size="lg">
-              View Open Positions
-            </Button>
-
             <Button
               onClick={() => onApplyClick && onApplyClick({ title: 'General Application', department: 'Any' })}
-              variant="secondary"
+              variant="primary"
               size="lg"
-              icon={false}
-              customIcon={<Send className="w-4 h-4 text-[#FF1F26]" />}
+              customIcon={<Send className="w-4 h-4 text-white" />}
             >
-              Send Your Resume
+              Apply Now / Send Resume
             </Button>
           </div>
 
