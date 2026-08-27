@@ -3,8 +3,6 @@ import { CreateApplicationInput } from '../validators/application.validator';
 import { ApplicationStatus } from '@prisma/client';
 import { logger } from '../utils/logger';
 import { env } from '../config/environment';
-import mongoose from 'mongoose';
-import { CareerApplicationModel } from '../models/CareerApplication';
 
 export class InvalidJobApplicationError extends Error {
   public statusCode = 400;
@@ -28,29 +26,10 @@ const devApplicationsStore: any[] = [];
 
 export class ApplicationService {
   /**
-   * Saves a new candidate job application in PostgreSQL & MongoDB.
+   * Saves a new candidate job application in PostgreSQL.
    * Status is strictly initialized to RECEIVED.
    */
   public static async createApplication(input: CreateApplicationInput) {
-    // Save to MongoDB if connected
-    try {
-      if (mongoose.connection.readyState === 1) {
-        await CareerApplicationModel.create({
-          jobId: input.jobId || null,
-          jobTitle: input.jobTitle || 'General Application',
-          name: input.name.trim(),
-          email: input.email.toLowerCase().trim(),
-          phone: input.phone ? input.phone.trim() : null,
-          resumeUrl: input.resumeUrl ? input.resumeUrl.trim() : null,
-          coverLetter: input.coverLetter.trim(),
-          status: 'RECEIVED',
-        });
-        logger.info(`🍃 Career application persisted to MongoDB (career_applications) from ${input.email}`);
-      }
-    } catch (mErr) {
-      logger.warn('Non-blocking MongoDB write notice:', mErr);
-    }
-
     return withDbFallback(
       async () => {
         let targetJobId = input.jobId || null;

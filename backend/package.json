@@ -9,7 +9,6 @@
     "start": "node dist/server.js",
     "test": "ts-node src/test-backend.ts",
     "test:e2e": "ts-node src/test-e2e.ts",
-    "test:mongo": "ts-node src/test-mongodb.ts",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev",
     "prisma:studio": "prisma studio",
@@ -39,8 +38,6 @@
     "express-rate-limit": "^7.5.0",
     "helmet": "^8.0.0",
     "jsonwebtoken": "^9.0.3",
-    "mongodb": "^7.6.0",
-    "mongoose": "^9.9.4",
     "morgan": "^1.10.0",
     "zod": "^3.24.2"
   },

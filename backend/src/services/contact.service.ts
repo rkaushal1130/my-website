@@ -3,8 +3,6 @@ import { CreateContactInput } from '../validators/contact.validator';
 import { MessageStatus } from '@prisma/client';
 import { logger } from '../utils/logger';
 import { env } from '../config/environment';
-import mongoose from 'mongoose';
-import { ContactMessageModel } from '../models/ContactMessage';
 
 export interface ListContactFilters {
   page?: number;
@@ -18,7 +16,7 @@ const devContactMessagesStore: any[] = [];
 
 export class ContactService {
   /**
-   * Saves a valid contact message to the ContactMessage model in PostgreSQL & MongoDB.
+   * Saves a valid contact message to the ContactMessage model in PostgreSQL.
    */
   public static async createMessage(input: CreateContactInput) {
     const data = {
@@ -30,24 +28,6 @@ export class ContactService {
       message: input.message.trim(),
       status: 'NEW' as MessageStatus,
     };
-
-    // Save to MongoDB if connected
-    try {
-      if (mongoose.connection.readyState === 1) {
-        await ContactMessageModel.create({
-          name: data.name,
-          email: data.email,
-          phone: data.phone,
-          company: data.company,
-          service: data.service,
-          message: data.message,
-          status: data.status,
-        });
-        logger.info(`🍃 Contact message persisted to MongoDB (contact_messages) from ${data.email}`);
-      }
-    } catch (mErr) {
-      logger.warn('Non-blocking MongoDB write notice:', mErr);
-    }
 
     return withDbFallback(
       async () => {

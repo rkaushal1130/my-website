@@ -1,22 +1,14 @@
 import app from './app';
 import { env } from './config/environment';
 import { prisma } from './config/prisma';
-import { connectMongoDB, disconnectMongoDB } from './config/mongoose';
 import { logger } from './utils/logger';
 
 const PORT = env.PORT;
 
-const server = app.listen(PORT, async () => {
+const server = app.listen(PORT, () => {
   logger.success(`🚀 NeverquiT AI API server is running on http://localhost:${PORT}`);
   logger.info(`🌐 Environment: ${env.NODE_ENV}`);
   logger.info(`🩺 Health Check: http://localhost:${PORT}/api/health`);
-
-  // Initialize MongoDB connection asynchronously
-  try {
-    await connectMongoDB();
-  } catch (err) {
-    logger.warn('Non-blocking MongoDB init error:', err);
-  }
 });
 
 // Graceful Shutdown Handling
@@ -28,8 +20,7 @@ const handleShutdown = async (signal: string) => {
 
     try {
       await prisma.$disconnect();
-      await disconnectMongoDB();
-      logger.info('All database connections closed.');
+      logger.info('Database connection closed.');
     } catch (err) {
       logger.error('Error disconnecting from database:', err);
     }
