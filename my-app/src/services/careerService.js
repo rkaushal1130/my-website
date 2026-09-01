@@ -74,16 +74,8 @@ export const careerService = {
    * Submit candidate job application (Public)
    * @param {Object} payload
    */
-  submitApplication: async ({ jobId, jobTitle, name, email, phone, coverLetter, resumeUrl }) => {
-    return api.post('/applications', {
-      jobId,
-      jobTitle,
-      name,
-      email,
-      phone: phone || undefined,
-      coverLetter,
-      resumeUrl: resumeUrl || undefined,
-    });
+  submitApplication: async (payload) => {
+    return api.post('/applications', payload);
   },
 
   /**

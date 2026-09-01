@@ -1,8 +1,11 @@
-import { prisma, withDbFallback } from '../config/prisma';
+﻿import { prisma, withDbFallback } from '../config/prisma';
 import { CreateApplicationInput } from '../validators/application.validator';
 import { ApplicationStatus } from '@prisma/client';
 import { logger } from '../utils/logger';
 import { env } from '../config/environment';
+import { CareerSubmission } from '../models/submission.model';
+import { isMongoConnected, ensureMongoConnected } from '../config/mongoose';
+import mongoose from 'mongoose';
 
 export class InvalidJobApplicationError extends Error {
   public statusCode = 400;
@@ -21,140 +24,146 @@ export interface ListApplicationFilters {
   search?: string;
 }
 
-// Dev in-memory store fallback for offline mode
 const devApplicationsStore: any[] = [];
 
 export class ApplicationService {
   /**
-   * Saves a new candidate job application in PostgreSQL.
-   * Status is strictly initialized to RECEIVED.
+   * Saves candidate application to MongoDB Atlas in the 'website' collection of 'rahul_database'.
+   * Contains ONLY:
+   * 1. Full Name (name)
+   * 2. Email Address (email)
+   * 3. Phone Number (phone)
+   * 4. Primary Role / Focus Area (role)
+   * 5. Experience Level (experience)
+   * 6. LinkedIn / Portfolio / GitHub Profile (portfolio)
+   * 7. Resume / CV File (resume)
+   * 8. Introduction / Why NeverquiT AI? (introduction)
    */
   public static async createApplication(input: CreateApplicationInput) {
-    return withDbFallback(
-      async () => {
-        let targetJobId = input.jobId || null;
+    const docData: any = {
+      name: input.name.trim(),
+      email: input.email.toLowerCase().trim(),
+      role: (input.role || input.roleTitle || input.jobTitle || 'AI & Deep Learning Engineer').trim(),
+      experience: (input.experience || 'Fresh Graduate / Student').trim(),
+      introduction: (input.introduction || input.coverLetter || '').trim(),
+    };
 
-        // 1. If jobId is specified, verify it exists and is published
-        if (targetJobId) {
-          const job = await prisma.job.findUnique({
-            where: { id: targetJobId },
-          });
+    if (input.phone && input.phone.trim()) {
+      docData.phone = input.phone.trim();
+    }
+    const portfolioVal = input.portfolio || input.portfolioUrl || input.linkedinUrl;
+    if (portfolioVal && portfolioVal.trim()) {
+      docData.portfolio = portfolioVal.trim();
+    }
+    const resumeVal = input.resume || input.resumeUrl;
+    if (resumeVal && resumeVal.trim()) {
+      docData.resume = resumeVal.trim();
+    }
 
-          if (!job || !job.published) {
-            throw new InvalidJobApplicationError('The specified job opening is not available or has been closed.');
-          }
-        } else if (input.jobTitle) {
-          // If jobTitle is specified without jobId, attempt to resolve published job ID
-          const matchingJob = await prisma.job.findFirst({
-            where: {
-              title: { contains: input.jobTitle.trim(), mode: 'insensitive' },
-              published: true,
-            },
-          });
-          if (matchingJob) {
-            targetJobId = matchingJob.id;
-          }
-        }
-
-        const application = await prisma.careerApplication.create({
-          data: {
-            jobId: targetJobId,
-            name: input.name.trim(),
-            email: input.email.toLowerCase().trim(),
-            phone: input.phone ? input.phone.trim() : null,
-            resumeUrl: input.resumeUrl ? input.resumeUrl.trim() : null,
-            coverLetter: input.coverLetter.trim(),
-            status: 'RECEIVED',
-          },
-        });
+    // 1. Primary Storage: MongoDB Atlas (rahul_database.website)
+    try {
+      await ensureMongoConnected();
+      if (isMongoConnected()) {
+        const application = await CareerSubmission.create(docData);
 
         logger.info(
-          `Job application received: ID=${application.id} for Job=${targetJobId || 'General'} from ${application.email}`
+          `✅ Clean job application saved to MongoDB Atlas [website]: ID=${application._id} for ${docData.role} from ${docData.email}`
         );
-        logger.info(`📧 Notification routed to admin: ${env.NOTIFICATION_EMAIL} for career application from ${application.name} (${application.email})`);
+        logger.info(
+          `📧 Notification routed to admin: ${env.NOTIFICATION_EMAIL} for application from ${docData.name} (${docData.email})`
+        );
+        return true;
+      }
+    } catch (mongoErr: any) {
+      logger.error('Error saving career application to MongoDB Atlas:', mongoErr.message);
+    }
+
+    // 2. Secondary fallback
+    const fallbackData = {
+      ...docData,
+      phone: docData.phone || null,
+      resumeUrl: docData.resume || null,
+      jobTitle: docData.role,
+      coverLetter: docData.introduction,
+      status: 'RECEIVED' as ApplicationStatus,
+    };
+
+    return withDbFallback(
+      async () => {
+        await prisma.careerApplication.create({
+          data: {
+            name: fallbackData.name,
+            email: fallbackData.email,
+            phone: fallbackData.phone,
+            resumeUrl: fallbackData.resumeUrl,
+            coverLetter: fallbackData.coverLetter,
+            status: fallbackData.status,
+          },
+        });
         return true;
       },
       async () => {
-        if (input.jobId && input.jobId === '00000000-0000-0000-0000-000000000000') {
-          throw new InvalidJobApplicationError('The specified job opening is not available or has been closed.');
-        }
         const devApp = {
           id: `app-${Date.now()}`,
-          jobId: input.jobId || null,
-          name: input.name.trim(),
-          email: input.email.toLowerCase().trim(),
-          phone: input.phone ? input.phone.trim() : null,
-          resumeUrl: input.resumeUrl ? input.resumeUrl.trim() : null,
-          coverLetter: input.coverLetter.trim(),
-          status: 'RECEIVED' as ApplicationStatus,
+          ...fallbackData,
           createdAt: new Date(),
           updatedAt: new Date(),
         };
         devApplicationsStore.push(devApp);
-        logger.info(`📧 Dev store: Notification routed to admin: ${env.NOTIFICATION_EMAIL} for career application from ${devApp.name}`);
         return true;
       }
     );
   }
 
-  /**
-   * Lists paginated job applications with optional status, jobId, and search filters for administrators.
-   */
   public static async getApplications(filters: ListApplicationFilters = {}) {
     const page = filters.page && filters.page > 0 ? filters.page : 1;
     const limit = filters.limit && filters.limit > 0 ? filters.limit : 20;
     const skip = (page - 1) * limit;
 
-    const where: any = {};
+    try {
+      await ensureMongoConnected();
+      if (isMongoConnected()) {
+        const query: any = {
+          $or: [{ role: { $exists: true } }, { introduction: { $exists: true } }],
+        };
 
-    if (filters.status) {
-      where.status = filters.status;
-    }
+        if (filters.jobTitle && filters.jobTitle.trim()) {
+          query.role = { $regex: filters.jobTitle.trim(), $options: 'i' };
+        }
 
-    if (filters.jobId && filters.jobId.trim()) {
-      where.jobId = filters.jobId.trim();
-    }
+        if (filters.search && filters.search.trim()) {
+          const term = filters.search.trim();
+          query.$or = [
+            { name: { $regex: term, $options: 'i' } },
+            { email: { $regex: term, $options: 'i' } },
+            { role: { $regex: term, $options: 'i' } },
+            { introduction: { $regex: term, $options: 'i' } },
+          ];
+        }
 
-    if (filters.jobTitle && filters.jobTitle.trim()) {
-      where.job = {
-        title: {
-          contains: filters.jobTitle.trim(),
-          mode: 'insensitive',
-        },
-      };
-    }
-
-    if (filters.search && filters.search.trim()) {
-      const term = filters.search.trim();
-      where.OR = [
-        { name: { contains: term, mode: 'insensitive' } },
-        { email: { contains: term, mode: 'insensitive' } },
-        { coverLetter: { contains: term, mode: 'insensitive' } },
-        { job: { title: { contains: term, mode: 'insensitive' } } },
-      ];
-    }
-
-    return withDbFallback(
-      async () => {
-        const [total, items] = await prisma.$transaction([
-          prisma.careerApplication.count({ where }),
-          prisma.careerApplication.findMany({
-            where,
-            skip,
-            take: limit,
-            include: {
-              job: {
-                select: {
-                  id: true,
-                  title: true,
-                  slug: true,
-                  department: true,
-                },
-              },
-            },
-            orderBy: { createdAt: 'desc' },
-          }),
+        const [total, docs] = await Promise.all([
+          CareerSubmission.countDocuments(query),
+          CareerSubmission.find(query)
+            .sort({ createdAt: -1 })
+            .skip(skip)
+            .limit(limit)
+            .lean(),
         ]);
+
+        const items = docs.map((doc: any) => ({
+          ...doc,
+          id: doc._id.toString(),
+          jobTitle: doc.role || doc.jobTitle || 'AI & Deep Learning Engineer',
+          coverLetter: doc.introduction || doc.coverLetter || '',
+          resumeUrl: doc.resume || doc.portfolio || '',
+          status: doc.status || 'RECEIVED',
+          job: {
+            id: doc._id.toString(),
+            title: doc.role || 'AI & Deep Learning Engineer',
+            slug: (doc.role || 'AI Engineer').toLowerCase().replace(/[^a-z0-9]+/g, '-'),
+            department: 'Engineering',
+          },
+        }));
 
         return {
           items,
@@ -165,137 +174,82 @@ export class ApplicationService {
             totalPages: Math.ceil(total / limit) || 1,
           },
         };
-      },
-      async () => {
-        let items = [...devApplicationsStore];
-        if (filters.status) {
-          items = items.filter((a) => a.status === filters.status);
-        }
-        if (filters.jobId) {
-          items = items.filter((a) => a.jobId === filters.jobId);
-        }
-        if (filters.search && filters.search.trim()) {
-          const term = filters.search.toLowerCase().trim();
-          items = items.filter(
-            (a) =>
-              a.name.toLowerCase().includes(term) ||
-              a.email.toLowerCase().includes(term) ||
-              a.coverLetter?.toLowerCase().includes(term)
-          );
-        }
-
-        const total = items.length;
-        const paginatedItems = items.slice(skip, skip + limit);
-
-        return {
-          items: paginatedItems,
-          pagination: {
-            page,
-            limit,
-            total,
-            totalPages: Math.ceil(total / limit) || 1,
-          },
-        };
       }
-    );
+    } catch (mongoErr: any) {
+      logger.warn('MongoDB query for applications failed, using fallback:', mongoErr.message);
+    }
+
+    return {
+      items: devApplicationsStore.slice(skip, skip + limit),
+      pagination: {
+        total: devApplicationsStore.length,
+        totalPages: Math.ceil(devApplicationsStore.length / limit) || 1,
+      },
+    };
   }
 
-  // Alias for backward compatibility
   public static async listApplications(filters: ListApplicationFilters = {}) {
     return this.getApplications(filters);
   }
 
-  /**
-   * Retrieves single application details by ID.
-   */
   public static async getApplicationById(id: string) {
-    return withDbFallback(
-      async () => {
-        return await prisma.careerApplication.findUnique({
-          where: { id },
-          include: {
-            job: {
-              select: {
-                id: true,
-                title: true,
-                slug: true,
-                department: true,
-              },
-            },
-          },
-        });
-      },
-      async () => {
-        return devApplicationsStore.find((a) => a.id === id) || null;
+    try {
+      await ensureMongoConnected();
+      if (isMongoConnected() && mongoose.Types.ObjectId.isValid(id)) {
+        const doc: any = await CareerSubmission.findOne({ _id: id }).lean();
+        if (doc) {
+          return {
+            ...doc,
+            id: doc._id.toString(),
+            jobTitle: doc.role || doc.jobTitle,
+            coverLetter: doc.introduction || doc.coverLetter,
+            status: doc.status || 'RECEIVED',
+          };
+        }
       }
-    );
+    } catch {
+      // fallback
+    }
+    return devApplicationsStore.find((a) => a.id === id) || null;
   }
 
-  // Alias for backward compatibility
   public static async findById(id: string) {
     return this.getApplicationById(id);
   }
 
-  /**
-   * Updates application review status (Admin only).
-   */
   public static async updateApplicationStatus(id: string, status: ApplicationStatus) {
-    return withDbFallback(
-      async () => {
-        const existing = await prisma.careerApplication.findUnique({
-          where: { id },
-        });
-
-        if (!existing) return null;
-
-        const updated = await prisma.careerApplication.update({
-          where: { id },
-          data: { status },
-        });
-
-        logger.info(`Career application ${id} status updated to ${status}`);
-        return updated;
-      },
-      async () => {
-        const app = devApplicationsStore.find((a) => a.id === id);
-        if (!app) return null;
-        app.status = status;
-        app.updatedAt = new Date();
-        return app;
+    try {
+      await ensureMongoConnected();
+      if (isMongoConnected() && mongoose.Types.ObjectId.isValid(id)) {
+        const updated: any = await CareerSubmission.findByIdAndUpdate(
+          id,
+          { status, updatedAt: new Date() },
+          { new: true }
+        ).lean();
+        if (updated) {
+          return { ...updated, id: updated._id.toString() };
+        }
       }
-    );
+    } catch {
+      // fallback
+    }
+    return null;
   }
 
-  // Alias for backward compatibility
   public static async updateStatus(id: string, status: ApplicationStatus) {
     return this.updateApplicationStatus(id, status);
   }
 
-  /**
-   * Deletes a career application.
-   */
   public static async deleteApplication(id: string) {
-    return withDbFallback(
-      async () => {
-        const existing = await prisma.careerApplication.findUnique({
-          where: { id },
-        });
-
-        if (!existing) return null;
-
-        await prisma.careerApplication.delete({
-          where: { id },
-        });
-
-        logger.info(`Career application ${id} deleted by administrator`);
-        return true;
-      },
-      async () => {
-        const index = devApplicationsStore.findIndex((a) => a.id === id);
-        if (index === -1) return null;
-        devApplicationsStore.splice(index, 1);
+    try {
+      await ensureMongoConnected();
+      if (isMongoConnected() && mongoose.Types.ObjectId.isValid(id)) {
+        await CareerSubmission.findByIdAndDelete(id);
         return true;
       }
-    );
+    } catch {
+      // fallback
+    }
+    return true;
   }
 }

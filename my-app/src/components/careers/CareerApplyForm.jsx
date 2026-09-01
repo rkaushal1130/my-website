@@ -117,15 +117,15 @@ const CareerApplyForm = () => {
     setIsSubmitting(true);
 
     try {
-      const combinedCover = `[Role: ${formData.roleTitle} | Exp: ${formData.experience}${formData.linkedinUrl ? ` | LinkedIn: ${formData.linkedinUrl}` : ''}] ${formData.coverLetter.trim()}`;
-      
       const payload = {
         name: formData.name.trim(),
         email: formData.email.trim(),
         phone: formData.phone.trim() || undefined,
-        jobTitle: formData.roleTitle,
-        coverLetter: combinedCover,
-        resumeUrl: formData.portfolioUrl.trim() || formData.resumeUrl.trim() || undefined,
+        role: formData.roleTitle,
+        experience: formData.experience,
+        portfolio: formData.portfolioUrl.trim() || formData.linkedinUrl.trim() || undefined,
+        resume: fileName || formData.resumeUrl.trim() || undefined,
+        introduction: formData.coverLetter.trim(),
       };
 
       await careerService.submitApplication(payload);

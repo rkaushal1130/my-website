@@ -35,7 +35,7 @@ export const createContactSchema = z.object({
         .or(z.literal('')),
       message: z
         .string({ required_error: 'Message is required' })
-        .min(10, 'Message must be at least 10 characters')
+        .min(5, 'Message must be at least 5 characters')
         .max(5000, 'Message cannot exceed 5000 characters')
         .trim(),
     })

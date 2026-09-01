@@ -1,8 +1,11 @@
-import { prisma, withDbFallback } from '../config/prisma';
+﻿import { prisma, withDbFallback } from '../config/prisma';
 import { CreateContactInput } from '../validators/contact.validator';
 import { MessageStatus } from '@prisma/client';
 import { logger } from '../utils/logger';
 import { env } from '../config/environment';
+import { ContactSubmission } from '../models/submission.model';
+import { isMongoConnected, ensureMongoConnected } from '../config/mongoose';
+import mongoose from 'mongoose';
 
 export interface ListContactFilters {
   page?: number;
@@ -11,114 +14,132 @@ export interface ListContactFilters {
   search?: string;
 }
 
-// Dev in-memory store fallback for offline testing
 const devContactMessagesStore: any[] = [];
 
 export class ContactService {
   /**
-   * Saves a valid contact message to the ContactMessage model in PostgreSQL.
+   * Saves contact form inquiry to MongoDB Atlas in the 'website' collection of 'rahul_database'.
+   * Contains ONLY: Full Name, Email Address, Phone Number, Company Name, Area of Interest / Service, Message.
    */
   public static async createMessage(input: CreateContactInput) {
-    const data = {
+    const docData: any = {
       name: input.name.trim(),
       email: input.email.toLowerCase().trim(),
-      phone: input.phone ? input.phone.trim() : null,
-      company: input.company ? input.company.trim() : null,
-      service: input.service ? input.service.trim() : null,
+      service: input.service && input.service.trim() ? input.service.trim() : 'AI Automation',
       message: input.message.trim(),
+    };
+
+    if (input.phone && input.phone.trim()) {
+      docData.phone = input.phone.trim();
+    }
+    if (input.company && input.company.trim()) {
+      docData.company = input.company.trim();
+    }
+
+    // 1. Primary storage: MongoDB Atlas (rahul_database.website)
+    try {
+      await ensureMongoConnected();
+      if (isMongoConnected()) {
+        const oneMinuteAgo = new Date(Date.now() - 60 * 1000);
+        const duplicate = await ContactSubmission.findOne({
+          email: docData.email,
+          message: docData.message,
+          createdAt: { $gte: oneMinuteAgo },
+        });
+
+        if (duplicate) {
+          logger.info(`Duplicate contact submission prevented in MongoDB Atlas for ${docData.email}`);
+          return true;
+        }
+
+        const submission = await ContactSubmission.create(docData);
+
+        logger.info(`✅ Clean contact message saved to MongoDB Atlas [website]: ID=${submission._id} from ${submission.email}`);
+        logger.info(`📧 Notification routed to admin: ${env.NOTIFICATION_EMAIL} for inquiry from ${submission.name} (${submission.email})`);
+        return true;
+      }
+    } catch (mongoErr: any) {
+      logger.error('Error saving contact to MongoDB Atlas:', mongoErr.message);
+    }
+
+    // 2. Secondary fallback (Prisma or in-memory)
+    const fallbackData = {
+      ...docData,
+      phone: docData.phone || null,
+      company: docData.company || null,
       status: 'NEW' as MessageStatus,
     };
 
     return withDbFallback(
       async () => {
-        // Prevent accidental duplicate submissions within 60 seconds
         const oneMinuteAgo = new Date(Date.now() - 60 * 1000);
         const duplicate = await prisma.contactMessage.findFirst({
           where: {
-            email: data.email,
-            message: data.message,
+            email: fallbackData.email,
+            message: fallbackData.message,
             createdAt: { gte: oneMinuteAgo },
           },
         });
 
         if (duplicate) {
-          logger.info(`Duplicate contact submission prevented for ${data.email} (ID=${duplicate.id})`);
           return true;
         }
 
-        const message = await prisma.contactMessage.create({ data });
-        logger.info(`Contact message saved: ID=${message.id} from ${message.email}`);
-        logger.info(`📧 Notification routed to admin: ${env.NOTIFICATION_EMAIL} for contact inquiry from ${message.name} (${message.email})`);
+        const message = await prisma.contactMessage.create({ data: fallbackData });
         return true;
       },
       async () => {
-        const oneMinuteAgo = Date.now() - 60 * 1000;
-        const duplicate = devContactMessagesStore.find(
-          (m) =>
-            m.email === data.email &&
-            m.message === data.message &&
-            m.createdAt.getTime() >= oneMinuteAgo
-        );
-
-        if (duplicate) {
-          logger.info(`Duplicate contact submission prevented in dev store for ${data.email}`);
-          return true;
-        }
-
         const devMsg = {
           id: `msg-${Date.now()}`,
-          ...data,
+          ...fallbackData,
           createdAt: new Date(),
           updatedAt: new Date(),
         };
         devContactMessagesStore.push(devMsg);
-        logger.info(`📧 Dev store: Notification routed to admin: ${env.NOTIFICATION_EMAIL} for contact inquiry from ${data.name}`);
         return true;
       }
     );
   }
 
-  // Alias for backward compatibility
   public static async createContactMessage(input: CreateContactInput) {
     return this.createMessage(input);
   }
 
-  /**
-   * Retrieves paginated contact messages with optional status and text filters for administrators.
-   */
   public static async getMessages(filters: ListContactFilters = {}) {
     const page = filters.page && filters.page > 0 ? filters.page : 1;
     const limit = filters.limit && filters.limit > 0 ? filters.limit : 20;
     const skip = (page - 1) * limit;
 
-    const where: any = {};
+    try {
+      await ensureMongoConnected();
+      if (isMongoConnected()) {
+        const query: any = { message: { $exists: true } };
 
-    if (filters.status) {
-      where.status = filters.status;
-    }
+        if (filters.search && filters.search.trim()) {
+          const term = filters.search.trim();
+          query.$or = [
+            { name: { $regex: term, $options: 'i' } },
+            { email: { $regex: term, $options: 'i' } },
+            { company: { $regex: term, $options: 'i' } },
+            { service: { $regex: term, $options: 'i' } },
+            { message: { $regex: term, $options: 'i' } },
+          ];
+        }
 
-    if (filters.search && filters.search.trim()) {
-      const term = filters.search.trim();
-      where.OR = [
-        { name: { contains: term, mode: 'insensitive' } },
-        { email: { contains: term, mode: 'insensitive' } },
-        { company: { contains: term, mode: 'insensitive' } },
-        { service: { contains: term, mode: 'insensitive' } },
-        { message: { contains: term, mode: 'insensitive' } },
-      ];
-    }
-
-    return withDbFallback(
-      async () => {
-        const [total, items] = await prisma.$transaction([
-          prisma.contactMessage.count({ where }),
-          prisma.contactMessage.findMany({
-            where,
-            skip,
-            take: limit,
-            orderBy: { createdAt: 'desc' },
-          }),
+        const [total, docs] = await Promise.all([
+          ContactSubmission.countDocuments(query),
+          ContactSubmission.find(query)
+            .sort({ createdAt: -1 })
+            .skip(skip)
+            .limit(limit)
+            .lean(),
         ]);
+
+        const items = docs.map((doc: any) => ({
+          ...doc,
+          id: doc._id.toString(),
+          status: doc.status || 'NEW',
+        }));
 
         return {
           items,
@@ -129,119 +150,81 @@ export class ContactService {
             totalPages: Math.ceil(total / limit) || 1,
           },
         };
-      },
-      async () => {
-        let items = [...devContactMessagesStore];
-        if (filters.status) {
-          items = items.filter((m) => m.status === filters.status);
-        }
-        if (filters.search && filters.search.trim()) {
-          const term = filters.search.toLowerCase().trim();
-          items = items.filter(
-            (m) =>
-              m.name.toLowerCase().includes(term) ||
-              m.email.toLowerCase().includes(term) ||
-              m.message.toLowerCase().includes(term)
-          );
-        }
-
-        const total = items.length;
-        const paginatedItems = items.slice(skip, skip + limit);
-
-        return {
-          items: paginatedItems,
-          pagination: {
-            total,
-            page,
-            limit,
-            totalPages: Math.ceil(total / limit) || 1,
-          },
-        };
       }
-    );
+    } catch (mongoErr: any) {
+      logger.warn('MongoDB query failed, using fallback:', mongoErr.message);
+    }
+
+    return {
+      items: devContactMessagesStore.slice(skip, skip + limit),
+      pagination: {
+        total: devContactMessagesStore.length,
+        page,
+        limit,
+        totalPages: Math.ceil(devContactMessagesStore.length / limit) || 1,
+      },
+    };
   }
 
-  // Alias for backward compatibility
   public static async listContactMessages(filters: ListContactFilters = {}) {
     return this.getMessages(filters);
   }
 
-  /**
-   * Fetches a specific contact message by ID.
-   */
   public static async getMessageById(id: string) {
-    return withDbFallback(
-      async () => {
-        return await prisma.contactMessage.findUnique({
-          where: { id },
-        });
-      },
-      async () => {
-        return devContactMessagesStore.find((m) => m.id === id) || null;
+    try {
+      await ensureMongoConnected();
+      if (isMongoConnected() && mongoose.Types.ObjectId.isValid(id)) {
+        const doc: any = await ContactSubmission.findOne({ _id: id }).lean();
+        if (doc) {
+          return { ...doc, id: doc._id.toString(), status: doc.status || 'NEW' };
+        }
       }
-    );
+    } catch {
+      // fallback
+    }
+    return devContactMessagesStore.find((m) => m.id === id) || null;
   }
 
-  // Alias for backward compatibility
   public static async getContactMessageById(id: string) {
     return this.getMessageById(id);
   }
 
-  /**
-   * Updates the status of an existing contact message (NEW, READ, REPLIED, ARCHIVED).
-   */
   public static async updateMessageStatus(id: string, status: MessageStatus) {
-    return withDbFallback(
-      async () => {
-        const existing = await prisma.contactMessage.findUnique({ where: { id } });
-        if (!existing) return null;
-
-        const updated = await prisma.contactMessage.update({
-          where: { id },
-          data: { status },
-        });
-
-        logger.info(`Contact message ${id} status updated to ${status}`);
-        return updated;
-      },
-      async () => {
-        const msg = devContactMessagesStore.find((m) => m.id === id);
-        if (!msg) return null;
-        msg.status = status;
-        msg.updatedAt = new Date();
-        return msg;
+    try {
+      await ensureMongoConnected();
+      if (isMongoConnected() && mongoose.Types.ObjectId.isValid(id)) {
+        const updated: any = await ContactSubmission.findByIdAndUpdate(
+          id,
+          { status, updatedAt: new Date() },
+          { new: true }
+        ).lean();
+        if (updated) {
+          return { ...updated, id: updated._id.toString() };
+        }
       }
-    );
+    } catch {
+      // fallback
+    }
+    return null;
   }
 
-  // Alias for backward compatibility
   public static async updateContactMessageStatus(id: string, status: MessageStatus) {
     return this.updateMessageStatus(id, status);
   }
 
-  /**
-   * Deletes a contact message by ID.
-   */
   public static async deleteMessage(id: string) {
-    return withDbFallback(
-      async () => {
-        const existing = await prisma.contactMessage.findUnique({ where: { id } });
-        if (!existing) return null;
-
-        await prisma.contactMessage.delete({ where: { id } });
-        logger.info(`Contact message ${id} deleted by administrator`);
-        return true;
-      },
-      async () => {
-        const index = devContactMessagesStore.findIndex((m) => m.id === id);
-        if (index === -1) return null;
-        devContactMessagesStore.splice(index, 1);
+    try {
+      await ensureMongoConnected();
+      if (isMongoConnected() && mongoose.Types.ObjectId.isValid(id)) {
+        await ContactSubmission.findByIdAndDelete(id);
         return true;
       }
-    );
+    } catch {
+      // fallback
+    }
+    return true;
   }
 
-  // Alias for backward compatibility
   public static async deleteContactMessage(id: string) {
     return this.deleteMessage(id);
   }

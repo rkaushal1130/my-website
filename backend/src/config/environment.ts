@@ -9,6 +9,7 @@ const envSchema = z.object({
   PORT: z.string().default('8000').transform((val) => parseInt(val, 10)),
   DATABASE_URL: z.string().optional(),
   MONGODB_URL: z.string().optional(),
+  MONGODB_DB_NAME: z.string().default('rahul_database'),
   JWT_SECRET: z.string().default('neverquit_ai_jwt_secret_dev_key_2026'),
   FRONTEND_URL: z.string().default('http://localhost:5173'),
   ADMIN_EMAIL: z.string().default('kaushalrahul1130@gmail.com'),

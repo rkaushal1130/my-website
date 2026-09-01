@@ -24,13 +24,38 @@ export async function connectMongoDB(url?: string): Promise<typeof mongoose | nu
   }
 
   try {
-    const conn = await mongoose.connect(mongoUri);
-    logger.success(`🍃 MongoDB Connected: ${conn.connection.host}`);
+    const dbName = process.env.MONGODB_DB_NAME || 'rahul_database';
+    const conn = await mongoose.connect(mongoUri, {
+      dbName,
+    });
+    logger.success(`🍃 MongoDB Connected: ${conn.connection.host}, Database: ${conn.connection.name}`);
     return conn;
   } catch (error: any) {
     logger.error('Failed to connect to MongoDB:', error.message);
     return null;
   }
+}
+
+/**
+ * Checks if MongoDB is currently connected.
+ */
+export function isMongoConnected(): boolean {
+  return mongoose.connection.readyState === 1;
+}
+
+/**
+ * Ensures MongoDB is connected, attempting reconnection if necessary.
+ */
+export async function ensureMongoConnected(): Promise<boolean> {
+  if (mongoose.connection.readyState === 1) {
+    return true;
+  }
+  const url = process.env.MONGODB_URL || process.env.MONGODB_URI;
+  if (url) {
+    const conn = await connectMongoDB(url);
+    return conn !== null;
+  }
+  return false;
 }
 
 /**

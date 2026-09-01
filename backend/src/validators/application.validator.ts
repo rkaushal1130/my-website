@@ -3,13 +3,6 @@ import { z } from 'zod';
 export const createApplicationSchema = z.object({
   body: z
     .object({
-      jobId: z.string().min(1, 'Job ID cannot be empty').optional().or(z.literal('')).nullable(),
-      jobTitle: z
-        .string()
-        .min(2, 'Job title must be at least 2 characters')
-        .max(100, 'Job title cannot exceed 100 characters')
-        .trim()
-        .optional(),
       name: z
         .string({ required_error: 'Name is required' })
         .min(2, 'Name must be at least 2 characters')
@@ -21,11 +14,6 @@ export const createApplicationSchema = z.object({
         .max(150, 'Email cannot exceed 150 characters')
         .toLowerCase()
         .trim(),
-      coverLetter: z
-        .string({ required_error: 'Cover letter is required' })
-        .min(10, 'Cover letter must be at least 10 characters')
-        .max(10000, 'Cover letter cannot exceed 10000 characters')
-        .trim(),
       phone: z
         .string()
         .min(7, 'Phone number must be at least 7 digits')
@@ -34,15 +22,30 @@ export const createApplicationSchema = z.object({
         .optional()
         .or(z.literal(''))
         .nullable(),
-      resumeUrl: z
-        .string()
-        .url('Resume URL must be a valid file or cloud document URL (e.g. https://...)')
-        .max(500, 'Resume URL cannot exceed 500 characters')
-        .optional()
-        .or(z.literal(''))
-        .nullable(),
+      role: z.string().max(150).trim().optional().or(z.literal('')).nullable(),
+      roleTitle: z.string().max(150).trim().optional().or(z.literal('')).nullable(),
+      jobTitle: z.string().max(150).trim().optional().or(z.literal('')).nullable(),
+      jobId: z.string().max(150).trim().optional().or(z.literal('')).nullable(),
+      experience: z.string().max(100).trim().optional().or(z.literal('')).nullable(),
+      portfolio: z.string().max(500).trim().optional().or(z.literal('')).nullable(),
+      portfolioUrl: z.string().max(500).trim().optional().or(z.literal('')).nullable(),
+      linkedinUrl: z.string().max(500).trim().optional().or(z.literal('')).nullable(),
+      resume: z.string().max(500).trim().optional().or(z.literal('')).nullable(),
+      resumeUrl: z.string().max(500).trim().optional().or(z.literal('')).nullable(),
+      introduction: z.string().max(10000).trim().optional().or(z.literal('')).nullable(),
+      coverLetter: z.string().max(10000).trim().optional().or(z.literal('')).nullable(),
     })
-    .strict(), // Disallow any arbitrary extraneous fields (prevents users from overriding status)
+    .refine(
+      (data) =>
+        Boolean(
+          (data.introduction && data.introduction.trim().length >= 10) ||
+          (data.coverLetter && data.coverLetter.trim().length >= 10)
+        ),
+      {
+        message: 'Please provide a brief introduction (minimum 10 characters)',
+        path: ['introduction'],
+      }
+    ),
 });
 
 export const updateApplicationStatusSchema = z.object({

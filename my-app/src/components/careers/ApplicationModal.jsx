@@ -81,12 +81,14 @@ const ApplicationModal = ({ isOpen, onClose, position, job }) => {
     try {
       // 3. Dispatch to careerService.submitApplication
       await careerService.submitApplication({
-        jobId: jobId || undefined,
         name: formData.name.trim(),
         email: formData.email.trim(),
         phone: formData.phone.trim() || undefined,
-        resumeUrl: formData.portfolio.trim() || undefined,
-        coverLetter: formData.coverLetter.trim(),
+        role: jobTitle,
+        experience: 'General Applicant',
+        portfolio: formData.portfolio.trim() || undefined,
+        resume: fileName || undefined,
+        introduction: formData.coverLetter.trim(),
       });
 
       // 4. On success: Show success & clear form
