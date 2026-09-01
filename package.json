@@ -1,0 +1,17 @@
+{
+  "name": "neverquit-ai",
+  "version": "1.0.0",
+  "private": true,
+  "description": "NeverquiT AI Workspace root",
+  "scripts": {
+    "dev": "npm run dev --prefix my-app",
+    "dev:frontend": "npm run dev --prefix my-app",
+    "dev:backend": "npm run dev --prefix backend",
+    "build": "npm run build --prefix my-app",
+    "build:backend": "npm run build --prefix backend",
+    "preview": "npm run preview --prefix my-app"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}

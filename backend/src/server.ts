@@ -1,9 +1,15 @@
 import app from './app';
 import { env } from './config/environment';
 import { prisma } from './config/prisma';
+import { connectMongoDB, disconnectMongoDB } from './config/mongoose';
 import { logger } from './utils/logger';
 
 const PORT = env.PORT;
+
+// Connect to MongoDB if MONGODB_URL is provided
+if (env.MONGODB_URL) {
+  connectMongoDB(env.MONGODB_URL);
+}
 
 const server = app.listen(PORT, () => {
   logger.success(`🚀 NeverquiT AI API server is running on http://localhost:${PORT}`);
@@ -20,7 +26,8 @@ const handleShutdown = async (signal: string) => {
 
     try {
       await prisma.$disconnect();
-      logger.info('Database connection closed.');
+      await disconnectMongoDB();
+      logger.info('Database connections closed.');
     } catch (err) {
       logger.error('Error disconnecting from database:', err);
     }

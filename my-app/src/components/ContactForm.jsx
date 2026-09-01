@@ -77,9 +77,7 @@ const ContactForm = () => {
 
       // 7. Show useful validation errors if request fails without exposing raw backend errors
       const friendlyMessage =
-        err.status === 400 && err.message
-          ? err.message
-          : 'Unable to send your message right now. Please try again.';
+        err.message || 'Unable to send your message right now. Please try again.';
 
       setErrorMessage(friendlyMessage);
 
