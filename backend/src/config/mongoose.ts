@@ -1,8 +1,10 @@
 import mongoose from 'mongoose';
+import dns from 'dns';
 import { logger } from '../utils/logger';
 
 /**
  * Connects to MongoDB using Mongoose.
+ * Automatically handles SRV DNS resolution issues on Windows/ISP networks.
  */
 export async function connectMongoDB(url?: string): Promise<typeof mongoose | null> {
   const mongoUri = (url || process.env.MONGODB_URL || process.env.MONGODB_URI || '').trim();
@@ -10,6 +12,15 @@ export async function connectMongoDB(url?: string): Promise<typeof mongoose | nu
   if (!mongoUri) {
     logger.warn('No MONGODB_URL provided. Skipping MongoDB connection.');
     return null;
+  }
+
+  // Preemptively use public DNS for mongodb+srv URLs to avoid Windows ISP querySrv ECONNREFUSED issues
+  if (mongoUri.startsWith('mongodb+srv://')) {
+    try {
+      dns.setServers(['8.8.8.8', '8.8.4.4']);
+    } catch {
+      // Keep default DNS if setServers cannot be changed
+    }
   }
 
   try {

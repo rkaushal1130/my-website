@@ -1,9 +1,17 @@
 import dotenv from "dotenv";
+import dns from "dns";
 import mongoose from "mongoose";
 import { DB_NAME } from "./constants.js";
 import express from "express";
 
 dotenv.config();
+
+// Ensure SRV records can be resolved on Windows networks
+try {
+    dns.setServers(["8.8.8.8", "8.8.4.4"]);
+} catch {
+    // Keep system DNS if override fails
+}
 
 const app = express();
 
