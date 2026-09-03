@@ -85,8 +85,8 @@ const LoadingScreen = () => {
       style={{ perspective: '1400px' }}
     >
       {/* Volumetric Radial Ambient Lighting */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[700px] bg-radial-hero opacity-95 pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[450px] h-[450px] bg-[#FF1F26]/12 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] sm:w-[900px] h-[340px] sm:h-[700px] bg-radial-hero opacity-95 pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] sm:w-[450px] h-[280px] sm:h-[450px] bg-[#FF1F26]/12 rounded-full blur-[80px] sm:blur-[140px] pointer-events-none" />
       <div className="absolute inset-0 bg-grid-pattern opacity-15 pointer-events-none" />
 
       {/* Cybernetic horizontal light streaks */}
@@ -109,10 +109,10 @@ const LoadingScreen = () => {
             transform: 'translateZ(-50px) rotateX(72deg)',
           }}
         >
-          <div className="w-[480px] h-[480px] rounded-full border border-[#FF1F26]/25 animate-spin-slow shadow-[0_0_60px_rgba(255,31,38,0.35)]" />
-          <div className="absolute w-[360px] h-[360px] rounded-full border border-[#FF3030]/35 animate-pulse" />
-          <div className="absolute w-[240px] h-[240px] rounded-full border border-[#FF1F26]/50 shadow-[0_0_35px_rgba(255,31,38,0.5)]" />
-          <div className="absolute w-[140px] h-[140px] rounded-full bg-[#FF1F26]/15 blur-2xl" />
+          <div className="w-[300px] sm:w-[480px] h-[300px] sm:h-[480px] rounded-full border border-[#FF1F26]/25 animate-spin-slow shadow-[0_0_60px_rgba(255,31,38,0.35)]" />
+          <div className="absolute w-[220px] sm:w-[360px] h-[220px] sm:h-[360px] rounded-full border border-[#FF3030]/35 animate-pulse" />
+          <div className="absolute w-[160px] sm:w-[240px] h-[160px] sm:h-[240px] rounded-full border border-[#FF1F26]/50 shadow-[0_0_35px_rgba(255,31,38,0.5)]" />
+          <div className="absolute w-[120px] sm:w-[140px] h-[120px] sm:h-[140px] rounded-full bg-[#FF1F26]/15 blur-2xl" />
         </div>
 
         {/* 3D Floating Logo Showcase (Seamlessly Blended) */}
@@ -124,10 +124,10 @@ const LoadingScreen = () => {
           }}
         >
           {/* Intense ambient backlight */}
-          <div className="absolute w-72 h-72 sm:w-96 sm:h-96 bg-[#FF1F26] rounded-full blur-[100px] opacity-25 animate-pulse pointer-events-none" />
+          <div className="absolute w-60 h-60 sm:w-96 sm:h-96 bg-[#FF1F26] rounded-full blur-[80px] sm:blur-[100px] opacity-25 animate-pulse pointer-events-none" />
 
           {/* High-Resolution 3D Logo Presentation with seamless edge mask */}
-          <div className="relative w-full max-w-[420px] sm:max-w-[520px] transition-transform duration-700 hover:scale-105">
+          <div className="relative w-full max-w-[280px] sm:max-w-[420px] lg:max-w-[520px] transition-transform duration-700 hover:scale-105">
             <img
               src={introLogo}
               alt="NeverquiT AI 3D Monogram"
@@ -157,7 +157,7 @@ const LoadingScreen = () => {
 
         {/* Minimalist Futuristic Progress Bar */}
         <div
-          className="mt-7 w-72 sm:w-80 space-y-2"
+          className="mt-6 sm:mt-7 w-64 sm:w-80 space-y-2"
           style={{ transform: 'translateZ(20px)' }}
         >
           <div className="flex items-center justify-between text-xs font-medium text-[#8a8a8a]">
@@ -182,7 +182,7 @@ const LoadingScreen = () => {
       <button
         type="button"
         onClick={handleSkip}
-        className="absolute bottom-7 right-7 z-20 px-4 py-2 rounded-xl bg-[#0D0D10]/80 hover:bg-[#1A1A20] border border-[#26262B] hover:border-[#FF1F26] text-xs font-medium text-[#A7A7A7] hover:text-white flex items-center gap-2 transition-all duration-200 cursor-pointer shadow-lg active:scale-95 group"
+        className="absolute bottom-5 right-5 sm:bottom-7 sm:right-7 z-20 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-[#0D0D10]/80 hover:bg-[#1A1A20] border border-[#26262B] hover:border-[#FF1F26] text-xs font-medium text-[#A7A7A7] hover:text-white flex items-center gap-2 transition-all duration-200 cursor-pointer shadow-lg active:scale-95 group"
       >
         <span>ENTER SITE</span>
         <ArrowRight className="w-3.5 h-3.5 text-[#FF1F26] transition-transform group-hover:translate-x-1" />

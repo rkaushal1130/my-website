@@ -175,11 +175,11 @@ const HeroBackground = () => {
       {/* 1. LAYER: Ambient Deep Crimson & Laser Red Glows */}
       <div
         ref={glowRef}
-        className="absolute inset-0 transition-transform duration-100 ease-out will-change-transform"
+        className="absolute inset-0 overflow-hidden pointer-events-none transition-transform duration-100 ease-out will-change-transform"
       >
         {/* Massive Center High-Energy Radial Bloom */}
         <div
-          className="absolute top-[5%] left-1/2 -translate-x-1/2 w-[900px] sm:w-[1200px] lg:w-[1600px] h-[600px] sm:h-[750px] rounded-full blur-[140px] opacity-75 pointer-events-none"
+          className="absolute top-[5%] left-1/2 -translate-x-1/2 w-[340px] sm:w-[900px] lg:w-[1600px] h-[340px] sm:h-[600px] lg:h-[750px] rounded-full blur-[90px] sm:blur-[140px] opacity-75 pointer-events-none"
           style={{
             background:
               'radial-gradient(ellipse at center, rgba(255, 31, 38, 0.22) 0%, rgba(139, 0, 0, 0.14) 45%, rgba(61, 5, 5, 0.04) 70%, transparent 85%)',
@@ -188,7 +188,7 @@ const HeroBackground = () => {
 
         {/* Left Peripheral Glow */}
         <div
-          className="absolute top-[20%] left-[-10%] w-[550px] sm:w-[700px] h-[550px] sm:h-[700px] rounded-full blur-[160px] opacity-45 pointer-events-none"
+          className="hidden sm:block absolute top-[20%] left-[-10%] w-[550px] sm:w-[700px] h-[550px] sm:h-[700px] rounded-full blur-[160px] opacity-45 pointer-events-none"
           style={{
             background:
               'radial-gradient(circle at center, rgba(255, 42, 0, 0.14) 0%, rgba(139, 0, 0, 0.06) 50%, transparent 75%)',
@@ -197,7 +197,7 @@ const HeroBackground = () => {
 
         {/* Right Peripheral Glow */}
         <div
-          className="absolute top-[25%] right-[-10%] w-[550px] sm:w-[700px] h-[550px] sm:h-[700px] rounded-full blur-[160px] opacity-45 pointer-events-none"
+          className="hidden sm:block absolute top-[25%] right-[-10%] w-[550px] sm:w-[700px] h-[550px] sm:h-[700px] rounded-full blur-[160px] opacity-45 pointer-events-none"
           style={{
             background:
               'radial-gradient(circle at center, rgba(255, 31, 38, 0.16) 0%, rgba(61, 5, 5, 0.06) 50%, transparent 75%)',
@@ -205,19 +205,21 @@ const HeroBackground = () => {
         />
       </div>
 
-      {/* 2. LAYER: Perspective Cyber Grid (Horizon View) */}
-      <div
-        className="absolute bottom-0 inset-x-0 h-[340px] pointer-events-none opacity-20"
-        style={{
-          backgroundImage:
-            'linear-gradient(to right, rgba(255, 31, 38, 0.12) 1px, transparent 1px), linear-gradient(to bottom, rgba(255, 31, 38, 0.12) 1px, transparent 1px)',
-          backgroundSize: '48px 48px',
-          maskImage: 'linear-gradient(to bottom, transparent, black 40%, black 90%, transparent 100%)',
-          WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 40%, black 90%, transparent 100%)',
-          transform: 'perspective(600px) rotateX(60deg) translateY(60px)',
-          transformOrigin: 'bottom center',
-        }}
-      />
+      {/* 2. LAYER: Perspective Cyber Grid (Horizon View, clipped inside overflow-hidden parent) */}
+      <div className="absolute bottom-0 inset-x-0 h-[340px] overflow-hidden pointer-events-none">
+        <div
+          className="w-full h-full opacity-20"
+          style={{
+            backgroundImage:
+              'linear-gradient(to right, rgba(255, 31, 38, 0.12) 1px, transparent 1px), linear-gradient(to bottom, rgba(255, 31, 38, 0.12) 1px, transparent 1px)',
+            backgroundSize: '48px 48px',
+            maskImage: 'linear-gradient(to bottom, transparent, black 40%, black 90%, transparent 100%)',
+            WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 40%, black 90%, transparent 100%)',
+            transform: 'perspective(600px) rotateX(60deg) translateY(60px)',
+            transformOrigin: 'bottom center',
+          }}
+        />
+      </div>
 
       {/* 3. LAYER: Interactive Constellation Canvas */}
       <canvas

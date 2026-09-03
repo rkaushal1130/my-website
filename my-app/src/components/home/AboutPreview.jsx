@@ -44,7 +44,7 @@ const AboutPreview = () => {
           <div className="lg:col-span-5 space-y-6 text-left">
             <Badge>ABOUT US</Badge>
 
-            <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-bold text-white tracking-tight leading-[1.12]">
+            <h2 className="text-2xl sm:text-4xl lg:text-[44px] font-bold text-white tracking-tight leading-[1.12]">
               Building AI Solutions <br />
               That Make an{' '}
               <span className="text-[#FF1F26] drop-shadow-[0_0_20px_rgba(255,31,38,0.35)]">
@@ -61,7 +61,7 @@ const AboutPreview = () => {
             </p>
 
             <div className="pt-2">
-              <Button to="/about" variant="outline" size="md">
+              <Button to="/about" variant="outline" size="md" className="w-full sm:w-auto">
                 Learn More
               </Button>
             </div>

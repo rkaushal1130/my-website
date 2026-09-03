@@ -59,7 +59,7 @@ function App() {
           <Route
             path="*"
             element={
-              <div className="flex flex-col min-h-screen bg-[#050505] text-white selection:bg-[#FF1F26] selection:text-white">
+              <div className="flex flex-col min-h-screen bg-[#050505] text-white selection:bg-[#FF1F26] selection:text-white w-full max-w-full overflow-x-clip">
                 <Navbar onOpenDemo={() => setDemoModalOpen(true)} />
 
                 <main className="flex-grow">

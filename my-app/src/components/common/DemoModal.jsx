@@ -64,25 +64,25 @@ const DemoModal = ({ isOpen, onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
       <div 
         className="fixed inset-0 bg-black/80 backdrop-blur-md transition-opacity"
         onClick={handleClose}
       />
 
-      <div className="relative w-full max-w-xl rounded-[24px] bg-[#0B0B0B] border border-[#252525] shadow-[0_0_50px_rgba(255,31,38,0.25)] overflow-hidden z-10 transition-all my-8 text-left">
+      <div className="relative w-full max-w-xl rounded-[20px] sm:rounded-[24px] bg-[#0B0B0B] border border-[#252525] shadow-[0_0_50px_rgba(255,31,38,0.25)] overflow-hidden z-10 transition-all my-auto max-h-[92vh] flex flex-col text-left">
         <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#FF1F26] to-transparent" />
         
         <button
           onClick={handleClose}
-          className="absolute top-5 right-5 w-8 h-8 rounded-full bg-[#111111] border border-[#252525] text-[#A8A8A8] hover:text-white hover:border-[#FF1F26] flex items-center justify-center transition-colors z-20 cursor-pointer"
+          className="absolute top-3.5 right-3.5 sm:top-5 sm:right-5 w-9 h-9 rounded-full bg-[#161616] border border-[#252525] text-[#A8A8A8] hover:text-white hover:border-[#FF1F26] flex items-center justify-center transition-colors z-20 cursor-pointer shadow-md"
           aria-label="Close modal"
         >
           <X className="w-4 h-4" />
         </button>
 
         {submitted ? (
-          <div className="p-8 sm:p-12 text-center flex flex-col items-center">
+          <div className="p-6 sm:p-12 text-center flex flex-col items-center overflow-y-auto">
             <div className="w-16 h-16 rounded-2xl bg-[#FF1F26]/10 border border-[#FF1F26]/40 flex items-center justify-center text-[#FF1F26] mb-6 shadow-[0_0_25px_rgba(255,31,38,0.35)] animate-bounce">
               <CheckCircle2 className="w-8 h-8" />
             </div>
@@ -102,7 +102,7 @@ const DemoModal = ({ isOpen, onClose }) => {
             </Button>
           </div>
         ) : (
-          <div className="p-6 sm:p-8 md:p-10">
+          <div className="p-5 sm:p-8 md:p-10 overflow-y-auto">
             <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-[#111111] border border-[#252525] text-[11px] font-semibold tracking-wider text-[#FF3030] uppercase mb-3 w-fit">
               <Calendar className="w-3 h-3 text-[#FF1F26]" />
               Schedule 1-on-1 Consultation

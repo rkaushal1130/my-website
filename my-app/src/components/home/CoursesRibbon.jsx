@@ -90,9 +90,9 @@ const CoursesRibbon = () => {
       <div className="absolute right-0 top-0 bottom-0 w-20 sm:w-36 lg:w-48 bg-gradient-to-l from-[#060608] via-[#060608]/90 to-transparent z-20 pointer-events-none" />
 
       {/* Top Ticker Label */}
-      <div className="w-full px-5 sm:px-8 mb-3 flex items-center justify-between z-10 relative">
-        <div className="flex items-center gap-2 text-xs font-bold text-[#FF1F26] uppercase tracking-wider">
-          <span className="w-2 h-2 rounded-full bg-[#FF1F26] animate-ping" />
+      <div className="w-full px-4 sm:px-8 mb-3 flex flex-wrap items-center justify-between gap-2 z-10 relative">
+        <div className="flex items-center gap-2 text-[11px] sm:text-xs font-bold text-[#FF1F26] uppercase tracking-wider">
+          <span className="w-2 h-2 rounded-full bg-[#FF1F26] animate-ping shrink-0" />
           <span>TECH & AI SPECIALIZATION TRACKS</span>
         </div>
         <Link

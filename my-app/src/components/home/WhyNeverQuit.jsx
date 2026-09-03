@@ -39,14 +39,14 @@ const WhyNeverQuit = () => {
       <Container className="relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-20 space-y-3.5">
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-20 space-y-3.5">
           <Badge>THE NEVERQUIT AI ADVANTAGE</Badge>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-bold text-white tracking-tight leading-tight">
+          <h2 className="text-2xl sm:text-4xl lg:text-[44px] font-bold text-white tracking-tight leading-tight">
             Why Businesses Choose NeverquiT AI
           </h2>
 
-          <p className="text-base sm:text-lg text-[#A7A7A7] leading-relaxed font-normal">
+          <p className="text-sm sm:text-lg text-[#A7A7A7] leading-relaxed font-normal">
             We engineer uncompromising AI architecture tailored to deliver immediate, measurable enterprise ROI.
           </p>
         </div>
@@ -58,13 +58,13 @@ const WhyNeverQuit = () => {
           <div className="hidden lg:block absolute top-[52px] left-12 right-12 h-[2px] bg-gradient-to-r from-transparent via-[#FF1F26]/60 to-transparent shadow-[0_0_15px_#FF1F26] z-0" />
 
           {/* 4 Connected 3D Points */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6 relative z-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-6 relative z-10">
             {reasons.map((item, idx) => {
               const Icon = item.icon;
               return (
                 <div
                   key={idx}
-                  className="group relative p-7 sm:p-8 rounded-[20px] bg-[#101010] border border-[#242424] hover:border-[#FF1F26]/55 transition-all duration-300 hover:shadow-card-hover hover:-translate-y-2 flex flex-col justify-between"
+                  className="group relative p-6 sm:p-8 rounded-[20px] bg-[#101010] border border-[#242424] hover:border-[#FF1F26]/55 transition-all duration-300 hover:shadow-card-hover hover:-translate-y-2 flex flex-col justify-between"
                 >
                   {/* Glowing 3D Timeline Node Indicator */}
                   <div className="flex items-center justify-between mb-6">

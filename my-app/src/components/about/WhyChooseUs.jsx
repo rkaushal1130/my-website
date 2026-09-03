@@ -41,22 +41,22 @@ const WhyChooseUs = () => {
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-3.5">
           <Badge>THE NEVERQUIT AI ADVANTAGE</Badge>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-bold text-white tracking-tight leading-tight">
+          <h2 className="text-2xl sm:text-4xl lg:text-[44px] font-bold text-white tracking-tight leading-tight">
             Why Choose Us
           </h2>
 
-          <p className="text-base sm:text-lg text-[#A7A7A7] leading-relaxed font-normal">
+          <p className="text-sm sm:text-lg text-[#A7A7A7] leading-relaxed font-normal">
             Our technological pillars ensure your enterprise AI initiatives succeed on time and on budget.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
           {pillars.map((item, idx) => {
             const Icon = item.icon;
             return (
               <div
                 key={idx}
-                className="p-6 rounded-2xl bg-[#101010] border border-[#242424] hover:border-[#FF1F26]/55 transition-all duration-300 hover:-translate-y-1 group flex flex-col justify-between"
+                className="p-5 sm:p-6 rounded-2xl bg-[#101010] border border-[#242424] hover:border-[#FF1F26]/55 transition-all duration-300 hover:-translate-y-1 group flex flex-col justify-between"
               >
                 <div>
                   <div className="mb-4">

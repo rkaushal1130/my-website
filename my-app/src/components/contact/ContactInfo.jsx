@@ -34,7 +34,7 @@ const ContactInfo = () => {
       <div>
         <Badge className="mb-4">LET'S TALK</Badge>
 
-        <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-bold text-white tracking-tight leading-tight mb-3">
+        <h2 className="text-2xl sm:text-4xl lg:text-[40px] font-bold text-white tracking-tight leading-tight mb-3">
           Start A Conversation
         </h2>
 
@@ -49,13 +49,13 @@ const ContactInfo = () => {
           return (
             <div
               key={idx}
-              className="p-5 rounded-[22px] bg-[#101010]/95 border border-[#242424] hover:border-[#FF1F26]/60 backdrop-blur-md transition-all duration-300 hover:shadow-[0_15px_35px_rgba(255,31,38,0.18)] hover:-translate-y-1.5 hover:[transform:rotateX(2deg)_rotateY(-1.5deg)] flex items-start gap-4 group"
+              className="p-4 sm:p-5 rounded-[22px] bg-[#101010]/95 border border-[#242424] hover:border-[#FF1F26]/60 backdrop-blur-md transition-all duration-300 hover:shadow-[0_15px_35px_rgba(255,31,38,0.18)] hover:-translate-y-1.5 hover:[transform:rotateX(2deg)_rotateY(-1.5deg)] flex items-start gap-3.5 sm:gap-4 group"
             >
-              <div className="transition-transform duration-300 group-hover:scale-110">
+              <div className="transition-transform duration-300 group-hover:scale-110 shrink-0">
                 <IconBox icon={Icon} size="md" />
               </div>
 
-              <div>
+              <div className="min-w-0 flex-1">
                 <div className="text-xs uppercase tracking-wider text-[#FF3030] font-bold">
                   {card.title}
                 </div>
@@ -64,12 +64,12 @@ const ContactInfo = () => {
                     href={card.href}
                     target={card.href.startsWith('http') ? '_blank' : undefined}
                     rel={card.href.startsWith('http') ? 'noreferrer' : undefined}
-                    className="text-base font-semibold text-white hover:text-[#FF1F26] transition-colors inline-block mt-0.5"
+                    className="text-sm sm:text-base font-semibold text-white hover:text-[#FF1F26] transition-colors inline-block mt-0.5 break-all sm:break-normal"
                   >
                     {card.value}
                   </a>
                 ) : (
-                  <div className="text-base font-semibold text-white mt-0.5">
+                  <div className="text-sm sm:text-base font-semibold text-white mt-0.5 break-words">
                     {card.value}
                   </div>
                 )}

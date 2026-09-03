@@ -134,23 +134,23 @@ const ApplicationModal = ({ isOpen, onClose, position, job }) => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto bg-[#030303]/85 backdrop-blur-xl animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 overflow-y-auto bg-[#030303]/85 backdrop-blur-xl animate-in fade-in duration-200">
       {/* Modal Card */}
-      <div className="relative w-full max-w-xl rounded-3xl bg-[#0D0D10] border border-[#242424] p-6 sm:p-8 shadow-[0_25px_70px_rgba(0,0,0,0.95)] overflow-hidden text-left">
+      <div className="relative w-full max-w-xl rounded-2xl sm:rounded-3xl bg-[#0D0D10] border border-[#242424] p-5 sm:p-8 shadow-[0_25px_70px_rgba(0,0,0,0.95)] overflow-hidden text-left max-h-[92vh] flex flex-col my-auto">
         {/* Glow */}
         <div className="absolute top-0 right-0 w-60 h-60 bg-[#FF1F26]/8 rounded-full blur-3xl pointer-events-none" />
 
         {/* Close Button */}
         <button
           onClick={handleReset}
-          className="absolute top-6 right-6 p-2 rounded-xl bg-[#141418] border border-[#262626] text-[#A7A7A7] hover:text-white hover:border-[#FF1F26]/50 transition-colors cursor-pointer"
+          className="absolute top-4 right-4 sm:top-6 sm:right-6 p-2 rounded-xl bg-[#141418] border border-[#262626] text-[#A7A7A7] hover:text-white hover:border-[#FF1F26]/50 transition-colors cursor-pointer z-10 shadow-md"
         >
           <X className="w-4 h-4" />
         </button>
 
         {isSuccess ? (
           /* Success Screen */
-          <div className="py-8 text-center space-y-4">
+          <div className="py-8 text-center space-y-4 overflow-y-auto">
             <div className="w-16 h-16 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center mx-auto text-emerald-400">
               <CheckCircle2 className="w-8 h-8" />
             </div>
@@ -172,7 +172,7 @@ const ApplicationModal = ({ isOpen, onClose, position, job }) => {
           </div>
         ) : (
           /* Form Screen */
-          <div>
+          <div className="overflow-y-auto pr-0.5">
             <div className="mb-6 space-y-1">
               <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#FF1F26]">
                 <Sparkles className="w-3.5 h-3.5" />

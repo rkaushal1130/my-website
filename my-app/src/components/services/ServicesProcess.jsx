@@ -16,21 +16,21 @@ const ServicesProcess = () => {
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
           <Badge>HOW WE WORK</Badge>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-bold text-white tracking-tight leading-tight">
+          <h2 className="text-2xl sm:text-4xl lg:text-[44px] font-bold text-white tracking-tight leading-tight">
             Our Engineering Roadmap
           </h2>
 
-          <p className="text-base text-[#A7A7A7] font-normal leading-relaxed">
+          <p className="text-sm sm:text-base text-[#A7A7A7] font-normal leading-relaxed">
             A battle-tested 4-stage deployment methodology designed to de-risk delivery and accelerate time-to-value.
           </p>
         </div>
 
         {/* 4 Steps Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {processSteps.map((step, idx) => (
             <div
               key={idx}
-              className="p-6 rounded-2xl bg-[#0a0a0d] border border-[#222226] hover:border-[#FF1F26]/50 transition-all duration-300 hover:-translate-y-1 group flex flex-col justify-between"
+              className="p-5 sm:p-6 rounded-2xl bg-[#0a0a0d] border border-[#222226] hover:border-[#FF1F26]/50 transition-all duration-300 hover:-translate-y-1 group flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between mb-4">

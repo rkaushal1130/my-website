@@ -44,11 +44,11 @@ const WhatWeDo = () => {
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-3.5">
           <Badge>OUR SUITE</Badge>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-bold text-white tracking-tight leading-tight">
+          <h2 className="text-2xl sm:text-4xl lg:text-[44px] font-bold text-white tracking-tight leading-tight">
             What We Do
           </h2>
 
-          <p className="text-base sm:text-lg text-[#A7A7A7] leading-relaxed font-normal">
+          <p className="text-sm sm:text-lg text-[#A7A7A7] leading-relaxed font-normal">
             Comprehensive artificial intelligence software and deployment services tailored for scale.
           </p>
         </div>
@@ -60,7 +60,7 @@ const WhatWeDo = () => {
             return (
               <div
                 key={item.id}
-                className="group relative p-6 sm:p-7 rounded-[22px] bg-[#101010] border border-[#242424] hover:border-[#FF1F26]/60 transition-all duration-300 hover:shadow-card-hover hover:-translate-y-2 flex flex-col justify-between overflow-hidden"
+                className="group relative p-5 sm:p-7 rounded-[22px] bg-[#101010] border border-[#242424] hover:border-[#FF1F26]/60 transition-all duration-300 hover:shadow-card-hover hover:-translate-y-2 flex flex-col justify-between overflow-hidden"
               >
                 <div>
                   {/* Visual Icon Node Frame */}

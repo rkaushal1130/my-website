@@ -147,7 +147,7 @@ const IntegrationsSection = () => {
       `}</style>
 
       {/* Ambient Red & Dark Blue Glow in Background */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[550px] bg-radial-glow opacity-40 pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] sm:w-[700px] lg:w-[1000px] h-[340px] sm:h-[450px] lg:h-[550px] bg-radial-glow opacity-40 pointer-events-none" />
 
       <Container size="wide" className="relative z-10">
         

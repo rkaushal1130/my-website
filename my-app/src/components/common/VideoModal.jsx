@@ -20,39 +20,39 @@ const VideoModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
       <div 
         className="fixed inset-0 bg-black/85 backdrop-blur-md transition-opacity"
         onClick={onClose}
       />
 
-      <div className="relative w-full max-w-4xl rounded-[24px] bg-[#0B0B0B] border border-[#252525] shadow-[0_0_60px_rgba(255,31,38,0.3)] overflow-hidden z-10 transition-all my-8">
-        <div className="flex items-center justify-between px-6 py-4 border-b border-[#252525] bg-[#111111]">
-          <div className="flex items-center gap-3">
-            <div className="w-3 h-3 rounded-full bg-[#FF1F26] animate-ping" />
-            <span className="text-sm font-semibold text-white tracking-wide">
-              NeverquiT AI Platform Walkthrough (Live Architecture Demo)
+      <div className="relative w-full max-w-4xl rounded-[20px] sm:rounded-[24px] bg-[#0B0B0B] border border-[#252525] shadow-[0_0_60px_rgba(255,31,38,0.3)] overflow-hidden z-10 transition-all my-auto max-h-[94vh] flex flex-col">
+        <div className="flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 border-b border-[#252525] bg-[#111111] shrink-0">
+          <div className="flex items-center gap-2.5 sm:gap-3 min-w-0 pr-2">
+            <div className="w-2.5 h-2.5 rounded-full bg-[#FF1F26] animate-ping shrink-0" />
+            <span className="text-xs sm:text-sm font-semibold text-white tracking-wide truncate max-w-[210px] sm:max-w-none">
+              NeverquiT AI Platform Walkthrough (Architecture Demo)
             </span>
           </div>
           <button
             onClick={onClose}
-            className="w-8 h-8 rounded-full bg-[#050505] border border-[#252525] text-[#A8A8A8] hover:text-white hover:border-[#FF1F26] flex items-center justify-center transition-colors cursor-pointer"
+            className="w-8 h-8 rounded-full bg-[#050505] border border-[#252525] text-[#A8A8A8] hover:text-white hover:border-[#FF1F26] flex items-center justify-center transition-colors cursor-pointer shrink-0 shadow-sm"
             aria-label="Close video"
           >
             <X className="w-4 h-4" />
           </button>
         </div>
 
-        <div className="relative aspect-video bg-[#050505] overflow-hidden flex flex-col justify-between p-6 sm:p-8">
-          <div className="absolute inset-0 bg-grid-pattern opacity-30" />
-          <div className="absolute inset-0 bg-radial-hero opacity-80" />
+        <div className="relative aspect-video min-h-[300px] sm:min-h-0 bg-[#050505] overflow-y-auto sm:overflow-hidden flex flex-col justify-between p-4 sm:p-8 flex-grow">
+          <div className="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none" />
+          <div className="absolute inset-0 bg-radial-hero opacity-80 pointer-events-none" />
 
-          <div className="relative z-10 flex items-center justify-between">
-            <div className="flex items-center gap-2 px-3 py-1 rounded-md bg-[#111111]/80 border border-[#252525] text-xs font-mono text-[#FF3030]">
+          <div className="relative z-10 flex flex-wrap items-center justify-between gap-2">
+            <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#111111]/80 border border-[#252525] text-[11px] sm:text-xs font-mono text-[#FF3030]">
               <Cpu className="w-3.5 h-3.5 text-[#FF1F26]" />
               <span>CLUSTER: NQ-GPU-NODE-09</span>
             </div>
-            <div className="flex items-center gap-2 px-3 py-1 rounded-md bg-[#111111]/80 border border-[#252525] text-xs font-mono text-[#A8A8A8]">
+            <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#111111]/80 border border-[#252525] text-[11px] sm:text-xs font-mono text-[#A8A8A8]">
               <Activity className="w-3.5 h-3.5 text-[#FF1F26]" />
               <span>LATENCY: 14ms (p99)</span>
             </div>

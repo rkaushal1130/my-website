@@ -16,11 +16,11 @@ const ServicesGrid = ({ onOpenDemo }) => {
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
           <Badge>WHAT WE DELIVER</Badge>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-bold text-white tracking-tight leading-tight">
+          <h2 className="text-2xl sm:text-4xl lg:text-[44px] font-bold text-white tracking-tight leading-tight">
             Specialized AI Capabilities
           </h2>
 
-          <p className="text-base text-[#A7A7A7] font-normal leading-relaxed">
+          <p className="text-sm sm:text-base text-[#A7A7A7] font-normal leading-relaxed">
             Engineered from ground up for enterprise reliability, high throughput, and strict security standards.
           </p>
         </div>
@@ -32,7 +32,7 @@ const ServicesGrid = ({ onOpenDemo }) => {
             return (
               <div
                 key={service.id}
-                className="p-6 sm:p-7 rounded-[22px] bg-[#0A0A0D] border border-[#222226] hover:border-[#FF1F26]/60 backdrop-blur-md transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_15px_35px_rgba(255,31,38,0.18)] group flex flex-col justify-between"
+                className="p-5 sm:p-7 rounded-[22px] bg-[#0A0A0D] border border-[#222226] hover:border-[#FF1F26]/60 backdrop-blur-md transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_15px_35px_rgba(255,31,38,0.18)] group flex flex-col justify-between"
               >
                 <div>
                   

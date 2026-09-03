@@ -11,7 +11,7 @@ const Container = ({ children, className = '', size = 'default', ...props }) => 
 
   return (
     <div
-      className={`w-full mx-auto px-6 sm:px-10 md:px-14 lg:px-20 xl:px-24 2xl:px-28 ${sizeClasses[size] || sizeClasses.default} ${className}`}
+      className={`w-full mx-auto px-4 sm:px-6 md:px-10 lg:px-20 xl:px-24 2xl:px-28 ${sizeClasses[size] || sizeClasses.default} ${className}`}
       {...props}
     >
       {children}

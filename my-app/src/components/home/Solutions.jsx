@@ -26,11 +26,11 @@ const Solutions = () => {
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-3.5">
           <Badge>OUR SOLUTIONS</Badge>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-bold text-white tracking-tight leading-tight">
+          <h2 className="text-2xl sm:text-4xl lg:text-[44px] font-bold text-white tracking-tight leading-tight">
             Intelligence Built For Your Business
           </h2>
 
-          <p className="text-base sm:text-lg text-[#A7A7A7] leading-relaxed font-normal">
+          <p className="text-sm sm:text-lg text-[#A7A7A7] leading-relaxed font-normal">
             Powerful AI solutions designed to automate operations, unlock insights and accelerate growth.
           </p>
         </div>
@@ -43,7 +43,7 @@ const Solutions = () => {
               <Link
                 key={item.id}
                 to="/contact"
-                className="group relative p-7 sm:p-8 rounded-[20px] bg-[#101010] border border-[#242424] hover:border-[#FF1F26]/55 transition-all duration-300 hover:shadow-card-hover hover:-translate-y-2 hover:[transform:rotateX(2deg)_rotateY(-2deg)] flex flex-col justify-between overflow-hidden"
+                className="group relative p-6 sm:p-8 rounded-[20px] bg-[#101010] border border-[#242424] hover:border-[#FF1F26]/55 transition-all duration-300 hover:shadow-card-hover hover:-translate-y-2 hover:[transform:rotateX(2deg)_rotateY(-2deg)] flex flex-col justify-between overflow-hidden"
               >
                 <div className="absolute -top-10 -right-10 w-36 h-36 bg-[#FF1F26]/8 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 

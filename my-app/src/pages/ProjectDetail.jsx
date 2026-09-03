@@ -210,23 +210,23 @@ const ProjectDetail = ({ onOpenDemo }) => {
             </div>
 
             {/* Title & Tagline */}
-            <div className="max-w-4xl space-y-4 text-left">
-              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.1]">
+            <div className="max-w-4xl space-y-3 sm:space-y-4 text-left">
+              <h1 className="text-2xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.1]">
                 {project.title}
               </h1>
-              <p className="text-base sm:text-xl text-[#FF3030] font-medium leading-relaxed">
+              <p className="text-sm sm:text-xl text-[#FF3030] font-medium leading-relaxed">
                 {project.shortDescription}
               </p>
             </div>
 
             {/* Hero Quick Action Buttons */}
-            <div className="flex flex-wrap items-center gap-4 pt-8">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-6 sm:pt-8 w-full sm:w-auto">
               {project.liveUrl && (
                 <a
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-[#FF1F26] text-white text-sm sm:text-base font-bold shadow-[0_0_25px_rgba(255,31,38,0.35)] hover:bg-[#FF3030] hover:shadow-[0_0_35px_rgba(255,31,38,0.5)] transition-all"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#FF1F26] text-white text-sm sm:text-base font-bold shadow-[0_0_25px_rgba(255,31,38,0.35)] hover:bg-[#FF3030] hover:shadow-[0_0_35px_rgba(255,31,38,0.5)] transition-all w-full sm:w-auto"
                 >
                   <ExternalLink className="w-4 h-4" />
                   <span>Launch Live Project</span>
@@ -237,7 +237,7 @@ const ProjectDetail = ({ onOpenDemo }) => {
                   href={project.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-[#14141A] border border-white/[0.1] text-sm sm:text-base font-mono font-semibold text-white hover:border-[#FF1F26] hover:text-[#FF1F26] transition-colors"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#14141A] border border-white/[0.1] text-sm sm:text-base font-mono font-semibold text-white hover:border-[#FF1F26] hover:text-[#FF1F26] transition-colors w-full sm:w-auto"
                 >
                   <GithubIcon className="w-4 h-4" />
                   <span>Source Repository</span>

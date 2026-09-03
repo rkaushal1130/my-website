@@ -126,7 +126,7 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="relative rounded-[24px] bg-[#101010]/95 border border-[#242424] hover:border-[#FF1F26]/40 backdrop-blur-md p-6 sm:p-8 lg:p-10 shadow-[0_25px_60px_rgba(0,0,0,0.9)] transition-all duration-400 overflow-hidden text-left">
+    <div className="relative rounded-[20px] sm:rounded-[24px] bg-[#101010]/95 border border-[#242424] hover:border-[#FF1F26]/40 backdrop-blur-md p-5 sm:p-8 lg:p-10 shadow-[0_25px_60px_rgba(0,0,0,0.9)] transition-all duration-400 overflow-hidden text-left">
       {/* Ambient Red Glow & Top Gradient Border */}
       <div className="absolute top-0 right-0 w-80 h-80 bg-[#FF1F26]/6 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#FF1F26]/40 to-transparent" />

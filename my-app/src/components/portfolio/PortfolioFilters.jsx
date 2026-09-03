@@ -18,7 +18,7 @@ const PortfolioFilters = ({
   totalCount = 0,
 }) => {
   return (
-    <div className="py-6 border-y border-white/[0.08] bg-[#0A0A0A]/95 backdrop-blur-xl sticky top-16 md:top-20 z-30 transition-all duration-300 shadow-[0_10px_30px_rgba(0,0,0,0.85)]">
+    <div className="py-4 sm:py-6 border-y border-white/[0.08] bg-[#0A0A0A]/95 backdrop-blur-xl sticky top-14 sm:top-16 md:top-20 z-30 transition-all duration-300 shadow-[0_10px_30px_rgba(0,0,0,0.85)]">
       <Container size="wide">
         
         <div className="flex flex-col xl:flex-row items-center justify-between gap-5">

@@ -109,10 +109,10 @@ const ProjectModal = ({ project, isOpen, onClose, onOpenDemo }) => {
         {/* ========================================================================= */}
         {/* TOP BAR: Navigation, Slug & Close Button */}
         {/* ========================================================================= */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-white/[0.08] bg-[#0E0E14]/80 backdrop-blur-md shrink-0">
-          <div className="flex items-center gap-3">
-            <div className="w-2.5 h-2.5 rounded-full bg-[#FF1F26] animate-ping" />
-            <span className="text-xs font-mono font-bold uppercase tracking-wider text-white">
+        <div className="flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 border-b border-white/[0.08] bg-[#0E0E14]/80 backdrop-blur-md shrink-0">
+          <div className="flex items-center gap-2.5 sm:gap-3 min-w-0 pr-2">
+            <div className="w-2.5 h-2.5 rounded-full bg-[#FF1F26] animate-ping shrink-0" />
+            <span className="text-xs font-mono font-bold uppercase tracking-wider text-white truncate max-w-[200px] sm:max-w-none">
               FULL-STACK ARCHIVE // {project.slug}
             </span>
           </div>
@@ -120,7 +120,7 @@ const ProjectModal = ({ project, isOpen, onClose, onOpenDemo }) => {
           <button
             type="button"
             onClick={onClose}
-            className="w-8 h-8 rounded-full bg-[#16161D] border border-white/[0.1] text-[#A7A7A7] hover:text-white hover:border-[#FF1F26] hover:bg-[#1E1E28] flex items-center justify-center transition-colors cursor-pointer"
+            className="w-9 h-9 sm:w-8 sm:h-8 rounded-full bg-[#16161D] border border-white/[0.1] text-[#A7A7A7] hover:text-white hover:border-[#FF1F26] hover:bg-[#1E1E28] flex items-center justify-center transition-colors cursor-pointer shrink-0"
             aria-label="Close case study modal"
           >
             <X className="w-4 h-4" />
@@ -404,11 +404,11 @@ const ProjectModal = ({ project, isOpen, onClose, onOpenDemo }) => {
         {/* ========================================================================= */}
         {/* BOTTOM ACTION BAR */}
         {/* ========================================================================= */}
-        <div className="p-5 border-t border-white/[0.08] bg-[#0A0A0E] flex flex-col sm:flex-row items-center justify-between gap-4 shrink-0">
+        <div className="p-4 sm:p-5 border-t border-white/[0.08] bg-[#0A0A0E] flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 shrink-0">
           <div className="text-xs text-[#737373] font-mono text-center sm:text-left">
             NeverquiT AI Production Architecture
           </div>
-          <div className="flex items-center gap-3 w-full sm:w-auto">
+          <div className="flex flex-col sm:flex-row items-center gap-2.5 sm:gap-3 w-full sm:w-auto">
             <Button
               onClick={() => {
                 onClose();
@@ -418,7 +418,7 @@ const ProjectModal = ({ project, isOpen, onClose, onOpenDemo }) => {
               size="md"
               className="w-full sm:w-auto"
             >
-              Discuss Similar Architecture
+              Discuss Architecture
             </Button>
             <Button
               onClick={onClose}

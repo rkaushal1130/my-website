@@ -19,33 +19,33 @@ const ServicesHero = ({ onOpenDemo }) => {
             ENTERPRISE AI SERVICES
           </Badge>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-[62px] xl:text-[68px] font-bold text-white tracking-tight leading-[1.06]">
+          <h1 className="text-3xl sm:text-5xl lg:text-[62px] xl:text-[68px] font-bold text-white tracking-tight leading-[1.08] sm:leading-[1.06]">
             Architecting The Next Generation of{' '}
             <span className="text-[#FF1F26] text-glow inline-block">
               Intelligent Systems
             </span>
           </h1>
 
-          <p className="text-base sm:text-lg md:text-xl text-[#A7A7A7] leading-relaxed max-w-2xl font-normal mx-auto">
+          <p className="text-sm sm:text-lg md:text-xl text-[#A7A7A7] leading-relaxed max-w-2xl font-normal mx-auto">
             From autonomous multi-agent swarms to custom fine-tuned LLMs and high-throughput inference engines, we build AI solutions designed for measurable enterprise impact.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
-            <Button onClick={onOpenDemo} variant="primary" size="lg">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4 pt-2 w-full sm:w-auto">
+            <Button onClick={onOpenDemo} variant="primary" size="lg" className="w-full sm:w-auto">
               Book a Consultation
             </Button>
-            <Button to="/contact" variant="secondary" size="lg">
+            <Button to="/contact" variant="secondary" size="lg" className="w-full sm:w-auto">
               Talk to an Architect
             </Button>
           </div>
 
           {/* Service Guarantees */}
-          <div className="pt-8 border-t border-[#1D1D1D] grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 text-xs font-medium text-[#8a8a8a] w-full max-w-3xl">
-            <div className="p-3.5 rounded-xl bg-[#0a0a0d] border border-[#222]">
+          <div className="pt-8 border-t border-[#1D1D1D] grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 text-xs font-medium text-[#8a8a8a] w-full max-w-3xl">
+            <div className="p-3 sm:p-3.5 rounded-xl bg-[#0a0a0d] border border-[#222]">
               <span className="text-base font-bold text-white block">10-Day PoC</span>
               Rapid Prototyping
             </div>
-            <div className="p-3.5 rounded-xl bg-[#0a0a0d] border border-[#222]">
+            <div className="p-3 sm:p-3.5 rounded-xl bg-[#0a0a0d] border border-[#222]">
               <span className="text-base font-bold text-[#FF1F26] block">100% Private</span>
               Zero Data Retention
             </div>

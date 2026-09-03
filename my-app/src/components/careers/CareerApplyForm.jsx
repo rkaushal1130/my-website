@@ -185,18 +185,18 @@ const CareerApplyForm = () => {
         <div className="text-center max-w-3xl mx-auto mb-14 space-y-4">
           <Badge icon={Sparkles}>TALENT APPLICATION</Badge>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-[46px] font-bold text-white tracking-tight leading-tight">
+          <h2 className="text-2xl sm:text-4xl lg:text-[46px] font-bold text-white tracking-tight leading-tight">
             Apply to Join{' '}
             <span className="text-[#FF1F26] text-glow inline-block">NeverquiT AI</span>
           </h2>
 
-          <p className="text-base sm:text-lg text-[#A7A7A7] leading-relaxed font-normal">
+          <p className="text-sm sm:text-lg text-[#A7A7A7] leading-relaxed font-normal">
             Whether you are an LLM architect, distributed systems engineer, or visionary designer — submit your details below to begin the application process.
           </p>
         </div>
 
         {/* Form Container Card */}
-        <div className="max-w-4xl mx-auto relative rounded-[28px] bg-[#0c0c0f]/95 border border-[#242424] hover:border-[#FF1F26]/35 backdrop-blur-xl p-6 sm:p-10 lg:p-12 shadow-[0_25px_70px_rgba(0,0,0,0.95)] transition-all duration-400 overflow-hidden text-left">
+        <div className="max-w-4xl mx-auto relative rounded-[22px] sm:rounded-[28px] bg-[#0c0c0f]/95 border border-[#242424] hover:border-[#FF1F26]/35 backdrop-blur-xl p-5 sm:p-10 lg:p-12 shadow-[0_25px_70px_rgba(0,0,0,0.95)] transition-all duration-400 overflow-hidden text-left">
           
           {/* Subtle Ambient Red Glows */}
           <div className="absolute top-0 right-0 w-96 h-96 bg-[#FF1F26]/6 rounded-full blur-3xl pointer-events-none" />

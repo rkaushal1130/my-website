@@ -16,7 +16,7 @@ const CareerHero = ({ onApplyClick }) => {
           
           <Badge>CAREERS AT NEVERQUIT AI</Badge>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-[62px] xl:text-[68px] font-bold text-white tracking-tight leading-[1.06]">
+          <h1 className="text-3xl sm:text-5xl lg:text-[62px] xl:text-[68px] font-bold text-white tracking-tight leading-[1.08] sm:leading-[1.06]">
             Build The{' '}
             <span className="text-[#FF1F26] text-glow inline-block">
               Future
@@ -24,15 +24,16 @@ const CareerHero = ({ onApplyClick }) => {
             With Us
           </h1>
 
-          <p className="text-base sm:text-lg md:text-xl text-[#A7A7A7] leading-relaxed max-w-2xl font-normal mx-auto">
+          <p className="text-sm sm:text-lg md:text-xl text-[#A7A7A7] leading-relaxed max-w-2xl font-normal mx-auto">
             Join an elite engineering team dedicated to solving high-stakes artificial intelligence challenges. We offer top-tier compensation, massive compute budgets, and radical autonomy.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4 pt-2 w-full sm:w-auto">
             <Button
               onClick={() => onApplyClick && onApplyClick({ title: 'General Application', department: 'Any' })}
               variant="primary"
               size="lg"
+              className="w-full sm:w-auto"
               customIcon={<Send className="w-4 h-4 text-white" />}
             >
               Apply Now
@@ -40,20 +41,20 @@ const CareerHero = ({ onApplyClick }) => {
           </div>
 
           {/* Highlights (Clean font styling) */}
-          <div className="pt-8 border-t border-[#1D1D1D] grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 text-xs font-medium text-[#8a8a8a] w-full max-w-3xl">
-            <div className="p-3.5 rounded-xl bg-[#0a0a0d] border border-[#222]">
+          <div className="pt-8 border-t border-[#1D1D1D] grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 text-xs font-medium text-[#8a8a8a] w-full max-w-3xl">
+            <div className="p-3 sm:p-3.5 rounded-xl bg-[#0a0a0d] border border-[#222]">
               <span className="text-base font-bold text-white block">Top 1% Tier</span>
               Competitive Compensation
             </div>
-            <div className="p-3.5 rounded-xl bg-[#0a0a0d] border border-[#222]">
+            <div className="p-3 sm:p-3.5 rounded-xl bg-[#0a0a0d] border border-[#222]">
               <span className="text-base font-bold text-[#FF1F26] block">H100 Clusters</span>
               Frontier Compute
             </div>
-            <div className="p-3.5 rounded-xl bg-[#0a0a0d] border border-[#222]">
+            <div className="p-3 sm:p-3.5 rounded-xl bg-[#0a0a0d] border border-[#222]">
               <span className="text-base font-bold text-white block">India / Remote</span>
               Flexible Work
             </div>
-            <div className="p-3.5 rounded-xl bg-[#0a0a0d] border border-[#222]">
+            <div className="p-3 sm:p-3.5 rounded-xl bg-[#0a0a0d] border border-[#222]">
               <span className="text-base font-bold text-[#FF1F26] block">Full Ownership</span>
               High Autonomy
             </div>

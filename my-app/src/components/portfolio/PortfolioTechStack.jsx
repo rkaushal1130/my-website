@@ -286,7 +286,7 @@ const PortfolioTechStack = () => {
           </div>
 
           {/* Main Heading */}
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-[1.1]">
+          <h2 className="text-2xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-[1.1]">
             Technology <span className="text-[#FF1F26] text-glow">Stack</span>
           </h2>
 
