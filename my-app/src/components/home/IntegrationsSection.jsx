@@ -120,7 +120,7 @@ const IntegrationsSection = () => {
   return (
     <section
       id="integrations"
-      className="py-20 sm:py-28 relative overflow-hidden bg-[#030303] font-sans"
+      className="py-20 sm:py-28 relative overflow-hidden bg-[#171717] font-sans"
     >
       {/* Dynamic Keyframes for Spring Pop-out Animation */}
       <style>{`
@@ -240,7 +240,7 @@ const IntegrationsSection = () => {
               </span>
             </div>
 
-            {/* Box 2 (Center Hero Hub): NeverquiT AI */}
+            {/* Box 2 (Center Hero Hub): Avaura */}
             <div
               style={
                 line2Visible
@@ -253,17 +253,12 @@ const IntegrationsSection = () => {
             >
               <div className="absolute inset-0 bg-gradient-to-r from-[#FF1F26]/5 via-[#FF1F26]/12 to-[#FF1F26]/5 pointer-events-none" />
 
-              <div className="flex items-center justify-center gap-2.5 sm:gap-3.5 relative z-10 max-w-full">
-                <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-transparent border border-[#FF1F26]/40 p-1 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform duration-300 shadow-[0_0_18px_rgba(255,31,38,0.35)]">
-                  <img
-                    src={brandLogo}
-                    alt="NeverquiT AI"
-                    className="w-full h-full object-contain"
-                  />
-                </div>
-                <span className="text-base sm:text-xl md:text-2xl font-bold text-white tracking-tight whitespace-nowrap">
-                  NeverquiT <span className="text-[#FF1F26] text-glow">AI</span>
-                </span>
+              <div className="flex items-center justify-center relative z-10 max-w-full px-2">
+                <img
+                  src={brandLogo}
+                  alt="Avaura"
+                  className="h-14 sm:h-16 md:h-[72px] w-auto max-w-[210px] sm:max-w-[250px] md:max-w-[280px] object-contain group-hover:scale-105 transition-transform duration-300 drop-shadow-[0_0_24px_rgba(255,31,38,0.5)]"
+                />
               </div>
             </div>
 

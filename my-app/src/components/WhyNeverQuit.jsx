@@ -30,7 +30,7 @@ const WhyNeverQuit = () => {
   ];
 
   return (
-    <section className="py-20 sm:py-28 relative bg-[#0B0B0B]/40 border-y border-[#1C1C1C]">
+    <section className="py-20 sm:py-28 relative bg-[#131313]/40 border-y border-[#1C1C1C]">
       
       {/* Background Subtle Red Ambient Glow */}
       <div className="absolute top-1/2 right-0 -translate-y-1/2 w-96 h-96 bg-[#FF1F26]/5 rounded-full blur-3xl pointer-events-none" />
@@ -39,12 +39,12 @@ const WhyNeverQuit = () => {
         
           <div className="flex items-center justify-center gap-4 text-[13px] sm:text-sm font-sans font-bold uppercase tracking-wider text-white select-none">
             <span className="w-12 sm:w-24 h-px bg-gradient-to-r from-transparent via-[#FF1F26]/60 to-[#FF1F26]" />
-            <span>THE NEVERQUIT AI ADVANTAGE</span>
+            <span>THE AVAURA ADVANTAGE</span>
             <span className="w-12 sm:w-24 h-px bg-gradient-to-l from-transparent via-[#FF1F26]/60 to-[#FF1F26]" />
           </div>
 
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-tight">
-            Why Businesses Choose NeverquiT AI
+            Why Businesses Choose Avaura
           </h2>
 
           <p className="text-base sm:text-lg text-[#A8A8A8] leading-relaxed font-normal">
@@ -59,11 +59,11 @@ const WhyNeverQuit = () => {
             return (
               <div
                 key={idx}
-                className="group relative p-7 sm:p-8 rounded-[20px] bg-[#101010] border border-[#252525] hover:border-[#FF1F26]/60 transition-all duration-400 hover:shadow-[0_10px_35px_-10px_rgba(255,31,38,0.2)] hover:-translate-y-1 flex flex-col justify-between"
+                className="group relative p-7 sm:p-8 rounded-[20px] bg-[#171717] border border-[#252525] hover:border-[#FF1F26]/60 transition-all duration-400 hover:shadow-[0_10px_35px_-10px_rgba(255,31,38,0.2)] hover:-translate-y-1 flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between mb-6">
-                    <div className="w-11 h-11 rounded-xl bg-[#050505] border border-[#242424] group-hover:border-[#FF1F26] flex items-center justify-center text-[#FF1F26] transition-colors shadow-sm">
+                    <div className="w-11 h-11 rounded-xl bg-[#0D0D0D] border border-[#242424] group-hover:border-[#FF1F26] flex items-center justify-center text-[#FF1F26] transition-colors shadow-sm">
                       <Icon className="w-5 h-5" />
                     </div>
 

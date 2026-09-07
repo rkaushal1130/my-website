@@ -31,7 +31,7 @@ const AboutPreview = () => {
   ];
 
   return (
-    <section className="py-20 sm:py-28 relative overflow-hidden bg-[#030303]">
+    <section className="py-20 sm:py-28 relative overflow-hidden bg-[#171717]">
       {/* Background Red Ambient Glow */}
       <div className="absolute top-1/2 left-0 -translate-y-1/2 w-96 h-96 bg-[#FF1F26]/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none" />
@@ -60,7 +60,7 @@ const AboutPreview = () => {
 
             {/* Description */}
             <p className="text-base sm:text-lg text-[#A8A8A8] leading-relaxed font-normal">
-              At NeverquiT AI, we combine technology and creativity to build AI-driven solutions that solve real-world problems and drive business growth.
+              At Avaura, we combine technology and creativity to build AI-driven solutions that solve real-world problems and drive business growth.
             </p>
 
             <p className="text-sm sm:text-base text-[#737373] leading-relaxed font-normal">

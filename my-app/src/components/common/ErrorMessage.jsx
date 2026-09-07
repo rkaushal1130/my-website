@@ -48,7 +48,7 @@ const ErrorMessage = ({
       <p className="text-xs text-[#A8A8A8] leading-relaxed">{message}</p>
 
       {errors && errors.length > 0 && (
-        <div className="p-3 rounded-xl bg-[#050505] border border-red-950 text-left text-[11px] text-red-300">
+        <div className="p-3 rounded-xl bg-[#0D0D0D] border border-red-950 text-left text-[11px] text-red-300">
           <ul className="list-disc list-inside space-y-0.5">
             {errors.map((err, idx) => (
               <li key={idx}>

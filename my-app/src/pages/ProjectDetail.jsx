@@ -16,7 +16,6 @@ import {
   Building,
   Clock,
   Quote,
-  Sparkles,
   SearchX,
   Code2,
 } from 'lucide-react';
@@ -116,7 +115,7 @@ const ProjectDetail = ({ onOpenDemo }) => {
   // If loading
   if (isLoading) {
     return (
-      <PageWrapper title="Loading Project Architecture — NeverquiT AI">
+      <PageWrapper title="Loading Project Architecture — Avaura">
         <div className="min-h-[70vh] flex flex-col items-center justify-center">
           <Loader text="Loading Enterprise System Telemetry..." />
         </div>
@@ -127,7 +126,7 @@ const ProjectDetail = ({ onOpenDemo }) => {
   // If not found
   if (!project) {
     return (
-      <PageWrapper title="Project Not Found — NeverquiT AI">
+      <PageWrapper title="Project Not Found — Avaura">
         <div className="min-h-[70vh] flex flex-col items-center justify-center text-center p-6">
           <div className="w-16 h-16 rounded-2xl bg-[#FF1F26]/10 border border-[#FF1F26]/30 flex items-center justify-center text-[#FF1F26] mb-4">
             <SearchX className="w-8 h-8" />
@@ -166,10 +165,10 @@ const ProjectDetail = ({ onOpenDemo }) => {
 
   return (
     <PageWrapper
-      title={`${project.title} | NeverQuit.ai Case Study`}
+      title={`${project.title} | Avaura Case Study`}
       description={project.shortDescription || project.description}
       canonicalUrl={`/portfolio/${project.slug}`}
-      ogTitle={`${project.title} — NeverQuit.ai Architecture`}
+      ogTitle={`${project.title} — Avaura Architecture`}
       ogDescription={project.shortDescription || project.description}
       ogImage={project.image}
       ogType="article"
@@ -177,7 +176,7 @@ const ProjectDetail = ({ onOpenDemo }) => {
       {/* Lightweight 3D Background Elements */}
       <Portfolio3DBackground />
 
-      <div className="bg-[#050505] text-white">
+      <div className="bg-[#0D0D0D] text-white">
 
         {/* ========================================================================= */}
         {/* 1. PROJECT HERO SECTION */}
@@ -269,19 +268,7 @@ const ProjectDetail = ({ onOpenDemo }) => {
                 alt={project.title}
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-black/30" />
-
-              <div className="absolute bottom-6 left-6 right-6 flex flex-wrap items-center justify-between gap-4 p-4 rounded-xl bg-[#09090D]/85 backdrop-blur-md border border-white/[0.08]">
-                <div className="flex items-center gap-3">
-                  <div className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping" />
-                  <span className="text-xs font-mono text-[#CCCCCC]">
-                    Active Production System // Tier-1 Architecture
-                  </span>
-                </div>
-                <span className="text-xs font-mono text-[#FF1F26] font-semibold">
-                  Verified by NeverquiT AI Engineering
-                </span>
-              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0D0D0D] via-transparent to-black/30" />
             </div>
 
             {/* Metadata Bar */}
@@ -316,7 +303,7 @@ const ProjectDetail = ({ onOpenDemo }) => {
         </section>
 
         {/* ========================================================================= */}
-        {/* 3 & 4. THE CHALLENGE & THE NEVERQUIT AI SOLUTION */}
+        {/* 3 & 4. THE CHALLENGE & THE AVAURA SOLUTION */}
         {/* ========================================================================= */}
         <section className="py-12 sm:py-16 bg-[#08080C] border-y border-white/[0.06]">
           <Container size="wide">
@@ -324,10 +311,6 @@ const ProjectDetail = ({ onOpenDemo }) => {
               
               {/* 3. The Challenge */}
               <div className="p-8 rounded-[24px] bg-[#0C0C12] border border-white/[0.06] text-left space-y-4">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FF1F26]/10 border border-[#FF1F26]/30 text-xs font-mono font-bold uppercase tracking-wider text-[#FF1F26]">
-                  <Target className="w-3.5 h-3.5" />
-                  <span>The Architectural Challenge</span>
-                </div>
                 <h3 className="text-xl sm:text-2xl font-bold text-white">
                   Legacy Bottlenecks & Operational Constraints
                 </h3>
@@ -338,10 +321,6 @@ const ProjectDetail = ({ onOpenDemo }) => {
 
               {/* 4. The Solution */}
               <div className="p-8 rounded-[24px] bg-[#0C0C12] border border-white/[0.06] text-left space-y-4">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/40 border border-emerald-800/40 text-xs font-mono font-bold uppercase tracking-wider text-emerald-400">
-                  <CheckCircle2 className="w-3.5 h-3.5" />
-                  <span>The NeverquiT AI Solution</span>
-                </div>
                 <h3 className="text-xl sm:text-2xl font-bold text-white">
                   Autonomous Multi-Agent & Edge Orchestration
                 </h3>

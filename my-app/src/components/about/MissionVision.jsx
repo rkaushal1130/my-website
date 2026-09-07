@@ -1,5 +1,5 @@
 import React from 'react';
-import { Target, Eye, Sparkles } from 'lucide-react';
+import { Target, Eye } from 'lucide-react';
 import Container from '../common/Container';
 import Badge from '../common/Badge';
 import IconBox from '../common/IconBox';
@@ -26,7 +26,7 @@ const MissionVision = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 [perspective:1200px]">
           
           {/* Mission Card (3D Tilt & Glass Material) */}
-          <div className="relative group p-8 sm:p-10 rounded-[24px] bg-[#101010]/90 border border-[#242424] hover:border-[#FF1F26]/60 backdrop-blur-md transition-all duration-400 shadow-[0_15px_40px_rgba(0,0,0,0.85)] hover:shadow-[0_20px_50px_rgba(255,31,38,0.2)] hover:-translate-y-2 hover:[transform:rotateX(2.5deg)_rotateY(-2deg)] flex flex-col justify-between overflow-hidden">
+          <div className="relative group p-8 sm:p-10 rounded-[24px] bg-[#171717]/90 border border-[#242424] hover:border-[#FF1F26]/60 backdrop-blur-md transition-all duration-400 shadow-[0_15px_40px_rgba(0,0,0,0.85)] hover:shadow-[0_20px_50px_rgba(255,31,38,0.2)] hover:-translate-y-2 hover:[transform:rotateX(2.5deg)_rotateY(-2deg)] flex flex-col justify-between overflow-hidden">
             
             {/* Ambient Red Edge Glow */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-[#FF1F26]/6 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-400 pointer-events-none" />
@@ -49,18 +49,10 @@ const MissionVision = () => {
                 Make powerful AI technology accessible, practical and valuable for modern businesses through dependable architecture and deep engineering discipline.
               </p>
             </div>
-
-            <div className="mt-8 pt-4 border-t border-[#1D1D1D] flex items-center justify-between text-xs font-mono text-[#737373]">
-              <span className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#FF1F26] animate-ping" />
-                Outcome Focused
-              </span>
-              <Sparkles className="w-3.5 h-3.5 text-[#FF1F26]" />
-            </div>
           </div>
 
           {/* Vision Card (3D Tilt & Glass Material) */}
-          <div className="relative group p-8 sm:p-10 rounded-[24px] bg-[#101010]/90 border border-[#242424] hover:border-[#FF1F26]/60 backdrop-blur-md transition-all duration-400 shadow-[0_15px_40px_rgba(0,0,0,0.85)] hover:shadow-[0_20px_50px_rgba(255,31,38,0.2)] hover:-translate-y-2 hover:[transform:rotateX(2.5deg)_rotateY(2deg)] flex flex-col justify-between overflow-hidden">
+          <div className="relative group p-8 sm:p-10 rounded-[24px] bg-[#171717]/90 border border-[#242424] hover:border-[#FF1F26]/60 backdrop-blur-md transition-all duration-400 shadow-[0_15px_40px_rgba(0,0,0,0.85)] hover:shadow-[0_20px_50px_rgba(255,31,38,0.2)] hover:-translate-y-2 hover:[transform:rotateX(2.5deg)_rotateY(2deg)] flex flex-col justify-between overflow-hidden">
             
             {/* Ambient Red Edge Glow */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-[#FF1F26]/6 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-400 pointer-events-none" />
@@ -82,14 +74,6 @@ const MissionVision = () => {
               <p className="text-base text-[#A7A7A7] leading-relaxed font-normal">
                 Build a future where intelligent technology enables every business to move faster and smarter in an AI-native world.
               </p>
-            </div>
-
-            <div className="mt-8 pt-4 border-t border-[#1D1D1D] flex items-center justify-between text-xs font-mono text-[#737373]">
-              <span className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#FF1F26] animate-ping" />
-                Future Proofing
-              </span>
-              <Sparkles className="w-3.5 h-3.5 text-[#FF1F26]" />
             </div>
           </div>
 

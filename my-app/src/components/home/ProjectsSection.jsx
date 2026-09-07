@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { projectService } from '../../services';
-import { Sparkles, ArrowRight, FolderGit2 } from 'lucide-react';
+import { ArrowRight, FolderGit2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Loader from '../common/Loader';
 import ErrorMessage from '../common/ErrorMessage';
@@ -65,7 +65,7 @@ const ProjectsSection = () => {
           </h2>
 
           <p className="text-base sm:text-lg text-[#A8A8A8] leading-relaxed font-normal">
-            Explore live production AI systems, autonomous agents, and intelligence pipelines deployed by NeverquiT AI.
+            Explore live production AI systems, autonomous agents, and intelligence pipelines deployed by Avaura.
           </p>
         </div>
 
@@ -162,7 +162,7 @@ const ProjectsSection = () => {
                   </span>
                   <Link
                     to="/portfolio"
-                    className="w-8 h-8 rounded-lg bg-[#050505] border border-[#242424] group-hover:border-[#FF1F26] group-hover:bg-[#FF1F26] flex items-center justify-center text-[#A8A8A8] group-hover:text-white transition-all duration-300"
+                    className="w-8 h-8 rounded-lg bg-[#0D0D0D] border border-[#242424] group-hover:border-[#FF1F26] group-hover:bg-[#FF1F26] flex items-center justify-center text-[#A8A8A8] group-hover:text-white transition-all duration-300"
                   >
                     <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5" />
                   </Link>

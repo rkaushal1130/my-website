@@ -179,7 +179,7 @@ const AdminJobs = () => {
         <form onSubmit={handleSearchSubmit} className="relative w-full md:w-80">
           <input
             type="text"
-            placeholder="Search job roles..."
+            placeholder="Search position, role, or department..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full h-9 pl-9 pr-3 rounded-lg bg-[#09090b] border border-[#27272a] text-white placeholder-[#71717a] text-xs focus:border-[#ef4444] focus:outline-none"
@@ -359,14 +359,14 @@ const AdminJobs = () => {
 
             <form onSubmit={handleSave} className="space-y-3.5 text-xs">
               <div>
-                <label className="block text-[#a1a1aa] mb-1 font-medium">Job Title *</label>
+                <label className="block text-[#a1a1aa] mb-1 font-medium">Position / Role Title *</label>
                 <input
                   type="text"
                   required
                   value={formData.title}
                   onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                  placeholder="Senior Machine Learning Engineer"
-                  className="w-full px-3 py-2 rounded-lg bg-[#09090b] border border-[#27272a] text-white"
+                  placeholder="Enter position / role title (e.g. Senior Machine Learning Engineer)"
+                  className="w-full px-3 py-2 rounded-lg bg-[#09090b] border border-[#27272a] text-white placeholder-[#71717a]"
                 />
               </div>
 
@@ -406,8 +406,8 @@ const AdminJobs = () => {
                     type="text"
                     value={formData.location}
                     onChange={(e) => setFormData({ ...formData, location: e.target.value })}
-                    placeholder="Remote / Global"
-                    className="w-full px-3 py-2 rounded-lg bg-[#09090b] border border-[#27272a] text-white"
+                    placeholder="Enter location (e.g. Remote / Global, Bengaluru, IN)"
+                    className="w-full px-3 py-2 rounded-lg bg-[#09090b] border border-[#27272a] text-white placeholder-[#71717a]"
                   />
                 </div>
 
@@ -430,19 +430,19 @@ const AdminJobs = () => {
                   required
                   value={formData.description}
                   onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                  placeholder="Detailed role description..."
-                  className="w-full p-2.5 rounded-lg bg-[#09090b] border border-[#27272a] text-white"
+                  placeholder="Enter detailed role description and responsibilities..."
+                  className="w-full p-2.5 rounded-lg bg-[#09090b] border border-[#27272a] text-white placeholder-[#71717a]"
                 />
               </div>
 
               <div>
-                <label className="block text-[#a1a1aa] mb-1 font-medium">Requirements</label>
+                <label className="block text-[#a1a1aa] mb-1 font-medium">Requirements & Experience Level</label>
                 <textarea
                   rows={2}
                   value={formData.requirements}
                   onChange={(e) => setFormData({ ...formData, requirements: e.target.value })}
-                  placeholder="Key technical qualifications..."
-                  className="w-full p-2.5 rounded-lg bg-[#09090b] border border-[#27272a] text-white"
+                  placeholder="Enter technical qualifications, experience level, and key skills..."
+                  className="w-full p-2.5 rounded-lg bg-[#09090b] border border-[#27272a] text-white placeholder-[#71717a]"
                 />
               </div>
 

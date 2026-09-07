@@ -41,7 +41,7 @@ const HolographicSphereCTA3D = () => {
         <mesh>
           <icosahedronGeometry args={[1.2, 1]} />
           <meshStandardMaterial
-            color="#0A0A0A"
+            color="#121212"
             emissive="#FF1F26"
             emissiveIntensity={1.2}
             roughness={0.2}

@@ -92,7 +92,7 @@ const CoursesRibbon = () => {
       {/* Top Ticker Label */}
       <div className="w-full px-4 sm:px-8 mb-3 flex flex-wrap items-center justify-between gap-2 z-10 relative">
         <div className="flex items-center gap-2 text-[11px] sm:text-xs font-bold text-[#FF1F26] uppercase tracking-wider">
-          <span className="w-2 h-2 rounded-full bg-[#FF1F26] animate-ping shrink-0" />
+          <span className="w-1.5 h-1.5 rounded-full bg-[#FF1F26] shrink-0" />
           <span>TECH & AI SPECIALIZATION TRACKS</span>
         </div>
         <Link

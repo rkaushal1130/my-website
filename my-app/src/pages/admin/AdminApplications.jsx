@@ -109,7 +109,7 @@ const AdminApplications = () => {
         <form onSubmit={handleSearchSubmit} className="relative w-full md:w-80">
           <input
             type="text"
-            placeholder="Search candidates, roles..."
+            placeholder="Search candidates by name, surname, role, email..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full h-9 pl-9 pr-3 rounded-lg bg-[#09090b] border border-[#27272a] text-white placeholder-[#71717a] text-xs focus:border-[#ef4444] focus:outline-none"

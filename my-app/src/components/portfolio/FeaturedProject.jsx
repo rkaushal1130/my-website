@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Sparkles, Cpu, Calendar } from 'lucide-react';
+import { ArrowRight, Cpu, Calendar } from 'lucide-react';
 import Container from '../common/Container';
 
 const FeaturedProject = ({ project, onSelectProject, onOpenDemo }) => {
@@ -13,27 +13,17 @@ const FeaturedProject = ({ project, onSelectProject, onOpenDemo }) => {
   };
 
   return (
-    <section className="py-12 sm:py-16 relative bg-[#030303] overflow-hidden">
+    <section className="py-12 sm:py-16 relative bg-[#171717] overflow-hidden">
       {/* Subtle Background Radial Ambient Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[450px] bg-[#FF1F26]/5 rounded-full blur-[140px] pointer-events-none" />
 
       <Container size="wide">
         
         {/* Section Heading: Featured Work */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-3">
-          <div className="space-y-2">
-            <div className="flex items-center gap-2 text-xs font-mono font-bold tracking-widest text-[#FF1F26] uppercase">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>SPOTLIGHT ARCHITECTURE</span>
-            </div>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight">
-              Featured <span className="text-[#FF1F26] text-glow">Work</span>
-            </h2>
-          </div>
-          <div className="flex items-center gap-2 text-xs font-mono text-[#A1A1AA]">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-            <span>PRODUCTION VERIFIED // {project.year}</span>
-          </div>
+        <div className="mb-8">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight">
+            Featured <span className="text-[#FF1F26] text-glow">Work</span>
+          </h2>
         </div>
 
         {/* Large Cinematic Featured Project Card */}
@@ -43,7 +33,7 @@ const FeaturedProject = ({ project, onSelectProject, onOpenDemo }) => {
           aria-label={`Featured Case Study: ${project.title}`}
           onClick={() => onSelectProject(project)}
           onKeyDown={handleKeyDown}
-          className="group relative rounded-[28px] bg-gradient-to-br from-[#0E0E14] via-[#0A0A0A] to-[#040407] border border-white/[0.08] hover:border-[#FF1F26]/70 transition-all duration-400 shadow-[0_20px_60px_rgba(0,0,0,0.85)] hover:shadow-[0_25px_70px_rgba(255,31,38,0.22)] hover:-translate-y-1 sm:hover:-translate-y-1.5 overflow-hidden cursor-pointer select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF1F26] focus-visible:ring-offset-2 focus-visible:ring-offset-[#030303]"
+          className="group relative rounded-[28px] bg-gradient-to-br from-[#0E0E14] via-[#121212] to-[#040407] border border-white/[0.08] hover:border-[#FF1F26]/70 transition-all duration-400 shadow-[0_20px_60px_rgba(0,0,0,0.85)] hover:shadow-[0_25px_70px_rgba(255,31,38,0.22)] hover:-translate-y-1 sm:hover:-translate-y-1.5 overflow-hidden cursor-pointer select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF1F26] focus-visible:ring-offset-2 focus-visible:ring-offset-[#171717]"
         >
           
           {/* Volumetric ambient red backlight */}
@@ -68,18 +58,11 @@ const FeaturedProject = ({ project, onSelectProject, onOpenDemo }) => {
                 />
 
                 {/* Dark Gradient Sheen */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-black/20" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#121212] via-transparent to-black/20" />
 
-                {/* Top-Left Floating Badge */}
-                <div className="absolute top-4 left-4 flex items-center gap-2">
-                  <span className="px-3 py-1.5 rounded-xl bg-[#0A0A0A]/90 backdrop-blur-md border border-white/[0.1] text-xs font-mono font-semibold text-white flex items-center gap-2 shadow-lg">
-                    <span className="w-2 h-2 rounded-full bg-[#FF1F26] animate-ping" />
-                    <span>FEATURED PROJECT</span>
-                  </span>
-                </div>
 
                 {/* Bottom Overlay Telemetry Pill */}
-                <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between p-3 rounded-xl bg-[#0A0A0A]/90 backdrop-blur-md border border-white/[0.08] text-xs font-mono">
+                <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between p-3 rounded-xl bg-[#121212]/90 backdrop-blur-md border border-white/[0.08] text-xs font-mono">
                   <span className="text-[#A1A1AA] truncate max-w-[180px] sm:max-w-[240px]">
                     {project.client || 'Enterprise Deployment'}
                   </span>

@@ -32,7 +32,7 @@ const FeatureStrip = () => {
       <Container size="wide">
         
         {/* Large Rounded 3D Feature Card */}
-        <div className="rounded-[24px] bg-[#101010] border border-[#242424] p-6 sm:p-8 lg:p-10 shadow-[0_20px_50px_rgba(0,0,0,0.85)] relative overflow-hidden">
+        <div className="rounded-[24px] bg-[#171717] border border-[#242424] p-6 sm:p-8 lg:p-10 shadow-[0_20px_50px_rgba(0,0,0,0.85)] relative overflow-hidden">
           
           {/* Ambient Subtle Glow */}
           <div className="absolute top-0 right-0 w-80 h-80 bg-[#FF1F26]/4 rounded-full blur-3xl pointer-events-none" />
@@ -43,7 +43,7 @@ const FeatureStrip = () => {
               return (
                 <div
                   key={idx}
-                  className={`flex flex-col space-y-3 group transition-all duration-300 hover:-translate-y-1.5 p-2 rounded-2xl hover:bg-[#151515]/50 ${
+                  className={`flex flex-col space-y-3 group transition-all duration-300 hover:-translate-y-1.5 p-2 rounded-2xl hover:bg-[#1C1C1C]/50 ${
                     idx === 0 ? 'lg:pr-8' : idx === 3 ? 'lg:pl-8' : 'lg:px-8'
                   }`}
                 >

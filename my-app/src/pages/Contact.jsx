@@ -5,14 +5,13 @@ import ContactInfo from '../components/contact/ContactInfo';
 import ContactForm from '../components/contact/ContactForm';
 import LocationMap from '../components/contact/LocationMap';
 import FAQ from '../components/contact/FAQ';
-import ContactCTA from '../components/contact/ContactCTA';
 import Container from '../components/common/Container';
 
-const Contact = ({ onOpenDemo }) => {
+const Contact = () => {
   return (
     <PageWrapper
-      title="Contact NeverquiT AI — Let's Build Something Intelligent"
-      description="Connect with NeverquiT AI to discover tailored enterprise AI architectures, agentic workflows, and machine learning models."
+      title="Contact Avaura — Let's Build Something Intelligent"
+      description="Connect with Avaura to discover tailored enterprise AI architectures, agentic workflows, and machine learning models."
     >
       <ContactHero />
 
@@ -32,7 +31,6 @@ const Contact = ({ onOpenDemo }) => {
 
       <LocationMap />
       <FAQ />
-      <ContactCTA onOpenDemo={onOpenDemo} />
     </PageWrapper>
   );
 };

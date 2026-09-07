@@ -57,14 +57,14 @@ const Solutions = () => {
             return (
               <div
                 key={idx}
-                className="group relative p-7 sm:p-8 rounded-2xl bg-[#101010] border border-[#252525] hover:border-[#FF1F26]/60 transition-all duration-400 hover:shadow-[0_12px_40px_-10px_rgba(255,31,38,0.22)] hover:-translate-y-1.5 flex flex-col justify-between overflow-hidden"
+                className="group relative p-7 sm:p-8 rounded-2xl bg-[#171717] border border-[#252525] hover:border-[#FF1F26]/60 transition-all duration-400 hover:shadow-[0_12px_40px_-10px_rgba(255,31,38,0.22)] hover:-translate-y-1.5 flex flex-col justify-between overflow-hidden"
               >
                 {/* Background red glow accent on hover */}
                 <div className="absolute -top-10 -right-10 w-36 h-36 bg-[#FF1F26]/10 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-400 pointer-events-none" />
 
                 <div>
                   {/* Red Icon */}
-                  <div className="w-13 h-13 p-3 rounded-xl bg-[#050505] border border-[#242424] group-hover:border-[#FF1F26] flex items-center justify-center text-[#FF1F26] mb-6 transition-all duration-300 shadow-sm group-hover:shadow-[0_0_20px_rgba(255,31,38,0.35)]">
+                  <div className="w-13 h-13 p-3 rounded-xl bg-[#0D0D0D] border border-[#242424] group-hover:border-[#FF1F26] flex items-center justify-center text-[#FF1F26] mb-6 transition-all duration-300 shadow-sm group-hover:shadow-[0_0_20px_rgba(255,31,38,0.35)]">
                     <Icon className="w-7 h-7 stroke-[1.75]" />
                   </div>
 
@@ -87,7 +87,7 @@ const Solutions = () => {
                   <Link
                     to="/contact"
                     aria-label={`Explore ${item.title}`}
-                    className="w-8 h-8 rounded-lg bg-[#050505] border border-[#242424] group-hover:border-[#FF1F26] group-hover:bg-[#FF1F26] flex items-center justify-center text-[#A8A8A8] group-hover:text-white transition-all duration-300"
+                    className="w-8 h-8 rounded-lg bg-[#0D0D0D] border border-[#242424] group-hover:border-[#FF1F26] group-hover:bg-[#FF1F26] flex items-center justify-center text-[#A8A8A8] group-hover:text-white transition-all duration-300"
                   >
                     <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5" />
                   </Link>

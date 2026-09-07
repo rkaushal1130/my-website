@@ -37,55 +37,43 @@ const YoutubeIcon = ({ className = "w-5 h-5" }) => (
 
 const Footer = () => {
   return (
-    <footer className="bg-[#030303] border-t border-[#1C1C22] pt-14 pb-10 relative overflow-hidden text-left">
+    <footer className="bg-[#171717] border-t border-[#1C1C22] py-6 sm:py-7 relative overflow-hidden text-left">
       
       {/* Subtle bottom ambient red accent */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-20 bg-[#FF1F26]/4 blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-12 bg-[#FF1F26]/4 blur-3xl pointer-events-none" />
 
       <Container size="wide" className="relative z-10">
         
-        {/* Brand Top Header */}
-        <div className="mb-10">
-          <Link
-            to="/"
-            className="inline-flex items-center gap-3.5 group focus:outline-none"
-            aria-label="NeverquiT AI Home"
-          >
-            <div className="w-10 h-10 rounded-xl bg-[#0a0a0d] border border-[#242424] group-hover:border-[#FF1F26] overflow-hidden flex items-center justify-center p-1 transition-all duration-300 shadow-sm group-hover:shadow-[0_0_15px_rgba(255,31,38,0.4)]">
+        {/* 4 Clean Columns Grid matching modern SaaS layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-8 pb-6">
+          
+          {/* Column 1: Brand & Reach Us At (4 cols) */}
+          <div className="lg:col-span-4 space-y-3">
+            <Link
+              to="/"
+              className="inline-flex items-center group focus:outline-none mb-1 transition-transform duration-200 hover:scale-105 origin-left"
+              aria-label="Avaura Home"
+            >
               <img
                 src={brandLogo}
-                alt="NeverquiT AI Logo"
-                className="w-full h-full object-contain rounded-lg group-hover:scale-105 transition-transform duration-300"
+                alt="Avaura"
+                className="h-11 sm:h-12 md:h-[50px] w-auto max-w-[210px] sm:max-w-[240px] md:max-w-[260px] object-contain select-none transition-all duration-300 group-hover:drop-shadow-[0_0_18px_rgba(255,31,38,0.45)]"
               />
-            </div>
-            <span className="text-2xl font-bold tracking-tight text-white group-hover:text-white">
-              NeverquiT <span className="text-[#FF1F26]">AI</span>
-            </span>
-          </Link>
-        </div>
-
-        {/* 4 Clean Columns Grid matching reference */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-12">
-          
-          {/* Column 1: Reach Us At (4 cols) */}
-          <div className="lg:col-span-4 space-y-4">
-            <h4 className="text-base font-semibold text-white tracking-normal">
-              Reach Us At
-            </h4>
+            </Link>
             
-            <div className="space-y-3.5 text-sm text-[#A7A7A7]">
+            <div className="space-y-2 text-sm text-[#A7A7A7]">
               
               {/* Address */}
-              <div className="flex items-start gap-3">
-                <MapPin className="w-4 h-4 text-[#FF1F26] shrink-0 mt-1" />
-                <span className="leading-relaxed">
+              <div className="flex items-start gap-2.5">
+                <MapPin className="w-4 h-4 text-[#FF1F26] shrink-0 mt-0.5" />
+                <span className="leading-snug">
                   Sundernagar, Distt. Mandi,<br />
                   Himachal Pradesh 175002
                 </span>
               </div>
 
               {/* Email */}
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2.5">
                 <Mail className="w-4 h-4 text-[#FF1F26] shrink-0" />
                 <a
                   href="mailto:kaushalrahul1130@gmail.com"
@@ -96,7 +84,7 @@ const Footer = () => {
               </div>
 
               {/* Phone */}
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-[#FF1F26] shrink-0" />
                 <a
                   href="tel:9015323903"
@@ -110,12 +98,12 @@ const Footer = () => {
           </div>
 
           {/* Column 2: Explore (3 cols) */}
-          <div className="lg:col-span-3 space-y-4">
-            <h4 className="text-base font-semibold text-white tracking-normal">
+          <div className="lg:col-span-3 space-y-3">
+            <h4 className="text-sm sm:text-base font-semibold text-white tracking-normal">
               Explore
             </h4>
             
-            <ul className="space-y-2.5 text-sm text-[#A7A7A7]">
+            <ul className="space-y-2 text-sm text-[#A7A7A7]">
               <li>
                 <Link to="/" className="hover:text-white transition-colors">
                   Home
@@ -150,12 +138,12 @@ const Footer = () => {
           </div>
 
           {/* Column 3: Support (3 cols) */}
-          <div className="lg:col-span-3 space-y-4">
-            <h4 className="text-base font-semibold text-white tracking-normal">
+          <div className="lg:col-span-3 space-y-3">
+            <h4 className="text-sm sm:text-base font-semibold text-white tracking-normal">
               Support
             </h4>
             
-            <ul className="space-y-2.5 text-sm text-[#A7A7A7]">
+            <ul className="space-y-2 text-sm text-[#A7A7A7]">
               <li>
                 <Link to="/contact" className="hover:text-white transition-colors">
                   Contact Us
@@ -180,36 +168,36 @@ const Footer = () => {
           </div>
 
           {/* Column 4: Follow Us (2 cols) */}
-          <div className="lg:col-span-2 space-y-4">
-            <h4 className="text-base font-semibold text-white tracking-normal">
+          <div className="lg:col-span-2 space-y-3">
+            <h4 className="text-sm sm:text-base font-semibold text-white tracking-normal">
               Follow Us
             </h4>
             
             {/* Social Icons Row */}
-            <div className="flex items-center gap-4 text-[#A7A7A7]">
+            <div className="flex items-center gap-3.5 text-[#A7A7A7]">
               <a
                 href="https://facebook.com"
                 target="_blank"
                 rel="noreferrer"
-                aria-label="Follow NeverquiT AI on Facebook"
+                aria-label="Follow Avaura on Facebook"
                 className="hover:text-white hover:scale-110 transition-all duration-200"
               >
-                <FacebookIcon className="w-5 h-5" />
+                <FacebookIcon className="w-[18px] h-[18px]" />
               </a>
               <a
                 href="https://instagram.com"
                 target="_blank"
                 rel="noreferrer"
-                aria-label="Follow NeverquiT AI on Instagram"
+                aria-label="Follow Avaura on Instagram"
                 className="hover:text-white hover:scale-110 transition-all duration-200"
               >
-                <InstagramIcon className="w-5 h-5" />
+                <InstagramIcon className="w-[18px] h-[18px]" />
               </a>
               <a
                 href="https://twitter.com"
                 target="_blank"
                 rel="noreferrer"
-                aria-label="Follow NeverquiT AI on X"
+                aria-label="Follow Avaura on X"
                 className="hover:text-white hover:scale-110 transition-all duration-200"
               >
                 <XTwitterIcon className="w-4 h-4" />
@@ -218,19 +206,19 @@ const Footer = () => {
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noreferrer"
-                aria-label="Follow NeverquiT AI on LinkedIn"
+                aria-label="Follow Avaura on LinkedIn"
                 className="hover:text-white hover:scale-110 transition-all duration-200"
               >
-                <LinkedinIcon className="w-5 h-5" />
+                <LinkedinIcon className="w-[18px] h-[18px]" />
               </a>
               <a
                 href="https://youtube.com"
                 target="_blank"
                 rel="noreferrer"
-                aria-label="Follow NeverquiT AI on YouTube"
+                aria-label="Follow Avaura on YouTube"
                 className="hover:text-white hover:scale-110 transition-all duration-200"
               >
-                <YoutubeIcon className="w-5 h-5" />
+                <YoutubeIcon className="w-[18px] h-[18px]" />
               </a>
             </div>
           </div>
@@ -238,12 +226,12 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar Divider & Copyright */}
-        <div className="pt-8 border-t border-[#1C1C22] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#737373]">
+        <div className="pt-4 border-t border-[#1C1C22] flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-[#8A8A8A]">
           <div>
-            © 2026 NeverquiT AI. All rights reserved.
+            © 2026 Avaura. All rights reserved.
           </div>
 
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-5">
             <Link to="/contact" className="hover:text-white transition-colors">
               Privacy Policy
             </Link>

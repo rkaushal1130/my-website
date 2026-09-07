@@ -89,11 +89,11 @@ app.get('/', (req, res) => {
   res.status(200).json({
     success: true,
     data: {
-      name: 'NeverquiT AI Enterprise API Engine',
+      name: 'Avaura Enterprise API Engine',
       status: 'ACTIVE',
       version: '1.0.0',
     },
-    message: 'Welcome to the NeverquiT AI API.',
+    message: 'Welcome to the Avaura API.',
   });
 });
 

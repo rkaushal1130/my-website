@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Sparkles, ShieldCheck, Radio } from 'lucide-react';
+import { Box, ShieldCheck, Radio } from 'lucide-react';
 import nqHeroImg from '../assets/images/nq-hero.png';
 
 const HeroVisual = () => {
@@ -20,8 +20,8 @@ const HeroVisual = () => {
           <div className="text-left">
             <div className="text-[9px] text-[#737373] uppercase font-mono tracking-wider">Autonomous Core</div>
             <div className="text-[11px] font-bold text-white flex items-center gap-1.5">
-              <span>NQ-Neural 4.0</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-[#FF1F26] animate-ping" />
+              <span>Avaura-Neural 4.0</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#FF1F26]" />
             </div>
           </div>
         </div>
@@ -57,7 +57,7 @@ const HeroVisual = () => {
       </div>
 
       {/* Hero Visual Container */}
-      <div className="relative z-10 w-full rounded-[28px] bg-gradient-to-b from-[#0a0a0d] via-[#060608] to-[#030303] border border-[#222226] shadow-[0_30px_70px_rgba(0,0,0,0.95)] overflow-hidden group">
+      <div className="relative z-10 w-full rounded-[28px] bg-gradient-to-b from-[#0a0a0d] via-[#060608] to-[#171717] border border-[#222226] shadow-[0_30px_70px_rgba(0,0,0,0.95)] overflow-hidden group">
         
         {/* Top Viewport Header Bar */}
         <div className="absolute top-0 inset-x-0 h-9 px-4 border-b border-[#202024] bg-[#070709]/80 backdrop-blur-sm z-20 flex items-center justify-between pointer-events-none">
@@ -66,9 +66,8 @@ const HeroVisual = () => {
             <div className="w-2 h-2 rounded-full bg-[#242424]" />
             <div className="w-2 h-2 rounded-full bg-[#242424]" />
           </div>
-          <div className="text-[10px] font-mono text-[#737373] flex items-center gap-1">
-            <Sparkles className="w-3 h-3 text-[#FF1F26]" />
-            <span>NEVERQUIT AI INTELLIGENCE INTERFACE</span>
+          <div className="text-[10px] font-mono text-[#737373]">
+            <span>AVAURA INTELLIGENCE INTERFACE</span>
           </div>
           <div className="text-[9px] font-mono text-[#FF1F26]">ONLINE</div>
         </div>
@@ -83,7 +82,7 @@ const HeroVisual = () => {
             {/* Reference Image */}
             <img
               src={nqHeroImg}
-              alt="NeverquiT AI NQ Logo"
+              alt="Avaura NQ Logo"
               className="relative z-10 w-full h-full object-contain drop-shadow-[0_20px_40px_rgba(255,31,38,0.25)] group-hover:scale-[1.02] transition-transform duration-500 ease-out"
               loading="eager"
             />

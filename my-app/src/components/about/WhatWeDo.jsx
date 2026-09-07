@@ -37,7 +37,7 @@ const WhatWeDo = () => {
   ];
 
   return (
-    <section className="py-24 lg:py-32 relative bg-[#0B0B0B]/40 border-y border-[#1D1D1D]">
+    <section className="py-24 lg:py-32 relative bg-[#131313]/40 border-y border-[#1D1D1D]">
       <Container>
         
         {/* Section Header */}
@@ -60,11 +60,11 @@ const WhatWeDo = () => {
             return (
               <div
                 key={item.id}
-                className="group relative p-5 sm:p-7 rounded-[22px] bg-[#101010] border border-[#242424] hover:border-[#FF1F26]/60 transition-all duration-300 hover:shadow-card-hover hover:-translate-y-2 flex flex-col justify-between overflow-hidden"
+                className="group relative p-5 sm:p-7 rounded-[22px] bg-[#171717] border border-[#242424] hover:border-[#FF1F26]/60 transition-all duration-300 hover:shadow-card-hover hover:-translate-y-2 flex flex-col justify-between overflow-hidden"
               >
                 <div>
                   {/* Visual Icon Node Frame */}
-                  <div className="h-36 w-full rounded-xl bg-[#050505] border border-[#1D1D1D] mb-5 overflow-hidden flex flex-col items-center justify-center relative group-hover:border-[#FF1F26]/40 transition-colors">
+                  <div className="h-36 w-full rounded-xl bg-[#0D0D0D] border border-[#1D1D1D] mb-5 overflow-hidden flex flex-col items-center justify-center relative group-hover:border-[#FF1F26]/40 transition-colors">
                     <div className="absolute inset-0 bg-radial-hero opacity-40 pointer-events-none" />
                     <div className="w-14 h-14 rounded-2xl bg-[#141416] border border-[#242424] group-hover:border-[#FF1F26] shadow-[0_0_20px_rgba(0,0,0,0.8)] group-hover:shadow-[0_0_25px_rgba(255,31,38,0.3)] flex items-center justify-center text-[#FF1F26] transition-all duration-300 group-hover:scale-110">
                       <Icon className="w-7 h-7 text-[#FF1F26]" />

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { X, Lock, Mail, ArrowRight, Loader2, AlertCircle, CheckCircle2, User, LogOut } from 'lucide-react';
 import { authService } from '../../services';
+import brandLogo from '../../assets/images/logo.png';
 
 const LoginModal = ({ isOpen, onClose }) => {
   const [email, setEmail] = useState('');
@@ -81,7 +82,7 @@ const LoginModal = ({ isOpen, onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto bg-[#030303]/85 backdrop-blur-xl animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto bg-[#171717]/85 backdrop-blur-xl animate-in fade-in duration-200">
       {/* Modal Card */}
       <div className="relative w-full max-w-md rounded-3xl bg-[#0D0D10] border border-[#242424] p-6 sm:p-8 shadow-[0_25px_70px_rgba(0,0,0,0.95)] overflow-hidden text-left">
         {/* Top Glow & Accent Line */}
@@ -113,7 +114,7 @@ const LoginModal = ({ isOpen, onClose }) => {
               </div>
             </div>
 
-            <div className="p-4 rounded-xl bg-[#050505] border border-[#242424] text-xs text-[#A7A7A7] space-y-1.5">
+            <div className="p-4 rounded-xl bg-[#0D0D0D] border border-[#242424] text-xs text-[#A7A7A7] space-y-1.5">
               <div className="flex justify-between">
                 <span className="text-[#737373]">Authentication State:</span>
                 <span className="text-emerald-400 font-semibold">Active JWT Session</span>
@@ -146,20 +147,18 @@ const LoginModal = ({ isOpen, onClose }) => {
         ) : isSuccess ? (
           /* Success Screen */
           <div className="py-8 text-center space-y-3">
+            <img src={brandLogo} alt="Avaura" className="h-12 w-auto max-w-[220px] object-contain mx-auto mb-3 select-none" />
             <div className="w-14 h-14 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center mx-auto text-emerald-400">
               <CheckCircle2 className="w-7 h-7" />
             </div>
             <h3 className="text-xl font-bold text-white">Login Successful</h3>
-            <p className="text-xs text-[#A7A7A7]">Welcome back to NeverquiT AI.</p>
+            <p className="text-xs text-[#A7A7A7]">Welcome back to Avaura.</p>
           </div>
         ) : (
           /* Sign In Form */
           <div>
-            <div className="mb-6 space-y-1">
-              <div className="flex items-center gap-2 text-xs font-semibold text-[#FF1F26] uppercase tracking-wider">
-                <Lock className="w-3.5 h-3.5" />
-                <span>NeverquiT AI Admin & Staff</span>
-              </div>
+            <div className="mb-6 space-y-2 text-left">
+              <img src={brandLogo} alt="Avaura" className="h-11 w-auto max-w-[200px] object-contain mb-3 select-none" />
               <h2 className="text-2xl font-bold text-white tracking-tight">Sign In</h2>
               <p className="text-xs text-[#A7A7A7]">
                 Authenticate to manage projects, candidates, and client messages.
@@ -184,8 +183,8 @@ const LoginModal = ({ isOpen, onClose }) => {
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder="admin@example.com"
-                    className="w-full min-h-[44px] pl-10 pr-3.5 rounded-xl bg-[#050505] border border-[#242424] text-sm text-white placeholder-[#525252] focus:border-[#FF1F26] focus:ring-2 focus:ring-[#FF1F26]/20 focus:outline-none transition-all"
+                    placeholder="Enter your email address (e.g. admin@example.com)"
+                    className="w-full min-h-[44px] pl-10 pr-3.5 rounded-xl bg-[#0D0D0D] border border-[#242424] text-sm text-white placeholder-[#525252] focus:border-[#FF1F26] focus:ring-2 focus:ring-[#FF1F26]/20 focus:outline-none transition-all"
                   />
                   <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#737373]" />
                 </div>
@@ -201,8 +200,8 @@ const LoginModal = ({ isOpen, onClose }) => {
                     required
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    placeholder="••••••••••••"
-                    className="w-full min-h-[44px] pl-10 pr-3.5 rounded-xl bg-[#050505] border border-[#242424] text-sm text-white placeholder-[#525252] focus:border-[#FF1F26] focus:ring-2 focus:ring-[#FF1F26]/20 focus:outline-none transition-all"
+                    placeholder="Enter your password (e.g. ••••••••)"
+                    className="w-full min-h-[44px] pl-10 pr-3.5 rounded-xl bg-[#0D0D0D] border border-[#242424] text-sm text-white placeholder-[#525252] focus:border-[#FF1F26] focus:ring-2 focus:ring-[#FF1F26]/20 focus:outline-none transition-all"
                   />
                   <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#737373]" />
                 </div>

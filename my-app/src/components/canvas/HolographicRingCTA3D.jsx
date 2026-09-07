@@ -49,7 +49,7 @@ const HolographicRingCTA3D = () => {
         <mesh ref={coreRef}>
           <octahedronGeometry args={[0.9, 0]} />
           <meshStandardMaterial
-            color="#0A0A0A"
+            color="#121212"
             emissive="#FF1F26"
             emissiveIntensity={1.2}
             roughness={0.2}

@@ -32,7 +32,7 @@ const CareerTimeline = () => {
   ];
 
   return (
-    <section className="py-24 lg:py-32 relative bg-[#0B0B0B]/40 border-y border-[#1D1D1D] overflow-hidden">
+    <section className="py-24 lg:py-32 relative bg-[#131313]/40 border-y border-[#1D1D1D] overflow-hidden">
       <Container>
         
         {/* Section Header */}
@@ -61,18 +61,18 @@ const CareerTimeline = () => {
               return (
                 <div
                   key={idx}
-                  className="group relative p-7 sm:p-8 rounded-[20px] bg-[#101010] border border-[#242424] hover:border-[#FF1F26]/60 transition-all duration-300 hover:shadow-card-hover hover:-translate-y-2 flex flex-col justify-between"
+                  className="group relative p-7 sm:p-8 rounded-[20px] bg-[#171717] border border-[#242424] hover:border-[#FF1F26]/60 transition-all duration-300 hover:shadow-card-hover hover:-translate-y-2 flex flex-col justify-between"
                 >
                   <div className="flex items-center justify-between mb-6">
                     {/* Glowing 3D Node Sphere */}
                     <div className="relative">
                       <div className="absolute -inset-1.5 rounded-full bg-[#FF1F26] blur-sm opacity-0 group-hover:opacity-60 transition-opacity" />
-                      <div className="w-10 h-10 rounded-full bg-[#050505] border-2 border-[#FF1F26] flex items-center justify-center text-xs font-mono font-bold text-[#FF1F26] shadow-[0_0_15px_rgba(255,31,38,0.4)]">
+                      <div className="w-10 h-10 rounded-full bg-[#0D0D0D] border-2 border-[#FF1F26] flex items-center justify-center text-xs font-mono font-bold text-[#FF1F26] shadow-[0_0_15px_rgba(255,31,38,0.4)]">
                         {item.stage}
                       </div>
                     </div>
 
-                    <div className="w-8 h-8 rounded-lg bg-[#050505] border border-[#242424] flex items-center justify-center text-[#FF1F26]">
+                    <div className="w-8 h-8 rounded-lg bg-[#0D0D0D] border border-[#242424] flex items-center justify-center text-[#FF1F26]">
                       <Icon className="w-4 h-4" />
                     </div>
                   </div>

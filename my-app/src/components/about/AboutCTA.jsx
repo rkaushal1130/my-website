@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import Container from '../common/Container';
 import Badge from '../common/Badge';
 
@@ -9,7 +9,7 @@ const AboutCTA = ({ onOpenDemo }) => {
       <Container size="wide">
         
         {/* Large Rounded CTA Card */}
-        <div className="relative rounded-[24px] sm:rounded-[28px] bg-gradient-to-b from-[#101010] to-[#080808] border border-[#242424] p-6 sm:p-12 lg:p-16 overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.95)] text-center space-y-5 sm:space-y-6 hover:border-[#FF1F26]/35 transition-all duration-400">
+        <div className="relative rounded-[24px] sm:rounded-[28px] bg-gradient-to-b from-[#171717] to-[#171717] border border-[#242424] p-6 sm:p-12 lg:p-16 overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.95)] text-center space-y-5 sm:space-y-6 hover:border-[#FF1F26]/35 transition-all duration-400">
           
           {/* Background Ambient Red Glows */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-[#FF1F26]/8 rounded-full blur-[100px] pointer-events-none" />
@@ -21,7 +21,7 @@ const AboutCTA = ({ onOpenDemo }) => {
           </div>
 
           <div className="relative z-10 max-w-2xl mx-auto space-y-4 sm:space-y-5">
-            <Badge icon={Sparkles} className="mx-auto">GET IN TOUCH</Badge>
+            <Badge className="mx-auto">GET IN TOUCH</Badge>
 
             <h2 className="text-2xl sm:text-4xl lg:text-[46px] font-bold text-white tracking-tight leading-tight">
               Let's Build the Future{' '}
@@ -31,7 +31,7 @@ const AboutCTA = ({ onOpenDemo }) => {
             </h2>
 
             <p className="text-sm sm:text-lg text-[#A7A7A7] max-w-lg mx-auto font-normal leading-relaxed">
-              Partner with NeverquiT AI to engineer next-generation artificial intelligence workflows for your business.
+              Partner with Avaura to engineer next-generation artificial intelligence workflows for your business.
             </p>
 
             <div className="pt-2 sm:pt-3">

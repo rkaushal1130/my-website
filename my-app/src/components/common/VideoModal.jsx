@@ -26,24 +26,24 @@ const VideoModal = ({ isOpen, onClose }) => {
         onClick={onClose}
       />
 
-      <div className="relative w-full max-w-4xl rounded-[20px] sm:rounded-[24px] bg-[#0B0B0B] border border-[#252525] shadow-[0_0_60px_rgba(255,31,38,0.3)] overflow-hidden z-10 transition-all my-auto max-h-[94vh] flex flex-col">
+      <div className="relative w-full max-w-4xl rounded-[20px] sm:rounded-[24px] bg-[#131313] border border-[#252525] shadow-[0_0_60px_rgba(255,31,38,0.3)] overflow-hidden z-10 transition-all my-auto max-h-[94vh] flex flex-col">
         <div className="flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 border-b border-[#252525] bg-[#111111] shrink-0">
           <div className="flex items-center gap-2.5 sm:gap-3 min-w-0 pr-2">
-            <div className="w-2.5 h-2.5 rounded-full bg-[#FF1F26] animate-ping shrink-0" />
+            <div className="w-2.5 h-2.5 rounded-full bg-[#FF1F26] shrink-0" />
             <span className="text-xs sm:text-sm font-semibold text-white tracking-wide truncate max-w-[210px] sm:max-w-none">
-              NeverquiT AI Platform Walkthrough (Architecture Demo)
+              Avaura Platform Walkthrough (Architecture Demo)
             </span>
           </div>
           <button
             onClick={onClose}
-            className="w-8 h-8 rounded-full bg-[#050505] border border-[#252525] text-[#A8A8A8] hover:text-white hover:border-[#FF1F26] flex items-center justify-center transition-colors cursor-pointer shrink-0 shadow-sm"
+            className="w-8 h-8 rounded-full bg-[#0D0D0D] border border-[#252525] text-[#A8A8A8] hover:text-white hover:border-[#FF1F26] flex items-center justify-center transition-colors cursor-pointer shrink-0 shadow-sm"
             aria-label="Close video"
           >
             <X className="w-4 h-4" />
           </button>
         </div>
 
-        <div className="relative aspect-video min-h-[300px] sm:min-h-0 bg-[#050505] overflow-y-auto sm:overflow-hidden flex flex-col justify-between p-4 sm:p-8 flex-grow">
+        <div className="relative aspect-video min-h-[300px] sm:min-h-0 bg-[#0D0D0D] overflow-y-auto sm:overflow-hidden flex flex-col justify-between p-4 sm:p-8 flex-grow">
           <div className="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none" />
           <div className="absolute inset-0 bg-radial-hero opacity-80 pointer-events-none" />
 
@@ -93,15 +93,15 @@ const VideoModal = ({ isOpen, onClose }) => {
                 <div className="text-sm font-bold text-white mb-2">Neural Decision Engine Active</div>
                 <div className="text-xs text-[#A8A8A8] mb-4">Processing 42,000 requests/sec across distributed multi-region clusters.</div>
                 <div className="grid grid-cols-3 gap-2 text-left">
-                  <div className="p-2 rounded bg-[#050505] border border-[#252525]">
+                  <div className="p-2 rounded bg-[#0D0D0D] border border-[#252525]">
                     <div className="text-[10px] text-[#737373]">Accuracy</div>
                     <div className="text-sm font-bold text-[#FF1F26]">99.94%</div>
                   </div>
-                  <div className="p-2 rounded bg-[#050505] border border-[#252525]">
+                  <div className="p-2 rounded bg-[#0D0D0D] border border-[#252525]">
                     <div className="text-[10px] text-[#737373]">Uptime</div>
                     <div className="text-sm font-bold text-white">100.0%</div>
                   </div>
-                  <div className="p-2 rounded bg-[#050505] border border-[#252525]">
+                  <div className="p-2 rounded bg-[#0D0D0D] border border-[#252525]">
                     <div className="text-[10px] text-[#737373]">Cost Saved</div>
                     <div className="text-sm font-bold text-[#FF1F26]">68%</div>
                   </div>
@@ -113,15 +113,15 @@ const VideoModal = ({ isOpen, onClose }) => {
               <div className="p-6 rounded-2xl bg-[#111111]/90 border border-[#FF1F26]/50 max-w-md mx-auto shadow-[0_0_30px_rgba(255,31,38,0.3)]">
                 <div className="text-sm font-bold text-white mb-2">Autonomous Agent Swarm</div>
                 <div className="space-y-2 text-left text-xs">
-                  <div className="flex items-center justify-between p-2 rounded bg-[#050505]">
+                  <div className="flex items-center justify-between p-2 rounded bg-[#0D0D0D]">
                     <span className="text-white">Customer Support Agent</span>
                     <span className="text-[#FF1F26] font-mono">RESOLVED (1.2s)</span>
                   </div>
-                  <div className="flex items-center justify-between p-2 rounded bg-[#050505]">
+                  <div className="flex items-center justify-between p-2 rounded bg-[#0D0D0D]">
                     <span className="text-white">Data Cleaning Agent</span>
                     <span className="text-[#FF1F26] font-mono">STREAMING</span>
                   </div>
-                  <div className="flex items-center justify-between p-2 rounded bg-[#050505]">
+                  <div className="flex items-center justify-between p-2 rounded bg-[#0D0D0D]">
                     <span className="text-white">Predictive Analytics Agent</span>
                     <span className="text-white font-mono">STANDBY</span>
                   </div>

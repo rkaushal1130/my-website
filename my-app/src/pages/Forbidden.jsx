@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ShieldAlert, ArrowLeft, LogOut, Lock } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
+import brandLogo from '../assets/images/logo.png';
 
 const Forbidden = () => {
   const { user, logout } = useAuth();
@@ -13,11 +14,15 @@ const Forbidden = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#050505] text-white flex flex-col items-center justify-center p-6 relative overflow-hidden text-center">
+    <div className="min-h-screen bg-[#0D0D0D] text-white flex flex-col items-center justify-center p-6 relative overflow-hidden text-center">
       {/* Background Radial Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-radial-glow opacity-80 pointer-events-none" />
 
-      <div className="relative z-10 max-w-lg w-full rounded-3xl bg-[#0D0D10] border border-[#242424] p-8 sm:p-12 shadow-[0_25px_70px_rgba(0,0,0,0.95)]">
+      <div className="relative z-10 max-w-lg w-full flex flex-col items-center">
+        <Link to="/" className="mb-6 inline-block hover:scale-105 transition-transform">
+          <img src={brandLogo} alt="Avaura" className="h-14 sm:h-16 w-auto max-w-[280px] object-contain select-none drop-shadow-[0_0_26px_rgba(255,31,38,0.4)]" />
+        </Link>
+        <div className="w-full rounded-3xl bg-[#0D0D10] border border-[#242424] p-8 sm:p-12 shadow-[0_25px_70px_rgba(0,0,0,0.95)] relative">
         {/* Top Gradient Line */}
         <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#FF1F26] to-transparent" />
 
@@ -26,20 +31,15 @@ const Forbidden = () => {
           <ShieldAlert className="w-10 h-10" />
         </div>
 
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-red-950/50 text-[#FF3030] border border-red-800/60 mb-4 uppercase tracking-wider font-mono">
-          <Lock className="w-3.5 h-3.5" />
-          <span>Error 403 • Forbidden</span>
-        </div>
-
         <h1 className="text-3xl sm:text-4xl font-bold text-white tracking-tight mb-3">
           Administrator Access Required
         </h1>
 
         <p className="text-sm text-[#A8A8A8] leading-relaxed mb-6">
-          Your account <span className="text-white font-semibold">({user?.email || 'Authenticated User'})</span> does not possess the administrative role required to access the NeverquiT AI operations console.
+          Your account <span className="text-white font-semibold">({user?.email || 'Authenticated User'})</span> does not possess the administrative role required to access the Avaura operations console.
         </p>
 
-        <div className="p-4 rounded-2xl bg-[#050505] border border-[#242424] text-xs text-[#737373] text-left mb-8 space-y-1">
+        <div className="p-4 rounded-2xl bg-[#0D0D0D] border border-[#242424] text-xs text-[#737373] text-left mb-8 space-y-1">
           <div className="flex justify-between">
             <span>Your Assigned Role:</span>
             <span className="font-mono text-white/90 font-semibold">{user?.role || 'USER'}</span>
@@ -69,6 +69,7 @@ const Forbidden = () => {
         </div>
       </div>
     </div>
+  </div>
   );
 };
 

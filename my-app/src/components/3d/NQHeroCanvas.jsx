@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Component, Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { Box, Sparkles, ShieldCheck, Radio } from 'lucide-react';
+import { Box, ShieldCheck, Radio } from 'lucide-react';
 import NQScene from './NQScene';
 
 // WebGL Support Detection Helper
@@ -41,7 +41,7 @@ class CanvasErrorBoundary extends Component {
 
 // Fallback UI when WebGL is unsupported or errors
 const WebGLFallback = () => (
-  <div className="relative w-full h-full min-h-[480px] rounded-[28px] bg-gradient-to-b from-[#0e0e11] via-[#08080a] to-[#030303] border border-[#242424] flex flex-col items-center justify-center p-8 text-center overflow-hidden">
+  <div className="relative w-full h-full min-h-[480px] rounded-[28px] bg-gradient-to-b from-[#0e0e11] via-[#08080a] to-[#171717] border border-[#242424] flex flex-col items-center justify-center p-8 text-center overflow-hidden">
     <div className="absolute inset-0 bg-radial-hero opacity-70 pointer-events-none" />
     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] h-[280px] bg-[#FF1F26]/15 rounded-full blur-[80px] pointer-events-none" />
 
@@ -56,7 +56,7 @@ const WebGLFallback = () => (
       </div>
 
       <div className="space-y-1">
-        <div className="text-sm font-bold text-white tracking-wide">NeverquiT AI</div>
+        <div className="text-sm font-bold text-white tracking-wide">Avaura</div>
         <div className="text-xs text-[#737373] font-mono">3D AI Neural Engine</div>
       </div>
     </div>
@@ -66,14 +66,14 @@ const WebGLFallback = () => (
 // High-tech Loading Screen
 const LoadingScreen = ({ isLoaded }) => (
   <div
-    className={`absolute inset-0 z-30 flex flex-col items-center justify-center bg-[#030303] transition-opacity duration-700 pointer-events-none rounded-[28px] ${
+    className={`absolute inset-0 z-30 flex flex-col items-center justify-center bg-[#171717] transition-opacity duration-700 pointer-events-none rounded-[28px] ${
       isLoaded ? 'opacity-0' : 'opacity-100'
     }`}
   >
     <div className="relative flex flex-col items-center space-y-5">
       {/* Brand logo text */}
       <div className="text-base sm:text-lg font-extrabold text-white tracking-wider">
-        NeverquiT <span className="text-[#FF1F26]">AI</span>
+        Avaura
       </div>
 
       {/* Red pulsating loading ring */}
@@ -119,8 +119,8 @@ const NQHeroCanvas = ({ className = '' }) => {
           <div className="text-left">
             <div className="text-[9px] text-[#737373] uppercase font-mono tracking-wider">3D Core</div>
             <div className="text-[11px] font-bold text-white flex items-center gap-1.5">
-              <span>NQ-Engine 3.0</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-[#FF1F26] animate-ping" />
+              <span>Avaura-Engine 3.0</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#FF1F26]" />
             </div>
           </div>
         </div>
@@ -156,7 +156,7 @@ const NQHeroCanvas = ({ className = '' }) => {
       </div>
 
       {/* 3D Scene Viewport Container */}
-      <div className="relative z-10 w-full aspect-[4/3.8] sm:aspect-[4/3.5] lg:aspect-[4/3.6] min-h-[440px] sm:min-h-[500px] lg:min-h-[540px] rounded-[28px] bg-gradient-to-b from-[#0a0a0d] via-[#060608] to-[#030303] border border-[#222226] shadow-[0_30px_70px_rgba(0,0,0,0.95)] overflow-hidden flex items-center justify-center">
+      <div className="relative z-10 w-full aspect-[4/3.8] sm:aspect-[4/3.5] lg:aspect-[4/3.6] min-h-[440px] sm:min-h-[500px] lg:min-h-[540px] rounded-[28px] bg-gradient-to-b from-[#0a0a0d] via-[#060608] to-[#171717] border border-[#222226] shadow-[0_30px_70px_rgba(0,0,0,0.95)] overflow-hidden flex items-center justify-center">
         
         {/* Loading Overlay */}
         <LoadingScreen isLoaded={isLoaded} />
@@ -168,9 +168,8 @@ const NQHeroCanvas = ({ className = '' }) => {
             <div className="w-2 h-2 rounded-full bg-[#242424]" />
             <div className="w-2 h-2 rounded-full bg-[#242424]" />
           </div>
-          <div className="text-[10px] font-mono text-[#737373] flex items-center gap-1">
-            <Sparkles className="w-3 h-3 text-[#FF1F26]" />
-            <span>NEVERQUIT 3D MONOGRAM INTERFACE</span>
+          <div className="text-[10px] font-mono text-[#737373]">
+            <span>AVAURA 3D MONOGRAM INTERFACE</span>
           </div>
           <div className="text-[9px] font-mono text-[#FF1F26]">INTERACTIVE</div>
         </div>

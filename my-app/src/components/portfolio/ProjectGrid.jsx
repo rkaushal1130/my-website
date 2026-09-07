@@ -13,15 +13,11 @@ const ProjectGrid = ({
   onSelectProject,
 }) => {
   return (
-    <section id="portfolio-grid" className="py-16 sm:py-20 bg-[#030303] scroll-mt-24 font-sans">
+    <section id="portfolio-grid" className="py-16 sm:py-20 bg-[#171717] scroll-mt-24 font-sans">
       <Container size="wide">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12 space-y-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0E0E14] border border-white/[0.08] text-xs font-semibold text-[#FF1F26] uppercase tracking-wider">
-            <Layers className="w-3.5 h-3.5" />
-            <span>FULL-STACK PRODUCTION CASE STUDIES</span>
-          </div>
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
             Featured Full-Stack <span className="text-[#FF1F26]">Web Projects</span>
           </h2>

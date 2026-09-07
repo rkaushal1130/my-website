@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {
   X,
-  Sparkles,
   Cpu,
   Layers,
   ArrowRight,
@@ -26,7 +25,6 @@ import {
   Braces,
 } from 'lucide-react';
 import Button from '../common/Button';
-import Badge from '../common/Badge';
 
 const GithubIcon = ({ className = 'w-4 h-4' }) => (
   <svg className={className} fill="currentColor" viewBox="0 0 24 24">
@@ -111,7 +109,7 @@ const ProjectModal = ({ project, isOpen, onClose, onOpenDemo }) => {
         {/* ========================================================================= */}
         <div className="flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 border-b border-white/[0.08] bg-[#0E0E14]/80 backdrop-blur-md shrink-0">
           <div className="flex items-center gap-2.5 sm:gap-3 min-w-0 pr-2">
-            <div className="w-2.5 h-2.5 rounded-full bg-[#FF1F26] animate-ping shrink-0" />
+            <div className="w-2 h-2 rounded-full bg-[#FF1F26] shrink-0" />
             <span className="text-xs font-mono font-bold uppercase tracking-wider text-white truncate max-w-[200px] sm:max-w-none">
               FULL-STACK ARCHIVE // {project.slug}
             </span>
@@ -406,7 +404,7 @@ const ProjectModal = ({ project, isOpen, onClose, onOpenDemo }) => {
         {/* ========================================================================= */}
         <div className="p-4 sm:p-5 border-t border-white/[0.08] bg-[#0A0A0E] flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 shrink-0">
           <div className="text-xs text-[#737373] font-mono text-center sm:text-left">
-            NeverquiT AI Production Architecture
+            Avaura Production Architecture
           </div>
           <div className="flex flex-col sm:flex-row items-center gap-2.5 sm:gap-3 w-full sm:w-auto">
             <Button

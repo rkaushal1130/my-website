@@ -227,7 +227,7 @@ const NQPlatform = ({ isHovered = false }) => {
       <mesh position={[0, 0.061, 0]} rotation={[-Math.PI / 2, 0, 0]}>
         <circleGeometry args={[1.72, 64]} />
         <meshStandardMaterial
-          color="#050507"
+          color="#0D0D0F"
           metalness={0.98}
           roughness={0.12}
         />

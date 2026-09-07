@@ -36,7 +36,7 @@ const ContactHoloSphereCTA3D = () => {
         <mesh>
           <icosahedronGeometry args={[1.1, 1]} />
           <meshStandardMaterial
-            color="#0A0A0A"
+            color="#121212"
             emissive="#FF1F26"
             emissiveIntensity={1.4}
             roughness={0.2}

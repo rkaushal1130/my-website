@@ -106,7 +106,7 @@ const NQScene = ({ onLoaded = () => {} }) => {
       {/* Multi-layered Circular AI Platform */}
       <NQPlatform isHovered={isHovered} />
 
-      {/* Main 3D Architectural NeverQuit NQ Monogram */}
+      {/* Main 3D Architectural Avaura Monogram */}
       <NQLogo3D
         isHovered={isHovered}
         onHoverChange={setIsHovered}

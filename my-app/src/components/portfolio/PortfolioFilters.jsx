@@ -1,5 +1,5 @@
 import React from 'react';
-import { Search, X, Filter, Sparkles } from 'lucide-react';
+import { Search, X, Filter } from 'lucide-react';
 import Container from '../common/Container';
 
 const PortfolioFilters = ({
@@ -18,7 +18,7 @@ const PortfolioFilters = ({
   totalCount = 0,
 }) => {
   return (
-    <div className="py-4 sm:py-6 border-y border-white/[0.08] bg-[#0A0A0A]/95 backdrop-blur-xl sticky top-14 sm:top-16 md:top-20 z-30 transition-all duration-300 shadow-[0_10px_30px_rgba(0,0,0,0.85)]">
+    <div className="py-4 sm:py-6 border-y border-white/[0.08] bg-[#121212]/95 backdrop-blur-xl sticky top-14 sm:top-16 md:top-20 z-30 transition-all duration-300 shadow-[0_10px_30px_rgba(0,0,0,0.85)]">
       <Container size="wide">
         
         <div className="flex flex-col xl:flex-row items-center justify-between gap-5">
@@ -43,7 +43,7 @@ const PortfolioFilters = ({
                   aria-selected={isActive}
                   type="button"
                   onClick={() => onSelectCategory(cat)}
-                  className={`px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold tracking-wide transition-all duration-300 whitespace-nowrap cursor-pointer select-none border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF1F26] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0A0A] ${
+                  className={`px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold tracking-wide transition-all duration-300 whitespace-nowrap cursor-pointer select-none border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF1F26] focus-visible:ring-offset-2 focus-visible:ring-offset-[#121212] ${
                     isActive
                       ? 'bg-[#FF1F26] text-white border-[#FF3030] shadow-[0_0_22px_rgba(255,31,38,0.4)] scale-100 font-extrabold'
                       : 'bg-[#0E0E14] text-white/90 border-white/[0.08] hover:text-white hover:border-white/[0.2] hover:bg-[#14141C] hover:shadow-[0_0_12px_rgba(255,31,38,0.1)]'

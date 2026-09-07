@@ -30,7 +30,7 @@ const FeatureStrip = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Large Rounded Feature Card */}
-        <div className="rounded-[24px] bg-[#101010] border border-[#252525] p-6 sm:p-8 lg:p-10 shadow-[0_20px_50px_rgba(0,0,0,0.85)] relative overflow-hidden">
+        <div className="rounded-[24px] bg-[#171717] border border-[#252525] p-6 sm:p-8 lg:p-10 shadow-[0_20px_50px_rgba(0,0,0,0.85)] relative overflow-hidden">
           
           {/* Subtle Red Ambient Glow inside card */}
           <div className="absolute top-0 right-0 w-80 h-80 bg-[#FF1F26]/5 rounded-full blur-3xl pointer-events-none" />
@@ -46,7 +46,7 @@ const FeatureStrip = () => {
                   }`}
                 >
                   {/* Red Line Icon container */}
-                  <div className="w-12 h-12 rounded-xl bg-[#050505] border border-[#242424] group-hover:border-[#FF1F26]/60 flex items-center justify-center text-[#FF1F26] transition-all duration-300 shadow-sm group-hover:shadow-[0_0_15px_rgba(255,31,38,0.3)]">
+                  <div className="w-12 h-12 rounded-xl bg-[#0D0D0D] border border-[#242424] group-hover:border-[#FF1F26]/60 flex items-center justify-center text-[#FF1F26] transition-all duration-300 shadow-sm group-hover:shadow-[0_0_15px_rgba(255,31,38,0.3)]">
                     <Icon className="w-6 h-6 stroke-[1.75]" />
                   </div>
 

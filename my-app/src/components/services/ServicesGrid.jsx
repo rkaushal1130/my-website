@@ -6,7 +6,7 @@ import { servicesList } from '../../data/servicesData';
 
 const ServicesGrid = ({ onOpenDemo }) => {
   return (
-    <section className="py-20 sm:py-28 relative overflow-hidden bg-[#030303]">
+    <section className="py-20 sm:py-28 relative overflow-hidden bg-[#171717]">
       <div className="absolute top-1/2 left-0 -translate-y-1/2 w-96 h-96 bg-[#FF1F26]/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none" />
 
@@ -42,14 +42,9 @@ const ServicesGrid = ({ onOpenDemo }) => {
                       <Icon className="w-6 h-6" />
                     </div>
 
-                    <div className="flex items-center gap-2">
-                      <span className="px-2.5 py-1 rounded-md bg-[#121216] border border-[#222] text-[11px] font-medium text-[#FF3030]">
-                        {service.badge}
-                      </span>
-                      <span className="text-xs font-bold text-[#555] group-hover:text-[#FF1F26] transition-colors">
-                        {service.number}
-                      </span>
-                    </div>
+                    <span className="text-xs font-bold text-[#555] group-hover:text-[#FF1F26] transition-colors font-mono">
+                      {service.number}
+                    </span>
                   </div>
 
                   {/* Title & Tagline */}

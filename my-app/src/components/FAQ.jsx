@@ -6,7 +6,7 @@ const FAQ = () => {
 
   const faqs = [
     {
-      question: 'What services does NeverquiT AI provide?',
+      question: 'What services does Avaura provide?',
       answer: 'We provide AI automation, machine learning, data intelligence, custom AI development and AI consulting solutions.',
     },
     {
@@ -32,32 +32,32 @@ const FAQ = () => {
   };
 
   return (
-    <section className="py-20 sm:py-28 relative bg-[#0B0B0B]/40 border-y border-[#1C1C1C]">
+    <section className="py-20 sm:py-28 relative bg-[#131313]/40 border-y border-[#1C1C1C]">
       
       {/* Background Radial Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-radial-glow opacity-80 pointer-events-none" />
 
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col items-center">
         
         {/* Section Header */}
-        <div className="text-center mb-14 space-y-4">
+        <div className="text-center max-w-xl mx-auto mb-10 sm:mb-12 space-y-3">
           <div className="flex items-center justify-center gap-4 text-[13px] sm:text-sm font-sans font-semibold uppercase tracking-wider text-white select-none">
             <span className="w-12 sm:w-24 h-px bg-gradient-to-r from-transparent via-[#FF1F26]/60 to-[#FF1F26]" />
             <span>FAQ</span>
             <span className="w-12 sm:w-24 h-px bg-gradient-to-l from-transparent via-[#FF1F26]/60 to-[#FF1F26]" />
           </div>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-tight">
+          <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight leading-tight">
             Questions? We've Got Answers.
           </h2>
 
-          <p className="text-base text-[#A8A8A8] font-normal">
-            Everything you need to know about partnering with NeverquiT AI.
+          <p className="text-sm sm:text-base text-[#A8A8A8] font-normal">
+            Everything you need to know about partnering with Avaura.
           </p>
         </div>
 
         {/* Accordion List with Smooth Height Transition */}
-        <div className="space-y-4">
+        <div className="w-full max-w-3xl mx-auto space-y-3.5">
           {faqs.map((faq, idx) => {
             const isOpen = openIndex === idx;
             return (
@@ -91,7 +91,7 @@ const FAQ = () => {
 
                   {/* Circular Plus/Minus Toggle Badge */}
                   <div
-                    className={`w-8 h-8 rounded-full bg-[#050505] border flex items-center justify-center shrink-0 transition-all duration-300 ${
+                    className={`w-8 h-8 rounded-full bg-[#0D0D0D] border flex items-center justify-center shrink-0 transition-all duration-300 ${
                       isOpen
                         ? 'border-[#FF1F26] text-[#FF1F26] rotate-180 shadow-[0_0_12px_rgba(255,31,38,0.35)]'
                         : 'border-[#252525] text-[#FF1F26]'

@@ -28,7 +28,7 @@ const CareerBenefits = () => {
   ];
 
   return (
-    <section className="py-24 lg:py-32 relative bg-[#0B0B0B]/40 border-y border-[#1D1D1D]">
+    <section className="py-24 lg:py-32 relative bg-[#131313]/40 border-y border-[#1D1D1D]">
       <Container>
         
         {/* Section Header */}
@@ -36,7 +36,7 @@ const CareerBenefits = () => {
           <Badge>WHY JOIN US</Badge>
 
           <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-bold text-white tracking-tight leading-tight">
-            Why Join NeverquiT AI
+            Why Join Avaura
           </h2>
 
           <p className="text-base sm:text-lg text-[#A7A7A7] leading-relaxed font-normal">
@@ -51,10 +51,10 @@ const CareerBenefits = () => {
             return (
               <div
                 key={idx}
-                className="group relative p-6 sm:p-7 rounded-[22px] bg-[#101010] border border-[#242424] hover:border-[#FF1F26]/60 transition-all duration-300 hover:shadow-card-hover hover:-translate-y-2 flex flex-col justify-between overflow-hidden"
+                className="group relative p-6 sm:p-7 rounded-[22px] bg-[#171717] border border-[#242424] hover:border-[#FF1F26]/60 transition-all duration-300 hover:shadow-card-hover hover:-translate-y-2 flex flex-col justify-between overflow-hidden"
               >
                 <div>
-                  <div className="h-28 w-full rounded-xl bg-[#050505] border border-[#1D1D1D] mb-5 overflow-hidden flex items-center justify-center relative group-hover:border-[#FF1F26]/40 transition-colors">
+                  <div className="h-28 w-full rounded-xl bg-[#0D0D0D] border border-[#1D1D1D] mb-5 overflow-hidden flex items-center justify-center relative group-hover:border-[#FF1F26]/40 transition-colors">
                     <div className="w-12 h-12 rounded-2xl bg-[#141416] border border-[#242424] group-hover:border-[#FF1F26] flex items-center justify-center text-[#FF1F26] transition-transform duration-300 group-hover:scale-110">
                       <Icon className="w-6 h-6" />
                     </div>

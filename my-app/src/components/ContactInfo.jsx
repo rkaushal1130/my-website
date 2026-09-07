@@ -56,7 +56,7 @@ const ContactInfo = () => {
               key={idx}
               className="p-5 rounded-2xl bg-[#111111] border border-[#252525] hover:border-[#FF1F26]/50 transition-all duration-300 flex items-start gap-4 group shadow-sm hover:shadow-[0_8px_25px_-5px_rgba(255,31,38,0.15)]"
             >
-              <div className="w-11 h-11 rounded-xl bg-[#050505] border border-[#252525] group-hover:border-[#FF1F26] flex items-center justify-center text-[#FF1F26] shrink-0 transition-colors shadow-sm">
+              <div className="w-11 h-11 rounded-xl bg-[#0D0D0D] border border-[#252525] group-hover:border-[#FF1F26] flex items-center justify-center text-[#FF1F26] shrink-0 transition-colors shadow-sm">
                 <Icon className="w-5 h-5" />
               </div>
 

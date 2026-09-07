@@ -3,7 +3,6 @@ import {
   Send,
   Upload,
   CheckCircle2,
-  Sparkles,
   ShieldCheck,
   Briefcase,
   User,
@@ -24,8 +23,8 @@ const CareerApplyForm = () => {
     name: '',
     email: '',
     phone: '',
-    roleTitle: 'AI & Deep Learning Engineer',
-    experience: '3-5 Years',
+    roleTitle: 'Full Stack Developer (MERN / TypeScript)',
+    experience: '1 - 3 Years',
     portfolioUrl: '',
     linkedinUrl: '',
     resumeUrl: '',
@@ -40,13 +39,20 @@ const CareerApplyForm = () => {
   const nameInputRef = useRef(null);
 
   const availableRoles = [
-    'AI & Deep Learning Engineer',
-    'Autonomous Agents Researcher',
-    'Full Stack AI Engineer',
-    'MLOps & Distributed Systems Engineer',
-    'Applied LLM / NLP Engineer',
-    'UI/UX Product Designer (AI Systems)',
-    'Technical Product Manager',
+    'Full Stack Developer (MERN / TypeScript)',
+    'Front-End Developer (React / Next.js)',
+    'Back-End Developer (Node.js / Express / Python)',
+    'AI / Machine Learning Engineer',
+    'Mobile App Developer (React Native / Flutter)',
+    'DevOps & Cloud Engineer (AWS / Docker / Kubernetes)',
+    'UI/UX Designer',
+    'Product Designer',
+    'QA Automation Engineer',
+    'Software QA Tester',
+    'Data Engineer',
+    'Cybersecurity & Systems Specialist',
+    'Digital Marketing Executive',
+    'Business Development Executive',
     'General Application / Open Role',
   ];
 
@@ -80,7 +86,7 @@ const CareerApplyForm = () => {
       if (!formData.resumeUrl) {
         setFormData((prev) => ({
           ...prev,
-          resumeUrl: `https://uploads.neverquit.ai/resumes/${file.name}`,
+          resumeUrl: `https://uploads.avaura.com/resumes/${file.name}`,
         }));
       }
     }
@@ -183,11 +189,11 @@ const CareerApplyForm = () => {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-14 space-y-4">
-          <Badge icon={Sparkles}>TALENT APPLICATION</Badge>
+          <Badge>TALENT APPLICATION</Badge>
 
           <h2 className="text-2xl sm:text-4xl lg:text-[46px] font-bold text-white tracking-tight leading-tight">
             Apply to Join{' '}
-            <span className="text-[#FF1F26] text-glow inline-block">NeverquiT AI</span>
+            <span className="text-[#FF1F26] text-glow inline-block">Avaura</span>
           </h2>
 
           <p className="text-sm sm:text-lg text-[#A7A7A7] leading-relaxed font-normal">
@@ -215,7 +221,7 @@ const CareerApplyForm = () => {
                   Application Received!
                 </h3>
                 <p className="text-base text-[#A7A7A7] max-w-lg mx-auto leading-relaxed">
-                  Thank you for applying to NeverquiT AI. Our talent and technical leadership team will review your profile and reach out within 48-72 business hours.
+                  Thank you for applying to Avaura. Our talent and technical leadership team will review your profile and reach out within 48-72 business hours.
                 </p>
               </div>
 
@@ -259,7 +265,7 @@ const CareerApplyForm = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div>
                   <label className="block text-xs sm:text-sm text-[#CCCCCC] mb-1.5 font-medium">
-                    Full Name <span className="text-[#FF1F26]">*</span>
+                    Full Name & Surname <span className="text-[#FF1F26]">*</span>
                   </label>
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#666]">
@@ -273,8 +279,8 @@ const CareerApplyForm = () => {
                       disabled={isSubmitting}
                       value={formData.name}
                       onChange={handleChange}
-                      placeholder="e.g. Rahul Sharma"
-                      className="w-full pl-10 pr-4 py-3.5 rounded-xl bg-[#050507] border border-[#242424] text-white placeholder-[#555555] text-sm focus:border-[#FF1F26] focus:ring-2 focus:ring-[#FF1F26]/20 focus:outline-none transition-all duration-200 disabled:opacity-60"
+                      placeholder="First Name & Surname (e.g. Rahul Sharma)"
+                      className="w-full pl-10 pr-4 py-3.5 rounded-xl bg-[#0D0D0F] border border-[#242424] text-white placeholder-[#666666] text-sm focus:border-[#FF1F26] focus:ring-2 focus:ring-[#FF1F26]/20 focus:outline-none transition-all duration-200 disabled:opacity-60"
                     />
                   </div>
                 </div>
@@ -294,18 +300,18 @@ const CareerApplyForm = () => {
                       disabled={isSubmitting}
                       value={formData.email}
                       onChange={handleChange}
-                      placeholder="e.g. rahul@example.com"
-                      className="w-full pl-10 pr-4 py-3.5 rounded-xl bg-[#050507] border border-[#242424] text-white placeholder-[#555555] text-sm focus:border-[#FF1F26] focus:ring-2 focus:ring-[#FF1F26]/20 focus:outline-none transition-all duration-200 disabled:opacity-60"
+                      placeholder="Enter email address (e.g. rahul@example.com)"
+                      className="w-full pl-10 pr-4 py-3.5 rounded-xl bg-[#0D0D0F] border border-[#242424] text-white placeholder-[#666666] text-sm focus:border-[#FF1F26] focus:ring-2 focus:ring-[#FF1F26]/20 focus:outline-none transition-all duration-200 disabled:opacity-60"
                     />
                   </div>
                 </div>
               </div>
 
-              {/* Row 2: Phone & Role Selection */}
+              {/* Row 2: Contact No. & Role Selection */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div>
                   <label className="block text-xs sm:text-sm text-[#CCCCCC] mb-1.5 font-medium">
-                    Phone Number
+                    Contact No.
                   </label>
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#666]">
@@ -317,15 +323,15 @@ const CareerApplyForm = () => {
                       disabled={isSubmitting}
                       value={formData.phone}
                       onChange={handleChange}
-                      placeholder="e.g. +91 98765 43210"
-                      className="w-full pl-10 pr-4 py-3.5 rounded-xl bg-[#050507] border border-[#242424] text-white placeholder-[#555555] text-sm focus:border-[#FF1F26] focus:ring-2 focus:ring-[#FF1F26]/20 focus:outline-none transition-all duration-200 disabled:opacity-60"
+                      placeholder="Enter contact no. (e.g. +91 98765 43210)"
+                      className="w-full pl-10 pr-4 py-3.5 rounded-xl bg-[#0D0D0F] border border-[#242424] text-white placeholder-[#666666] text-sm focus:border-[#FF1F26] focus:ring-2 focus:ring-[#FF1F26]/20 focus:outline-none transition-all duration-200 disabled:opacity-60"
                     />
                   </div>
                 </div>
 
                 <div>
                   <label className="block text-xs sm:text-sm text-[#CCCCCC] mb-1.5 font-medium">
-                    Primary Role / Focus Area <span className="text-[#FF1F26]">*</span>
+                    Position / Role <span className="text-[#FF1F26]">*</span>
                   </label>
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#666]">
@@ -336,8 +342,9 @@ const CareerApplyForm = () => {
                       disabled={isSubmitting}
                       value={formData.roleTitle}
                       onChange={handleChange}
-                      className="w-full pl-10 pr-4 py-3.5 rounded-xl bg-[#050507] border border-[#242424] text-white text-sm focus:border-[#FF1F26] focus:ring-2 focus:ring-[#FF1F26]/20 focus:outline-none transition-all duration-200 cursor-pointer disabled:opacity-60 appearance-none"
+                      className="w-full pl-10 pr-4 py-3.5 rounded-xl bg-[#0D0D0F] border border-[#242424] text-white text-sm focus:border-[#FF1F26] focus:ring-2 focus:ring-[#FF1F26]/20 focus:outline-none transition-all duration-200 cursor-pointer disabled:opacity-60 appearance-none"
                     >
+                      <option value="" disabled>Select position / role (e.g. Full Stack Developer)</option>
                       {availableRoles.map((role, idx) => (
                         <option key={idx} value={role} className="bg-[#101014] text-white">
                           {role}
@@ -348,7 +355,7 @@ const CareerApplyForm = () => {
                 </div>
               </div>
 
-              {/* Row 3: Experience Level & LinkedIn */}
+              {/* Row 3: Experience Level & Links */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div>
                   <label className="block text-xs sm:text-sm text-[#CCCCCC] mb-1.5 font-medium">
@@ -363,8 +370,9 @@ const CareerApplyForm = () => {
                       disabled={isSubmitting}
                       value={formData.experience}
                       onChange={handleChange}
-                      className="w-full pl-10 pr-4 py-3.5 rounded-xl bg-[#050507] border border-[#242424] text-white text-sm focus:border-[#FF1F26] focus:ring-2 focus:ring-[#FF1F26]/20 focus:outline-none transition-all duration-200 cursor-pointer disabled:opacity-60 appearance-none"
+                      className="w-full pl-10 pr-4 py-3.5 rounded-xl bg-[#0D0D0F] border border-[#242424] text-white text-sm focus:border-[#FF1F26] focus:ring-2 focus:ring-[#FF1F26]/20 focus:outline-none transition-all duration-200 cursor-pointer disabled:opacity-60 appearance-none"
                     >
+                      <option value="" disabled>Select exp level (e.g. 1 - 3 Years)</option>
                       {experienceLevels.map((lvl, idx) => (
                         <option key={idx} value={lvl} className="bg-[#101014] text-white">
                           {lvl}
@@ -376,7 +384,7 @@ const CareerApplyForm = () => {
 
                 <div>
                   <label className="block text-xs sm:text-sm text-[#CCCCCC] mb-1.5 font-medium">
-                    LinkedIn / Portfolio / GitHub Profile
+                    Links (Portfolio / GitHub / LinkedIn)
                   </label>
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#666]">
@@ -388,23 +396,23 @@ const CareerApplyForm = () => {
                       disabled={isSubmitting}
                       value={formData.portfolioUrl}
                       onChange={handleChange}
-                      placeholder="https://linkedin.com/in/username or github.com"
-                      className="w-full pl-10 pr-4 py-3.5 rounded-xl bg-[#050507] border border-[#242424] text-white placeholder-[#555555] text-sm focus:border-[#FF1F26] focus:ring-2 focus:ring-[#FF1F26]/20 focus:outline-none transition-all duration-200 disabled:opacity-60"
+                      placeholder="Paste links (e.g. https://linkedin.com/in/username or github.com/...)"
+                      className="w-full pl-10 pr-4 py-3.5 rounded-xl bg-[#0D0D0F] border border-[#242424] text-white placeholder-[#666666] text-sm focus:border-[#FF1F26] focus:ring-2 focus:ring-[#FF1F26]/20 focus:outline-none transition-all duration-200 disabled:opacity-60"
                     />
                   </div>
                 </div>
               </div>
 
-              {/* Row 4: Resume / CV Attachment & Link */}
+              {/* Row 4: Resume / CV Attachment */}
               <div>
                 <label className="block text-xs sm:text-sm text-[#CCCCCC] mb-1.5 font-medium">
                   Resume / CV File (PDF / DOCX)
                 </label>
-                <label className="flex items-center justify-between px-4 py-3.5 rounded-xl bg-[#050507] border border-dashed border-[#2A2A2A] hover:border-[#FF1F26]/60 cursor-pointer transition-colors group">
+                <label className="flex items-center justify-between px-4 py-3.5 rounded-xl bg-[#0D0D0F] border border-dashed border-[#2A2A2A] hover:border-[#FF1F26]/60 cursor-pointer transition-colors group">
                   <div className="flex items-center gap-3 text-xs sm:text-sm text-[#888888]">
                     <Upload className="w-4 h-4 text-[#FF1F26] group-hover:scale-110 transition-transform" />
                     <span className="truncate max-w-xs sm:max-w-md text-white/90">
-                      {fileName || 'Click to browse and upload resume (max 10MB)'}
+                      {fileName || 'Upload resume / CV file (PDF, DOCX up to 10MB)'}
                     </span>
                   </div>
                   <input
@@ -420,10 +428,10 @@ const CareerApplyForm = () => {
                 </label>
               </div>
 
-              {/* Row 5: Cover Note / Introduction */}
+              {/* Row 5: Message / Cover Note */}
               <div>
                 <label className="block text-xs sm:text-sm text-[#CCCCCC] mb-1.5 font-medium">
-                  Introduction / Why NeverquiT AI? <span className="text-[#FF1F26]">*</span>
+                  Message / Cover Note <span className="text-[#FF1F26]">*</span>
                 </label>
                 <textarea
                   name="coverLetter"
@@ -432,8 +440,8 @@ const CareerApplyForm = () => {
                   disabled={isSubmitting}
                   value={formData.coverLetter}
                   onChange={handleChange}
-                  placeholder="Share a brief overview of your technical background, projects you're proud of, and why you'd like to work with NeverquiT AI..."
-                  className="w-full p-4 rounded-xl bg-[#050507] border border-[#242424] text-white placeholder-[#555555] text-sm focus:border-[#FF1F26] focus:ring-2 focus:ring-[#FF1F26]/20 focus:outline-none transition-all duration-200 resize-none disabled:opacity-60"
+                  placeholder="Enter your message or cover note (e.g. Overview of technical background, key achievements, and why you'd like to build at Avaura)..."
+                  className="w-full p-4 rounded-xl bg-[#0D0D0F] border border-[#242424] text-white placeholder-[#666666] text-sm focus:border-[#FF1F26] focus:ring-2 focus:ring-[#FF1F26]/20 focus:outline-none transition-all duration-200 resize-none disabled:opacity-60"
                 />
               </div>
 

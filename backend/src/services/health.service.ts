@@ -1,7 +1,7 @@
 export class HealthService {
   public static getHealthStatus() {
     return {
-      name: 'NeverquiT AI API',
+      name: 'Avaura API',
       status: 'UP',
       uptime: process.uptime(),
       timestamp: new Date().toISOString(),

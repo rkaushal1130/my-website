@@ -1,5 +1,5 @@
 import React from 'react';
-import { Users, Lightbulb, Target, Sparkles } from 'lucide-react';
+import { Users, Lightbulb, Target } from 'lucide-react';
 import Container from '../common/Container';
 import Badge from '../common/Badge';
 
@@ -22,14 +22,14 @@ const CultureSection = () => {
         </div>
 
         {/* Large AI Culture Visual Container */}
-        <div className="relative rounded-[28px] bg-gradient-to-b from-[#101010] via-[#0A0A0A] to-[#050505] border border-[#242424] p-6 sm:p-10 lg:p-12 overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.9)]">
+        <div className="relative rounded-[28px] bg-gradient-to-b from-[#171717] via-[#121212] to-[#0D0D0D] border border-[#242424] p-6 sm:p-10 lg:p-12 overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.9)]">
           
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[300px] bg-[#FF1F26]/8 rounded-full blur-[100px] pointer-events-none" />
           <div className="absolute inset-0 bg-grid-pattern opacity-20 pointer-events-none" />
 
           {/* Culture Values Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
-            <div className="p-6 rounded-2xl bg-[#050505] border border-[#242424] hover:border-[#FF1F26]/50 transition-colors group">
+            <div className="p-6 rounded-2xl bg-[#0D0D0D] border border-[#242424] hover:border-[#FF1F26]/50 transition-colors group">
               <div className="w-10 h-10 rounded-xl bg-[#141416] border border-[#242424] group-hover:border-[#FF1F26] flex items-center justify-center text-[#FF1F26] mb-4">
                 <Users className="w-5 h-5" />
               </div>
@@ -40,7 +40,7 @@ const CultureSection = () => {
               </p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-[#050505] border border-[#242424] hover:border-[#FF1F26]/50 transition-colors group">
+            <div className="p-6 rounded-2xl bg-[#0D0D0D] border border-[#242424] hover:border-[#FF1F26]/50 transition-colors group">
               <div className="w-10 h-10 rounded-xl bg-[#141416] border border-[#242424] group-hover:border-[#FF1F26] flex items-center justify-center text-[#FF1F26] mb-4">
                 <Lightbulb className="w-5 h-5" />
               </div>
@@ -51,7 +51,7 @@ const CultureSection = () => {
               </p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-[#050505] border border-[#242424] hover:border-[#FF1F26]/50 transition-colors group">
+            <div className="p-6 rounded-2xl bg-[#0D0D0D] border border-[#242424] hover:border-[#FF1F26]/50 transition-colors group">
               <div className="w-10 h-10 rounded-xl bg-[#141416] border border-[#242424] group-hover:border-[#FF1F26] flex items-center justify-center text-[#FF1F26] mb-4">
                 <Target className="w-5 h-5" />
               </div>

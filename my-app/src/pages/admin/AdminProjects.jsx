@@ -175,7 +175,7 @@ const AdminProjects = () => {
         <form onSubmit={handleSearchSubmit} className="relative w-full md:w-80">
           <input
             type="text"
-            placeholder="Search projects..."
+            placeholder="Search projects by title, client, or category..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full h-9 pl-9 pr-3 rounded-lg bg-[#09090b] border border-[#27272a] text-white placeholder-[#71717a] text-xs focus:border-[#ef4444] focus:outline-none"
@@ -358,14 +358,14 @@ const AdminProjects = () => {
 
             <form onSubmit={handleSave} className="space-y-3.5 text-xs">
               <div>
-                <label className="block text-[#a1a1aa] mb-1 font-medium">Title *</label>
+                <label className="block text-[#a1a1aa] mb-1 font-medium">Project Title *</label>
                 <input
                   type="text"
                   required
                   value={formData.title}
                   onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                  placeholder="Enterprise AI Agent Workforce"
-                  className="w-full px-3 py-2 rounded-lg bg-[#09090b] border border-[#27272a] text-white"
+                  placeholder="Enter project title (e.g. Enterprise AI Agent Workforce)"
+                  className="w-full px-3 py-2 rounded-lg bg-[#09090b] border border-[#27272a] text-white placeholder-[#71717a]"
                 />
               </div>
 
@@ -375,8 +375,8 @@ const AdminProjects = () => {
                   type="text"
                   value={formData.slug}
                   onChange={(e) => setFormData({ ...formData, slug: e.target.value })}
-                  placeholder="enterprise-ai-agent-workforce"
-                  className="w-full px-3 py-2 rounded-lg bg-[#09090b] border border-[#27272a] text-white font-mono"
+                  placeholder="e.g. enterprise-ai-agent-workforce (auto-generated if empty)"
+                  className="w-full px-3 py-2 rounded-lg bg-[#09090b] border border-[#27272a] text-white font-mono placeholder-[#71717a]"
                 />
               </div>
 
@@ -417,14 +417,14 @@ const AdminProjects = () => {
               </div>
 
               <div>
-                <label className="block text-[#a1a1aa] mb-1 font-medium">Description *</label>
+                <label className="block text-[#a1a1aa] mb-1 font-medium">Project Description & Overview *</label>
                 <textarea
                   rows={3}
                   required
                   value={formData.description}
                   onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                  placeholder="High-throughput autonomous agent system..."
-                  className="w-full p-2.5 rounded-lg bg-[#09090b] border border-[#27272a] text-white"
+                  placeholder="Enter comprehensive project overview, challenges solved, and architectural stack..."
+                  className="w-full p-2.5 rounded-lg bg-[#09090b] border border-[#27272a] text-white placeholder-[#71717a]"
                 />
               </div>
 

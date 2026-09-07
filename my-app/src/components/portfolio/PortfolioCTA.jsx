@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Sparkles, Zap, ShieldCheck } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import Container from '../common/Container';
 
 const PortfolioCTA = ({ onOpenDemo }) => {
   return (
-    <section id="portfolio-cta" className="py-20 sm:py-28 relative overflow-hidden bg-[#030303]">
+    <section id="portfolio-cta" className="py-20 sm:py-28 relative overflow-hidden bg-[#171717]">
       {/* Background Volumetric Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-[#FF1F26]/10 rounded-full blur-[130px] pointer-events-none" />
 
@@ -40,23 +40,6 @@ const PortfolioCTA = ({ onOpenDemo }) => {
             </Link>
           </div>
 
-          {/* Micro Trust Indicators */}
-          <div className="pt-6 flex flex-wrap items-center justify-center gap-6 text-xs text-[#A1A1AA] font-sans font-medium">
-            <span className="flex items-center gap-1.5">
-              <ShieldCheck className="w-4 h-4 text-emerald-400" />
-              <span>NDA Protected</span>
-            </span>
-            <span className="w-1 h-1 rounded-full bg-white/20" />
-            <span className="flex items-center gap-1.5">
-              <Zap className="w-4 h-4 text-[#FF1F26]" />
-              <span>Sub-24hr Response</span>
-            </span>
-            <span className="w-1 h-1 rounded-full bg-white/20" />
-            <span className="flex items-center gap-1.5">
-              <Sparkles className="w-4 h-4 text-[#FF1F26]" />
-              <span>Custom JavaScript Architecture</span>
-            </span>
-          </div>
 
         </div>
       </Container>

@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from 'react';
  * InteractiveBackground Component
  * 
  * Premium interactive black-and-red futuristic theme:
- * - Deep black base (#030303 / #050505)
+ * - Deep black base (#171717 / #0D0D0D)
  * - Multi-layer crimson & dark-red ambient gradients (#3D0505, #8B0000, #FF2A00, #FF4D1A)
  * - Cursor-reactive dual radial glow with fluid lerp interpolation
  * - Secondary trailing crimson halo for 3D visual depth
@@ -196,7 +196,7 @@ const InteractiveBackground = () => {
   return (
     <div
       ref={containerRef}
-      className="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-[#030303] select-none"
+      className="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-[#171717] select-none"
       aria-hidden="true"
     >
       {/* LAYER 1: Deep Black Base with Static Red/Crimson Ambient Glows */}

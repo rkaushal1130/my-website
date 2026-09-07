@@ -1,199 +1,138 @@
 import React, { useEffect, useState, useRef } from 'react';
-import introLogo from '../../assets/images/intro-logo.png';
+import brandLogo from '../../assets/images/logo.png';
 import { ArrowRight } from 'lucide-react';
 
+const QUOTES = [
+  "Innovating Today. Building Tomorrow.",
+  "Technology That Drives Growth.",
+];
+
 const LoadingScreen = () => {
-  const [progress, setProgress] = useState(0);
-  const [statusText, setStatusText] = useState('INITIALIZING NEURAL CORE...');
+  const [quoteIndex, setQuoteIndex] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [shouldRender, setShouldRender] = useState(true);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const containerRef = useRef(null);
-
-  // Dynamic 3D mouse parallax tracking
-  const handleMouseMove = (e) => {
-    if (!containerRef.current) return;
-    const { clientX, clientY } = e;
-    const { innerWidth, innerHeight } = window;
-    const x = (clientX / innerWidth - 0.5) * 22; // -11deg to +11deg
-    const y = (clientY / innerHeight - 0.5) * -22; // -11deg to +11deg
-    setMousePos({ x, y });
-  };
+  const timeoutsRef = useRef([]);
 
   useEffect(() => {
-    // Smooth cinematic progress counter
-    const interval = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) {
-          clearInterval(interval);
-          return 100;
-        }
-        const step = Math.max(1, Math.floor((100 - prev) * 0.14));
-        const next = Math.min(100, prev + step);
+    // Quote 0 is shown immediately
+    // Velvety smooth pacing: 1200ms display + 800ms pure GPU hardware cross-drift
+    const t1 = setTimeout(() => {
+      setQuoteIndex(1);
+    }, 1200);
 
-        if (next > 80) {
-          setStatusText('WELCOME TO NeverquiT AI');
-        } else if (next > 45) {
-          setStatusText('SYNCHRONIZING INTELLIGENCE MESH...');
-        } else if (next > 15) {
-          setStatusText('CALIBRATING NEURAL PIPELINES...');
-        }
+    const t2 = setTimeout(() => {
+      setIsLoading(false);
+      const t3 = setTimeout(() => {
+        setShouldRender(false);
+      }, 700);
+      timeoutsRef.current.push(t3);
+    }, 2500);
 
-        return next;
-      });
-    }, 45);
+    timeoutsRef.current = [t1, t2];
 
-    return () => clearInterval(interval);
+    return () => {
+      timeoutsRef.current.forEach((t) => clearTimeout(t));
+    };
   }, []);
 
-  useEffect(() => {
-    if (progress === 100) {
-      // Hold at 100% briefly then smoothly transition out
-      const timer = setTimeout(() => {
-        setIsLoading(false);
-      }, 450);
-
-      const removeTimer = setTimeout(() => {
-        setShouldRender(false);
-      }, 1200);
-
-      return () => {
-        clearTimeout(timer);
-        clearTimeout(removeTimer);
-      };
-    }
-  }, [progress]);
-
   const handleSkip = () => {
+    timeoutsRef.current.forEach((t) => clearTimeout(t));
     setIsLoading(false);
     setTimeout(() => {
       setShouldRender(false);
-    }, 600);
+    }, 400);
   };
 
   if (!shouldRender) return null;
 
   return (
     <div
-      ref={containerRef}
-      onMouseMove={handleMouseMove}
-      className={`fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#030303] select-none transition-all duration-800 ease-out overflow-hidden ${
+      onClick={handleSkip}
+      className={`fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#0D0D0D] select-none transition-all duration-700 ease-out overflow-hidden cursor-pointer ${
         isLoading
           ? 'opacity-100 scale-100 pointer-events-auto'
           : 'opacity-0 scale-105 filter blur-sm pointer-events-none'
       }`}
-      style={{ perspective: '1400px' }}
     >
-      {/* Volumetric Radial Ambient Lighting */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] sm:w-[900px] h-[340px] sm:h-[700px] bg-radial-hero opacity-95 pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] sm:w-[450px] h-[280px] sm:h-[450px] bg-[#FF1F26]/12 rounded-full blur-[80px] sm:blur-[140px] pointer-events-none" />
-      <div className="absolute inset-0 bg-grid-pattern opacity-15 pointer-events-none" />
-
-      {/* Cybernetic horizontal light streaks */}
-      <div className="absolute top-1/4 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#FF1F26]/20 to-transparent pointer-events-none" />
-      <div className="absolute bottom-1/4 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#FF1F26]/15 to-transparent pointer-events-none" />
-
-      {/* 3D Floating Stage */}
-      <div
-        className="relative flex flex-col items-center justify-center transition-transform duration-300 ease-out z-10 max-w-2xl px-6 w-full"
-        style={{
-          transform: `rotateX(${mousePos.y}deg) rotateY(${mousePos.x}deg)`,
-          transformStyle: 'preserve-3d',
-        }}
-      >
+      {/* Main Content: Centered Logo & Quote Stack */}
+      <div className="relative z-10 flex flex-col items-center justify-center max-w-4xl w-full px-4 text-center">
         
-        {/* Holographic Glowing 3D Pedestal Floor Rings */}
-        <div
-          className="absolute -bottom-8 flex items-center justify-center pointer-events-none"
-          style={{
-            transform: 'translateZ(-50px) rotateX(72deg)',
-          }}
-        >
-          <div className="w-[300px] sm:w-[480px] h-[300px] sm:h-[480px] rounded-full border border-[#FF1F26]/25 animate-spin-slow shadow-[0_0_60px_rgba(255,31,38,0.35)]" />
-          <div className="absolute w-[220px] sm:w-[360px] h-[220px] sm:h-[360px] rounded-full border border-[#FF3030]/35 animate-pulse" />
-          <div className="absolute w-[160px] sm:w-[240px] h-[160px] sm:h-[240px] rounded-full border border-[#FF1F26]/50 shadow-[0_0_35px_rgba(255,31,38,0.5)]" />
-          <div className="absolute w-[120px] sm:w-[140px] h-[120px] sm:h-[140px] rounded-full bg-[#FF1F26]/15 blur-2xl" />
+        {/* Company Logo Lockup with subtle breath animation */}
+        <div className="relative flex items-center justify-center mb-8 sm:mb-11 transition-transform duration-700 hover:scale-105">
+          <img
+            src={brandLogo}
+            alt="Avaura"
+            className="relative z-10 h-20 sm:h-24 md:h-28 lg:h-32 w-auto max-w-[360px] sm:max-w-[440px] md:max-w-[520px] object-contain select-none"
+          />
         </div>
 
-        {/* 3D Floating Logo Showcase (Seamlessly Blended) */}
-        <div
-          className="relative flex items-center justify-center"
-          style={{
-            transform: 'translateZ(45px)',
-            transformStyle: 'preserve-3d',
-          }}
-        >
-          {/* Intense ambient backlight */}
-          <div className="absolute w-60 h-60 sm:w-96 sm:h-96 bg-[#FF1F26] rounded-full blur-[80px] sm:blur-[100px] opacity-25 animate-pulse pointer-events-none" />
+        {/* Pure GPU-Accelerated Velvety Crossfade (Zero blur/scale jitter, pure opacity & gentle 8px float) */}
+        <div className="relative h-12 sm:h-14 md:h-16 w-full max-w-3xl mx-auto flex items-center justify-center overflow-hidden">
+          {QUOTES.map((quote, idx) => {
+            const isActive = idx === quoteIndex;
+            const isPrev = idx < quoteIndex;
+            return (
+              <p
+                key={idx}
+                style={{
+                  transitionProperty: 'opacity, transform',
+                  transitionDuration: '800ms',
+                  transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
+                }}
+                className={`absolute inset-x-0 text-center whitespace-nowrap text-base sm:text-xl md:text-2xl lg:text-[28px] xl:text-3xl font-light text-white tracking-wide select-none px-4 will-change-[transform,opacity] ${
+                  isActive
+                    ? 'opacity-100 translate-y-0 z-10'
+                    : isPrev
+                    ? 'opacity-0 -translate-y-2 z-0 pointer-events-none'
+                    : 'opacity-0 translate-y-2 z-0 pointer-events-none'
+                }`}
+              >
+                {quote}
+              </p>
+            );
+          })}
+        </div>
 
-          {/* High-Resolution 3D Logo Presentation with seamless edge mask */}
-          <div className="relative w-full max-w-[280px] sm:max-w-[420px] lg:max-w-[520px] transition-transform duration-700 hover:scale-105">
-            <img
-              src={introLogo}
-              alt="NeverquiT AI 3D Monogram"
-              className="w-full h-auto object-contain drop-shadow-[0_20px_50px_rgba(255,31,38,0.55)] select-none rounded-2xl"
+        {/* Minimal Subtle Quote Progress Dots */}
+        <div className="flex items-center justify-center gap-2 mt-8">
+          {QUOTES.map((_, idx) => (
+            <span
+              key={idx}
               style={{
-                maskImage: 'radial-gradient(circle at center, black 72%, transparent 100%)',
-                WebkitMaskImage: 'radial-gradient(circle at center, black 72%, transparent 100%)',
+                transitionProperty: 'all',
+                transitionDuration: '800ms',
+                transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
               }}
+              className={`h-1.5 rounded-full ${
+                idx === quoteIndex
+                  ? 'w-8 bg-[#FF1F26] shadow-[0_0_12px_rgba(255,31,38,0.7)]'
+                  : idx < quoteIndex
+                  ? 'w-2 bg-white/40'
+                  : 'w-2 bg-white/15'
+              }`}
             />
-          </div>
-        </div>
-
-        {/* Brand Typography & Status (Clean Sans Typography) */}
-        <div
-          className="mt-6 text-center space-y-2"
-          style={{ transform: 'translateZ(30px)' }}
-        >
-          <div className="text-2xl sm:text-3xl font-extrabold tracking-[0.05em] text-white flex items-center justify-center gap-1.5">
-            <span>NeverquiT</span>
-            <span className="text-[#FF1F26] text-glow">AI</span>
-          </div>
-
-          <p className="text-xs tracking-[0.25em] uppercase text-[#737373] font-medium">
-            Autonomous Intelligence Infrastructure
-          </p>
-        </div>
-
-        {/* Minimalist Futuristic Progress Bar */}
-        <div
-          className="mt-6 sm:mt-7 w-64 sm:w-80 space-y-2"
-          style={{ transform: 'translateZ(20px)' }}
-        >
-          <div className="flex items-center justify-between text-xs font-medium text-[#8a8a8a]">
-            <span className="flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#FF1F26] animate-ping" />
-              {statusText}
-            </span>
-            <span className="text-[#FF1F26] font-bold">{progress}%</span>
-          </div>
-
-          <div className="h-[2px] w-full bg-[#1A1A1E] rounded-full overflow-hidden">
-            <div
-              className="h-full bg-gradient-to-r from-[#FF1F26] via-[#FF3B42] to-[#FFFFFF] rounded-full shadow-[0_0_12px_#FF1F26] transition-all duration-100 ease-out"
-              style={{ width: `${progress}%` }}
-            />
-          </div>
+          ))}
         </div>
 
       </div>
 
-      {/* Skip / Enter Site Button */}
+      {/* Subtle Skip Prompt in Corner */}
       <button
         type="button"
-        onClick={handleSkip}
-        className="absolute bottom-5 right-5 sm:bottom-7 sm:right-7 z-20 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-[#0D0D10]/80 hover:bg-[#1A1A20] border border-[#26262B] hover:border-[#FF1F26] text-xs font-medium text-[#A7A7A7] hover:text-white flex items-center gap-2 transition-all duration-200 cursor-pointer shadow-lg active:scale-95 group"
+        onClick={(e) => {
+          e.stopPropagation();
+          handleSkip();
+        }}
+        className="absolute bottom-6 right-6 z-20 px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 hover:border-[#FF1F26]/50 text-xs font-medium text-white/50 hover:text-white flex items-center gap-1.5 transition-all duration-200 cursor-pointer active:scale-95"
       >
-        <span>ENTER SITE</span>
-        <ArrowRight className="w-3.5 h-3.5 text-[#FF1F26] transition-transform group-hover:translate-x-1" />
+        <span>Skip</span>
+        <ArrowRight className="w-3 h-3 text-[#FF1F26]" />
       </button>
 
-      {/* Corner Telemetry Meta */}
-      <div className="absolute bottom-7 left-7 text-xs font-medium text-[#525252] hidden sm:block pointer-events-none">
-        <div>CORE // AUTONOMOUS AI v4.2</div>
-        <div>SUNDERNAGAR, HP // GLOBAL HQ</div>
+      {/* Discreet click hint */}
+      <div className="absolute bottom-6 left-6 text-[11px] text-white/30 hidden sm:block pointer-events-none">
+        Click anywhere to continue
       </div>
-
     </div>
   );
 };

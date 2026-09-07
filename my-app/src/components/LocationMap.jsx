@@ -5,7 +5,7 @@ const LocationMap = () => {
   const [mapLoaded, setMapLoaded] = useState(false);
 
   return (
-    <section className="py-20 sm:py-28 relative overflow-hidden bg-[#030303]">
+    <section className="py-20 sm:py-28 relative overflow-hidden bg-[#171717]">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-[#FF1F26]/5 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none" />
 
@@ -34,12 +34,12 @@ const LocationMap = () => {
           <div className="lg:col-span-4 flex flex-col justify-between p-7 sm:p-8 rounded-3xl bg-[#0A0A0D] border border-[#222226] hover:border-[#FF1F26]/50 transition-all duration-300 shadow-[0_20px_50px_rgba(0,0,0,0.9)] space-y-6 text-left">
             <div>
               <div className="flex items-center gap-2 mb-4">
-                <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping" />
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
                 <span className="text-xs font-bold uppercase tracking-wider text-emerald-400">Headquarters Active</span>
               </div>
 
               <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-2">
-                NeverquiT <span className="text-[#FF1F26]">AI</span>
+                Avaura
               </h3>
               
               <p className="text-xs text-[#FF3030] font-medium mb-6">
@@ -108,7 +108,7 @@ const LocationMap = () => {
             
             {/* Top Bar on Map */}
             <div className="absolute top-4 left-4 right-4 z-20 flex items-center justify-between pointer-events-none">
-              <div className="px-3.5 py-1.5 rounded-xl bg-[#050505]/90 border border-[#26262B] backdrop-blur-md text-xs font-semibold text-white flex items-center gap-2 shadow-lg">
+              <div className="px-3.5 py-1.5 rounded-xl bg-[#0D0D0D]/90 border border-[#26262B] backdrop-blur-md text-xs font-semibold text-white flex items-center gap-2 shadow-lg">
                 <MapPin className="w-4 h-4 text-[#FF1F26]" />
                 <span>Sundernagar, Himachal Pradesh — HQ Location</span>
               </div>
@@ -117,7 +117,7 @@ const LocationMap = () => {
                 href="https://maps.google.com/?q=Sundernagar,+Distt.+Mandi,+Himachal+Pradesh+175002"
                 target="_blank"
                 rel="noreferrer"
-                className="pointer-events-auto px-3.5 py-1.5 rounded-xl bg-[#050505]/90 hover:bg-[#FF1F26] border border-[#26262B] hover:border-[#FF1F26] backdrop-blur-md text-xs font-semibold text-[#A7A7A7] hover:text-white flex items-center gap-1.5 transition-all shadow-lg"
+                className="pointer-events-auto px-3.5 py-1.5 rounded-xl bg-[#0D0D0D]/90 hover:bg-[#FF1F26] border border-[#26262B] hover:border-[#FF1F26] backdrop-blur-md text-xs font-semibold text-[#A7A7A7] hover:text-white flex items-center gap-1.5 transition-all shadow-lg"
               >
                 <span>Open in Google Maps</span>
                 <ExternalLink className="w-3.5 h-3.5" />
@@ -127,7 +127,7 @@ const LocationMap = () => {
             {/* Live Interactive Map IFrame with High-Contrast Dark Custom Styling */}
             <div className="relative w-full h-full min-h-[460px] flex-grow overflow-hidden">
               <iframe
-                title="NeverquiT AI Headquarters Sundernagar Map"
+                title="Avaura Headquarters Sundernagar Map"
                 src="https://maps.google.com/maps?q=Sundernagar,%20Distt.%20Mandi,%20Himachal%20Pradesh%20175002&t=&z=13&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="100%"

@@ -43,7 +43,7 @@ const Solutions = () => {
               <Link
                 key={item.id}
                 to="/contact"
-                className="group relative p-6 sm:p-8 rounded-[20px] bg-[#101010] border border-[#242424] hover:border-[#FF1F26]/55 transition-all duration-300 hover:shadow-card-hover hover:-translate-y-2 hover:[transform:rotateX(2deg)_rotateY(-2deg)] flex flex-col justify-between overflow-hidden"
+                className="group relative p-6 sm:p-8 rounded-[20px] bg-[#171717] border border-[#242424] hover:border-[#FF1F26]/55 transition-all duration-300 hover:shadow-card-hover hover:-translate-y-2 hover:[transform:rotateX(2deg)_rotateY(-2deg)] flex flex-col justify-between overflow-hidden"
               >
                 <div className="absolute -top-10 -right-10 w-36 h-36 bg-[#FF1F26]/8 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
@@ -65,7 +65,7 @@ const Solutions = () => {
                   <span className="text-xs font-semibold text-[#737373] group-hover:text-[#FF1F26] transition-colors">
                     Explore Solution
                   </span>
-                  <div className="w-8 h-8 rounded-lg bg-[#050505] border border-[#242424] group-hover:border-[#FF1F26] group-hover:bg-[#FF1F26] flex items-center justify-center text-[#A7A7A7] group-hover:text-white transition-all duration-300">
+                  <div className="w-8 h-8 rounded-lg bg-[#0D0D0D] border border-[#242424] group-hover:border-[#FF1F26] group-hover:bg-[#FF1F26] flex items-center justify-center text-[#A7A7A7] group-hover:text-white transition-all duration-300">
                     <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
                   </div>
                 </div>

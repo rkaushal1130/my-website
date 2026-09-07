@@ -6,7 +6,7 @@ import { processSteps } from '../../data/servicesData';
 
 const ServicesProcess = () => {
   return (
-    <section className="py-20 sm:py-28 relative overflow-hidden bg-[#030303]">
+    <section className="py-20 sm:py-28 relative overflow-hidden bg-[#171717]">
       <div className="absolute top-1/2 right-0 -translate-y-1/2 w-96 h-96 bg-[#FF1F26]/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none" />
 

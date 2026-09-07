@@ -12,7 +12,7 @@
   }
 
   body {
-    background-color: #050505;
+    background-color: #0D0D0D;
     color: #FFFFFF;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
@@ -94,7 +94,7 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #050505;
+  background: #0D0D0D;
 }
 
 ::-webkit-scrollbar-thumb {

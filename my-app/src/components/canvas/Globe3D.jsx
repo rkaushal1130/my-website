@@ -52,7 +52,7 @@ const Globe3D = () => {
           <mesh>
             <sphereGeometry args={[1.4, 32, 32]} />
             <meshStandardMaterial
-              color="#0A0A0A"
+              color="#121212"
               roughness={0.2}
               metalness={0.95}
             />

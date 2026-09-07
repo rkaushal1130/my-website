@@ -49,7 +49,7 @@ const ContactInfo = () => {
           return (
             <div
               key={idx}
-              className="p-4 sm:p-5 rounded-[22px] bg-[#101010]/95 border border-[#242424] hover:border-[#FF1F26]/60 backdrop-blur-md transition-all duration-300 hover:shadow-[0_15px_35px_rgba(255,31,38,0.18)] hover:-translate-y-1.5 hover:[transform:rotateX(2deg)_rotateY(-1.5deg)] flex items-start gap-3.5 sm:gap-4 group"
+              className="p-4 sm:p-5 rounded-[22px] bg-[#171717]/95 border border-[#242424] hover:border-[#FF1F26]/60 backdrop-blur-md transition-all duration-300 hover:shadow-[0_15px_35px_rgba(255,31,38,0.18)] hover:-translate-y-1.5 hover:[transform:rotateX(2deg)_rotateY(-1.5deg)] flex items-start gap-3.5 sm:gap-4 group"
             >
               <div className="transition-transform duration-300 group-hover:scale-110 shrink-0">
                 <IconBox icon={Icon} size="md" />

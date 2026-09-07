@@ -14,7 +14,7 @@ export class HealthController {
     return sendSuccess(
       res,
       details,
-      'NeverquiT AI API is running',
+      'Avaura API is running',
       200
     );
   }

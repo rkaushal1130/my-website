@@ -16,7 +16,7 @@ const Button = ({
   disabled = false,
   ...props
 }) => {
-  const baseStyles = 'inline-flex items-center justify-center font-medium transition-all duration-300 select-none group cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#FF1F26] focus:ring-offset-2 focus:ring-offset-[#050505]';
+  const baseStyles = 'inline-flex items-center justify-center font-medium transition-all duration-300 select-none group cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#FF1F26] focus:ring-offset-2 focus:ring-offset-[#0D0D0D]';
 
   const sizeStyles = {
     sm: 'text-xs px-4 py-2 rounded-lg gap-1.5',

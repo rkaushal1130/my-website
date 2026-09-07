@@ -28,18 +28,18 @@ const VideoModal = ({ isOpen, onClose }) => {
       />
 
       {/* Modal Container */}
-      <div className="relative w-full max-w-4xl rounded-3xl bg-[#0B0B0B] border border-[#242424] shadow-[0_0_60px_rgba(255,31,38,0.3)] overflow-hidden z-10 transition-all my-8">
+      <div className="relative w-full max-w-4xl rounded-3xl bg-[#131313] border border-[#242424] shadow-[0_0_60px_rgba(255,31,38,0.3)] overflow-hidden z-10 transition-all my-8">
         {/* Header Bar */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-[#242424] bg-[#111111]">
           <div className="flex items-center gap-3">
-            <div className="w-3 h-3 rounded-full bg-[#FF1F26] animate-ping" />
+            <div className="w-2.5 h-2.5 rounded-full bg-[#FF1F26]" />
             <span className="text-sm font-semibold text-white tracking-wide">
-              NeverquiT AI Platform Walkthrough (Live Architecture Demo)
+              Avaura Platform Walkthrough (Live Architecture Demo)
             </span>
           </div>
           <button
             onClick={onClose}
-            className="w-8 h-8 rounded-full bg-[#050505] border border-[#242424] text-[#B5B5B5] hover:text-white hover:border-[#FF1F26] flex items-center justify-center transition-colors"
+            className="w-8 h-8 rounded-full bg-[#0D0D0D] border border-[#242424] text-[#B5B5B5] hover:text-white hover:border-[#FF1F26] flex items-center justify-center transition-colors"
             aria-label="Close video"
           >
             <X className="w-4 h-4" />
@@ -47,7 +47,7 @@ const VideoModal = ({ isOpen, onClose }) => {
         </div>
 
         {/* Video Screen Simulation */}
-        <div className="relative aspect-video bg-[#050505] overflow-hidden flex flex-col justify-between p-6 sm:p-8">
+        <div className="relative aspect-video bg-[#0D0D0D] overflow-hidden flex flex-col justify-between p-6 sm:p-8">
           {/* Cyber Grid Background */}
           <div className="absolute inset-0 bg-grid-pattern opacity-30" />
           <div className="absolute inset-0 bg-radial-hero opacity-80" />
@@ -100,15 +100,15 @@ const VideoModal = ({ isOpen, onClose }) => {
                 <div className="text-sm font-bold text-white mb-2">Neural Decision Engine Active</div>
                 <div className="text-xs text-[#B5B5B5] mb-4">Processing 42,000 requests/sec across distributed multi-region clusters.</div>
                 <div className="grid grid-cols-3 gap-2 text-left">
-                  <div className="p-2 rounded bg-[#050505] border border-[#242424]">
+                  <div className="p-2 rounded bg-[#0D0D0D] border border-[#242424]">
                     <div className="text-[10px] text-[#737373]">Accuracy</div>
                     <div className="text-sm font-bold text-[#FF1F26]">99.94%</div>
                   </div>
-                  <div className="p-2 rounded bg-[#050505] border border-[#242424]">
+                  <div className="p-2 rounded bg-[#0D0D0D] border border-[#242424]">
                     <div className="text-[10px] text-[#737373]">Uptime</div>
                     <div className="text-sm font-bold text-white">100.0%</div>
                   </div>
-                  <div className="p-2 rounded bg-[#050505] border border-[#242424]">
+                  <div className="p-2 rounded bg-[#0D0D0D] border border-[#242424]">
                     <div className="text-[10px] text-[#737373]">Cost Saved</div>
                     <div className="text-sm font-bold text-[#FF1F26]">68%</div>
                   </div>
@@ -120,15 +120,15 @@ const VideoModal = ({ isOpen, onClose }) => {
               <div className="p-6 rounded-2xl bg-[#111111]/90 border border-[#FF1F26]/50 max-w-md mx-auto shadow-[0_0_30px_rgba(255,31,38,0.3)]">
                 <div className="text-sm font-bold text-white mb-2">Autonomous Agent Swarm</div>
                 <div className="space-y-2 text-left text-xs">
-                  <div className="flex items-center justify-between p-2 rounded bg-[#050505]">
+                  <div className="flex items-center justify-between p-2 rounded bg-[#0D0D0D]">
                     <span className="text-white">Customer Support Agent</span>
                     <span className="text-[#FF1F26] font-mono">RESOLVED (1.2s)</span>
                   </div>
-                  <div className="flex items-center justify-between p-2 rounded bg-[#050505]">
+                  <div className="flex items-center justify-between p-2 rounded bg-[#0D0D0D]">
                     <span className="text-white">Data Cleaning Agent</span>
                     <span className="text-[#FF1F26] font-mono">STREAMING</span>
                   </div>
-                  <div className="flex items-center justify-between p-2 rounded bg-[#050505]">
+                  <div className="flex items-center justify-between p-2 rounded bg-[#0D0D0D]">
                     <span className="text-white">Predictive Analytics Agent</span>
                     <span className="text-white font-mono">STANDBY</span>
                   </div>

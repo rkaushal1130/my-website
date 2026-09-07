@@ -107,7 +107,7 @@ const AIOrb = () => {
           <mesh>
             <sphereGeometry args={[0.92, 32, 32]} />
             <meshStandardMaterial
-              color="#0A0A0A"
+              color="#121212"
               roughness={0.15}
               metalness={0.95}
               transparent
@@ -223,7 +223,7 @@ const AIOrb = () => {
         <mesh rotation={[-Math.PI / 2, 0, 0]}>
           <cylinderGeometry args={[2.8, 3.0, 0.08, 64]} />
           <meshStandardMaterial
-            color="#080808"
+            color="#171717"
             roughness={0.3}
             metalness={0.9}
           />

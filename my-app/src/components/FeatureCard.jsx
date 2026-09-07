@@ -16,7 +16,7 @@ const FeatureCard = ({
       <div>
         <div className="flex items-center justify-between mb-6">
           {Icon && (
-            <div className="w-12 h-12 rounded-xl bg-[#0B0B0B] border border-[#242424] group-hover:border-[#FF1F26]/50 flex items-center justify-center text-[#FF1F26] group-hover:shadow-[0_0_15px_rgba(255,31,38,0.3)] transition-all duration-300">
+            <div className="w-12 h-12 rounded-xl bg-[#131313] border border-[#242424] group-hover:border-[#FF1F26]/50 flex items-center justify-center text-[#FF1F26] group-hover:shadow-[0_0_15px_rgba(255,31,38,0.3)] transition-all duration-300">
               <Icon className="w-6 h-6 stroke-[1.75]" />
             </div>
           )}

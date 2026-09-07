@@ -1,46 +1,60 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import PageWrapper from '../components/layout/PageWrapper';
-import CareerHero from '../components/careers/CareerHero';
-import CareerBenefits from '../components/careers/CareerBenefits';
-import CareerApplyForm from '../components/careers/CareerApplyForm';
-import CareerTimeline from '../components/careers/CareerTimeline';
-import CareerStats from '../components/careers/CareerStats';
-import CareerCTA from '../components/careers/CareerCTA';
+import CareersHero from '../components/careers/CareersHero';
+import CareersWhyWork from '../components/careers/CareersWhyWork';
+import CareersHiringProcess from '../components/careers/CareersHiringProcess';
+import CareersLifeAtAvaura from '../components/careers/CareersLifeAtAvaura';
+import CareersTestimonials from '../components/careers/CareersTestimonials';
 import ApplicationModal from '../components/careers/ApplicationModal';
 
 const Careers = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedJob, setSelectedJob] = useState(null);
 
-  const handleApply = (job) => {
-    const el = document.getElementById('apply-form');
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-      const input = el.querySelector('input[name="name"]');
-      if (input) setTimeout(() => input.focus(), 400);
-    } else {
-      setSelectedJob(job);
-      setIsModalOpen(true);
-    }
-  };
+  const handleApply = useCallback((job) => {
+    setSelectedJob(job || { title: 'Open Application', department: 'Technology & Engineering' });
+    setIsModalOpen(true);
+  }, []);
 
-  const handleCloseModal = () => {
+  const handleCloseModal = useCallback(() => {
     setIsModalOpen(false);
     setSelectedJob(null);
-  };
+  }, []);
+
+  // Global event listener to guarantee button click always opens modal
+  useEffect(() => {
+    const handleEventOpen = (e) => {
+      handleApply(e?.detail?.job);
+    };
+    window.addEventListener('open-apply-modal', handleEventOpen);
+    return () => window.removeEventListener('open-apply-modal', handleEventOpen);
+  }, [handleApply]);
 
   return (
     <PageWrapper
-      title="Careers at NeverquiT AI — Build The Future of AI"
-      description="Join NeverquiT AI and build the next generation of enterprise AI technology. Send your application for engineering, design, product, and business roles."
+      title="Careers at Avauraa — Build Your Future With Us"
+      description="Join Avauraa and build the future of technology. Explore our culture, hiring process, and opportunities."
+      canonicalUrl="/careers"
     >
-      <CareerHero onApplyClick={handleApply} />
-      <CareerBenefits />
-      <CareerApplyForm />
-      <CareerTimeline />
-      <CareerStats />
-      <CareerCTA onOpenApplication={handleApply} />
+      {/* 1. Hero Section with Apply Now button */}
+      <CareersHero
+        onApplyNow={() => handleApply({ title: 'Open Application', department: 'Technology & Engineering' })}
+        onApplyClick={() => handleApply({ title: 'Open Application', department: 'Technology & Engineering' })}
+      />
 
+      {/* 2. Why Work With Us? */}
+      <CareersWhyWork />
+
+      {/* 3. Our Hiring Process */}
+      <CareersHiringProcess />
+
+      {/* 4. Life at Avauraa Visual Gallery */}
+      <CareersLifeAtAvaura />
+
+      {/* 5. Voices From Our Team Testimonials */}
+      <CareersTestimonials />
+
+      {/* Interactive Application Modal Form */}
       <ApplicationModal
         isOpen={isModalOpen}
         onClose={handleCloseModal}

@@ -1,5 +1,5 @@
 /**
- * NeverquiT AI - Enterprise Reusable Project Data Structure & Normalizer
+ * Avaura - Enterprise Reusable Project Data Structure & Normalizer
  *
  * Standard Project Schema:
  * {
@@ -160,7 +160,7 @@ export const normalizeProject = (p = {}) => {
       'Prisma ORM with PostgreSQL Relational Schema & Redis Caching',
     ],
     quote: p.quote || {
-      text: 'The full-stack JavaScript platform built by NeverquiT AI redefined our brand prestige while delivering sub-millisecond API speeds and a 100/100 Lighthouse score.',
+      text: 'The full-stack JavaScript platform built by Avaura redefined our brand prestige while delivering sub-millisecond API speeds and a 100/100 Lighthouse score.',
       author: 'VP of Product Engineering, Cybertronics Global',
     },
   };
@@ -185,8 +185,8 @@ export const PORTFOLIO_PROJECTS = [
     databaseTech: ['PostgreSQL', 'Prisma ORM', 'Redis Cache', 'Connection Pooling'],
     devopsTech: ['Docker', 'Cloudflare Edge CDN', 'Git CI/CD', 'Vercel'],
     featured: true,
-    liveUrl: 'https://neverquit.ai',
-    githubUrl: 'https://github.com/neverquit-ai',
+    liveUrl: 'https://avaura.com',
+    githubUrl: 'https://github.com/avaura',
     year: '2026',
     client: 'Cybertronics Global Tech',
     industry: 'Enterprise Software & DeepTech',
@@ -209,7 +209,7 @@ export const PORTFOLIO_PROJECTS = [
       'Redis Sub-Millisecond Cache Invalidation & Session Management',
     ],
     quote: {
-      text: 'The full-stack platform built by NeverquiT AI redefined our brand prestige while delivering a flawless 100/100 Lighthouse performance score and instant database queries.',
+      text: 'The full-stack platform built by Avaura redefined our brand prestige while delivering a flawless 100/100 Lighthouse performance score and instant database queries.',
       author: 'VP of Product Engineering, Cybertronics Global',
     },
   }),
@@ -229,8 +229,8 @@ export const PORTFOLIO_PROJECTS = [
     databaseTech: ['MongoDB', 'Mongoose ODM', 'Redis Pub/Sub', 'pgvector AI'],
     devopsTech: ['Docker Compose', 'GitHub Actions CI/CD', 'AWS ECS'],
     featured: true,
-    liveUrl: 'https://neverquit.ai',
-    githubUrl: 'https://github.com/neverquit-ai',
+    liveUrl: 'https://avaura.com',
+    githubUrl: 'https://github.com/avaura',
     year: '2026',
     client: 'AetherFlow Intelligent Systems',
     industry: 'Autonomous SaaS & Cloud Workflows',
@@ -272,8 +272,8 @@ export const PORTFOLIO_PROJECTS = [
     databaseTech: ['PostgreSQL', 'Prisma ORM', 'Redis Session Store'],
     devopsTech: ['Docker', 'Nginx Reverse Proxy', 'Cloudflare WAF'],
     featured: false,
-    liveUrl: 'https://neverquit.ai',
-    githubUrl: 'https://github.com/neverquit-ai',
+    liveUrl: 'https://avaura.com',
+    githubUrl: 'https://github.com/avaura',
     year: '2026',
     client: 'CyberCore Defense Labs',
     industry: 'Cybersecurity & Cloud Compliance',
@@ -295,7 +295,7 @@ export const PORTFOLIO_PROJECTS = [
       'Redis In-Memory Token Blacklist & Suspicious IP Quarantine',
     ],
     quote: {
-      text: 'NeverquiT AI built a bulletproof console. Their full-stack TypeScript and Express architecture passed all enterprise penetration tests on day one.',
+      text: 'Avaura built a bulletproof console. Their full-stack TypeScript and Express architecture passed all enterprise penetration tests on day one.',
       author: 'Head of Information Security, CyberCore Labs',
     },
   }),

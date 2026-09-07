@@ -39,7 +39,7 @@ const WhyChooseUs = () => {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-3.5">
-          <Badge>THE NEVERQUIT AI ADVANTAGE</Badge>
+          <Badge>THE AVAURA ADVANTAGE</Badge>
 
           <h2 className="text-2xl sm:text-4xl lg:text-[44px] font-bold text-white tracking-tight leading-tight">
             Why Choose Us
@@ -56,7 +56,7 @@ const WhyChooseUs = () => {
             return (
               <div
                 key={idx}
-                className="p-5 sm:p-6 rounded-2xl bg-[#101010] border border-[#242424] hover:border-[#FF1F26]/55 transition-all duration-300 hover:-translate-y-1 group flex flex-col justify-between"
+                className="p-5 sm:p-6 rounded-2xl bg-[#171717] border border-[#242424] hover:border-[#FF1F26]/55 transition-all duration-300 hover:-translate-y-1 group flex flex-col justify-between"
               >
                 <div>
                   <div className="mb-4">

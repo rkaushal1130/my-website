@@ -1,7 +1,7 @@
-# NeverquiT AI — Enterprise AI Platform
+# Avaura — Enterprise AI Platform
 
 ```text
-NeverquiT AI
+Avaura
 │
 ├── frontend/ (my-app)
 │   ├── React 18
@@ -23,7 +23,7 @@ NeverquiT AI
 
 ## 🌟 Overview
 
-**NeverquiT AI** is a full-stack, enterprise-grade AI agency and autonomous reasoning platform. It pairs an immersive, high-performance cyberpunk frontend with a hardened, scalable TypeScript REST API engine backed by PostgreSQL.
+**Avaura** is a full-stack, enterprise-grade AI agency and autonomous reasoning platform. It pairs an immersive, high-performance cyberpunk frontend with a hardened, scalable TypeScript REST API engine backed by PostgreSQL.
 
 ---
 
@@ -95,4 +95,4 @@ Verifies 39 integration scenarios across Health, Authentication, Contact Inquiri
 ---
 
 ## 📜 License
-MIT License © 2026 NeverquiT AI Engineering Team. All rights reserved.
+MIT License © 2026 Avaura Engineering Team. All rights reserved.

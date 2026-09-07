@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import Container from '../common/Container';
 import Badge from '../common/Badge';
 
@@ -9,7 +9,7 @@ const CareerCTA = ({ onOpenApplication }) => {
       <Container size="wide">
         
         {/* Large Rounded CTA Card */}
-        <div className="relative rounded-[28px] bg-gradient-to-b from-[#101010] to-[#080808] border border-[#242424] p-8 sm:p-14 lg:p-16 overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.95)] text-center space-y-6 hover:border-[#FF1F26]/35 transition-all duration-400">
+        <div className="relative rounded-[28px] bg-gradient-to-b from-[#171717] to-[#171717] border border-[#242424] p-8 sm:p-14 lg:p-16 overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.95)] text-center space-y-6 hover:border-[#FF1F26]/35 transition-all duration-400">
           
           {/* Background Ambient Red Glows */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-[#FF1F26]/8 rounded-full blur-[100px] pointer-events-none" />
@@ -21,7 +21,7 @@ const CareerCTA = ({ onOpenApplication }) => {
           </div>
 
           <div className="relative z-10 max-w-2xl mx-auto space-y-5">
-            <Badge icon={Sparkles} className="mx-auto">JOIN OUR TEAM</Badge>
+            <Badge className="mx-auto">JOIN OUR TEAM</Badge>
 
             <h2 className="text-3xl sm:text-4xl lg:text-[46px] font-bold text-white tracking-tight leading-tight">
               Ready To Build What Comes{' '}
@@ -40,7 +40,7 @@ const CareerCTA = ({ onOpenApplication }) => {
                 onClick={() => onOpenApplication({ title: 'General Application', department: 'Any' })}
                 className="inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl bg-[#FF1F26] text-white text-base font-bold shadow-[0_0_25px_rgba(255,31,38,0.3)] hover:bg-[#FF3030] hover:shadow-[0_0_35px_rgba(255,31,38,0.5)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 group cursor-pointer"
               >
-                <span>Join NeverquiT AI</span>
+                <span>Join Avaura</span>
                 <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
               </button>
             </div>

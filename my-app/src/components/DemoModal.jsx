@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, CheckCircle2, Sparkles, Calendar, Mail, Building, User, Phone, ArrowRight } from 'lucide-react';
+import { X, CheckCircle2, Mail, Building, User, Phone, ArrowRight } from 'lucide-react';
 import Button from './Button';
 
 const DemoModal = ({ isOpen, onClose }) => {
@@ -34,7 +34,7 @@ const DemoModal = ({ isOpen, onClose }) => {
       />
 
       {/* Modal Container */}
-      <div className="relative w-full max-w-xl rounded-3xl bg-[#0B0B0B] border border-[#242424] shadow-[0_0_50px_rgba(255,31,38,0.25)] overflow-hidden z-10 transition-all my-8">
+      <div className="relative w-full max-w-xl rounded-3xl bg-[#131313] border border-[#242424] shadow-[0_0_50px_rgba(255,31,38,0.25)] overflow-hidden z-10 transition-all my-8">
         {/* Glow Header Accent */}
         <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#FF1F26] to-transparent" />
         
@@ -54,12 +54,11 @@ const DemoModal = ({ isOpen, onClose }) => {
             </div>
             <h3 className="text-2xl font-bold text-white mb-2">Demo Request Received!</h3>
             <p className="text-sm sm:text-base text-[#B5B5B5] max-w-md mb-6 leading-relaxed">
-              Thank you, <span className="text-white font-medium">{formData.name || 'there'}</span>. An AI architect from NeverquiT AI will contact you at <span className="text-[#FF1F26] font-medium">{formData.email || 'your email'}</span> within 2 hours with an interactive tailored demo.
+              Thank you, <span className="text-white font-medium">{formData.name || 'there'}</span>. An AI architect from Avaura will contact you at <span className="text-[#FF1F26] font-medium">{formData.email || 'your email'}</span> within 2 hours with an interactive tailored demo.
             </p>
             <div className="p-4 rounded-xl bg-[#111111] border border-[#242424] w-full text-left mb-6">
               <div className="text-xs text-[#737373] uppercase tracking-wider mb-1">Selected Focus</div>
-              <div className="text-sm font-semibold text-white flex items-center gap-2">
-                <Sparkles className="w-3.5 h-3.5 text-[#FF1F26]" />
+              <div className="text-sm font-semibold text-white">
                 {formData.service} ({formData.timeline})
               </div>
             </div>
@@ -69,11 +68,6 @@ const DemoModal = ({ isOpen, onClose }) => {
           </div>
         ) : (
           <div className="p-6 sm:p-8 md:p-10">
-            <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-[#111111] border border-[#242424] text-[11px] font-semibold tracking-wider text-[#FF2B30] uppercase mb-3 w-fit">
-              <Calendar className="w-3 h-3 text-[#FF1F26]" />
-              Schedule 1-on-1 Consultation
-            </div>
-
             <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2">
               Book a Live <span className="text-[#FF1F26]">AI Demo</span>
             </h3>
@@ -85,14 +79,14 @@ const DemoModal = ({ isOpen, onClose }) => {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs font-medium text-[#B5B5B5] mb-1.5">
-                    Full Name *
+                    Full Name & Surname *
                   </label>
                   <div className="relative">
                     <User className="w-4 h-4 text-[#737373] absolute left-3.5 top-1/2 -translate-y-1/2" />
                     <input
                       type="text"
                       required
-                      placeholder="Alex Morgan"
+                      placeholder="First Name & Surname (e.g. Rahul Sharma)"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       className="w-full bg-[#111111] border border-[#242424] focus:border-[#FF1F26] rounded-xl pl-10 pr-4 py-2.5 text-sm text-white placeholder-[#737373] focus:outline-none focus:ring-1 focus:ring-[#FF1F26] transition-colors"
@@ -109,7 +103,7 @@ const DemoModal = ({ isOpen, onClose }) => {
                     <input
                       type="email"
                       required
-                      placeholder="alex@company.com"
+                      placeholder="Enter work email (e.g. rahul@enterprise.com)"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       className="w-full bg-[#111111] border border-[#242424] focus:border-[#FF1F26] rounded-xl pl-10 pr-4 py-2.5 text-sm text-white placeholder-[#737373] focus:outline-none focus:ring-1 focus:ring-[#FF1F26] transition-colors"
@@ -127,7 +121,7 @@ const DemoModal = ({ isOpen, onClose }) => {
                     <Building className="w-4 h-4 text-[#737373] absolute left-3.5 top-1/2 -translate-y-1/2" />
                     <input
                       type="text"
-                      placeholder="Enterprise Inc."
+                      placeholder="Company name (e.g. Acme Enterprise Inc.)"
                       value={formData.company}
                       onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                       className="w-full bg-[#111111] border border-[#242424] focus:border-[#FF1F26] rounded-xl pl-10 pr-4 py-2.5 text-sm text-white placeholder-[#737373] focus:outline-none focus:ring-1 focus:ring-[#FF1F26] transition-colors"
@@ -137,13 +131,13 @@ const DemoModal = ({ isOpen, onClose }) => {
 
                 <div>
                   <label className="block text-xs font-medium text-[#B5B5B5] mb-1.5">
-                    Phone Number
+                    Contact No.
                   </label>
                   <div className="relative">
                     <Phone className="w-4 h-4 text-[#737373] absolute left-3.5 top-1/2 -translate-y-1/2" />
                     <input
                       type="tel"
-                      placeholder="+91 90153 23903"
+                      placeholder="Enter contact no. (e.g. +91 98765 43210)"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       className="w-full bg-[#111111] border border-[#242424] focus:border-[#FF1F26] rounded-xl pl-10 pr-4 py-2.5 text-sm text-white placeholder-[#737373] focus:outline-none focus:ring-1 focus:ring-[#FF1F26] transition-colors"
@@ -162,6 +156,7 @@ const DemoModal = ({ isOpen, onClose }) => {
                     onChange={(e) => setFormData({ ...formData, service: e.target.value })}
                     className="w-full bg-[#111111] border border-[#242424] focus:border-[#FF1F26] rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:ring-1 focus:ring-[#FF1F26] transition-colors"
                   >
+                    <option value="" disabled>Select solution of interest (e.g. AI Automation)</option>
                     <option value="AI Automation">AI Automation</option>
                     <option value="Machine Learning">Machine Learning</option>
                     <option value="Data Intelligence">Data Intelligence</option>
@@ -179,6 +174,7 @@ const DemoModal = ({ isOpen, onClose }) => {
                     onChange={(e) => setFormData({ ...formData, timeline: e.target.value })}
                     className="w-full bg-[#111111] border border-[#242424] focus:border-[#FF1F26] rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:ring-1 focus:ring-[#FF1F26] transition-colors"
                   >
+                    <option value="" disabled>Select deployment timeline (e.g. Within 1 month)</option>
                     <option value="Immediately">Immediately (Next 2 weeks)</option>
                     <option value="Within 1 month">Within 1 month</option>
                     <option value="1-3 months">1 - 3 months</option>

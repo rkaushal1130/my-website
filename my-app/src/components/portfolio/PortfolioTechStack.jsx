@@ -267,7 +267,7 @@ const TECH_TILES = [
 
 const PortfolioTechStack = () => {
   return (
-    <section id="tech-stack" className="py-20 sm:py-28 bg-[#030303] relative overflow-hidden font-sans">
+    <section id="tech-stack" className="py-20 sm:py-28 bg-[#171717] relative overflow-hidden font-sans">
       {/* Background Volumetric Ambient Radial Glow */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[900px] h-[350px] bg-[#FF1F26]/7 rounded-full blur-[140px] pointer-events-none" />
 

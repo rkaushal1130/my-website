@@ -1,12 +1,10 @@
 import React from 'react';
-import { Sparkles, ShieldCheck, Cpu, Activity, ArrowRight } from 'lucide-react';
 import Container from '../common/Container';
 import Badge from '../common/Badge';
-import Button from '../common/Button';
 
 const AboutHero = () => {
   return (
-    <section className="relative pt-32 pb-20 sm:pt-36 sm:pb-24 lg:pt-40 lg:pb-28 overflow-hidden bg-[#030303]">
+    <section className="relative pt-32 pb-20 sm:pt-36 sm:pb-24 lg:pt-40 lg:pb-28 overflow-hidden bg-[#171717]">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1100px] h-[550px] bg-radial-hero opacity-80 pointer-events-none" />
       <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-[#FF1F26]/5 rounded-full blur-[130px] pointer-events-none" />
       <div className="absolute inset-0 bg-grid-pattern opacity-15 pointer-events-none" />
@@ -14,7 +12,7 @@ const AboutHero = () => {
       <Container className="relative z-10 text-center max-w-4xl mx-auto">
         <div className="flex flex-col items-center space-y-7">
           
-          <Badge>ABOUT NEVERQUIT AI</Badge>
+          <Badge>ABOUT AVAURA</Badge>
 
           <h1 className="text-3xl sm:text-5xl lg:text-[62px] xl:text-[68px] font-bold text-white tracking-tight leading-[1.08] sm:leading-[1.06]">
             Building Intelligence That Moves{' '}
@@ -26,36 +24,6 @@ const AboutHero = () => {
           <p className="text-sm sm:text-lg md:text-xl text-[#A7A7A7] leading-relaxed max-w-2xl font-normal mx-auto">
             We engineer autonomous multi-agent systems, domain-tuned neural models, and enterprise cognitive infrastructure that automate complex workflows and unlock unprecedented efficiency.
           </p>
-
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4 pt-2 w-full sm:w-auto">
-            <Button to="/careers" variant="primary" size="lg" className="w-full sm:w-auto">
-              Explore Careers
-            </Button>
-            <Button to="/contact" variant="secondary" size="lg" className="w-full sm:w-auto">
-              Partner With Us
-            </Button>
-          </div>
-
-          {/* Key Pillars */}
-          <div className="pt-8 border-t border-[#1D1D1D] grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 text-xs font-medium text-[#8a8a8a] w-full max-w-3xl">
-            <div className="p-3 sm:p-3.5 rounded-xl bg-[#0a0a0d] border border-[#222]">
-              <span className="text-base font-bold text-white block">Enterprise AI</span>
-              Custom Architecture
-            </div>
-            <div className="p-3.5 rounded-xl bg-[#0a0a0d] border border-[#222]">
-              <span className="text-base font-bold text-[#FF1F26] block">High Agency</span>
-              Autonomous Swarms
-            </div>
-            <div className="p-3.5 rounded-xl bg-[#0a0a0d] border border-[#222]">
-              <span className="text-base font-bold text-white block">SOC2 Type II</span>
-              Zero-Trust Security
-            </div>
-            <div className="p-3.5 rounded-xl bg-[#0a0a0d] border border-[#222]">
-              <span className="text-base font-bold text-[#FF1F26] block">Sub-15ms</span>
-              Real-Time Inference
-            </div>
-          </div>
-
         </div>
       </Container>
     </section>

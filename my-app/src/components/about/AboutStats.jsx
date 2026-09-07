@@ -10,7 +10,7 @@ const AboutStats = () => {
   ];
 
   return (
-    <section className="py-20 sm:py-24 bg-[#0B0B0B] border-y border-[#242424] relative overflow-hidden">
+    <section className="py-20 sm:py-24 bg-[#131313] border-y border-[#242424] relative overflow-hidden">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-32 bg-[#FF1F26]/6 rounded-full blur-3xl pointer-events-none" />
 
       <Container className="relative z-10">

@@ -17,7 +17,7 @@ const Button = ({
   type = 'button',
   ...props
 }) => {
-  const baseStyles = 'inline-flex items-center justify-center font-semibold transition-all duration-300 select-none group cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#FF1F26] focus:ring-offset-2 focus:ring-offset-[#050505] min-h-[44px]';
+  const baseStyles = 'inline-flex items-center justify-center font-semibold transition-all duration-300 select-none group cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#FF1F26] focus:ring-offset-2 focus:ring-offset-[#0D0D0D] min-h-[44px]';
 
   const sizeStyles = {
     sm: 'text-xs px-4 py-2 rounded-xl gap-1.5 min-h-[40px]',
@@ -27,7 +27,7 @@ const Button = ({
 
   const variantStyles = {
     primary: 'bg-[#FF1F26] hover:bg-[#FF3030] text-white shadow-[0_0_20px_rgba(255,31,38,0.25)] hover:shadow-[0_0_30px_rgba(255,31,38,0.45)] hover:-translate-y-0.5 active:translate-y-0',
-    secondary: 'bg-[#050505] text-white border border-[#333333] hover:border-[#FF1F26] hover:text-[#FF1F26] hover:shadow-[0_0_15px_rgba(255,31,38,0.2)] hover:-translate-y-0.5 active:translate-y-0',
+    secondary: 'bg-[#0D0D0D] text-white border border-[#333333] hover:border-[#FF1F26] hover:text-[#FF1F26] hover:shadow-[0_0_15px_rgba(255,31,38,0.2)] hover:-translate-y-0.5 active:translate-y-0',
     outline: 'bg-transparent text-white border border-[#242424] hover:border-[#FF1F26] hover:bg-[#FF1F26]/10 active:translate-y-0',
     ghost: 'bg-transparent text-[#A7A7A7] hover:text-white hover:bg-white/5 active:translate-y-0',
   };

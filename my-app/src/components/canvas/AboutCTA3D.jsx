@@ -37,7 +37,7 @@ const AboutCTA3D = () => {
         <mesh>
           <icosahedronGeometry args={[1.0, 1]} />
           <meshStandardMaterial
-            color="#0A0A0A"
+            color="#121212"
             emissive="#FF1F26"
             emissiveIntensity={1.5}
             roughness={0.2}

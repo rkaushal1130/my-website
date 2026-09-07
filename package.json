@@ -2,7 +2,7 @@
   "name": "neverquit-ai",
   "version": "1.0.0",
   "private": true,
-  "description": "NeverquiT AI Workspace root",
+  "description": "Avaura Workspace root",
   "scripts": {
     "dev": "npm run dev --prefix my-app",
     "dev:frontend": "npm run dev --prefix my-app",

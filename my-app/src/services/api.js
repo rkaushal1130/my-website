@@ -1,5 +1,5 @@
 /**
- * Centralized API Client for NeverQuit.ai React Frontend
+ * Centralized API Client for Avaura React Frontend
  *
  * Backend Response Protocol:
  * Success: { "success": true, "data": {}, "message": "..." }
@@ -22,7 +22,7 @@ const API_BASE_URL =
   (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.VITE_API_URL) ||
   'http://localhost:8000/api';
 
-const TOKEN_KEY = 'neverquit_auth_token';
+const TOKEN_KEY = 'avaura_auth_token';
 
 export const tokenStorage = {
   get: () => {

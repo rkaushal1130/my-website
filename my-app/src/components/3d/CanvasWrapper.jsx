@@ -19,7 +19,7 @@ class CanvasErrorBoundary extends Component {
     if (this.state.hasError) {
       return (
         <div className="w-full h-full flex items-center justify-center p-4 text-center">
-          <div className="p-3 rounded-xl bg-[#101010] border border-[#242424] text-xs text-[#737373] font-mono">
+          <div className="p-3 rounded-xl bg-[#171717] border border-[#242424] text-xs text-[#737373] font-mono">
             <span className="text-[#FF1F26]">●</span> 3D Neural Viewport
           </div>
         </div>

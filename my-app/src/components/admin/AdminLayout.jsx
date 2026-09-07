@@ -46,11 +46,11 @@ const AdminLayout = () => {
   return (
     <div className="min-h-screen bg-[#09090b] text-[#fafafa] flex font-sans antialiased">
       {/* Mobile Top Header */}
-      <div className="md:hidden fixed top-0 left-0 right-0 h-14 bg-[#121215] border-b border-[#27272a] px-4 flex items-center justify-between z-40">
-        <div className="flex items-center gap-2.5">
-          <img src={brandLogo} alt="NeverquiT AI" className="w-6 h-6 object-contain rounded" />
-          <span className="font-semibold text-sm tracking-tight text-white">
-            NeverquiT <span className="text-[#ef4444]">AI</span> Admin
+      <div className="md:hidden fixed top-0 left-0 right-0 h-16 bg-[#121215] border-b border-[#27272a] px-4 flex items-center justify-between z-40">
+        <div className="flex items-center gap-2">
+          <img src={brandLogo} alt="Avaura" className="h-9 w-auto max-w-[160px] object-contain" />
+          <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-[#27272a] text-[#a1a1aa] border border-[#3f3f46]">
+            ADMIN
           </span>
         </div>
         <button
@@ -70,16 +70,9 @@ const AdminLayout = () => {
       >
         <div>
           {/* Top Brand Header */}
-          <div className="h-14 px-5 border-b border-[#27272a] flex items-center gap-3">
-            <div className="w-7 h-7 rounded bg-[#18181b] border border-[#27272a] flex items-center justify-center p-0.5">
-              <img src={brandLogo} alt="NeverquiT AI" className="w-full h-full object-contain rounded-sm" />
-            </div>
-            <div>
-              <span className="font-bold text-sm tracking-tight text-white block">
-                NeverquiT <span className="text-[#ef4444]">AI</span>
-              </span>
-            </div>
-            <span className="ml-auto px-1.5 py-0.5 rounded text-[10px] font-mono font-semibold bg-[#27272a] text-[#a1a1aa] border border-[#3f3f46]">
+          <div className="h-16 px-4 border-b border-[#27272a] flex items-center justify-between">
+            <img src={brandLogo} alt="Avaura" className="h-9 w-auto max-w-[165px] object-contain" />
+            <span className="px-1.5 py-0.5 rounded text-[10px] font-mono font-semibold bg-[#27272a] text-[#a1a1aa] border border-[#3f3f46]">
               ADMIN
             </span>
           </div>
@@ -126,7 +119,7 @@ const AdminLayout = () => {
             </div>
             <div className="overflow-hidden text-left flex-1 min-w-0">
               <span className="block text-xs font-medium text-white truncate">{user?.name || 'Administrator'}</span>
-              <span className="block text-[10px] text-[#71717a] truncate">{user?.email || 'admin@neverquit.ai'}</span>
+              <span className="block text-[10px] text-[#71717a] truncate">{user?.email || 'admin@avaura.com'}</span>
             </div>
           </div>
 

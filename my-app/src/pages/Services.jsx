@@ -3,18 +3,16 @@ import PageWrapper from '../components/layout/PageWrapper';
 import ServicesHero from '../components/services/ServicesHero';
 import ServicesOurProcess from '../components/services/ServicesOurProcess';
 import ServicesFAQ from '../components/services/ServicesFAQ';
-import ServicesCTA from '../components/services/ServicesCTA';
 
 const Services = ({ onOpenDemo }) => {
   return (
     <PageWrapper
-      title="Services — NeverquiT AI Enterprise AI Solutions"
+      title="Services — Avaura Enterprise AI Solutions"
       description="Explore our specialized AI services: Autonomous Agents, Custom LLM Tuning, Intelligent Automation, and Secure Private AI Infrastructure."
     >
       <ServicesHero onOpenDemo={onOpenDemo} />
       <ServicesOurProcess />
       <ServicesFAQ />
-      <ServicesCTA onOpenDemo={onOpenDemo} />
     </PageWrapper>
   );
 };

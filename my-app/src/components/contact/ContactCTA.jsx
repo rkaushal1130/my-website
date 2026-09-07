@@ -14,7 +14,7 @@ const ContactCTA = ({ onOpenDemo }) => {
       <Container size="wide">
         
         {/* Large Rounded CTA Card */}
-        <div className="relative rounded-[28px] bg-gradient-to-b from-[#101010] to-[#080808] border border-[#242424] p-8 sm:p-12 md:p-14 lg:p-16 overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.95)] text-center space-y-6 hover:border-[#FF1F26]/35 transition-all duration-400">
+        <div className="relative rounded-[28px] bg-gradient-to-b from-[#171717] to-[#171717] border border-[#242424] p-8 sm:p-12 md:p-14 lg:p-16 overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.95)] text-center space-y-6 hover:border-[#FF1F26]/35 transition-all duration-400">
           
           {/* Background Ambient Red Glows */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-[#FF1F26]/8 rounded-full blur-[100px] pointer-events-none" />

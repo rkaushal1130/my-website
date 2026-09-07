@@ -30,8 +30,8 @@ const setLinkTag = (rel, href) => {
 
 const PageWrapper = ({
   children,
-  title = 'NeverquiT AI — AI That Works As Hard As You Do',
-  description = 'NeverquiT AI builds intelligent AI solutions that help businesses automate, innovate and scale.',
+  title = 'Avaura — AI That Works As Hard As You Do',
+  description = 'Avaura builds intelligent AI solutions that help businesses automate, innovate and scale.',
   canonicalUrl = '',
   ogTitle = '',
   ogDescription = '',
@@ -71,7 +71,7 @@ const PageWrapper = ({
   }, [title, description, canonicalUrl, ogTitle, ogDescription, ogImage, ogType]);
 
   return (
-    <div className={`relative min-h-screen bg-[#050505] text-white selection:bg-[#FF1F26] selection:text-white animate-fade-in ${className}`}>
+    <div className={`relative min-h-screen bg-[#0D0D0D] text-white selection:bg-[#FF1F26] selection:text-white animate-fade-in ${className}`}>
       {children}
     </div>
   );

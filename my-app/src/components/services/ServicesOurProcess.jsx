@@ -52,7 +52,7 @@ const PROCESS_STEPS = [
 
 const ServicesOurProcess = () => {
   return (
-    <section id="our-process" className="py-24 sm:py-32 relative overflow-hidden bg-[#030303] text-white">
+    <section id="our-process" className="py-24 sm:py-32 relative overflow-hidden bg-[#171717] text-white">
       {/* Ambient background glow & fine grid */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[400px] bg-radial-hero opacity-60 pointer-events-none" />
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[450px] h-[300px] bg-[#FF1F26]/6 rounded-full blur-[130px] pointer-events-none" />

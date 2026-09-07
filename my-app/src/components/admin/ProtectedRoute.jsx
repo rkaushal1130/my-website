@@ -16,7 +16,7 @@ const ProtectedRoute = ({ children, requireAdmin = true }) => {
   // 1. Loading verification state
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-[#050505] flex flex-col items-center justify-center gap-4 text-white">
+      <div className="min-h-screen bg-[#0D0D0D] flex flex-col items-center justify-center gap-4 text-white">
         <Loader2 className="w-10 h-10 animate-spin text-[#FF1F26]" />
         <p className="text-sm text-[#A8A8A8] font-medium tracking-wide">
           Verifying security credentials with server...

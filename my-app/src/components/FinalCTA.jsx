@@ -19,7 +19,7 @@ const FinalCTA = ({ onOpenDemo }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Large Rounded CTA Banner Card */}
-        <div className="relative rounded-[28px] bg-gradient-to-b from-[#101010] to-[#080808] border border-[#252525] p-8 sm:p-14 lg:p-16 overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.95)] text-center space-y-6">
+        <div className="relative rounded-[28px] bg-gradient-to-b from-[#171717] to-[#171717] border border-[#252525] p-8 sm:p-14 lg:p-16 overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.95)] text-center space-y-6">
           
           <div className="flex items-center justify-center gap-4 text-[13px] sm:text-sm font-sans font-semibold uppercase tracking-wider text-white select-none mx-auto">
             <span className="w-12 sm:w-24 h-px bg-gradient-to-r from-transparent via-[#FF1F26]/60 to-[#FF1F26]" />
@@ -58,7 +58,7 @@ const FinalCTA = ({ onOpenDemo }) => {
             <button
               type="button"
               onClick={handleScrollToTop}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl bg-[#050505] border border-[#252525] hover:border-[#FF1F26] text-white text-base font-medium hover:bg-[#111111] transition-all duration-300 cursor-pointer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl bg-[#0D0D0D] border border-[#252525] hover:border-[#FF1F26] text-white text-base font-medium hover:bg-[#111111] transition-all duration-300 cursor-pointer"
             >
               <MessageSquare className="w-4 h-4 text-[#FF1F26]" />
               <span>Talk to Our Team</span>

@@ -27,24 +27,19 @@ const Navbar = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-transparent py-4 sm:py-5 transition-all duration-300">
       <div className="w-full px-6 sm:px-10 md:px-14 lg:px-20 xl:px-24 2xl:px-28">
-        <div className="flex items-center justify-between h-11 sm:h-12">
+        <div className="flex items-center justify-between h-16 sm:h-[72px] md:h-20">
           
           {/* Top Left: Logo & Company Name */}
           <Link
             to="/"
-            className="flex items-center gap-3 group focus:outline-none transition-transform duration-200 hover:scale-105 origin-left"
-            aria-label="NeverquiT AI Home"
+            className="flex items-center group focus:outline-none transition-transform duration-200 hover:scale-105 origin-left"
+            aria-label="Avaura Home"
           >
-            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-transparent border border-white/10 group-hover:border-[#FF1F26] overflow-hidden flex items-center justify-center p-0.5 transition-all duration-300 group-hover:shadow-[0_0_15px_rgba(255,31,38,0.4)]">
-              <img
-                src={brandLogo}
-                alt="NeverquiT AI Logo"
-                className="w-full h-full object-contain rounded-lg group-hover:scale-105 transition-transform duration-300"
-              />
-            </div>
-            <span className="text-xl sm:text-2xl font-bold tracking-tight text-white group-hover:text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
-              NeverquiT <span className="text-[#FF1F26]">AI</span>
-            </span>
+            <img
+              src={brandLogo}
+              alt="Avaura"
+              className="h-12 sm:h-14 md:h-16 lg:h-[72px] w-auto max-w-[240px] sm:max-w-[280px] md:max-w-[340px] object-contain select-none drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)] transition-all duration-300 group-hover:drop-shadow-[0_0_18px_rgba(255,31,38,0.45)]"
+            />
           </Link>
 
           {/* Top Right: Nav Items */}

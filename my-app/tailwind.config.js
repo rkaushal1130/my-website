@@ -8,10 +8,10 @@ export default {
     extend: {
       colors: {
         neverquit: {
-          black: "#050505",
-          dark: "#0B0B0B",
-          card: "#101010",
-          cardElevated: "#151515",
+          black: "#0D0D0D",
+          dark: "#131313",
+          card: "#171717",
+          cardElevated: "#1C1C1C",
           red: "#FF1F26",
           redBright: "#FF3030",
           text: "#FFFFFF",

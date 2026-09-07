@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from 'react';
 /**
  * HeroBackground Component
  * 
- * Dynamic Cybernetic & Neural Matrix Background for NeverQuit.ai:
+ * Dynamic Cybernetic & Neural Matrix Background for Avaura:
  * - Ambient Deep Crimson (#8B0000) & Laser Red (#FF1F26) Radial Halos
  * - Perspective Cyber Grid Matrix
  * - Subtle Interactive Red Node Constellation Mesh
@@ -169,7 +169,7 @@ const HeroBackground = () => {
   return (
     <div
       ref={containerRef}
-      className="absolute inset-0 overflow-hidden pointer-events-none select-none z-0 bg-[#030303]"
+      className="absolute inset-0 overflow-hidden pointer-events-none select-none z-0 bg-[#171717]"
       aria-hidden="true"
     >
       {/* 1. LAYER: Ambient Deep Crimson & Laser Red Glows */}
@@ -231,7 +231,7 @@ const HeroBackground = () => {
       <div className="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-[#FF1F26]/70 to-transparent shadow-[0_0_15px_#FF1F26] animate-[pulse_4s_ease-in-out_infinite]" />
 
       {/* Bottom Subtle Gradient Fade to Section Base */}
-      <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-[#030303] via-[#030303]/85 to-transparent pointer-events-none" />
+      <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-[#171717] via-[#171717]/85 to-transparent pointer-events-none" />
     </div>
   );
 };

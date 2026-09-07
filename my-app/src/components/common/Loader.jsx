@@ -2,7 +2,7 @@ import React from 'react';
 import { Loader2 } from 'lucide-react';
 
 /**
- * Reusable content / section loading component with NeverQuit.ai black & red theme
+ * Reusable content / section loading component with Avaura black & red theme
  */
 const Loader = ({
   text = 'Loading data...',

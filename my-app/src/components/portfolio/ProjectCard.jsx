@@ -44,7 +44,7 @@ const ProjectCard = ({ project, onSelect, index = 0 }) => {
       onClick={() => onSelect(project)}
       onKeyDown={handleKeyDown}
       style={{ animationDelay: `${(index % 6) * 40}ms` }}
-      className="group relative rounded-2xl bg-[#0A0A0A] border border-white/[0.08] hover:border-[#FF1F26]/60 hover:shadow-[0_15px_45px_rgba(255,31,38,0.22)] hover:-translate-y-1.5 transition-all duration-400 ease-out overflow-hidden flex flex-col justify-between cursor-pointer select-none animate-fade-in focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF1F26] focus-visible:ring-offset-2 focus-visible:ring-offset-[#030303]"
+      className="group relative rounded-2xl bg-[#121212] border border-white/[0.08] hover:border-[#FF1F26]/60 hover:shadow-[0_15px_45px_rgba(255,31,38,0.22)] hover:-translate-y-1.5 transition-all duration-400 ease-out overflow-hidden flex flex-col justify-between cursor-pointer select-none animate-fade-in focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF1F26] focus-visible:ring-offset-2 focus-visible:ring-offset-[#171717]"
     >
       {/* Subtle Red Ambient Glow behind Card - Fades in on Hover */}
       <div className="absolute -top-12 -right-12 w-48 h-48 bg-[#FF1F26]/0 rounded-full blur-3xl group-hover:bg-[#FF1F26]/15 transition-all duration-500 pointer-events-none" />
@@ -64,14 +64,14 @@ const ProjectCard = ({ project, onSelect, index = 0 }) => {
           />
 
           {/* Default Dark Vignette Gradient */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/20 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#121212] via-[#121212]/20 to-transparent" />
 
           {/* Subtle Red Gradient Overlay on Hover */}
           <div className="absolute inset-0 bg-gradient-to-t from-[#FF1F26]/25 via-[#FF1F26]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400 pointer-events-none" />
 
           {/* Category Badge */}
           <div className="absolute top-3.5 left-3.5 z-10">
-            <span className="px-3 py-1 rounded-full bg-[#0A0A0A]/90 backdrop-blur-md border border-white/[0.1] text-[11px] font-sans font-semibold text-white flex items-center gap-1.5 shadow-md group-hover:border-[#FF1F26]/50 group-hover:shadow-[0_0_12px_rgba(255,31,38,0.3)] transition-all duration-400">
+            <span className="px-3 py-1 rounded-full bg-[#121212]/90 backdrop-blur-md border border-white/[0.1] text-[11px] font-sans font-semibold text-white flex items-center gap-1.5 shadow-md group-hover:border-[#FF1F26]/50 group-hover:shadow-[0_0_12px_rgba(255,31,38,0.3)] transition-all duration-400">
               <Cpu className="w-3 h-3 text-[#FF1F26]" />
               <span>{project.category}</span>
             </span>
@@ -80,7 +80,7 @@ const ProjectCard = ({ project, onSelect, index = 0 }) => {
           {/* Deployment Year Badge */}
           {project.year && (
             <div className="absolute top-3.5 right-3.5 z-10">
-              <span className="px-2.5 py-1 rounded-full bg-[#0A0A0A]/90 backdrop-blur-md border border-white/[0.08] text-[10px] font-sans text-[#A1A1AA] group-hover:text-white group-hover:border-white/[0.16] transition-all duration-400 flex items-center gap-1">
+              <span className="px-2.5 py-1 rounded-full bg-[#121212]/90 backdrop-blur-md border border-white/[0.08] text-[10px] font-sans text-[#A1A1AA] group-hover:text-white group-hover:border-white/[0.16] transition-all duration-400 flex items-center gap-1">
                 <Calendar className="w-3 h-3 text-[#FF1F26]" />
                 <span>{project.year}</span>
               </span>

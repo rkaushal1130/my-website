@@ -170,16 +170,16 @@ const ContactForm = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <div>
                 <label className="block text-xs font-medium text-[#FFFFFF] mb-2">
-                  Full Name <span className="text-[#FF1F26]">*</span>
+                  Full Name & Surname <span className="text-[#FF1F26]">*</span>
                 </label>
                 <input
                   type="text"
                   required
                   disabled={isSubmitting}
-                  placeholder="Your full name"
+                  placeholder="First Name & Surname (e.g. Rahul Sharma)"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full bg-[#050505] border border-[#292929] focus:border-[#FF1F26] focus:shadow-[0_0_12px_rgba(255,31,38,0.25)] rounded-xl px-4 py-3 text-sm text-white placeholder-[#737373] focus:outline-none transition-all duration-200 disabled:opacity-60"
+                  className="w-full bg-[#0D0D0D] border border-[#292929] focus:border-[#FF1F26] focus:shadow-[0_0_12px_rgba(255,31,38,0.25)] rounded-xl px-4 py-3 text-sm text-white placeholder-[#737373] focus:outline-none transition-all duration-200 disabled:opacity-60"
                 />
               </div>
 
@@ -191,10 +191,10 @@ const ContactForm = () => {
                   type="email"
                   required
                   disabled={isSubmitting}
-                  placeholder="you@company.com"
+                  placeholder="Enter email address (e.g. rahul@example.com)"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full bg-[#050505] border border-[#292929] focus:border-[#FF1F26] focus:shadow-[0_0_12px_rgba(255,31,38,0.25)] rounded-xl px-4 py-3 text-sm text-white placeholder-[#737373] focus:outline-none transition-all duration-200 disabled:opacity-60"
+                  className="w-full bg-[#0D0D0D] border border-[#292929] focus:border-[#FF1F26] focus:shadow-[0_0_12px_rgba(255,31,38,0.25)] rounded-xl px-4 py-3 text-sm text-white placeholder-[#737373] focus:outline-none transition-all duration-200 disabled:opacity-60"
                 />
               </div>
             </div>
@@ -203,29 +203,29 @@ const ContactForm = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <div>
                 <label className="block text-xs font-medium text-[#FFFFFF] mb-2">
-                  Phone Number
+                  Contact No.
                 </label>
                 <input
                   type="tel"
                   disabled={isSubmitting}
-                  placeholder="+91 90153 23903"
+                  placeholder="Enter contact no. (e.g. +91 98765 43210)"
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  className="w-full bg-[#050505] border border-[#292929] focus:border-[#FF1F26] focus:shadow-[0_0_12px_rgba(255,31,38,0.25)] rounded-xl px-4 py-3 text-sm text-white placeholder-[#737373] focus:outline-none transition-all duration-200 disabled:opacity-60"
+                  className="w-full bg-[#0D0D0D] border border-[#292929] focus:border-[#FF1F26] focus:shadow-[0_0_12px_rgba(255,31,38,0.25)] rounded-xl px-4 py-3 text-sm text-white placeholder-[#737373] focus:outline-none transition-all duration-200 disabled:opacity-60"
                 />
               </div>
 
               <div>
                 <label className="block text-xs font-medium text-[#FFFFFF] mb-2">
-                  Company
+                  Company Name
                 </label>
                 <input
                   type="text"
                   disabled={isSubmitting}
-                  placeholder="Company name"
+                  placeholder="Company name (e.g. Acme Enterprise)"
                   value={formData.company}
                   onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                  className="w-full bg-[#050505] border border-[#292929] focus:border-[#FF1F26] focus:shadow-[0_0_12px_rgba(255,31,38,0.25)] rounded-xl px-4 py-3 text-sm text-white placeholder-[#737373] focus:outline-none transition-all duration-200 disabled:opacity-60"
+                  className="w-full bg-[#0D0D0D] border border-[#292929] focus:border-[#FF1F26] focus:shadow-[0_0_12px_rgba(255,31,38,0.25)] rounded-xl px-4 py-3 text-sm text-white placeholder-[#737373] focus:outline-none transition-all duration-200 disabled:opacity-60"
                 />
               </div>
             </div>
@@ -233,14 +233,15 @@ const ContactForm = () => {
             {/* Service Dropdown */}
             <div>
               <label className="block text-xs font-medium text-[#FFFFFF] mb-2">
-                Service
+                Area of Interest / Service
               </label>
               <select
                 disabled={isSubmitting}
                 value={formData.service}
                 onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                className="w-full bg-[#050505] border border-[#292929] focus:border-[#FF1F26] focus:shadow-[0_0_12px_rgba(255,31,38,0.25)] rounded-xl px-4 py-3 text-sm text-white focus:outline-none transition-all duration-200 cursor-pointer disabled:opacity-60"
+                className="w-full bg-[#0D0D0D] border border-[#292929] focus:border-[#FF1F26] focus:shadow-[0_0_12px_rgba(255,31,38,0.25)] rounded-xl px-4 py-3 text-sm text-white focus:outline-none transition-all duration-200 cursor-pointer disabled:opacity-60"
               >
+                <option value="" disabled>Select area of interest / service (e.g. AI Automation)</option>
                 <option value="AI Automation">AI Automation</option>
                 <option value="Machine Learning">Machine Learning</option>
                 <option value="Data Intelligence">Data Intelligence</option>
@@ -253,16 +254,16 @@ const ContactForm = () => {
             {/* Message Textarea */}
             <div>
               <label className="block text-xs font-medium text-[#FFFFFF] mb-2">
-                Message <span className="text-[#FF1F26]">*</span>
+                Project Details or Message <span className="text-[#FF1F26]">*</span>
               </label>
               <textarea
                 rows={5}
                 required
                 disabled={isSubmitting}
-                placeholder="Tell us about your project, goals or challenge..."
+                placeholder="Enter your message or project details (minimum 10 characters)..."
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                className="w-full min-h-[150px] bg-[#050505] border border-[#292929] focus:border-[#FF1F26] focus:shadow-[0_0_12px_rgba(255,31,38,0.25)] rounded-xl p-4 text-sm text-white placeholder-[#737373] focus:outline-none transition-all duration-200 resize-y disabled:opacity-60"
+                className="w-full min-h-[150px] bg-[#0D0D0D] border border-[#292929] focus:border-[#FF1F26] focus:shadow-[0_0_12px_rgba(255,31,38,0.25)] rounded-xl p-4 text-sm text-white placeholder-[#737373] focus:outline-none transition-all duration-200 resize-y disabled:opacity-60"
               />
             </div>
 

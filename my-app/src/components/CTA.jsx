@@ -1,13 +1,13 @@
 import React from 'react';
-import { Calendar, ArrowRight, ShieldCheck, Zap, Sparkles } from 'lucide-react';
+import { Calendar, ArrowRight } from 'lucide-react';
 
 const HomeCTA = ({ onOpenDemo }) => {
   return (
-    <section className="py-20 sm:py-28 relative overflow-hidden bg-[#030303]">
+    <section className="py-20 sm:py-28 relative overflow-hidden bg-[#171717]">
       <div className="max-w-[1920px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20">
         
         {/* Large Rounded CTA Card spanning wide */}
-        <div className="relative rounded-[28px] bg-gradient-to-b from-[#101010] to-[#080808] border border-[#242424] p-8 sm:p-12 md:p-14 lg:p-16 xl:p-20 overflow-hidden shadow-[0_20px_60px_-15px_rgba(0,0,0,0.9)] hover:border-[#FF1F26]/35 transition-all duration-400">
+        <div className="relative rounded-[28px] bg-gradient-to-b from-[#171717] to-[#171717] border border-[#242424] p-8 sm:p-12 md:p-14 lg:p-16 xl:p-20 overflow-hidden shadow-[0_20px_60px_-15px_rgba(0,0,0,0.9)] hover:border-[#FF1F26]/35 transition-all duration-400">
           
           {/* Background Ambient Red Glows */}
           <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[500px] h-[500px] bg-[#FF1F26]/10 rounded-full blur-3xl pointer-events-none" />
@@ -38,21 +38,6 @@ const HomeCTA = ({ onOpenDemo }) => {
               <p className="text-base sm:text-lg md:text-xl text-[#A7A7A7] leading-relaxed max-w-2xl font-normal">
                 Let's turn your ideas into intelligent solutions with dedicated compute clusters, custom LLM workflows, and multi-agent systems.
               </p>
-
-              <div className="pt-3 flex flex-wrap items-center gap-5 sm:gap-7 text-xs sm:text-sm text-[#737373] font-medium">
-                <span className="flex items-center gap-2">
-                  <ShieldCheck className="w-4 h-4 text-[#FF1F26]" />
-                  SOC2 READY
-                </span>
-                <span className="flex items-center gap-2">
-                  <Zap className="w-4 h-4 text-[#FF1F26]" />
-                  DEPLOY IN WEEKS
-                </span>
-                <span className="flex items-center gap-2">
-                  <Sparkles className="w-4 h-4 text-[#FF1F26]" />
-                  ZERO RETENTION PRIVACY
-                </span>
-              </div>
             </div>
 
             <div className="lg:col-span-4 flex flex-col items-start lg:items-end justify-center">

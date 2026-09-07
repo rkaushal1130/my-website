@@ -18,7 +18,7 @@ const SolutionCard = ({
 
       <div>
         <div className="flex items-center justify-between mb-6">
-          <div className="w-13 h-13 p-3 rounded-xl bg-[#0B0B0B] border border-[#242424] group-hover:border-[#FF1F26]/60 flex items-center justify-center text-[#FF1F26] group-hover:shadow-[0_0_20px_rgba(255,31,38,0.35)] transition-all duration-300">
+          <div className="w-13 h-13 p-3 rounded-xl bg-[#131313] border border-[#242424] group-hover:border-[#FF1F26]/60 flex items-center justify-center text-[#FF1F26] group-hover:shadow-[0_0_20px_rgba(255,31,38,0.35)] transition-all duration-300">
             {Icon && <Icon className="w-7 h-7 stroke-[1.75]" />}
           </div>
 
@@ -31,7 +31,7 @@ const SolutionCard = ({
             <Link
               to={link}
               aria-label={`Learn more about ${title}`}
-              className="w-9 h-9 rounded-full bg-[#0B0B0B] border border-[#242424] group-hover:border-[#FF1F26] group-hover:bg-[#FF1F26] flex items-center justify-center text-[#B5B5B5] group-hover:text-white transition-all duration-300 shadow-sm"
+              className="w-9 h-9 rounded-full bg-[#131313] border border-[#242424] group-hover:border-[#FF1F26] group-hover:bg-[#FF1F26] flex items-center justify-center text-[#B5B5B5] group-hover:text-white transition-all duration-300 shadow-sm"
             >
               <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </Link>

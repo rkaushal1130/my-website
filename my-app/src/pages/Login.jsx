@@ -61,7 +61,7 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#050505] text-white flex flex-col items-center justify-center p-4 sm:p-6 relative overflow-hidden text-left">
+    <div className="min-h-screen bg-[#0D0D0D] text-white flex flex-col items-center justify-center p-4 sm:p-6 relative overflow-hidden text-left">
       {/* Background Red Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-radial-glow opacity-80 pointer-events-none" />
 
@@ -71,7 +71,7 @@ const Login = () => {
         className="absolute top-6 left-6 sm:top-8 sm:left-8 flex items-center gap-2 text-xs font-medium text-[#A8A8A8] hover:text-white transition-colors"
       >
         <ArrowLeft className="w-4 h-4 text-[#FF1F26]" />
-        <span>Back to NeverquiT AI</span>
+        <span>Back to Avaura</span>
       </Link>
 
       <div className="relative z-10 max-w-md w-full rounded-3xl bg-[#0D0D10] border border-[#242424] p-8 sm:p-10 shadow-[0_25px_70px_rgba(0,0,0,0.95)]">
@@ -79,15 +79,8 @@ const Login = () => {
         <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#FF1F26] to-transparent" />
 
         {/* Brand Header */}
-        <div className="text-center mb-8">
-          <div className="w-14 h-14 rounded-2xl bg-[#141418] border border-white/10 flex items-center justify-center mx-auto mb-4 p-1 shadow-[0_0_20px_rgba(255,31,38,0.25)]">
-            <img src={brandLogo} alt="NeverquiT AI" className="w-full h-full object-contain rounded-xl" />
-          </div>
-
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-semibold bg-[#FF1F26]/10 text-[#FF1F26] border border-[#FF1F26]/30 mb-3 uppercase tracking-wider">
-            <Shield className="w-3.5 h-3.5" />
-            <span>Operations Console</span>
-          </div>
+        <div className="text-center mb-8 flex flex-col items-center">
+          <img src={brandLogo} alt="Avaura" className="h-16 sm:h-[72px] w-auto max-w-[300px] sm:max-w-[340px] object-contain mb-4 select-none drop-shadow-[0_0_26px_rgba(255,31,38,0.4)]" />
 
           <h1 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
             Admin Sign In
@@ -118,8 +111,8 @@ const Login = () => {
                 disabled={isLoading}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="admin@neverquit.ai"
-                className="w-full min-h-[46px] pl-10 pr-4 rounded-xl bg-[#050505] border border-[#242424] text-sm text-white placeholder-[#525252] focus:border-[#FF1F26] focus:ring-2 focus:ring-[#FF1F26]/20 focus:outline-none transition-all disabled:opacity-60"
+                placeholder="Enter your email address (e.g. admin@avaura.com)"
+                className="w-full min-h-[46px] pl-10 pr-4 rounded-xl bg-[#0D0D0D] border border-[#242424] text-sm text-white placeholder-[#525252] focus:border-[#FF1F26] focus:ring-2 focus:ring-[#FF1F26]/20 focus:outline-none transition-all disabled:opacity-60"
               />
               <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#737373]" />
             </div>
@@ -136,8 +129,8 @@ const Login = () => {
                 disabled={isLoading}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="••••••••••••"
-                className="w-full min-h-[46px] pl-10 pr-4 rounded-xl bg-[#050505] border border-[#242424] text-sm text-white placeholder-[#525252] focus:border-[#FF1F26] focus:ring-2 focus:ring-[#FF1F26]/20 focus:outline-none transition-all disabled:opacity-60"
+                placeholder="Enter your password (e.g. ••••••••)"
+                className="w-full min-h-[46px] pl-10 pr-4 rounded-xl bg-[#0D0D0D] border border-[#242424] text-sm text-white placeholder-[#525252] focus:border-[#FF1F26] focus:ring-2 focus:ring-[#FF1F26]/20 focus:outline-none transition-all disabled:opacity-60"
               />
               <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#737373]" />
             </div>
@@ -166,7 +159,7 @@ const Login = () => {
 
         <div className="mt-8 pt-6 border-t border-[#1C1C20] text-center">
           <p className="text-[11px] text-[#737373]">
-            Protected by NeverquiT AI enterprise zero-trust authentication.
+            Protected by Avaura enterprise zero-trust authentication.
           </p>
         </div>
       </div>

@@ -5,11 +5,11 @@ import Badge from '../common/Badge';
 
 const ServicesCTA = ({ onOpenDemo }) => {
   return (
-    <section className="py-20 sm:py-28 relative overflow-hidden bg-[#030303]">
+    <section className="py-20 sm:py-28 relative overflow-hidden bg-[#171717]">
       <Container size="wide">
         
         {/* Large Rounded CTA Card */}
-        <div className="relative rounded-[24px] sm:rounded-[28px] bg-gradient-to-b from-[#101010] to-[#080808] border border-[#242424] p-6 sm:p-10 md:p-14 lg:p-16 overflow-hidden shadow-[0_20px_60px_-15px_rgba(0,0,0,0.9)] hover:border-[#FF1F26]/35 transition-all duration-400">
+        <div className="relative rounded-[24px] sm:rounded-[28px] bg-gradient-to-b from-[#171717] to-[#171717] border border-[#242424] p-6 sm:p-10 md:p-14 lg:p-16 overflow-hidden shadow-[0_20px_60px_-15px_rgba(0,0,0,0.9)] hover:border-[#FF1F26]/35 transition-all duration-400">
           
           {/* Background Ambient Red Glows */}
           <div className="absolute top-1/2 left-0 -translate-y-1/2 w-96 h-96 bg-[#FF1F26]/8 rounded-full blur-3xl pointer-events-none" />

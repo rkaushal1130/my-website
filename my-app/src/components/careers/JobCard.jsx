@@ -6,14 +6,14 @@ const JobCard = ({ job, onApply }) => {
   const employmentType = job.employmentType || job.type || 'Full-time';
 
   return (
-    <div className="group relative p-6 sm:p-8 rounded-[22px] bg-[#101010] border border-[#242424] hover:border-[#FF1F26]/60 transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1.5 flex flex-col justify-between overflow-hidden text-left">
+    <div className="group relative p-6 sm:p-8 rounded-[22px] bg-[#171717] border border-[#242424] hover:border-[#FF1F26]/60 transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1.5 flex flex-col justify-between overflow-hidden text-left">
       {/* Red Glowing Hover Ambient */}
       <div className="absolute top-0 right-0 w-36 h-36 bg-[#FF1F26]/8 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
       <div>
         {/* Header: Department & Badges */}
         <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
-          <Badge className="bg-[#050505] text-[#FF3030] border-[#242424] group-hover:border-[#FF1F26]/40">
+          <Badge className="bg-[#0D0D0D] text-[#FF3030] border-[#242424] group-hover:border-[#FF1F26]/40">
             {(job.department || 'ENGINEERING').toUpperCase()}
           </Badge>
 
@@ -71,7 +71,7 @@ const JobCard = ({ job, onApply }) => {
         <button
           type="button"
           onClick={() => onApply(job)}
-          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#050505] border border-[#242424] group-hover:border-[#FF1F26] group-hover:bg-[#FF1F26] text-xs sm:text-sm font-semibold text-white transition-all duration-300 group-hover:shadow-[0_0_15px_rgba(255,31,38,0.4)] cursor-pointer"
+          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#0D0D0D] border border-[#242424] group-hover:border-[#FF1F26] group-hover:bg-[#FF1F26] text-xs sm:text-sm font-semibold text-white transition-all duration-300 group-hover:shadow-[0_0_15px_rgba(255,31,38,0.4)] cursor-pointer"
         >
           <span>Apply Now</span>
           <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />

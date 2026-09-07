@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Send, CheckCircle2, AlertCircle, ShieldCheck, Sparkles, Loader2, ArrowRight } from 'lucide-react';
+import { Send, CheckCircle2, AlertCircle, ShieldCheck, Loader2, ArrowRight } from 'lucide-react';
 import Button from '../common/Button';
 import ErrorMessage from '../common/ErrorMessage';
 import ButtonLoader from '../common/ButtonLoader';
@@ -126,7 +126,7 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="relative rounded-[20px] sm:rounded-[24px] bg-[#101010]/95 border border-[#242424] hover:border-[#FF1F26]/40 backdrop-blur-md p-5 sm:p-8 lg:p-10 shadow-[0_25px_60px_rgba(0,0,0,0.9)] transition-all duration-400 overflow-hidden text-left">
+    <div className="relative rounded-[20px] sm:rounded-[24px] bg-[#171717]/95 border border-[#242424] hover:border-[#FF1F26]/40 backdrop-blur-md p-5 sm:p-8 lg:p-10 shadow-[0_25px_60px_rgba(0,0,0,0.9)] transition-all duration-400 overflow-hidden text-left">
       {/* Ambient Red Glow & Top Gradient Border */}
       <div className="absolute top-0 right-0 w-80 h-80 bg-[#FF1F26]/6 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#FF1F26]/40 to-transparent" />
@@ -162,15 +162,11 @@ const ContactForm = () => {
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="flex items-center justify-between pb-3 border-b border-[#1D1D1D]">
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#FF1F26] animate-ping" />
+              <span className="w-2 h-2 rounded-full bg-[#FF1F26]" />
               <span className="text-sm text-white font-semibold">
                 Direct Inquiry Channel
               </span>
             </div>
-            <span className="text-xs text-[#FF3030] flex items-center gap-1 font-medium">
-              <Sparkles className="w-3.5 h-3.5 text-[#FF1F26]" />
-              Encrypted
-            </span>
           </div>
 
           {/* Error Message & Field Validation Errors Alert */}
@@ -184,7 +180,7 @@ const ContactForm = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label htmlFor="name" className="block text-xs sm:text-sm text-[#CCCCCC] mb-1.5 font-medium">
-                Full Name <span className="text-[#FF1F26]">*</span>
+                Full Name & Surname <span className="text-[#FF1F26]">*</span>
               </label>
               <input
                 type="text"
@@ -194,8 +190,8 @@ const ContactForm = () => {
                 disabled={isSubmitting}
                 value={formData.name}
                 onChange={handleChange}
-                placeholder="Rahul Kaushal"
-                className="w-full min-h-[48px] px-4 rounded-xl bg-[#050505] border border-[#242424] text-white placeholder-[#666666] text-sm focus:border-[#FF1F26] focus:ring-2 focus:ring-[#FF1F26]/20 focus:outline-none transition-all duration-200 disabled:opacity-60"
+                placeholder="First Name & Surname (e.g. Rahul Sharma)"
+                className="w-full min-h-[48px] px-4 rounded-xl bg-[#0D0D0D] border border-[#242424] text-white placeholder-[#666666] text-sm focus:border-[#FF1F26] focus:ring-2 focus:ring-[#FF1F26]/20 focus:outline-none transition-all duration-200 disabled:opacity-60"
               />
             </div>
 
@@ -211,17 +207,17 @@ const ContactForm = () => {
                 disabled={isSubmitting}
                 value={formData.email}
                 onChange={handleChange}
-                placeholder="rahul@example.com"
-                className="w-full min-h-[48px] px-4 rounded-xl bg-[#050505] border border-[#242424] text-white placeholder-[#666666] text-sm focus:border-[#FF1F26] focus:ring-2 focus:ring-[#FF1F26]/20 focus:outline-none transition-all duration-200 disabled:opacity-60"
+                placeholder="Enter email address (e.g. rahul@example.com)"
+                className="w-full min-h-[48px] px-4 rounded-xl bg-[#0D0D0D] border border-[#242424] text-white placeholder-[#666666] text-sm focus:border-[#FF1F26] focus:ring-2 focus:ring-[#FF1F26]/20 focus:outline-none transition-all duration-200 disabled:opacity-60"
               />
             </div>
           </div>
 
-          {/* Row 2: Phone & Company */}
+          {/* Row 2: Contact No. & Company */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label htmlFor="phone" className="block text-xs sm:text-sm text-[#CCCCCC] mb-1.5 font-medium">
-                Phone Number
+                Contact No.
               </label>
               <input
                 type="tel"
@@ -230,8 +226,8 @@ const ContactForm = () => {
                 disabled={isSubmitting}
                 value={formData.phone}
                 onChange={handleChange}
-                placeholder="+91 90153 23903"
-                className="w-full min-h-[48px] px-4 rounded-xl bg-[#050505] border border-[#242424] text-white placeholder-[#666666] text-sm focus:border-[#FF1F26] focus:ring-2 focus:ring-[#FF1F26]/20 focus:outline-none transition-all duration-200 disabled:opacity-60"
+                placeholder="Enter contact no. (e.g. +91 98765 43210)"
+                className="w-full min-h-[48px] px-4 rounded-xl bg-[#0D0D0D] border border-[#242424] text-white placeholder-[#666666] text-sm focus:border-[#FF1F26] focus:ring-2 focus:ring-[#FF1F26]/20 focus:outline-none transition-all duration-200 disabled:opacity-60"
               />
             </div>
 
@@ -246,8 +242,8 @@ const ContactForm = () => {
                 disabled={isSubmitting}
                 value={formData.company}
                 onChange={handleChange}
-                placeholder="Example Enterprise"
-                className="w-full min-h-[48px] px-4 rounded-xl bg-[#050505] border border-[#242424] text-white placeholder-[#666666] text-sm focus:border-[#FF1F26] focus:ring-2 focus:ring-[#FF1F26]/20 focus:outline-none transition-all duration-200 disabled:opacity-60"
+                placeholder="Company name (e.g. Acme Enterprise)"
+                className="w-full min-h-[48px] px-4 rounded-xl bg-[#0D0D0D] border border-[#242424] text-white placeholder-[#666666] text-sm focus:border-[#FF1F26] focus:ring-2 focus:ring-[#FF1F26]/20 focus:outline-none transition-all duration-200 disabled:opacity-60"
               />
             </div>
           </div>
@@ -263,10 +259,11 @@ const ContactForm = () => {
               disabled={isSubmitting}
               value={formData.service}
               onChange={handleChange}
-              className="w-full min-h-[48px] px-4 rounded-xl bg-[#050505] border border-[#242424] text-white text-sm focus:border-[#FF1F26] focus:ring-2 focus:ring-[#FF1F26]/20 focus:outline-none transition-all duration-200 cursor-pointer disabled:opacity-60"
+              className="w-full min-h-[48px] px-4 rounded-xl bg-[#0D0D0D] border border-[#242424] text-white text-sm focus:border-[#FF1F26] focus:ring-2 focus:ring-[#FF1F26]/20 focus:outline-none transition-all duration-200 cursor-pointer disabled:opacity-60"
             >
+              <option value="" disabled>Select area of interest / service (e.g. AI Automation)</option>
               {services.map((srv, idx) => (
-                <option key={idx} value={srv} className="bg-[#101010] text-white">
+                <option key={idx} value={srv} className="bg-[#171717] text-white">
                   {srv}
                 </option>
               ))}
@@ -286,8 +283,8 @@ const ContactForm = () => {
               disabled={isSubmitting}
               value={formData.message}
               onChange={handleChange}
-              placeholder="Tell us about your objectives, timeline, or challenge..."
-              className="w-full p-4 rounded-xl bg-[#050505] border border-[#242424] text-white placeholder-[#666666] text-sm focus:border-[#FF1F26] focus:ring-2 focus:ring-[#FF1F26]/20 focus:outline-none transition-all duration-200 resize-none disabled:opacity-60"
+              placeholder="Enter your message or project details (minimum 10 characters)..."
+              className="w-full p-4 rounded-xl bg-[#0D0D0D] border border-[#242424] text-white placeholder-[#666666] text-sm focus:border-[#FF1F26] focus:ring-2 focus:ring-[#FF1F26]/20 focus:outline-none transition-all duration-200 resize-none disabled:opacity-60"
             />
           </div>
 

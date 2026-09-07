@@ -13,7 +13,7 @@ const JobFilters = ({ categories, activeCategory, onSelectCategory }) => {
             className={`px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-200 cursor-pointer select-none ${
               activeCategory === cat
                 ? 'bg-[#FF1F26] text-white shadow-[0_0_15px_rgba(255,31,38,0.35)]'
-                : 'bg-[#101010] text-[#A7A7A7] border border-[#242424] hover:border-[#FF1F26] hover:text-white'
+                : 'bg-[#171717] text-[#A7A7A7] border border-[#242424] hover:border-[#FF1F26] hover:text-white'
             }`}
           >
             {cat}
