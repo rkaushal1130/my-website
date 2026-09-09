@@ -48,7 +48,7 @@ const LoadingScreen = () => {
   return (
     <div
       onClick={handleSkip}
-      className={`fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#0D0D0D] select-none transition-all duration-700 ease-out overflow-hidden cursor-pointer ${
+      className={`fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#141414] select-none transition-all duration-700 ease-out overflow-hidden cursor-pointer ${
         isLoading
           ? 'opacity-100 scale-100 pointer-events-auto'
           : 'opacity-0 scale-105 filter blur-sm pointer-events-none'

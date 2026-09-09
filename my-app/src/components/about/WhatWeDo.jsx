@@ -1,102 +1,118 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { ArrowRight, Bot, Cpu, Database, Wrench } from 'lucide-react';
+import React, { useState } from 'react';
+import { Sparkles } from 'lucide-react';
 import Container from '../common/Container';
 import Badge from '../common/Badge';
 
 const WhatWeDo = () => {
-  const services = [
+  const [activeIdx, setActiveIdx] = useState(0);
+
+  const steps = [
     {
-      id: 'ai-automation',
-      title: 'AI Automation',
-      description: 'Deploy autonomous software agents to handle complex workflows, back-office operations, and cognitive automation.',
-      icon: Bot,
-      metric: '90% Time Saved',
+      id: 'web-development',
+      title: 'Web Development',
+      description:
+        'We build modern, responsive, and high-performance websites designed to turn ideas into engaging digital experiences. From sleek corporate websites to powerful web applications, we create scalable solutions tailored to your business needs.',
     },
     {
-      id: 'machine-learning',
-      title: 'Machine Learning',
-      description: 'Custom deep neural networks, predictive models, and specialized LLM fine-tuning tailored for domain-specific accuracy.',
-      icon: Cpu,
-      metric: 'Custom Tuning',
+      id: 'software-development',
+      title: 'Software Development',
+      description:
+        'We develop reliable, scalable, and user-focused software solutions that streamline operations and solve real business challenges. From custom applications to enterprise platforms, we build secure and high-performance software tailored to your goals.',
     },
     {
-      id: 'data-intelligence',
-      title: 'Data Intelligence',
-      description: 'Transform raw data into real-time competitive intelligence with high-throughput streaming pipelines and synthetic data synthesis.',
-      icon: Database,
-      metric: 'Real-Time Insights',
+      id: 'mobile-app-development',
+      title: 'Mobile App Development',
+      description:
+        'We create intuitive, high-performance mobile apps that deliver seamless experiences across iOS and Android. From concept to launch, we build secure, scalable, and user-friendly apps tailored to your business goals.',
     },
     {
-      id: 'custom-ai',
-      title: 'Custom AI',
-      description: 'End-to-end bespoke AI engineering, from architectural design to secure on-premise or multi-cloud enterprise deployments.',
-      icon: Wrench,
-      metric: 'Enterprise Grade',
+      id: 'digital-marketing',
+      title: 'Digital Marketing',
+      description:
+        'We create result-driven digital marketing strategies that strengthen your brand, reach the right audience, and drive meaningful growth. From social media and SEO to performance campaigns, we turn digital presence into measurable business results.',
     },
   ];
 
   return (
-    <section className="py-24 lg:py-32 relative bg-[#131313]/40 border-y border-[#1D1D1D]">
-      <Container>
-        
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-3.5">
-          <Badge>OUR SUITE</Badge>
+    <section className="py-24 lg:py-32 relative bg-[#08080B] border-y border-[#16161D] overflow-hidden">
+      {/* Background Ambient Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[450px] bg-[#FF1F26]/5 rounded-full blur-[170px] pointer-events-none" />
 
-          <h2 className="text-2xl sm:text-4xl lg:text-[44px] font-bold text-white tracking-tight leading-tight">
-            What We Do
+      <Container>
+        {/* Section Header */}
+        <div className="text-center max-w-2xl mx-auto mb-16 sm:mb-20 space-y-3.5">
+          <div className="flex justify-center">
+            <Badge icon={Sparkles}>OUR WORKFLOW</Badge>
+          </div>
+
+          <h2 className="text-3xl sm:text-5xl font-bold text-white tracking-tight leading-tight">
+            What We <span className="text-[#FF1F26] text-glow inline-block">Do</span>
           </h2>
 
-          <p className="text-sm sm:text-lg text-[#A7A7A7] leading-relaxed font-normal">
-            Comprehensive artificial intelligence software and deployment services tailored for scale.
+          <p className="text-sm sm:text-base text-[#8E8E9A] leading-relaxed font-normal max-w-xl mx-auto">
+            Explore how Avaura empowers businesses through modern web, scalable software, intuitive mobile apps, and high-impact digital marketing.
           </p>
         </div>
 
-        {/* 4 Cards with Tech Graphics */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7">
-          {services.map((item) => {
-            const Icon = item.icon;
-            return (
-              <div
-                key={item.id}
-                className="group relative p-5 sm:p-7 rounded-[22px] bg-[#171717] border border-[#242424] hover:border-[#FF1F26]/60 transition-all duration-300 hover:shadow-card-hover hover:-translate-y-2 flex flex-col justify-between overflow-hidden"
-              >
-                <div>
-                  {/* Visual Icon Node Frame */}
-                  <div className="h-36 w-full rounded-xl bg-[#0D0D0D] border border-[#1D1D1D] mb-5 overflow-hidden flex flex-col items-center justify-center relative group-hover:border-[#FF1F26]/40 transition-colors">
-                    <div className="absolute inset-0 bg-radial-hero opacity-40 pointer-events-none" />
-                    <div className="w-14 h-14 rounded-2xl bg-[#141416] border border-[#242424] group-hover:border-[#FF1F26] shadow-[0_0_20px_rgba(0,0,0,0.8)] group-hover:shadow-[0_0_25px_rgba(255,31,38,0.3)] flex items-center justify-center text-[#FF1F26] transition-all duration-300 group-hover:scale-110">
-                      <Icon className="w-7 h-7 text-[#FF1F26]" />
-                    </div>
-                    <span className="text-[10px] font-mono text-[#737373] mt-2 group-hover:text-[#A7A7A7] transition-colors">
-                      {item.metric}
-                    </span>
+        {/* Process Flow: Clean Connected Timeline without Boxes */}
+        <div className="max-w-3xl mx-auto relative pl-3 sm:pl-6">
+          {/* Continuous Vertical Timeline Line */}
+          <div className="absolute left-[17px] sm:left-[23px] top-[28px] bottom-[28px] w-[2px] bg-[#1E1E28]" />
+
+          {/* Active Highlight Red Line following activeIdx smoothly */}
+          <div
+            style={{
+              height: `calc((100% - 56px) * ${(activeIdx / (steps.length - 1))})`,
+              transition: 'height 180ms cubic-bezier(0.16, 1, 0.3, 1)',
+            }}
+            className="absolute left-[17px] sm:left-[23px] top-[28px] w-[2px] bg-gradient-to-b from-[#FF1F26] via-[#FF3030] to-[#FF1F26] shadow-[0_0_10px_#FF1F26]"
+          />
+
+          {/* Step Items */}
+          <div className="space-y-6 sm:space-y-8">
+            {steps.map((item, idx) => {
+              const isActive = activeIdx === idx;
+              return (
+                <div
+                  key={item.id}
+                  onMouseEnter={() => setActiveIdx(idx)}
+                  onClick={() => setActiveIdx(idx)}
+                  className="relative flex items-start gap-4 sm:gap-6 py-2 cursor-pointer select-none group"
+                >
+                  {/* Small Refined Timeline Bullet */}
+                  <div className="relative z-10 shrink-0 flex items-center justify-center w-5 h-5 mt-1">
+                    <div
+                      className={`rounded-full transition-all duration-200 ${
+                        isActive
+                          ? 'w-2.5 h-2.5 bg-[#FF1F26] ring-4 ring-[#FF1F26]/25 shadow-[0_0_10px_#FF1F26]'
+                          : 'w-2 h-2 bg-[#363646] group-hover:bg-[#FF1F26]/70 group-hover:ring-2 group-hover:ring-[#FF1F26]/20'
+                      }`}
+                    />
                   </div>
 
-                  <h3 className="text-xl font-bold text-white mb-2.5 group-hover:text-white transition-colors">
-                    {item.title}
-                  </h3>
+                  {/* Step Details - Clean Text (No Box) */}
+                  <div className="min-w-0 flex-1 space-y-1.5">
+                    <h3
+                      className={`text-lg sm:text-xl font-bold tracking-tight transition-colors duration-150 ${
+                        isActive ? 'text-white text-glow' : 'text-[#CCCCCC] group-hover:text-white'
+                      }`}
+                    >
+                      {item.title}
+                    </h3>
 
-                  <p className="text-sm text-[#A7A7A7] leading-relaxed font-normal mb-6">
-                    {item.description}
-                  </p>
+                    <p
+                      className={`text-sm sm:text-base leading-relaxed transition-colors duration-150 font-normal ${
+                        isActive ? 'text-[#D0D0DE]' : 'text-[#7E7E8E] group-hover:text-[#A6A6B8]'
+                      }`}
+                    >
+                      {item.description}
+                    </p>
+                  </div>
                 </div>
-
-                <div className="pt-4 border-t border-[#242424]">
-                  <Link
-                    to="/contact"
-                    className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#FF1F26] hover:text-[#FF3030] hover:underline"
-                  >
-                    <span>Get Started</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
-                </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
-
       </Container>
     </section>
   );
