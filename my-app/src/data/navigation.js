@@ -26,6 +26,8 @@ export const footerLinks = {
   contact: {
     email: 'kaushalrahul1130@gmail.com',
     phone: '+91 9015323903',
+    secondaryPhone: '+91 7719561597',
+    phones: ['+91 9015323903', '+91 7719561597'],
     location: 'Sundernagar, Distt. Mandi, Himachal Pradesh 175002',
     address: 'Sundernagar, Distt. Mandi, Himachal Pradesh 175002',
   },

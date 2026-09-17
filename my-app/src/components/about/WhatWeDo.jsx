@@ -31,6 +31,12 @@ const WhatWeDo = () => {
       description:
         'We create result-driven digital marketing strategies that strengthen your brand, reach the right audience, and drive meaningful growth. From social media and SEO to performance campaigns, we turn digital presence into measurable business results.',
     },
+    {
+      id: 'deck-development',
+      title: 'Deck Development',
+      description:
+        'Create professional, visually engaging presentations that communicate your ideas, services, and business story clearly. We design well-structured decks with compelling content, modern layouts, and consistent branding.',
+    },
   ];
 
   return (
@@ -50,7 +56,7 @@ const WhatWeDo = () => {
           </h2>
 
           <p className="text-sm sm:text-base text-[#8E8E9A] leading-relaxed font-normal max-w-xl mx-auto">
-            Explore how Avaura empowers businesses through modern web, scalable software, intuitive mobile apps, and high-impact digital marketing.
+            Explore how Avaura empowers businesses through modern web, scalable software, intuitive mobile apps, digital marketing, and impactful deck development.
           </p>
         </div>
 

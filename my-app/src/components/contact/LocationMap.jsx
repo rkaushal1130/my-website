@@ -76,9 +76,14 @@ const LocationMap = () => {
                   </div>
                   <div>
                     <div className="text-xs text-[#737373] uppercase font-bold tracking-wider">Direct Phone</div>
-                    <a href="tel:9015323903" className="text-sm font-semibold text-white hover:text-[#FF1F26] transition-colors mt-0.5 block">
-                      +91 9015323903
-                    </a>
+                    <div className="flex flex-col space-y-0.5 mt-0.5">
+                      <a href="tel:9015323903" className="text-sm font-semibold text-white hover:text-[#FF1F26] transition-colors block">
+                        +91 9015323903
+                      </a>
+                      <a href="tel:7719561597" className="text-sm font-semibold text-white hover:text-[#FF1F26] transition-colors block">
+                        +91 7719561597
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>

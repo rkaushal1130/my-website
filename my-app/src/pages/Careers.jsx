@@ -3,7 +3,6 @@ import PageWrapper from '../components/layout/PageWrapper';
 import CareersHero from '../components/careers/CareersHero';
 import CareersWhyWork from '../components/careers/CareersWhyWork';
 import CareersHiringProcess from '../components/careers/CareersHiringProcess';
-import CareersLifeAtAvaura from '../components/careers/CareersLifeAtAvaura';
 import CareersTestimonials from '../components/careers/CareersTestimonials';
 import ApplicationModal from '../components/careers/ApplicationModal';
 
@@ -48,10 +47,7 @@ const Careers = () => {
       {/* 3. Our Hiring Process */}
       <CareersHiringProcess />
 
-      {/* 4. Life at Avauraa Visual Gallery */}
-      <CareersLifeAtAvaura />
-
-      {/* 5. Voices From Our Team Testimonials */}
+      {/* 4. Voices From Our Team Testimonials */}
       <CareersTestimonials />
 
       {/* Interactive Application Modal Form */}

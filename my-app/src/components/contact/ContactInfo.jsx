@@ -16,8 +16,10 @@ const ContactInfo = () => {
     {
       icon: Phone,
       title: 'Phone',
-      value: '+91 9015323903',
-      href: 'tel:9015323903',
+      numbers: [
+        { value: '+91 9015323903', href: 'tel:9015323903' },
+        { value: '+91 7719561597', href: 'tel:7719561597' },
+      ],
       description: 'Monday – Friday, 9:00 AM – 6:00 PM IST',
     },
     {
@@ -59,7 +61,19 @@ const ContactInfo = () => {
                 <div className="text-xs uppercase tracking-wider text-[#FF3030] font-bold">
                   {card.title}
                 </div>
-                {card.href ? (
+                {card.numbers ? (
+                  <div className="flex flex-col space-y-0.5 mt-0.5">
+                    {card.numbers.map((item, nIdx) => (
+                      <a
+                        key={nIdx}
+                        href={item.href}
+                        className="text-sm sm:text-base font-semibold text-white hover:text-[#FF1F26] transition-colors inline-block"
+                      >
+                        {item.value}
+                      </a>
+                    ))}
+                  </div>
+                ) : card.href ? (
                   <a
                     href={card.href}
                     target={card.href.startsWith('http') ? '_blank' : undefined}
