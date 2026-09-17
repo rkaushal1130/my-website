@@ -3,7 +3,6 @@ import PageWrapper from '../components/layout/PageWrapper';
 import CareersHero from '../components/careers/CareersHero';
 import CareersWhyWork from '../components/careers/CareersWhyWork';
 import CareersHiringProcess from '../components/careers/CareersHiringProcess';
-import CareersTestimonials from '../components/careers/CareersTestimonials';
 import ApplicationModal from '../components/careers/ApplicationModal';
 
 const Careers = () => {
@@ -47,8 +46,6 @@ const Careers = () => {
       {/* 3. Our Hiring Process */}
       <CareersHiringProcess />
 
-      {/* 4. Voices From Our Team Testimonials */}
-      <CareersTestimonials />
 
       {/* Interactive Application Modal Form */}
       <ApplicationModal

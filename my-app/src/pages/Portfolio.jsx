@@ -2,6 +2,7 @@ import React from 'react';
 import PageWrapper from '../components/layout/PageWrapper';
 import PortfolioHero from '../components/portfolio/PortfolioHero';
 import PortfolioTechStack from '../components/portfolio/PortfolioTechStack';
+import PortfolioClientFeedback from '../components/portfolio/PortfolioClientFeedback';
 import Portfolio3DBackground from '../components/portfolio/Portfolio3DBackground';
 
 const Portfolio = ({ onOpenDemo }) => {
@@ -22,6 +23,9 @@ const Portfolio = ({ onOpenDemo }) => {
 
       {/* 2. Cardless Full-Stack Technology Architecture Showcase */}
       <PortfolioTechStack />
+
+      {/* 3. Client Feedback Testimonials Carousel */}
+      <PortfolioClientFeedback />
     </PageWrapper>
   );
 };
