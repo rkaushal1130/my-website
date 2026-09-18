@@ -5,9 +5,6 @@ const MONGODB_URI =
   process.env.MONGODB_URL ||
   'mongodb+srv://neverquitop_db_user:rahul1130@coding.8vahpjy.mongodb.net/rahul_database?appName=coding';
 
-const NOTIFICATION_EMAIL = process.env.ADMIN_EMAIL || process.env.NOTIFICATION_EMAIL || 'admin@avauraai.com';
-const CC_EMAIL = process.env.CC_EMAIL || 'kaushalrahul1130@gmail.com';
-
 let cachedConnection = null;
 
 async function connectToMongo() {
@@ -44,105 +41,149 @@ const ContactSubmission =
   mongoose.model('ContactSubmission', contactSchema, 'website');
 
 async function sendEmailNotification(docData) {
-  const subject = `🚀 New Client Lead: ${docData.name} (${docData.service})`;
-  const submittedTime = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }) + ' IST';
-  const autoresponseMessage = `Thank you for reaching out to Avaura AI, ${docData.name}!\n\nWe have received your message regarding "${docData.service}". Our technical solutions team is currently reviewing your project details and will reply directly to your email within 24 business hours.\n\nBest regards,\nAvaura AI Team\nadmin@avauraai.com`;
+  const emailUser = process.env.EMAIL_USER || process.env.TITAN_EMAIL_USER || process.env.SMTP_USER;
+  const emailPass = process.env.EMAIL_PASSWORD || process.env.TITAN_EMAIL_PASSWORD || process.env.SMTP_PASS;
+  const emailHost = process.env.EMAIL_HOST || process.env.SMTP_HOST || 'smtp.titan.email';
+  const emailPort = Number(process.env.EMAIL_PORT || process.env.SMTP_PORT) || 465;
 
-  // 1. Direct SMTP if configured in Vercel environment variables
-  const smtpHost = process.env.SMTP_HOST;
-  const smtpPort = Number(process.env.SMTP_PORT) || 465;
-  const smtpUser = process.env.SMTP_USER || process.env.EMAIL_USER;
-  const smtpPass = process.env.SMTP_PASS || process.env.SMTP_PASSWORD || process.env.EMAIL_PASS || process.env.GMAIL_APP_PASSWORD;
+  const recipientEmail = emailUser || process.env.ADMIN_EMAIL || process.env.NOTIFICATION_EMAIL || 'admin@avauraai.com';
+  const ccEmail = process.env.CC_EMAIL || (emailUser !== 'kaushalrahul1130@gmail.com' ? 'kaushalrahul1130@gmail.com' : undefined);
 
-  if (smtpUser && smtpPass) {
+  const formattedDate = new Date().toLocaleString('en-US', {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    timeZoneName: 'short',
+  });
+
+  const subject = `New Contact Form Submission - ${docData.name}`;
+
+  // 1. Direct Titan SMTP when EMAIL_USER and EMAIL_PASSWORD are provided
+  if (emailUser && emailPass) {
     try {
       const transporter = nodemailer.createTransport({
-        host: smtpHost || (smtpUser.includes('@gmail.com') ? 'smtp.gmail.com' : undefined),
-        service: !smtpHost && smtpUser.includes('@gmail.com') ? 'gmail' : undefined,
-        port: smtpPort,
-        secure: smtpPort === 465,
+        host: emailHost,
+        port: emailPort,
+        secure: emailPort === 465,
         auth: {
-          user: smtpUser,
-          pass: smtpPass,
+          user: emailUser,
+          pass: emailPass,
         },
       });
 
-      // Email to Admin & CC
+      const htmlContent = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>${subject}</title>
+</head>
+<body style="margin: 0; padding: 0; background-color: #f4f4f7; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #333333;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #f4f4f7; padding: 30px 15px;">
+    <tr>
+      <td align="center">
+        <table width="100%" cellpadding="0" cellspacing="0" style="max-width: 600px; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); border: 1px solid #e1e4e8;">
+          <tr>
+            <td style="background-color: #0b0b0e; padding: 24px 30px; border-bottom: 3px solid #FF1F26;">
+              <h1 style="margin: 0; color: #ffffff; font-size: 20px; font-weight: 700;">
+                <span style="color: #FF1F26;">Avaura</span> Contact Inquiry
+              </h1>
+              <p style="margin: 6px 0 0 0; color: #a1a1aa; font-size: 13px;">
+                A new inquiry has been submitted from your website.
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding: 30px;">
+              <h2 style="margin: 0 0 18px 0; color: #111827; font-size: 17px; border-bottom: 1px solid #e5e7eb; padding-bottom: 8px;">
+                Client Information
+              </h2>
+              <table width="100%" cellpadding="0" cellspacing="0" style="font-size: 14px; line-height: 1.6; margin-bottom: 20px;">
+                <tr>
+                  <td style="padding: 6px 0; width: 140px; color: #6b7280; font-weight: 600;">Name:</td>
+                  <td style="padding: 6px 0; color: #111827; font-weight: 600;">${docData.name}</td>
+                </tr>
+                <tr>
+                  <td style="padding: 6px 0; color: #6b7280; font-weight: 600;">Email:</td>
+                  <td style="padding: 6px 0;">
+                    <a href="mailto:${docData.email}" style="color: #FF1F26; text-decoration: none; font-weight: 600;">${docData.email}</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 6px 0; color: #6b7280; font-weight: 600;">Phone:</td>
+                  <td style="padding: 6px 0; color: #111827;">${docData.phone || '<span style="color: #9ca3af; font-style: italic;">Not provided</span>'}</td>
+                </tr>
+                <tr>
+                  <td style="padding: 6px 0; color: #6b7280; font-weight: 600;">Company:</td>
+                  <td style="padding: 6px 0; color: #111827;">${docData.company || '<span style="color: #9ca3af; font-style: italic;">Not provided</span>'}</td>
+                </tr>
+                <tr>
+                  <td style="padding: 6px 0; color: #6b7280; font-weight: 600;">Service / Subject:</td>
+                  <td style="padding: 6px 0; color: #111827;">
+                    <span style="background-color: #f3f4f6; color: #1f2937; padding: 2px 8px; border-radius: 4px; font-size: 13px; font-weight: 500; border: 1px solid #e5e7eb;">
+                      ${docData.service}
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 6px 0; color: #6b7280; font-weight: 600;">Submission Date:</td>
+                  <td style="padding: 6px 0; color: #4b5563; font-size: 13px;">${formattedDate}</td>
+                </tr>
+              </table>
+
+              <div style="margin-top: 20px;">
+                <h3 style="margin: 0 0 8px 0; color: #111827; font-size: 15px; font-weight: 600;">
+                  Message:
+                </h3>
+                <div style="background-color: #f9fafb; border: 1px solid #e5e7eb; border-left: 4px solid #FF1F26; border-radius: 4px; padding: 16px; color: #1f2937; font-size: 14px; line-height: 1.7; white-space: pre-wrap;">${docData.message}</div>
+              </div>
+
+              <div style="margin-top: 28px; text-align: center;">
+                <a href="mailto:${docData.email}?subject=Re: Your Inquiry on Avaura" style="display: inline-block; background-color: #FF1F26; color: #ffffff; text-decoration: none; padding: 12px 26px; border-radius: 6px; font-weight: 600; font-size: 14px;">
+                  Reply to ${docData.name}
+                </a>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td style="background-color: #fafafa; padding: 14px 30px; border-top: 1px solid #e5e7eb; text-align: center; color: #9ca3af; font-size: 12px;">
+              Delivered via Titan Business Email to <strong>${recipientEmail}</strong>. Clicking Reply will reply directly to <strong>${docData.email}</strong>.
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
+      `;
+
       await transporter.sendMail({
-        from: `"${docData.name} via Avaura" <${process.env.SMTP_FROM || smtpUser}>`,
-        to: NOTIFICATION_EMAIL,
-        cc: CC_EMAIL,
-        replyTo: docData.email,
+        from: `"Avaura Contact Form" <${emailUser}>`,
+        to: recipientEmail,
+        cc: ccEmail,
+        replyTo: docData.email, // Visitor's email so replying sends directly to visitor
         subject,
-        html: `
-          <div style="font-family: Arial, sans-serif; background-color: #0b0b0e; color: #ffffff; padding: 24px; border-radius: 12px; border: 1px solid #26262b; max-width: 600px;">
-            <div style="border-bottom: 2px solid #FF1F26; padding-bottom: 12px; margin-bottom: 20px;">
-              <h2 style="color: #FF1F26; margin: 0; font-size: 22px;">New Client Inquiry</h2>
-              <p style="color: #a1a1aa; margin: 4px 0 0 0; font-size: 13px;">Received on ${submittedTime}</p>
-            </div>
-            <table style="width: 100%; border-collapse: collapse; font-size: 14px; margin-bottom: 20px;">
-              <tr>
-                <td style="padding: 8px 0; color: #a1a1aa; width: 140px; font-weight: bold;">Client Name:</td>
-                <td style="padding: 8px 0; color: #ffffff; font-weight: 600;">${docData.name}</td>
-              </tr>
-              <tr>
-                <td style="padding: 8px 0; color: #a1a1aa; font-weight: bold;">Email:</td>
-                <td style="padding: 8px 0;"><a href="mailto:${docData.email}" style="color: #FF1F26; text-decoration: none;">${docData.email}</a></td>
-              </tr>
-              <tr>
-                <td style="padding: 8px 0; color: #a1a1aa; font-weight: bold;">Phone:</td>
-                <td style="padding: 8px 0; color: #ffffff;">${docData.phone || 'Not provided'}</td>
-              </tr>
-              <tr>
-                <td style="padding: 8px 0; color: #a1a1aa; font-weight: bold;">Company:</td>
-                <td style="padding: 8px 0; color: #ffffff;">${docData.company || 'Not provided'}</td>
-              </tr>
-              <tr>
-                <td style="padding: 8px 0; color: #a1a1aa; font-weight: bold;">Service / Interest:</td>
-                <td style="padding: 8px 0; color: #ffffff;">${docData.service}</td>
-              </tr>
-            </table>
-            <div style="background-color: #141418; padding: 16px; border-radius: 8px; border: 1px solid #26262b; margin-bottom: 20px;">
-              <div style="color: #a1a1aa; font-size: 12px; text-transform: uppercase; font-weight: bold; margin-bottom: 8px;">Project Details / Message:</div>
-              <div style="color: #ffffff; line-height: 1.6; white-space: pre-wrap;">${docData.message}</div>
-            </div>
-            <div style="text-align: center; margin-top: 20px;">
-              <a href="mailto:${docData.email}?subject=Re: Your inquiry on Avaura" style="background-color: #FF1F26; color: #ffffff; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold; display: inline-block;">Reply to Client Directly</a>
-            </div>
-          </div>
-        `,
+        html: htmlContent,
+        text: `New Contact Form Submission - ${docData.name}\n\nEmail: ${docData.email}\nPhone: ${docData.phone || 'Not provided'}\nCompany: ${docData.company || 'Not provided'}\nService: ${docData.service}\nSubmitted At: ${formattedDate}\n\nMessage:\n${docData.message}\n\nReply directly to: ${docData.email}`,
       });
 
-      // Auto-reply confirmation to Client
-      await transporter.sendMail({
-        from: `"Avaura AI" <${process.env.SMTP_FROM || smtpUser}>`,
-        to: docData.email,
-        subject: `Thank you for contacting Avaura AI, ${docData.name}`,
-        html: `
-          <div style="font-family: Arial, sans-serif; background-color: #0b0b0e; color: #ffffff; padding: 24px; border-radius: 12px; border: 1px solid #26262b; max-width: 600px;">
-            <h2 style="color: #FF1F26; margin: 0 0 12px 0;">Thank You for Contacting Avaura AI</h2>
-            <p style="color: #d4d4d8; font-size: 14px; line-height: 1.6;">Hello ${docData.name},</p>
-            <p style="color: #d4d4d8; font-size: 14px; line-height: 1.6;">We have successfully received your inquiry regarding <strong>${docData.service}</strong>.</p>
-            <p style="color: #d4d4d8; font-size: 14px; line-height: 1.6;">Our engineering and solutions team will review your project details and reach out within 24 business hours.</p>
-            <div style="background-color: #141418; padding: 16px; border-radius: 8px; border: 1px solid #26262b; margin: 20px 0;">
-              <p style="color: #a1a1aa; font-size: 12px; text-transform: uppercase; margin: 0 0 6px 0; font-weight: bold;">Your Message:</p>
-              <p style="color: #ffffff; margin: 0; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">${docData.message}</p>
-            </div>
-            <p style="color: #71717a; font-size: 12px;">Avaura AI • Engineering the Future • admin@avauraai.com</p>
-          </div>
-        `,
-      });
-
-      console.log('✅ Email notification delivered via SMTP to:', NOTIFICATION_EMAIL, 'and CC to:', CC_EMAIL);
-      return;
+      console.log('✅ Titan email notification delivered successfully to:', recipientEmail);
+      return { success: true, method: 'titan-smtp' };
     } catch (smtpErr) {
-      console.error('SMTP notification failed, falling back to delivery webhook:', smtpErr.message);
+      console.error('Titan SMTP dispatch error:', smtpErr.message);
     }
+  } else {
+    console.warn('Titan SMTP credentials (EMAIL_USER, EMAIL_PASSWORD) not set in environment.');
   }
 
-  // 2. Direct email delivery to admin@avauraai.com & CC & client auto-reply
+  // 2. Fallback webhook delivery if SMTP credentials are not yet added
   try {
-    const res = await fetch(`https://formsubmit.co/ajax/${NOTIFICATION_EMAIL}`, {
+    const res = await fetch(`https://formsubmit.co/ajax/${recipientEmail}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -153,8 +194,7 @@ async function sendEmailNotification(docData) {
       body: JSON.stringify({
         _subject: subject,
         _replyto: docData.email,
-        _cc: CC_EMAIL,
-        _autoresponse: autoresponseMessage,
+        _cc: ccEmail,
         _template: 'table',
         'Client Name': docData.name,
         'Client Email': docData.email,
@@ -162,13 +202,15 @@ async function sendEmailNotification(docData) {
         'Company Name': docData.company || 'Not provided',
         'Area of Interest': docData.service,
         'Project Details': docData.message,
-        'Submitted At': submittedTime,
+        'Submitted At': formattedDate,
       }),
     });
     const result = await res.json();
-    console.log('✅ FormSubmit delivered email to:', NOTIFICATION_EMAIL, 'and CC:', CC_EMAIL, result);
+    console.log('✅ Fallback webhook dispatched to:', recipientEmail, result);
+    return { success: result.success === 'true', method: 'fallback-webhook' };
   } catch (webhookErr) {
-    console.error('Webhook notification dispatch error:', webhookErr.message);
+    console.error('Fallback webhook dispatch error:', webhookErr.message);
+    return { success: false, error: webhookErr.message };
   }
 }
 
@@ -232,9 +274,27 @@ module.exports = async function handler(req, res) {
       message: message.trim(),
     };
 
+    // 1. Save to MongoDB Atlas with duplicate prevention
     let submissionId = 'ack-' + Date.now();
     try {
       await connectToMongo();
+
+      const oneMinuteAgo = new Date(Date.now() - 60 * 1000);
+      const duplicate = await ContactSubmission.findOne({
+        email: docData.email,
+        message: docData.message,
+        createdAt: { $gte: oneMinuteAgo },
+      });
+
+      if (duplicate) {
+        console.log('Duplicate contact submission prevented in MongoDB Atlas for', docData.email);
+        return res.status(200).json({
+          success: true,
+          data: { id: duplicate._id },
+          message: 'Your message has already been received.',
+        });
+      }
+
       const submission = await ContactSubmission.create(docData);
       submissionId = submission._id;
       console.log('✅ Contact form saved to MongoDB Atlas [website]:', submission._id);
@@ -243,6 +303,7 @@ module.exports = async function handler(req, res) {
       console.log('📬 Saved inquiry via fallback:', JSON.stringify(docData));
     }
 
+    // 2. Await Titan email notification dispatch
     try {
       await sendEmailNotification(docData);
     } catch (emailErr) {

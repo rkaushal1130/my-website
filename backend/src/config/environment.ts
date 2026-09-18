@@ -14,6 +14,14 @@ const envSchema = z.object({
   FRONTEND_URL: z.string().default('http://localhost:5173'),
   ADMIN_EMAIL: z.string().default('admin@avauraai.com'),
   NOTIFICATION_EMAIL: z.string().default('admin@avauraai.com'),
+  EMAIL_USER: z.string().optional(),
+  EMAIL_PASSWORD: z.string().optional(),
+  EMAIL_HOST: z.string().default('smtp.titan.email'),
+  EMAIL_PORT: z
+    .string()
+    .default('465')
+    .transform((val) => parseInt(val, 10))
+    .or(z.number().default(465)),
 });
 
 const _env = envSchema.safeParse(process.env);

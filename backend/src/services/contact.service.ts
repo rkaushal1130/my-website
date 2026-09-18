@@ -1,10 +1,11 @@
-﻿import { prisma, withDbFallback } from '../config/prisma';
+import { prisma, withDbFallback } from '../config/prisma';
 import { CreateContactInput } from '../validators/contact.validator';
 import { MessageStatus } from '@prisma/client';
 import { logger } from '../utils/logger';
 import { env } from '../config/environment';
 import { ContactSubmission } from '../models/submission.model';
 import { isMongoConnected, ensureMongoConnected } from '../config/mongoose';
+import { EmailService } from './email.service';
 import mongoose from 'mongoose';
 
 export interface ListContactFilters {
@@ -55,7 +56,22 @@ export class ContactService {
         const submission = await ContactSubmission.create(docData);
 
         logger.info(`✅ Clean contact message saved to MongoDB Atlas [website]: ID=${submission._id} from ${submission.email}`);
-        logger.info(`📧 Notification routed to admin: ${env.NOTIFICATION_EMAIL} for inquiry from ${submission.name} (${submission.email})`);
+
+        // Dispatch email notification via Titan SMTP
+        try {
+          await EmailService.sendContactNotification({
+            name: docData.name,
+            email: docData.email,
+            phone: docData.phone,
+            company: docData.company,
+            service: docData.service,
+            message: docData.message,
+            submittedAt: submission.createdAt,
+          });
+        } catch (emailErr: any) {
+          logger.error(`[ContactService] Titan email notification failed: ${emailErr.message}`);
+        }
+
         return true;
       }
     } catch (mongoErr: any) {
@@ -70,7 +86,7 @@ export class ContactService {
       status: 'NEW' as MessageStatus,
     };
 
-    return withDbFallback(
+    const fallbackResult = await withDbFallback(
       async () => {
         const oneMinuteAgo = new Date(Date.now() - 60 * 1000);
         const duplicate = await prisma.contactMessage.findFirst({
@@ -99,6 +115,24 @@ export class ContactService {
         return true;
       }
     );
+
+    if (fallbackResult) {
+      try {
+        await EmailService.sendContactNotification({
+          name: docData.name,
+          email: docData.email,
+          phone: docData.phone,
+          company: docData.company,
+          service: docData.service,
+          message: docData.message,
+          submittedAt: new Date(),
+        });
+      } catch (err: any) {
+        logger.error(`[ContactService] Fallback Titan email notification failed: ${err.message}`);
+      }
+    }
+
+    return fallbackResult;
   }
 
   public static async createContactMessage(input: CreateContactInput) {

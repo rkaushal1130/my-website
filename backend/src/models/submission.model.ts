@@ -1,4 +1,4 @@
-﻿import mongoose, { Document, Schema } from 'mongoose';
+import mongoose, { Document, Schema } from 'mongoose';
 
 export interface IContactMessage extends Document {
   name: string;
@@ -99,3 +99,8 @@ export const ContactSubmission =
 export const CareerSubmission =
   mongoose.models.CareerSubmission ||
   mongoose.model<ICareerApplication>('CareerSubmission', applicationSchema, 'website');
+
+export const WebsiteSubmission: any =
+  mongoose.models.WebsiteSubmission ||
+  mongoose.model('WebsiteSubmission', new Schema({}, { strict: false, collection: 'website', timestamps: true }), 'website');
+
