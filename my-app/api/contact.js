@@ -41,12 +41,12 @@ const ContactSubmission =
   mongoose.model('ContactSubmission', contactSchema, 'website');
 
 async function sendEmailNotification(docData) {
-  const emailUser = process.env.EMAIL_USER || process.env.TITAN_EMAIL_USER || process.env.SMTP_USER;
-  const emailPass = process.env.EMAIL_PASSWORD || process.env.TITAN_EMAIL_PASSWORD || process.env.SMTP_PASS;
-  const emailHost = process.env.EMAIL_HOST || process.env.SMTP_HOST || 'smtp.titan.email';
-  const emailPort = Number(process.env.EMAIL_PORT || process.env.SMTP_PORT) || 465;
+  const emailUser = process.env.EMAIL_USER || process.env.TITAN_EMAIL_USER || 'admin@avauraai.com';
+  const emailPass = process.env.EMAIL_PASSWORD || process.env.TITAN_EMAIL_PASSWORD;
+  const emailHost = process.env.EMAIL_HOST || 'smtp.titan.email';
+  const emailPort = Number(process.env.EMAIL_PORT) || 465;
 
-  const recipientEmail = emailUser || process.env.ADMIN_EMAIL || process.env.NOTIFICATION_EMAIL || 'admin@avauraai.com';
+  const recipientEmail = process.env.NOTIFICATION_EMAIL || process.env.ADMIN_EMAIL || emailUser || 'admin@avauraai.com';
   const ccEmail = process.env.CC_EMAIL || (emailUser !== 'kaushalrahul1130@gmail.com' ? 'kaushalrahul1130@gmail.com' : undefined);
 
   const formattedDate = new Date().toLocaleString('en-US', {
@@ -62,20 +62,23 @@ async function sendEmailNotification(docData) {
 
   const subject = `New Contact Form Submission - ${docData.name}`;
 
-  // 1. Direct Titan SMTP when EMAIL_USER and EMAIL_PASSWORD are provided
-  if (emailUser && emailPass) {
-    try {
-      const transporter = nodemailer.createTransport({
-        host: emailHost,
-        port: emailPort,
-        secure: emailPort === 465,
-        auth: {
-          user: emailUser,
-          pass: emailPass,
-        },
-      });
+  if (!emailPass) {
+    console.error('❌ [Titan SMTP] EMAIL_PASSWORD environment variable is not configured. Email notification skipped. Please configure EMAIL_PASSWORD in Vercel environment variables.');
+    return { success: false, error: 'EMAIL_PASSWORD not configured' };
+  }
 
-      const htmlContent = `
+  try {
+    const transporter = nodemailer.createTransport({
+      host: emailHost,
+      port: emailPort,
+      secure: emailPort === 465,
+      auth: {
+        user: emailUser,
+        pass: emailPass,
+      },
+    });
+
+    const htmlContent = `
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -160,57 +163,23 @@ async function sendEmailNotification(docData) {
   </table>
 </body>
 </html>
-      `;
+    `;
 
-      await transporter.sendMail({
-        from: `"Avaura Contact Form" <${emailUser}>`,
-        to: recipientEmail,
-        cc: ccEmail,
-        replyTo: docData.email, // Visitor's email so replying sends directly to visitor
-        subject,
-        html: htmlContent,
-        text: `New Contact Form Submission - ${docData.name}\n\nEmail: ${docData.email}\nPhone: ${docData.phone || 'Not provided'}\nCompany: ${docData.company || 'Not provided'}\nService: ${docData.service}\nSubmitted At: ${formattedDate}\n\nMessage:\n${docData.message}\n\nReply directly to: ${docData.email}`,
-      });
-
-      console.log('✅ Titan email notification delivered successfully to:', recipientEmail);
-      return { success: true, method: 'titan-smtp' };
-    } catch (smtpErr) {
-      console.error('Titan SMTP dispatch error:', smtpErr.message);
-    }
-  } else {
-    console.warn('Titan SMTP credentials (EMAIL_USER, EMAIL_PASSWORD) not set in environment.');
-  }
-
-  // 2. Fallback webhook delivery if SMTP credentials are not yet added
-  try {
-    const res = await fetch(`https://formsubmit.co/ajax/${recipientEmail}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-        Origin: 'https://avauraai.com',
-        Referer: 'https://avauraai.com/',
-      },
-      body: JSON.stringify({
-        _subject: subject,
-        _replyto: docData.email,
-        _cc: ccEmail,
-        _template: 'table',
-        'Client Name': docData.name,
-        'Client Email': docData.email,
-        'Client Contact': docData.phone || 'Not provided',
-        'Company Name': docData.company || 'Not provided',
-        'Area of Interest': docData.service,
-        'Project Details': docData.message,
-        'Submitted At': formattedDate,
-      }),
+    await transporter.sendMail({
+      from: `"Avaura AI" <${emailUser}>`,
+      to: recipientEmail,
+      cc: ccEmail,
+      replyTo: docData.email, // Visitor's email so replying sends directly to visitor
+      subject,
+      html: htmlContent,
+      text: `New Contact Form Submission - ${docData.name}\n\nEmail: ${docData.email}\nPhone: ${docData.phone || 'Not provided'}\nCompany: ${docData.company || 'Not provided'}\nService: ${docData.service}\nSubmitted At: ${formattedDate}\n\nMessage:\n${docData.message}\n\nReply directly to: ${docData.email}`,
     });
-    const result = await res.json();
-    console.log('✅ Fallback webhook dispatched to:', recipientEmail, result);
-    return { success: result.success === 'true', method: 'fallback-webhook' };
-  } catch (webhookErr) {
-    console.error('Fallback webhook dispatch error:', webhookErr.message);
-    return { success: false, error: webhookErr.message };
+
+    console.log('✅ Titan email notification delivered successfully to:', recipientEmail);
+    return { success: true, method: 'titan-smtp' };
+  } catch (smtpErr) {
+    console.error('❌ Titan SMTP dispatch error:', smtpErr.message);
+    return { success: false, error: smtpErr.message };
   }
 }
 
