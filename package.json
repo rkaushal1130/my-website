@@ -13,6 +13,7 @@
     "preview": "npm run preview --prefix my-app"
   },
   "devDependencies": {
-    "nodemon": "^3.1.14"
+    "nodemon": "^3.1.14",
+    "vite": "^8.3.0"
   }
 }
