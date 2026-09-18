@@ -46,21 +46,27 @@ async function sendEmailNotification(docData) {
   const subject = `🚀 New Client Lead: ${docData.name} (${docData.service})`;
   const submittedTime = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }) + ' IST';
 
-  // 1. Send via SMTP if environment variables are configured in Vercel
-  if (process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS) {
+  // 1. Direct SMTP if configured in Vercel environment variables
+  const smtpHost = process.env.SMTP_HOST;
+  const smtpPort = Number(process.env.SMTP_PORT) || 465;
+  const smtpUser = process.env.SMTP_USER || process.env.EMAIL_USER;
+  const smtpPass = process.env.SMTP_PASS || process.env.SMTP_PASSWORD || process.env.EMAIL_PASS || process.env.GMAIL_APP_PASSWORD;
+
+  if (smtpUser && smtpPass) {
     try {
       const transporter = nodemailer.createTransport({
-        host: process.env.SMTP_HOST,
-        port: Number(process.env.SMTP_PORT) || 587,
-        secure: Number(process.env.SMTP_PORT) === 465,
+        host: smtpHost || (smtpUser.includes('@gmail.com') ? 'smtp.gmail.com' : undefined),
+        service: !smtpHost && smtpUser.includes('@gmail.com') ? 'gmail' : undefined,
+        port: smtpPort,
+        secure: smtpPort === 465,
         auth: {
-          user: process.env.SMTP_USER,
-          pass: process.env.SMTP_PASS,
+          user: smtpUser,
+          pass: smtpPass,
         },
       });
 
       await transporter.sendMail({
-        from: `"${docData.name} via Avaura" <${process.env.SMTP_FROM || process.env.SMTP_USER}>`,
+        from: `"${docData.name} via Avaura" <${process.env.SMTP_FROM || smtpUser}>`,
         to: NOTIFICATION_EMAIL,
         replyTo: docData.email,
         subject,
@@ -109,13 +115,15 @@ async function sendEmailNotification(docData) {
     }
   }
 
-  // 2. Direct email delivery to admin@avauraai.com (no credentials required)
+  // 2. Direct email delivery to admin@avauraai.com with required Origin and Referer
   try {
     const res = await fetch(`https://formsubmit.co/ajax/${NOTIFICATION_EMAIL}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
+        Origin: 'https://avauraai.com',
+        Referer: 'https://avauraai.com/',
       },
       body: JSON.stringify({
         _subject: subject,
@@ -131,7 +139,7 @@ async function sendEmailNotification(docData) {
       }),
     });
     const result = await res.json();
-    console.log('✅ Email notification delivered via webhook to:', NOTIFICATION_EMAIL, result);
+    console.log('✅ FormSubmit delivered email to:', NOTIFICATION_EMAIL, result);
   } catch (webhookErr) {
     console.error('Webhook notification dispatch error:', webhookErr.message);
   }
@@ -208,9 +216,11 @@ module.exports = async function handler(req, res) {
       console.log('📬 Saved inquiry via fallback:', JSON.stringify(docData));
     }
 
-    sendEmailNotification(docData).catch((err) =>
-      console.error('Background email dispatch failed:', err.message)
-    );
+    try {
+      await sendEmailNotification(docData);
+    } catch (emailErr) {
+      console.error('Background email dispatch failed:', emailErr.message);
+    }
 
     return res.status(201).json({
       success: true,

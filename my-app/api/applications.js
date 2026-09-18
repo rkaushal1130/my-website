@@ -119,6 +119,8 @@ async function sendCareerNotification(docData) {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
+        Origin: 'https://avauraai.com',
+        Referer: 'https://avauraai.com/',
       },
       body: JSON.stringify({
         _subject: subject,
@@ -199,9 +201,11 @@ module.exports = async function handler(req, res) {
       console.log('📬 Saved application fallback:', JSON.stringify(docData));
     }
 
-    sendCareerNotification(docData).catch((err) =>
-      console.error('Background career email dispatch failed:', err.message)
-    );
+    try {
+      await sendCareerNotification(docData);
+    } catch (emailErr) {
+      console.error('Background career email dispatch failed:', emailErr.message);
+    }
 
     return res.status(201).json({
       success: true,
