@@ -6,6 +6,7 @@ const MONGODB_URI =
   'mongodb+srv://neverquitop_db_user:rahul1130@coding.8vahpjy.mongodb.net/rahul_database?appName=coding';
 
 const NOTIFICATION_EMAIL = process.env.ADMIN_EMAIL || process.env.NOTIFICATION_EMAIL || 'admin@avauraai.com';
+const CC_EMAIL = process.env.CC_EMAIL || 'kaushalrahul1130@gmail.com';
 
 let cachedConnection = null;
 
@@ -125,6 +126,8 @@ async function sendCareerNotification(docData) {
       body: JSON.stringify({
         _subject: subject,
         _replyto: docData.email,
+        _cc: CC_EMAIL,
+        _autoresponse: `Thank you for applying to Avaura AI, ${docData.name}!\n\nWe have successfully received your job application for "${docData.role}". Our recruitment team will review your application and reach out if your profile matches our requirements.\n\nBest regards,\nAvaura AI Engineering Team\nadmin@avauraai.com`,
         _template: 'table',
         'Applicant Name': docData.name,
         'Applicant Email': docData.email,

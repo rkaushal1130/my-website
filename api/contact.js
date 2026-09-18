@@ -6,6 +6,7 @@ const MONGODB_URI =
   'mongodb+srv://neverquitop_db_user:rahul1130@coding.8vahpjy.mongodb.net/rahul_database?appName=coding';
 
 const NOTIFICATION_EMAIL = process.env.ADMIN_EMAIL || process.env.NOTIFICATION_EMAIL || 'admin@avauraai.com';
+const CC_EMAIL = process.env.CC_EMAIL || 'kaushalrahul1130@gmail.com';
 
 let cachedConnection = null;
 
@@ -45,6 +46,7 @@ const ContactSubmission =
 async function sendEmailNotification(docData) {
   const subject = `🚀 New Client Lead: ${docData.name} (${docData.service})`;
   const submittedTime = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }) + ' IST';
+  const autoresponseMessage = `Thank you for reaching out to Avaura AI, ${docData.name}!\n\nWe have received your message regarding "${docData.service}". Our technical solutions team is currently reviewing your project details and will reply directly to your email within 24 business hours.\n\nBest regards,\nAvaura AI Team\nadmin@avauraai.com`;
 
   // 1. Direct SMTP if configured in Vercel environment variables
   const smtpHost = process.env.SMTP_HOST;
@@ -65,9 +67,11 @@ async function sendEmailNotification(docData) {
         },
       });
 
+      // Email to Admin & CC
       await transporter.sendMail({
         from: `"${docData.name} via Avaura" <${process.env.SMTP_FROM || smtpUser}>`,
         to: NOTIFICATION_EMAIL,
+        cc: CC_EMAIL,
         replyTo: docData.email,
         subject,
         html: `
@@ -108,14 +112,35 @@ async function sendEmailNotification(docData) {
           </div>
         `,
       });
-      console.log('✅ Email notification delivered via SMTP to:', NOTIFICATION_EMAIL);
+
+      // Auto-reply confirmation to Client
+      await transporter.sendMail({
+        from: `"Avaura AI" <${process.env.SMTP_FROM || smtpUser}>`,
+        to: docData.email,
+        subject: `Thank you for contacting Avaura AI, ${docData.name}`,
+        html: `
+          <div style="font-family: Arial, sans-serif; background-color: #0b0b0e; color: #ffffff; padding: 24px; border-radius: 12px; border: 1px solid #26262b; max-width: 600px;">
+            <h2 style="color: #FF1F26; margin: 0 0 12px 0;">Thank You for Contacting Avaura AI</h2>
+            <p style="color: #d4d4d8; font-size: 14px; line-height: 1.6;">Hello ${docData.name},</p>
+            <p style="color: #d4d4d8; font-size: 14px; line-height: 1.6;">We have successfully received your inquiry regarding <strong>${docData.service}</strong>.</p>
+            <p style="color: #d4d4d8; font-size: 14px; line-height: 1.6;">Our engineering and solutions team will review your project details and reach out within 24 business hours.</p>
+            <div style="background-color: #141418; padding: 16px; border-radius: 8px; border: 1px solid #26262b; margin: 20px 0;">
+              <p style="color: #a1a1aa; font-size: 12px; text-transform: uppercase; margin: 0 0 6px 0; font-weight: bold;">Your Message:</p>
+              <p style="color: #ffffff; margin: 0; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">${docData.message}</p>
+            </div>
+            <p style="color: #71717a; font-size: 12px;">Avaura AI • Engineering the Future • admin@avauraai.com</p>
+          </div>
+        `,
+      });
+
+      console.log('✅ Email notification delivered via SMTP to:', NOTIFICATION_EMAIL, 'and CC to:', CC_EMAIL);
       return;
     } catch (smtpErr) {
       console.error('SMTP notification failed, falling back to delivery webhook:', smtpErr.message);
     }
   }
 
-  // 2. Direct email delivery to admin@avauraai.com with required Origin and Referer
+  // 2. Direct email delivery to admin@avauraai.com & CC & client auto-reply
   try {
     const res = await fetch(`https://formsubmit.co/ajax/${NOTIFICATION_EMAIL}`, {
       method: 'POST',
@@ -128,6 +153,8 @@ async function sendEmailNotification(docData) {
       body: JSON.stringify({
         _subject: subject,
         _replyto: docData.email,
+        _cc: CC_EMAIL,
+        _autoresponse: autoresponseMessage,
         _template: 'table',
         'Client Name': docData.name,
         'Client Email': docData.email,
@@ -139,7 +166,7 @@ async function sendEmailNotification(docData) {
       }),
     });
     const result = await res.json();
-    console.log('✅ FormSubmit delivered email to:', NOTIFICATION_EMAIL, result);
+    console.log('✅ FormSubmit delivered email to:', NOTIFICATION_EMAIL, 'and CC:', CC_EMAIL, result);
   } catch (webhookErr) {
     console.error('Webhook notification dispatch error:', webhookErr.message);
   }
@@ -220,11 +247,11 @@ module.exports = async function handler(req, res) {
       console.log('📬 Saved inquiry via fallback:', JSON.stringify(docData));
     }
 
-    // 2. MUST AWAIT email notification so Vercel Serverless doesn't freeze the process
+    // 2. Await email notification & auto-reply dispatch
     try {
       await sendEmailNotification(docData);
     } catch (emailErr) {
-      console.error('Background email dispatch failed:', emailErr.message);
+      console.error('Email dispatch failed:', emailErr.message);
     }
 
     return res.status(201).json({
