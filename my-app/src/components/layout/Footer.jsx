@@ -64,10 +64,10 @@ const Footer = () => {
               <div className="flex items-center gap-2.5">
                 <Mail className="w-4 h-4 text-[#FF1F26] shrink-0" />
                 <a
-                  href="mailto:kaushalrahul1130@gmail.com"
+                  href="mailto:admin@avauraai.com"
                   className="hover:text-white transition-colors break-all sm:break-normal"
                 >
-                  kaushalrahul1130@gmail.com
+                  admin@avauraai.com
                 </a>
               </div>
 

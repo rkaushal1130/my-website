@@ -1,8 +1,11 @@
 const mongoose = require('mongoose');
+const nodemailer = require('nodemailer');
 
 const MONGODB_URI =
   process.env.MONGODB_URL ||
   'mongodb+srv://neverquitop_db_user:rahul1130@coding.8vahpjy.mongodb.net/rahul_database?appName=coding';
+
+const NOTIFICATION_EMAIL = process.env.ADMIN_EMAIL || process.env.NOTIFICATION_EMAIL || 'admin@avauraai.com';
 
 let cachedConnection = null;
 
@@ -38,6 +41,101 @@ const contactSchema = new mongoose.Schema(
 const ContactSubmission =
   mongoose.models.ContactSubmission ||
   mongoose.model('ContactSubmission', contactSchema, 'website');
+
+async function sendEmailNotification(docData) {
+  const subject = `🚀 New Client Lead: ${docData.name} (${docData.service})`;
+  const submittedTime = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }) + ' IST';
+
+  // 1. Send via SMTP if environment variables are configured in Vercel
+  if (process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS) {
+    try {
+      const transporter = nodemailer.createTransport({
+        host: process.env.SMTP_HOST,
+        port: Number(process.env.SMTP_PORT) || 587,
+        secure: Number(process.env.SMTP_PORT) === 465,
+        auth: {
+          user: process.env.SMTP_USER,
+          pass: process.env.SMTP_PASS,
+        },
+      });
+
+      await transporter.sendMail({
+        from: `"${docData.name} via Avaura" <${process.env.SMTP_FROM || process.env.SMTP_USER}>`,
+        to: NOTIFICATION_EMAIL,
+        replyTo: docData.email,
+        subject,
+        html: `
+          <div style="font-family: Arial, sans-serif; background-color: #0b0b0e; color: #ffffff; padding: 24px; border-radius: 12px; border: 1px solid #26262b; max-width: 600px;">
+            <div style="border-bottom: 2px solid #FF1F26; padding-bottom: 12px; margin-bottom: 20px;">
+              <h2 style="color: #FF1F26; margin: 0; font-size: 22px;">New Client Inquiry</h2>
+              <p style="color: #a1a1aa; margin: 4px 0 0 0; font-size: 13px;">Received on ${submittedTime}</p>
+            </div>
+            <table style="width: 100%; border-collapse: collapse; font-size: 14px; margin-bottom: 20px;">
+              <tr>
+                <td style="padding: 8px 0; color: #a1a1aa; width: 140px; font-weight: bold;">Client Name:</td>
+                <td style="padding: 8px 0; color: #ffffff; font-weight: 600;">${docData.name}</td>
+              </tr>
+              <tr>
+                <td style="padding: 8px 0; color: #a1a1aa; font-weight: bold;">Email:</td>
+                <td style="padding: 8px 0;"><a href="mailto:${docData.email}" style="color: #FF1F26; text-decoration: none;">${docData.email}</a></td>
+              </tr>
+              <tr>
+                <td style="padding: 8px 0; color: #a1a1aa; font-weight: bold;">Phone:</td>
+                <td style="padding: 8px 0; color: #ffffff;">${docData.phone || 'Not provided'}</td>
+              </tr>
+              <tr>
+                <td style="padding: 8px 0; color: #a1a1aa; font-weight: bold;">Company:</td>
+                <td style="padding: 8px 0; color: #ffffff;">${docData.company || 'Not provided'}</td>
+              </tr>
+              <tr>
+                <td style="padding: 8px 0; color: #a1a1aa; font-weight: bold;">Service / Interest:</td>
+                <td style="padding: 8px 0; color: #ffffff;">${docData.service}</td>
+              </tr>
+            </table>
+            <div style="background-color: #141418; padding: 16px; border-radius: 8px; border: 1px solid #26262b; margin-bottom: 20px;">
+              <div style="color: #a1a1aa; font-size: 12px; text-transform: uppercase; font-weight: bold; margin-bottom: 8px;">Project Details / Message:</div>
+              <div style="color: #ffffff; line-height: 1.6; white-space: pre-wrap;">${docData.message}</div>
+            </div>
+            <div style="text-align: center; margin-top: 20px;">
+              <a href="mailto:${docData.email}?subject=Re: Your inquiry on Avaura" style="background-color: #FF1F26; color: #ffffff; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold; display: inline-block;">Reply to Client Directly</a>
+            </div>
+          </div>
+        `,
+      });
+      console.log('✅ Email notification delivered via SMTP to:', NOTIFICATION_EMAIL);
+      return;
+    } catch (smtpErr) {
+      console.error('SMTP notification failed, falling back to delivery webhook:', smtpErr.message);
+    }
+  }
+
+  // 2. Direct email delivery to admin@avauraai.com (no credentials required)
+  try {
+    const res = await fetch(`https://formsubmit.co/ajax/${NOTIFICATION_EMAIL}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify({
+        _subject: subject,
+        _replyto: docData.email,
+        _template: 'table',
+        'Client Name': docData.name,
+        'Client Email': docData.email,
+        'Client Contact': docData.phone || 'Not provided',
+        'Company Name': docData.company || 'Not provided',
+        'Area of Interest': docData.service,
+        'Project Details': docData.message,
+        'Submitted At': submittedTime,
+      }),
+    });
+    const result = await res.json();
+    console.log('✅ Email notification delivered via webhook to:', NOTIFICATION_EMAIL, result);
+  } catch (webhookErr) {
+    console.error('Webhook notification dispatch error:', webhookErr.message);
+  }
+}
 
 module.exports = async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Credentials', 'true');
@@ -99,26 +197,26 @@ module.exports = async function handler(req, res) {
       message: message.trim(),
     };
 
+    let submissionId = 'ack-' + Date.now();
     try {
       await connectToMongo();
       const submission = await ContactSubmission.create(docData);
+      submissionId = submission._id;
       console.log('✅ Contact form saved to MongoDB Atlas [website]:', submission._id);
-
-      return res.status(201).json({
-        success: true,
-        data: { id: submission._id },
-        message: 'Your message has been received.',
-      });
     } catch (dbErr) {
       console.error('MongoDB Atlas save error:', dbErr.message);
       console.log('📬 Saved inquiry via fallback:', JSON.stringify(docData));
-
-      return res.status(201).json({
-        success: true,
-        data: { id: 'ack-' + Date.now() },
-        message: 'Your message has been received.',
-      });
     }
+
+    sendEmailNotification(docData).catch((err) =>
+      console.error('Background email dispatch failed:', err.message)
+    );
+
+    return res.status(201).json({
+      success: true,
+      data: { id: submissionId },
+      message: 'Your message has been received.',
+    });
   } catch (error) {
     console.error('Unhandled contact submission error:', error);
     return res.status(500).json({

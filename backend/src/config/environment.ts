@@ -12,8 +12,8 @@ const envSchema = z.object({
   MONGODB_DB_NAME: z.string().default('rahul_database'),
   JWT_SECRET: z.string().default('neverquit_ai_jwt_secret_dev_key_2026'),
   FRONTEND_URL: z.string().default('http://localhost:5173'),
-  ADMIN_EMAIL: z.string().default('kaushalrahul1130@gmail.com'),
-  NOTIFICATION_EMAIL: z.string().default('kaushalrahul1130@gmail.com'),
+  ADMIN_EMAIL: z.string().default('admin@avauraai.com'),
+  NOTIFICATION_EMAIL: z.string().default('admin@avauraai.com'),
 });
 
 const _env = envSchema.safeParse(process.env);

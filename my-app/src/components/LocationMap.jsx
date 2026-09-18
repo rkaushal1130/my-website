@@ -64,8 +64,8 @@ const LocationMap = () => {
                   </div>
                   <div>
                     <div className="text-xs text-[#737373] uppercase font-bold tracking-wider">Email Inquiry</div>
-                    <a href="mailto:kaushalrahul1130@gmail.com" className="text-sm font-semibold text-white hover:text-[#FF1F26] transition-colors mt-0.5 block">
-                      kaushalrahul1130@gmail.com
+                    <a href="mailto:admin@avauraai.com" className="text-sm font-semibold text-white hover:text-[#FF1F26] transition-colors mt-0.5 block">
+                      admin@avauraai.com
                     </a>
                   </div>
                 </div>

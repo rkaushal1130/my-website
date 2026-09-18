@@ -24,7 +24,7 @@ export const footerLinks = {
     { name: 'Get in Touch', path: '/contact' },
   ],
   contact: {
-    email: 'kaushalrahul1130@gmail.com',
+    email: 'admin@avauraai.com',
     phone: '+91 9015323903',
     secondaryPhone: '+91 7719561597',
     phones: ['+91 9015323903', '+91 7719561597'],

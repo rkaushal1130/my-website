@@ -106,7 +106,7 @@ const Navbar = () => {
 
           <div className="pt-6 border-t border-[#242424]">
             <p className="text-center text-xs text-[#737373]">
-              Sundernagar, Distt. Mandi, Himachal Pradesh 175002 • kaushalrahul1130@gmail.com
+              Sundernagar, Distt. Mandi, Himachal Pradesh 175002 • admin@avauraai.com
             </p>
           </div>
         </div>

@@ -9,8 +9,8 @@ const ContactInfo = () => {
     {
       icon: Mail,
       title: 'Email',
-      value: 'kaushalrahul1130@gmail.com',
-      href: 'mailto:kaushalrahul1130@gmail.com',
+      value: 'admin@avauraai.com',
+      href: 'mailto:admin@avauraai.com',
       description: 'We usually respond within one business day.',
     },
     {

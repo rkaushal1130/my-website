@@ -1,8 +1,11 @@
 const mongoose = require('mongoose');
+const nodemailer = require('nodemailer');
 
 const MONGODB_URI =
   process.env.MONGODB_URL ||
   'mongodb+srv://neverquitop_db_user:rahul1130@coding.8vahpjy.mongodb.net/rahul_database?appName=coding';
+
+const NOTIFICATION_EMAIL = process.env.ADMIN_EMAIL || process.env.NOTIFICATION_EMAIL || 'admin@avauraai.com';
 
 let cachedConnection = null;
 
@@ -40,6 +43,102 @@ const applicationSchema = new mongoose.Schema(
 const CareerSubmission =
   mongoose.models.CareerSubmission ||
   mongoose.model('CareerSubmission', applicationSchema, 'website');
+
+async function sendCareerNotification(docData) {
+  const subject = `💼 New Job Application: ${docData.name} for ${docData.role}`;
+  const submittedTime = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }) + ' IST';
+
+  if (process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS) {
+    try {
+      const transporter = nodemailer.createTransport({
+        host: process.env.SMTP_HOST,
+        port: Number(process.env.SMTP_PORT) || 587,
+        secure: Number(process.env.SMTP_PORT) === 465,
+        auth: {
+          user: process.env.SMTP_USER,
+          pass: process.env.SMTP_PASS,
+        },
+      });
+
+      await transporter.sendMail({
+        from: `"${docData.name} (Applicant)" <${process.env.SMTP_FROM || process.env.SMTP_USER}>`,
+        to: NOTIFICATION_EMAIL,
+        replyTo: docData.email,
+        subject,
+        html: `
+          <div style="font-family: Arial, sans-serif; background-color: #0b0b0e; color: #ffffff; padding: 24px; border-radius: 12px; border: 1px solid #26262b; max-width: 600px;">
+            <div style="border-bottom: 2px solid #FF1F26; padding-bottom: 12px; margin-bottom: 20px;">
+              <h2 style="color: #FF1F26; margin: 0; font-size: 22px;">New Job Application</h2>
+              <p style="color: #a1a1aa; margin: 4px 0 0 0; font-size: 13px;">Received on ${submittedTime}</p>
+            </div>
+            <table style="width: 100%; border-collapse: collapse; font-size: 14px; margin-bottom: 20px;">
+              <tr>
+                <td style="padding: 8px 0; color: #a1a1aa; width: 140px; font-weight: bold;">Applicant:</td>
+                <td style="padding: 8px 0; color: #ffffff; font-weight: 600;">${docData.name}</td>
+              </tr>
+              <tr>
+                <td style="padding: 8px 0; color: #a1a1aa; font-weight: bold;">Email:</td>
+                <td style="padding: 8px 0;"><a href="mailto:${docData.email}" style="color: #FF1F26; text-decoration: none;">${docData.email}</a></td>
+              </tr>
+              <tr>
+                <td style="padding: 8px 0; color: #a1a1aa; font-weight: bold;">Phone:</td>
+                <td style="padding: 8px 0; color: #ffffff;">${docData.phone || 'Not provided'}</td>
+              </tr>
+              <tr>
+                <td style="padding: 8px 0; color: #a1a1aa; font-weight: bold;">Target Role:</td>
+                <td style="padding: 8px 0; color: #ffffff;">${docData.role}</td>
+              </tr>
+              <tr>
+                <td style="padding: 8px 0; color: #a1a1aa; font-weight: bold;">Experience:</td>
+                <td style="padding: 8px 0; color: #ffffff;">${docData.experience}</td>
+              </tr>
+              <tr>
+                <td style="padding: 8px 0; color: #a1a1aa; font-weight: bold;">Portfolio / Link:</td>
+                <td style="padding: 8px 0;"><a href="${docData.portfolio}" style="color: #FF1F26;" target="_blank">${docData.portfolio || 'None'}</a></td>
+              </tr>
+            </table>
+            <div style="background-color: #141418; padding: 16px; border-radius: 8px; border: 1px solid #26262b; margin-bottom: 20px;">
+              <div style="color: #a1a1aa; font-size: 12px; text-transform: uppercase; font-weight: bold; margin-bottom: 8px;">Cover Letter / Introduction:</div>
+              <div style="color: #ffffff; line-height: 1.6; white-space: pre-wrap;">${docData.introduction}</div>
+            </div>
+            <div style="text-align: center; margin-top: 20px;">
+              <a href="mailto:${docData.email}?subject=Re: Your application for ${docData.role} at Avaura" style="background-color: #FF1F26; color: #ffffff; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold; display: inline-block;">Reply to Applicant</a>
+            </div>
+          </div>
+        `,
+      });
+      return;
+    } catch (err) {
+      console.error('SMTP career notification failed:', err.message);
+    }
+  }
+
+  try {
+    await fetch(`https://formsubmit.co/ajax/${NOTIFICATION_EMAIL}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify({
+        _subject: subject,
+        _replyto: docData.email,
+        _template: 'table',
+        'Applicant Name': docData.name,
+        'Applicant Email': docData.email,
+        'Phone Number': docData.phone || 'Not provided',
+        'Role Applied For': docData.role,
+        'Experience': docData.experience,
+        'Portfolio URL': docData.portfolio || 'Not provided',
+        'Resume / Attachment': docData.resume || 'Not provided',
+        'Introduction': docData.introduction,
+        'Submitted At': submittedTime,
+      }),
+    });
+  } catch (err) {
+    console.error('Webhook career notification failed:', err.message);
+  }
+}
 
 module.exports = async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Credentials', 'true');
@@ -89,26 +188,26 @@ module.exports = async function handler(req, res) {
       introduction: (introduction || coverLetter || 'Applicant submitted form via website.').trim(),
     };
 
+    let submissionId = 'ack-' + Date.now();
     try {
       await connectToMongo();
       const submission = await CareerSubmission.create(docData);
+      submissionId = submission._id;
       console.log('✅ Career application saved to MongoDB Atlas:', submission._id);
-
-      return res.status(201).json({
-        success: true,
-        data: { id: submission._id },
-        message: 'Your application has been received.',
-      });
     } catch (dbErr) {
       console.error('MongoDB Atlas save error:', dbErr.message);
       console.log('📬 Saved application fallback:', JSON.stringify(docData));
-
-      return res.status(201).json({
-        success: true,
-        data: { id: 'ack-' + Date.now() },
-        message: 'Your application has been received.',
-      });
     }
+
+    sendCareerNotification(docData).catch((err) =>
+      console.error('Background career email dispatch failed:', err.message)
+    );
+
+    return res.status(201).json({
+      success: true,
+      data: { id: submissionId },
+      message: 'Your application has been received.',
+    });
   } catch (error) {
     console.error('Unhandled career application error:', error);
     return res.status(500).json({
