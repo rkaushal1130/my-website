@@ -1,5 +1,6 @@
 import React from 'react';
 import { socialLinks } from '../../data/socialLinks';
+import WhatsAppIcon from '../common/WhatsAppIcon';
 
 const TwitterIcon = ({ className = "w-4 h-4" }) => (
   <svg className={className} fill="currentColor" viewBox="0 0 24 24">
@@ -28,6 +29,7 @@ const GithubIcon = ({ className = "w-4 h-4" }) => (
 const SocialLinks = () => {
   const getIcon = (type) => {
     switch (type) {
+      case 'whatsapp': return WhatsAppIcon;
       case 'linkedin': return LinkedinIcon;
       case 'twitter': return TwitterIcon;
       case 'instagram': return InstagramIcon;
@@ -38,11 +40,13 @@ const SocialLinks = () => {
   return (
     <div className="pt-2">
       <div className="text-xs font-mono uppercase tracking-wider text-[#737373] mb-3">
-        Follow Avaura
+        Connect & Follow Avaura
       </div>
       <div className="flex items-center gap-3">
         {socialLinks.map((social) => {
           const Icon = getIcon(social.type);
+          const isWhatsApp = social.type === 'whatsapp';
+
           return (
             <a
               key={social.name}
@@ -50,9 +54,20 @@ const SocialLinks = () => {
               target="_blank"
               rel="noreferrer"
               aria-label={social.name}
-              className="w-11 h-11 rounded-xl bg-[#111111] border border-[#252525] hover:border-[#FF1F26] text-white hover:bg-[#FF1F26] flex items-center justify-center transition-all duration-300 hover:shadow-[0_0_20px_rgba(255,31,38,0.4)] group active:scale-95"
+              title={social.name}
+              className={`w-11 h-11 rounded-xl bg-[#111111] border transition-all duration-300 flex items-center justify-center group active:scale-95 cursor-pointer ${
+                isWhatsApp
+                  ? 'border-[#25D366]/40 hover:border-[#25D366] hover:bg-[#25D366] hover:shadow-[0_0_20px_rgba(37,211,102,0.45)] text-[#25D366]'
+                  : 'border-[#252525] hover:border-[#FF1F26] hover:bg-[#FF1F26] hover:shadow-[0_0_20px_rgba(255,31,38,0.4)] text-white'
+              }`}
             >
-              <Icon className="w-5 h-5 text-[#A8A8A8] group-hover:text-white transition-colors" />
+              <Icon
+                className={`w-5 h-5 transition-colors ${
+                  isWhatsApp
+                    ? 'text-[#25D366] group-hover:text-white'
+                    : 'text-[#A8A8A8] group-hover:text-white'
+                }`}
+              />
             </a>
           );
         })}

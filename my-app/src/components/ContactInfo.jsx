@@ -1,9 +1,20 @@
 import React from 'react';
 import { Mail, Phone, MapPin } from 'lucide-react';
 import SocialLinks from './SocialLinks';
+import WhatsAppIcon from './common/WhatsAppIcon';
+import { WHATSAPP_URL, WHATSAPP_NUMBER } from '../data/navigation';
 
 const ContactInfo = () => {
   const contactCards = [
+    {
+      icon: WhatsAppIcon,
+      title: 'WhatsApp Direct',
+      value: `+91 ${WHATSAPP_NUMBER}`,
+      href: WHATSAPP_URL,
+      description: 'Instant chat with our engineering leadership. Click to message directly.',
+      isWhatsApp: true,
+      badgeText: 'Chat Now',
+    },
     {
       icon: Mail,
       title: 'Email Us',
@@ -49,24 +60,53 @@ const ContactInfo = () => {
         </p>
       </div>
 
-      {/* 3 Contact Cards */}
+      {/* Contact Cards */}
       <div className="space-y-4">
         {contactCards.map((card, idx) => {
           const Icon = card.icon;
+          const isWhatsApp = card.isWhatsApp;
+
           return (
             <div
               key={idx}
-              className="p-5 rounded-2xl bg-[#111111] border border-[#252525] hover:border-[#FF1F26]/50 transition-all duration-300 flex items-start gap-4 group shadow-sm hover:shadow-[0_8px_25px_-5px_rgba(255,31,38,0.15)]"
+              className={`p-5 rounded-2xl bg-[#111111] border transition-all duration-300 flex items-start gap-4 group shadow-sm ${
+                isWhatsApp
+                  ? 'border-[#25D366]/30 hover:border-[#25D366] hover:shadow-[0_8px_25px_-5px_rgba(37,211,102,0.2)]'
+                  : 'border-[#252525] hover:border-[#FF1F26]/50 hover:shadow-[0_8px_25px_-5px_rgba(255,31,38,0.15)]'
+              }`}
             >
-              <div className="w-11 h-11 rounded-xl bg-[#0D0D0D] border border-[#252525] group-hover:border-[#FF1F26] flex items-center justify-center text-[#FF1F26] shrink-0 transition-colors shadow-sm">
+              <div
+                className={`w-11 h-11 rounded-xl bg-[#0D0D0D] border flex items-center justify-center shrink-0 transition-colors shadow-sm ${
+                  isWhatsApp
+                    ? 'border-[#25D366]/40 text-[#25D366] group-hover:border-[#25D366]'
+                    : 'border-[#252525] text-[#FF1F26] group-hover:border-[#FF1F26]'
+                }`}
+              >
                 <Icon className="w-5 h-5" />
               </div>
 
               <div>
-                <div className="text-xs font-mono uppercase tracking-wider text-[#737373]">
+                <div
+                  className={`text-xs font-mono uppercase tracking-wider ${
+                    isWhatsApp ? 'text-[#25D366]' : 'text-[#737373]'
+                  }`}
+                >
                   {card.title}
                 </div>
-                {card.numbers ? (
+
+                {isWhatsApp ? (
+                  <a
+                    href={card.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-base font-semibold text-white hover:text-[#25D366] transition-colors mt-0.5"
+                  >
+                    <span>{card.value}</span>
+                    <span className="text-[11px] font-bold uppercase tracking-wider bg-[#25D366]/20 text-[#25D366] px-2.5 py-0.5 rounded-full border border-[#25D366]/40">
+                      {card.badgeText} &rarr;
+                    </span>
+                  </a>
+                ) : card.numbers ? (
                   <div className="flex flex-col space-y-0.5 mt-0.5">
                     {card.numbers.map((item, nIdx) => (
                       <a

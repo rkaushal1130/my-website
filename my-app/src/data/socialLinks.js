@@ -1,4 +1,11 @@
+import { WHATSAPP_URL, WHATSAPP_NUMBER } from './navigation';
+
 export const socialLinks = [
+  {
+    name: `WhatsApp (+91 ${WHATSAPP_NUMBER})`,
+    href: WHATSAPP_URL,
+    type: 'whatsapp',
+  },
   {
     name: 'LinkedIn',
     href: 'https://linkedin.com',
