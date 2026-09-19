@@ -35,7 +35,7 @@ const ClientFeedbackForm = () => {
     setFormData((prev) => ({ ...prev, stars: rating }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.name.trim()) {
       setErrorMessage('Please enter your full name.');
@@ -45,23 +45,21 @@ const ClientFeedbackForm = () => {
       setErrorMessage('Please write your feedback message.');
       return;
     }
-    if (formData.quote.trim().length < 15) {
-      setErrorMessage('Please write a detailed feedback of at least 15 characters.');
+    if (formData.quote.trim().length < 10) {
+      setErrorMessage('Please write a detailed feedback of at least 10 characters.');
       return;
     }
 
     setIsSubmitting(true);
     setErrorMessage('');
 
-    setTimeout(() => {
-      const res = feedbackService.addFeedback({
+    try {
+      const res = await feedbackService.addFeedback({
         name: formData.name,
         service: formData.service || 'Digital Engineering',
         quote: formData.quote,
         stars: formData.stars,
       });
-
-      setIsSubmitting(false);
 
       if (res.success) {
         setIsSubmitted(true);
@@ -72,9 +70,13 @@ const ClientFeedbackForm = () => {
           quote: '',
         });
       } else {
-        setErrorMessage('Failed to save feedback. Please try again.');
+        setErrorMessage(res.error || 'Failed to save feedback. Please try again.');
       }
-    }, 350);
+    } catch (err) {
+      setErrorMessage(err.message || 'Failed to submit feedback. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (

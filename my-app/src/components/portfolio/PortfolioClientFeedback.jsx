@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback, useRef, useMemo, useLayoutEffe
 import { ChevronLeft, ChevronRight, Star, MessageSquarePlus } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Container from '../common/Container';
-import feedbackService from '../../services/feedbackService';
+import feedbackService, { sanitizeQuote } from '../../services/feedbackService';
 
 // Ultra-smooth easing curve (Quartic Deceleration) and optimal duration for luxurious motion
 const TRANSITION_DURATION = 720; // ms
@@ -48,12 +48,29 @@ const PortfolioClientFeedback = () => {
 
   // Subscribe to real-time feedback updates
   useEffect(() => {
-    const unsubscribe = feedbackService.subscribe((updatedList) => {
+    const unsubscribe = feedbackService.subscribe((updatedList, isNewSubmission) => {
       setFeedbacks(updatedList);
-      setCurrentIndex(updatedList.length > 1 ? updatedList.length : 0);
+      if (isNewSubmission) {
+        // Automatically focus directly on the newly submitted review in the center
+        setCurrentIndex(updatedList.length > 1 ? updatedList.length : 0);
+        setIsPaused(true);
+        setTimeout(() => setIsPaused(false), 10000);
+      }
     });
     return unsubscribe;
   }, []);
+
+  // Center on newest review if user just submitted and arrived from form
+  useEffect(() => {
+    try {
+      if (sessionStorage.getItem('avaura_new_review_submitted')) {
+        sessionStorage.removeItem('avaura_new_review_submitted');
+        setCurrentIndex(rawTotal > 1 ? rawTotal : 0);
+        setIsPaused(true);
+        setTimeout(() => setIsPaused(false), 10000);
+      }
+    } catch {}
+  }, [rawTotal]);
 
   // Measure card width and responsive gap on mount and window resize
   const measureLayout = useCallback(() => {
@@ -369,7 +386,7 @@ const PortfolioClientFeedback = () => {
                           isCenter ? 'text-[#F1F1F5]' : 'text-[#A1A1AA]'
                         }`}
                       >
-                        "{item.quote}"
+                        "{sanitizeQuote(item.quote)}"
                       </p>
                     </div>
 

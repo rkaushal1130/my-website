@@ -1,5 +1,9 @@
 const mongoose = require('mongoose');
 const nodemailer = require('nodemailer');
+const dns = require('dns');
+try {
+  dns.setServers(['8.8.8.8', '8.8.4.4']);
+} catch (e) {}
 
 const MONGODB_URI =
   process.env.MONGODB_URL ||
