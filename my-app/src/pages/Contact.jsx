@@ -3,7 +3,6 @@ import PageWrapper from '../components/layout/PageWrapper';
 import ContactHero from '../components/contact/ContactHero';
 import ContactInfo from '../components/contact/ContactInfo';
 import ContactForm from '../components/contact/ContactForm';
-import ClientFeedbackForm from '../components/contact/ClientFeedbackForm';
 import LocationMap from '../components/contact/LocationMap';
 import FAQ from '../components/contact/FAQ';
 import Container from '../components/common/Container';
@@ -29,9 +28,6 @@ const Contact = () => {
           </div>
         </Container>
       </section>
-
-      {/* Client Feedback Submission Form */}
-      <ClientFeedbackForm />
 
       <LocationMap />
       <FAQ />
